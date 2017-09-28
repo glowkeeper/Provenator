@@ -1,8 +1,8 @@
 # The FakeNews Application
 
-The source code here is for a prototype application for proving the origins of captured digital media. It does so using cryptographic tools and blockchain technology. The academic paper that it is the motivation behind this project is [Fake News - a Technological Approach to Proving Provenance Using Blockchains](../docs/paper/FakeNews.md).
+The source code here is for the prototype application **Provenator**, which proves the origins of captured digital media. It does so using cryptographic tools and blockchain technology. The academic paper that it is the motivation behind this project is, **Fake News - a Technological Approach to Proving Provenance Using Blockchains**.
 
-To describe a digital resource, users of the application must do the following:
+To describe a digital resource, users of **Provenator** must do the following:
 
 1. Get a cryptographic hash of the digital media resource.
 2. Create metadata describing the digital resource.
@@ -14,6 +14,6 @@ By following the steps above, subsequent users of the data will be able to trust
 2. Check whether that hash exists on the blockchain.
 3. If the hash exists, retrieve the associated metadata.
 
-To install the source, please clone this repository, then follow the [installation instructions](INSTALL.md).
+To install the source, please clone this repository, then follow the [installation instructions](/docs/INSTALL.md).
 
-_Note 1_. A supplementary tool, such as [MetaMask](https://github.com/MetaMask/metamask-extension), must be used for the signing process.
+_Note 1_. A supplementary tool, such as [MetaMask](https://github.com/MetaMask/metamask-extension), can be used for the signing process.
