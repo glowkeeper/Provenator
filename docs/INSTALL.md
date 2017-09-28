@@ -1,4 +1,4 @@
-# Installation instructions
+# Installation Instructions for Provenator
 
 These are the installation instructions for **Provenator**, whose source is under the [src](/src) subdirectory of this repository. These instructions make use of the test blockchain, [TestRPC](https://github.com/ethereumjs/testrpc), but feel free to use the alternatives instead (such as the [Ethereum Testnet Rospten](https://github.com/ethereum/ropsten)).
 
@@ -12,7 +12,7 @@ After cloning this repository, download and install the dependencies:
 - [npm](https://www.npmjs.com/)
 - [http-server](https://www.npmjs.com/package/http-server)
 
-Then, in [/src/frontend](/src/frontend), type `npm install`. That should install everything detailed in the [/src/frontend/package.json](/src/frontend/frontend/package.json) that forms the REACT-based web frontend to this application.
+Then, in [/src/frontend](/src/frontend), type `npm install`. That should install everything detailed in the [/src/frontend/package.json](/src/frontend/package.json) that forms the REACT-based web frontend to this application.
 
 ## Running the application
 
