@@ -1,0 +1,10 @@
+@value buttonPrimaryColor: #FFFFFF;
+@value buttonPrimaryBackgroundColor: #303F9F;
+@value buttonPrimaryDisabledBackgroundColor: #cccccc;
+
+@value linkPrimaryColour: #FFFFFF;
+
+@value appPadding: 10px;
+@value appBackgroundColour: #cfe1e1;
+
+@value fontFamily: 'Roboto', sans-serif;
