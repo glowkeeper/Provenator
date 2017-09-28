@@ -6,7 +6,7 @@ To describe a digital resource, users of **Provenator** must do the following:
 
 1. Get a cryptographic hash of the digital media resource.
 2. Create metadata describing the digital resource.
-3. *Sign the transaction*<sup>[1]</sup> that stores the cryptographic hash of the digital resource, and its associated metadata, on the blockchain.
+3. *Sign the transaction*<sup>[1](#1)</sup> that stores the cryptographic hash of the digital resource, and its associated metadata, on the blockchain.
 
 By following the steps above, subsequent users of the data will be able to trust the integrity and authenticity of the digital media metadata because of the immutability of blockchain records. Below is how the application will allow such users to check a digital resource's provenance data on the blockchain:
 
