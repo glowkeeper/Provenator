@@ -1,6 +1,6 @@
 # Overview of Provenator
 
-The source code here is for the prototype application **Provenator**, which proves the origins of captured digital media. It does so using cryptographic tools and blockchain technology. The academic paper that it is the motivation behind this project is, **Fake News - a Technological Approach to Proving Provenance Using Blockchains**.
+This is the repository for **Provenator**, a prototype application for proving the origins of captured digital media. It does so using cryptographic tools and blockchain technology. The academic paper that it is the motivation behind this project is, **Fake News - a Technological Approach to Proving Provenance Using Blockchains**.
 
 To describe a digital resource, users of **Provenator** must do the following:
 
