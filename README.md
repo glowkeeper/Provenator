@@ -8,6 +8,8 @@ If, rather than install the source software, you'd rather just use **Provenator*
 
 Meanwhile, here's a tempting screenshot of the app' in action:
 
-![Provenator homepage](image/fakeNewsApp.png)
+![Provenator homepage](images/fakeNewsApp.png)
 
-Finally, please be aware of [licensing](docs/LICENSE.md). In short, everything in this repository is shared under the Creative Commons license [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/). That allows you to share, copy and redistribute the material in any medium or format, as well as remix, transform, and build upon the material. However, any use must not be commercial, you must give appropriate credit, and any derivatives must be shared under the same [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) license.
+## Licensing
+
+Please be aware of [licensing](docs/LICENSE.md). In short, everything in this repository is shared under the Creative Commons license [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/). That allows you to share, copy and redistribute the material in any medium or format, as well as remix, transform, and build upon the material. However, any use must not be commercial, you must give appropriate credit, and any derivatives must be shared under the same [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) license.
