@@ -18,4 +18,5 @@ To install the source, please clone this repository, then follow the [installati
 
 If, rather than install the source software, you'd rather just use **Provenator**, then we are waiting for the IT Services Department of the University of Sussex to supply us with the appropriate hardware and Internet connection for hosting the app'. As soon as they do, there will be a working demonstrator running, which will use the [Ethereum Testnet Rospten](https://github.com/ethereum/ropsten), so it won't cost any real Ether to load a media resource and register its provenance. Please watch this space.
 
+<hr/>
 <a name="1">1</a>: A supplementary tool, such as [MetaMask](https://github.com/MetaMask/metamask-extension), can be used for the signing process.
