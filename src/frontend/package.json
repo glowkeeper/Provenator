@@ -11,7 +11,7 @@
     "watch": "./node_modules/.bin/webpack -d --watch",
     "dev": "./node_modules/.bin/webpack -d",
     "build": "./node_modules/.bin/webpack -p",
-    "copy": "cp ./app/index.html build && cp ./app/index.css build && cp ./node_modules/react-select/dist/react-select.css build",
+    "copy": "cp ./app/index.html build && cp ./node_modules/react-select/dist/react-select.css build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "http-server -p 8081 build/"
   },

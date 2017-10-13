@@ -1837,19 +1837,24 @@ class ContractHandler {
   ]
 
   /*  Deploying PremisAgent...
-  PremisAgent: 0xc3a182dd01e3d9ffdbe95ce568b9c8d936e2ca9d
+  ... 0xce2b44653f144853945dfb86ea220f6ba9ccb4cafb03d202c843b86625ea6016
+  PremisAgent: 0x934a94e376079206f5a2d213a6152f0164d29535
   Deploying PremisEvent...
-  PremisEvent: 0x12dba0b95a32239a5ba3e6bf7d05471d18f30d1f
+  ... 0xe6276f874817b15a83c0cc96cb4915289c21620140e1faed3ac7312bcb67aeb8
+  PremisEvent: 0x762895147173daaff705066f5573162c95f617d0
   Deploying PremisObject...
-  PremisObject: 0xb9bfd8ff77db391a28a45b6c1cb72b0028695219
+  ... 0x9bb89c921fcd4c79abdd123ec114ecc9399026e304d0e8a78ac1260822e0e279
+  PremisObject: 0xda14e434e957e9c7e053b5d8fb80e6ed2dc174ee
   Deploying PremisRights...
-  PremisRights: 0xec6a5f11e7865aadc61f27faf8707795c1cda868
+  ... 0xf49023f401f09be368799eab5aa7ee351ca389ea7ca90fe2df928c0b1cc086d2
+  PremisRights: 0x973b9658d34bbd3dc06be257020d93900cf32073
+
   */
 
-  static premisObjectContractAddress = '0xea612d8715c88c9e19900266d5828cccd3de95cc'
-  static premisEventContractAddress = '0x33a08c60f1921db93c652d6f971ace804c62bae9'
-  static premisAgentContractAddress = '0xfc4dcad490b63ed5110a2f1e217851c2079b8447'
-  static premisRightsContractAddress = '0x677f8ca3db8f9fb4fcf7af97a149c0d6a9edf300'
+  static premisObjectContractAddress = '0xda14e434e957e9c7e053b5d8fb80e6ed2dc174ee'
+  static premisEventContractAddress = '0x762895147173daaff705066f5573162c95f617d0'
+  static premisAgentContractAddress = '0x934a94e376079206f5a2d213a6152f0164d29535'
+  static premisRightsContractAddress = '0x973b9658d34bbd3dc06be257020d93900cf32073'
 
   constructor (_web3Handler) {
     //console.log(_web3)
