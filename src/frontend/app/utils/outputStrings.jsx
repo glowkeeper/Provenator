@@ -1,26 +1,26 @@
 class AppStrings {
 
-  static heading = 'The Fake News Application (alpha)'
+  static heading = 'Provenator (alpha)'
   static home = 'Home'
-  static about = 'About the Fake News Application'
-  static overview = 'Application Overview'
-  static help = 'Application Help'
-  static create = 'Create a FakeNews Object'
-  static read = 'Get FakeNews Object Data'
-  static events = 'FakeNews Events'
+  static about = 'About'
+  static overview = 'Overview'
+  static help = 'Help'
+  static create = 'Record Object'
+  static read = 'Get Object'
+  static events = 'Events'
 }
 
 class HomeStrings {
 
   static heading = 'Home'
 
-  static info = 'Use this application to record Fake News Objects and to get Fake News Object information.'
+  static info = 'Use this application to record digital media objects and to get digital media object information.'
 
 }
 
 class AboutStrings {
 
-  static heading = 'About the Fake News Application'
+  static heading = 'About Provenator'
 
   static info = 'This app came about as a result of an academic paper titled: \"Fake News - a Technological Approach to Proving the Origins of Content, Using Blockchains\". The article discusses how the trust mechanisms of blockchain technology might be used to combat fake news. The general idea is that content creators must have the ability to store relevant authentication information about their creations so that the data can be retrieved and used to prove the ownership and licensing of those same resources.'
 
@@ -28,9 +28,9 @@ class AboutStrings {
 
 class OverviewStrings {
 
-  static heading = 'Overview of the Fake News Application'
+  static heading = 'Overview of Provenator'
 
-  static info = 'The \'store\' behaviour of the app\' allows content generators to specify information about their digital creations using the PREMIS format, which describes a resource using four relations, 1) Objects, 2) Events, 3) Agents, and 4) Rights. Suppose Alice, a professional landscape photographer, takes a vivid black and white still of an angry storm gathering over the English Channel (it is about to rage over the seaside town of Brighton). Later, she intends to send the photo to prospective buyers, so she needs to establish ownership and copyright. To do so, she loads the photograph into the Fake News app\', which immediately creates a cryptographic hash of the picture _object_ (due to the deterministic and collision resistance properties of cryptographic hashes, that hash will be unique to that image). Alice then adds a description (which should further help identify her picture). She also records an event (the date of the taking of the photo), and lists herself as the agent. Finally, Alice creates a right - the image\'s license. Having established ownership rights of the photograph, Alice posts the picture online. Sometime later, a nature magazine is running a story about climate change, and they intend to use a dramatic weather-based photograph on their front cover.  They find Alice\'s image and wish to identify the owner to discuss the fee for its acquisition.  Hence, they load the image into the _read_ section of the Fake News app\', which matches the cryptographic hash of the _object_ stored by Alice earlier. Consequently, the magazine identifies Alice as the owner of the photograph and arranges with her a fee for its use.'
+  static info = 'The \'store\' behaviour of the app\' allows content generators to specify information about their digital creations using the PREMIS format, which describes a resource using four relations, 1) Objects, 2) Events, 3) Agents, and 4) Rights. Suppose Alice, a professional landscape photographer, takes a vivid black and white still of an angry storm gathering over the English Channel (it is about to rage over the seaside town of Brighton). Later, she intends to send the photo to prospective buyers, so she needs to establish ownership and copyright. To do so, she loads the photograph into Provenator, which immediately creates a cryptographic hash of the picture _object_ (due to the deterministic and collision resistance properties of cryptographic hashes, that hash will be unique to that image). Alice then adds a description (which should further help identify her picture). She also records an event (the date of the taking of the photo), and lists herself as the agent. Finally, Alice creates a right - the image\'s license. Having established ownership rights of the photograph, Alice posts the picture online. Sometime later, a nature magazine is running a story about climate change, and they intend to use a dramatic weather-based photograph on their front cover.  They find Alice\'s image and wish to identify the owner to discuss the fee for its acquisition.  Hence, they load the image into the _read_ section of Provenator, which matches the cryptographic hash of the _object_ stored by Alice earlier. Consequently, the magazine identifies Alice as the owner of the photograph and arranges with her a fee for its use.'
 
 }
 
@@ -54,13 +54,13 @@ class HashStrings {
 
 class WriterStrings {
 
-  static info = 'Use this form to record information about a Fake News digital media object.'
+  static info = 'Use this form to record information about a media object.'
 
 }
 
 class ReaderStrings {
 
-  static info = 'Use this form to get information about a Fake News digital media object.'
+  static info = 'Use this form to get information about a media object.'
 
 }
 
@@ -171,7 +171,7 @@ class PremisEventStrings {
 
 class FakeNewsEventStrings {
 
-  static heading = 'Fake News Events'
+  static heading = 'Provenator News Events'
   static info = 'Blockchain write events will appear here.'
 
 }
