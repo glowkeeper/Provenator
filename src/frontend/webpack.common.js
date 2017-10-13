@@ -1,4 +1,6 @@
-var path = require('path')
+const path = require('path')
+const htmlWebpackPlugin = require('html-webpack-plugin');
+const cleanWebpackPlugin = require('clean-webpack-plugin');
 
 var config = {
   entry: {
@@ -10,12 +12,18 @@ var config = {
   },
   output: {
     path: path.resolve(__dirname, 'build'),
-    publicPath: '/assets/',
     filename: 'bundle.js'
   },
   resolve: {
     extensions: ['.js', '.jsx']
   },
+  plugins: [
+    new cleanWebpackPlugin(['build']),
+    new htmlWebpackPlugin({
+      template: './app/index.html',
+      inject: 'body',
+    })
+  ],
   module: {
     rules: [
       {
