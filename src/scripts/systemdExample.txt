@@ -1,0 +1,28 @@
+Step 1:
+
+[root@y500-fedora ~]# cat /etc/systemd/system/foo.service 
+[Unit]
+Description=foo
+
+[Service]
+ExecStart=/bin/bash -c "while true; do /bin/inotifywait -qq --event close_write /sys/class/backlight/acpi_video0/brightness; su myusername -c '/bin/xbacklight -display :0 -set $(cat /sys/class/backlight/acpi_video0/brightness)'; done"
+
+[Install]
+WantedBy=multi-user.target
+
+Step 2:
+
+Reload systemd:
+
+systemctl daemon-reload
+
+Start the new service:
+
+systemctl enable foo
+
+(similarly you can disable it)
+
+(optional) Step 3: It should start automatically at next reboot into multi-user mode (run level 3) but if you want to start it right away:
+
+systemctl start foo
+systemctl status foo # optional, just to verify

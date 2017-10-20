@@ -1,0 +1,10 @@
+[Unit]
+Description=IPFS daemon
+
+[Service]
+User=ipfs-daemon
+ExecStart=/usr/local/bin/ipfs daemon --mount
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
