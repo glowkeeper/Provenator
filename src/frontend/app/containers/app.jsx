@@ -1,6 +1,6 @@
 import React from 'react'
-// import { HashRouter, Route, Link } from 'react-router-dom'
-import { HashRouter, Route } from 'react-router-dom'
+//import { HashRouter, Route, Link } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Web3Handler from '../utils/web3Handler'
 import ContractHandler from '../utils/contractHandler'
 import {AppStrings} from '../utils/outputStrings'
@@ -25,7 +25,7 @@ class App extends React.Component {
   constructor (props) {
     super(props)
 
-    const localHost = 'localhost'
+    const localHost = '139.184.49.174'
     const web3Port = '8545'
 
     this.web3Handler = new Web3Handler(localHost, web3Port)
@@ -34,29 +34,27 @@ class App extends React.Component {
 
   render () {
     return (
-        <HashRouter>
-          <div className={rTLayout.app}>
-            <AppBar title={AppStrings.heading}>
-              <Navigation type='horizontal'>
-                <Link className={rTComponents.linkPrimary} href="/#/">{AppStrings.home}</Link>
-                <Link className={rTComponents.linkPrimary} href="/#/create">{AppStrings.create}</Link>
-                <Link className={rTComponents.linkPrimary} href="/#/read">{AppStrings.read}</Link>
-                <Link className={rTComponents.linkPrimary} href="/#/about">{AppStrings.about}</Link>
-                <Link className={rTComponents.linkPrimary} href="/#/overview">{AppStrings.overview}</Link>
-                <Link className={rTComponents.linkPrimary} href="/#/help">{AppStrings.help}</Link>
-              </Navigation>
-            </AppBar>
+        <div className={rTLayout.app}>
+          <AppBar title={AppStrings.heading}>
+            <Navigation type='horizontal'>
+            <Link className={rTComponents.linkPrimary} href="#/">{AppStrings.home}</Link>
+            <Link className={rTComponents.linkPrimary} href="#/create">{AppStrings.create}</Link>
+            <Link className={rTComponents.linkPrimary} href="#/read">{AppStrings.read}</Link>
+            <Link className={rTComponents.linkPrimary} href="#/about">{AppStrings.about}</Link>
+            <Link className={rTComponents.linkPrimary} href="#/overview">{AppStrings.overview}</Link>
+            <Link className={rTComponents.linkPrimary} href="#/help">{AppStrings.help}</Link>
+            </Navigation>
+          </AppBar>
 
-            <hr />
+          <hr />
 
-            <Route exact path="/" component={Home} />
-            <Route path="/about" component={About} />
-            <Route path="/overview" component={Overview} />
-            <Route path="/help" component={Help} />
-            <Route path="/create" render={() => <Writer contracts={this.contractHandler} web3={this.web3Handler} />} />
-            <Route path="/read" render={() => <Reader contracts={this.contractHandler} web3={this.web3Handler} />} />
-          </div>
-        </HashRouter>
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/overview" component={Overview} />
+          <Route path="/help" component={Help} />
+          <Route path="/create" render={() => <Writer contracts={this.contractHandler} web3={this.web3Handler} />} />
+          <Route path="/read" render={() => <Reader contracts={this.contractHandler} web3={this.web3Handler} />} />
+        </div>
     )
   }
 }

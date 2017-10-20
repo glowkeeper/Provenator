@@ -1,17 +1,17 @@
 {
-  "name": "fakenews",
+  "name": "Provenator",
   "version": "1.0.0",
-  "description": "Fake News Application",
+  "description": "Provenator Application",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/glowkeeper/FakeNews.git"
+    "url": "git+https://github.com/glowkeeper/Provenator.git"
   },
   "scripts": {
     "watch": "./node_modules/.bin/webpack --config ./webpack.dev.js --watch",
     "dev": "./node_modules/.bin/webpack --config ./webpack.dev.js",
     "prod": "./node_modules/.bin/webpack --config ./webpack.prod.js",
-    "copy": "cp ./app/index.html build && cp ./node_modules/react-select/dist/react-select.css build",
+    "copy": "cp ./node_modules/react-select/dist/react-select.css build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "http-server -p 8081 build/"
   },
