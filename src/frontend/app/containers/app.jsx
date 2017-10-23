@@ -25,10 +25,7 @@ class App extends React.Component {
   constructor (props) {
     super(props)
 
-    const localHost = '139.184.49.174'
-    const web3Port = '8545'
-
-    this.web3Handler = new Web3Handler(localHost, web3Port)
+    this.web3Handler = new Web3Handler()
     this.contractHandler = new ContractHandler(this.web3Handler)
   }
 
