@@ -16,7 +16,7 @@ By following the steps above, subsequent users of the data will be able to trust
 
 To install the source, please clone this repository, then follow the [installation instructions](/docs/INSTALL.md).
 
-If, rather than install the source software, you'd rather just use **Provenator**, then we are waiting for the IT Services Department of the University of Sussex to supply us with the appropriate hardware and Internet connection for hosting the app'. As soon as they do, there will be a working demonstrator running, which will use the [Ethereum Testnet Rospten](https://github.com/ethereum/ropsten), so it won't cost any real Ether to load a media resource and register its provenance. Please watch this space.
+If, rather than install from the [source](src), you'd rather just use **Provenator**, then we are in the midst of porting the code to the Ethereum testnet [rinkeby](https://www.rinkeby.io) - *please watch this space*. Once that's ready, it won't cost any real Ether to load a media resource and register its provenance. However, you will neded some test Ether, and the [rinkeby faucet](https://www.rinkeby.io/#faucet) has instructions for getting some of that.
 
 <hr/>
 <a name="1">1</a>: A tool such as [MetaMask](https://github.com/MetaMask/metamask-extension) can be used for the signing process.
