@@ -17,7 +17,8 @@ Below shows how **Provenator** allows users to check a digital resource's proven
 3. If the hash exists, retrieve the associated metadata.
 
 <hr/>
-<a name="1">1:</a>A tool such as [MetaMask](https://github.com/MetaMask/metamask-extension) can be used for the signing process.
+<a name="1">1:</a>
+A tool such as [MetaMask](https://github.com/MetaMask/metamask-extension) can be used for the signing process.
 
 ## Getting Started
 
@@ -76,7 +77,6 @@ We are in the midst of porting the code to the Ethereum testnet [rinkeby](https:
 - [TestRPC](https://github.com/ethereumjs/testrpc)
 - [Truffle Ethereum Development Framework](https://github.com/trufflesuite/truffle)
 - [REACT](https://reactjs.org/)
-
 <a name="2">&nbsp;</a>
 ## Future work
 
