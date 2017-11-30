@@ -17,7 +17,6 @@ Below shows how **Provenator** allows users to check a digital resource's proven
 3. If the hash exists, retrieve the associated metadata.
 
 <hr/><a name="1">&nbsp;</a>
-
 1: A tool such as [MetaMask](https://github.com/MetaMask/metamask-extension) can be used for the signing process.
 
 ## Getting Started
