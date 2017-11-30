@@ -14,9 +14,11 @@ By following the steps above, subsequent users of the data will be able to trust
 2. Check whether that hash exists on the blockchain.
 3. If the hash exists, retrieve the associated metadata.
 
-To install the source, please clone this repository, then follow the [installation instructions](/docs/INSTALL.md).
+To install the source, please clone this repository, then follow the installation instructions in this repositories' [README](/README.md).
 
-If, rather than install from the [source](src), you'd rather just use **Provenator**, then we are in the midst of porting the code to the Ethereum testnet [rinkeby](https://www.rinkeby.io) - *please watch this space*. Once that's ready, it won't cost any real Ether to load a media resource and register its provenance. However, you will neded some test Ether, and the [rinkeby faucet](https://www.rinkeby.io/#faucet) has instructions for getting some of that.
+If, rather than install from the [source](src), you'd rather just use **Provenator**, then we are in the midst of porting the code to the Ethereum testnet [rinkeby](https://www.rinkeby.io). *Please watch this space*. Once that's ready, it won't cost any real Ether to load a media resource and register its provenance. However, you will neded some test Ether, and the [rinkeby faucet](https://www.rinkeby.io/#faucet) has instructions for getting some of that.
+
+Meanwhile, if you would like to help port the application to the Ethereum testnet [rinkeby](https://www.rinkeby.io) and the content delivery network [ipfs](https://ipfs.io/)), then please email s dot huckle at sussex dot ac dot uk.
 
 <hr/>
 <a name="1">1</a>: A tool such as MetaMask (https://github.com/MetaMask/metamask-extension) can be used for the signing process.
