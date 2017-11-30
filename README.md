@@ -1,6 +1,7 @@
 # Provenator
 
-[![travis build](	https://img.shields.io/travis/glowkeeper/Provenator.svg?style=flat-square)](https://travis-ci.org/glowkeeper/Provenator)
+[![Travis Build](	https://img.shields.io/travis/glowkeeper/Provenator.svg?style=flat-square)](https://travis-ci.org/glowkeeper/Provenator)
+[![GitHub version](https://badge.fury.io/gh/glowkeeper%2FProvenator.svg?style=flat-square)](https://badge.fury.io/gh/glowkeeper%2FProvenator)
 
 This is the repository for **Provenator**, a prototype application for proving the origins of captured digital media. It does so using cryptographic tools and blockchain technology. By using the trust mechanisms of blockchain technology, the aim of the application is to show, beyond doubt, the provenance of any source of digital media.
 
