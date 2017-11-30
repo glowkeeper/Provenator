@@ -64,15 +64,29 @@ Then fire up a browser, go to the URL [http://localhost:8081](http://localhost:8
 
 ## Demo'
 
-There is an [overview](docs/OVERVIEW.md), which shows how **Provenator** should be used. Meanwhile, here's a tempting screenshot of **Provenator** in action:
+Here's a tempting screenshot of a very early prototype of **Provenator** in action:
 
 ![Provenator homepage](images/fakeNewsApp.png)
 
+The picture shows how a blockchain-based record of a digitial media resource may be created, using **Provenator**. It shows that the user can:
+
+1. Get a hash of the digital media.
+2. Create metadata pertaining to the digital resource.
+3. Store the cryptographic hash of the digital resource, and its associated metadata, on the blockchain.
+
+Subsequently, users are able to check a digital resource's provenance data on the blockchain:
+
+1. Get a cryptographic hash of the digital resource.
+2. Check whether that hash exists on the blockchain.
+3. If the hash exists, retrieve the associated metadata.
+
 ## Deployment
 
-We are in the midst of porting the code to the Ethereum testnet [rinkeby](https://www.rinkeby.io). *Please watch this space*. Meanwhile, if you would like to help port the application to the Ethereum testnet [rinkeby](https://www.rinkeby.io) and the content delivery network [ipfs](https://ipfs.io/)), or you want to help [develop the application further](#2), then please email s dot huckle at sussex dot ac dot uk.
+We are in the midst of porting the code to the Ethereum testnet [rinkeby](https://www.rinkeby.io). *Please watch this space*.
 
-## Built With
+Meanwhile, if you would like to help port the application to the Ethereum testnet [rinkeby](https://www.rinkeby.io) and the content delivery network [ipfs](https://ipfs.io/)), or you want to help [develop the application further](#2), then please email s dot huckle at sussex dot ac dot uk.
+
+## Built Using...
 
 - [TestRPC](https://github.com/ethereumjs/testrpc)
 - [Truffle Ethereum Development Framework](https://github.com/trufflesuite/truffle)
@@ -80,7 +94,7 @@ We are in the midst of porting the code to the Ethereum testnet [rinkeby](https:
 <a name="2">&nbsp;</a>
 ## Future work
 
-A current limitation of **Provenator** is also its strength - the same digital media resource will always generate the same hash. Hence, if two hashes match, you are certain that they are the same object. However, if a single pixel of some digital resource is changed, then that resource will generate a different hash entirely. Therefore, 'similar' media objects will never match. Now, it should be possible to extend **Provenator** so that it uses techniques for finding similar hashes. Perceptual hashing is one such candidate, but there may be others; by using such techniques, it should be possible to make **Provenator** more capable. The intention is to extend the application and write an academic paper about that extension. Want to help? Then please email s dot huckle at sussex dot ac dot uk.
+A current limitation of **Provenator** is also its strength - the same digital media resource will always generate the same hash. Hence, if two hashes match, you are certain that they are the same object. However, if a single pixel of some digital resource is changed, then that resource will generate a different hash entirely. Therefore, 'similar' media objects will never match. Now, it should be possible to extend **Provenator** so that it uses techniques for finding similar hashes, too. Perceptual hashing is one such candidate, but there may be other methods; by using such techniques, it should be possible to make **Provenator** more capable. The intention is to extend the application and write an academic paper about that extension. Want to help? Then please email s dot huckle at sussex dot ac dot uk.
 
 ## Licensing
 
