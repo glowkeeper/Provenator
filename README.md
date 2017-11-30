@@ -1,20 +1,8 @@
 # Provenator
 
-This is the repository for **Provenator**, a prototype application for proving the origins of captured digital media. It does so using cryptographic tools and blockchain technology. **Provenator** is the result of the academic paper called, **Fake News - a Technological Approach to Proving Provenance Using Blockchains**, which is going to be published in December, 2017, in a special issue on fake news for Mar Anne Liebert's [Big Data](http://www.liebertpub.com/big).
+This is the repository for **Provenator**, a prototype application for proving the origins of captured digital media. It does so using cryptographic tools and blockchain technology. By using the trust mechanisms of blockchain technology, the aim of the application is to show, beyond doubt, the provenance of any source of digital media.
 
-**Provenator** is an early prototype blockchain-based application, developed by [Steve Huckle](http://www.sussex.ac.uk/profiles/307882) in the [University of Sussex Informatics Department](http://www.sussex.ac.uk/informatics/). By using the trust mechanisms of blockchain technology, the aim of the application is to show, beyond doubt, the provenance of any source of digital media.
-
-To describe a digital resource, users of **Provenator** do the following:
-
-1. Get a hash of the digital media.
-2. Create metadata pertaining to the digital resource.
-3. Sign the transaction, using a tool such as [MetaMask](https://github.com/MetaMask/metamask-extension), which stores the cryptographic hash of the digital resource, and its associated metadata, on the blockchain.
-
-Below shows how **Provenator** allows users to check a digital resource's provenance data on the blockchain:
-
-1. Get a cryptographic hash of the digital resource.
-2. Check whether that hash exists on the blockchain.
-3. If the hash exists, retrieve the associated metadata.
+**Provenator** is the result of the academic paper called, **Fake News - a Technological Approach to Proving Provenance Using Blockchains**, by Steve Huckle and Martin White, of the [University of Sussex Informatics Department](http://www.sussex.ac.uk/informatics/). That paper is going to be published in December, 2017, in a special issue on fake news for Mary Anne Liebert's [Big Data](http://www.liebertpub.com/big).
 
 ## Getting Started
 
@@ -24,7 +12,7 @@ However, if you'd rather just use **Provenator**, then it is currently being por
 
 Once **Provenator** is running on [rinkeby](https://www.rinkeby.io) and [ipfs](https://ipfs.io/), it won't cost any real Ether to load a media resource and register its provenance. However, you will need some test Ether, and the [rinkeby faucet](https://www.rinkeby.io/#faucet) has instructions for getting some of that.
 
-Meanwhile, if you have any problems, or you would like to get involved, perhaps by helping to port the application to the Ethereum testnet [rinkeby](https://www.rinkeby.io) and the content delivery network [ipfs](https://ipfs.io/), or by getting involved in [future work](#1), then please email s dot huckle at sussex dot ac dot uk.
+Meanwhile, if you have any problems, or you would like to get involved, perhaps by helping to port the application to the Ethereum testnet, or by getting involved in [future work](#1), then please email s dot huckle at sussex dot ac dot uk.
 
 ## Prerequisites
 
@@ -66,11 +54,13 @@ Here's a tempting action shot of a very early prototype of **Provenator**:
 
 ![Provenator homepage](images/fakeNewsApp.png)
 
-The picture shows how a blockchain-based record of a digitial media resource may be created, using **Provenator**. It shows that the user can:
+## Using Provenator
+
+The picture above shows that to describe a digital resource, users of **Provenator** do the following:
 
 1. Get a hash of the digital media.
 2. Create metadata pertaining to the digital resource.
-3. Store the cryptographic hash of the digital resource, and its associated metadata, on the blockchain.
+3. Sign the transaction, using a tool such as [MetaMask](https://github.com/MetaMask/metamask-extension), which stores the cryptographic hash of the digital resource, and its associated metadata, on the blockchain.
 
 Subsequently, users are able to check a digital resource's provenance data on the blockchain:
 
@@ -78,11 +68,11 @@ Subsequently, users are able to check a digital resource's provenance data on th
 2. Check whether that hash exists on the blockchain.
 3. If the hash exists, retrieve the associated metadata.
 
-## Deployment
+## Application Deployment
 
 **Provenator** is currently being ported to the Ethereum testnet [rinkeby](https://www.rinkeby.io) and [ipfs](https://ipfs.io/). *Please watch this space*.
 
-Meanwhile, if you would like to help port the application to the Ethereum testnet [rinkeby](https://www.rinkeby.io) and the content delivery network [ipfs](https://ipfs.io/)), or you want to help [develop the application further](#1), then please email s dot huckle at sussex dot ac dot uk.
+Meanwhile, if you would like to help port the application, or you want to help with [further work](#1), then please email s dot huckle at sussex dot ac dot uk.
 
 ## Built Using...
 
