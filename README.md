@@ -1,5 +1,7 @@
 # Provenator
 
+[![travis build](	https://img.shields.io/travis/glowkeeper/Provenator.svg?style=flat-square)](https://travis-ci.org/glowkeeper/Provenator)
+
 This is the repository for **Provenator**, a prototype application for proving the origins of captured digital media. It does so using cryptographic tools and blockchain technology. By using the trust mechanisms of blockchain technology, the aim of the application is to show, beyond doubt, the provenance of any source of digital media.
 
 **Provenator** is the result of the academic paper called, **Fake News - a Technological Approach to Proving Provenance Using Blockchains**, by Steve Huckle and Martin White, of the [University of Sussex Informatics Department](http://www.sussex.ac.uk/informatics/). That paper is going to be published in December, 2017, in a special issue on fake news for Mary Anne Liebert's [Big Data](http://www.liebertpub.com/big).
