@@ -1,16 +1,31 @@
 # Provenator
 
-**Provenator** is the result of the academic paper called, **Fake News - a Technological Approach to Proving Provenance Using Blockchains**. It is an early prototype, developed by [Steve Huckle](http://www.sussex.ac.uk/profiles/307882) in the [University of Sussex Informatics Department](http://www.sussex.ac.uk/informatics/).
+This is the repository for **Provenator**, a prototype application for proving the origins of captured digital media. It does so using cryptographic tools and blockchain technology. **Provenator** is the result of the academic paper called, **Fake News - a Technological Approach to Proving Provenance Using Blockchains**.
+
+**Provenator** is an early prototype blockchain-based application, developed by [Steve Huckle](http://www.sussex.ac.uk/profiles/307882) in the [University of Sussex Informatics Department](http://www.sussex.ac.uk/informatics/). By using the trust mechanisms of blockchain technology, the aim of the application is to show, beyond doubt, the provenance of any source of digital media.
+
+To describe a digital resource, users of **Provenator** do the following:
+
+1. Get a hash of the digital media.
+2. Create metadata pertaining to the digital resource.
+3. *Sign the transaction*<sup>[1](#1)</sup> that stores the cryptographic hash of the digital resource, and its associated metadata, on the blockchain.
+
+Below shows how **Provenator** allows users to check a digital resource's provenance data on the blockchain:
+
+1. Get a cryptographic hash of the digital resource.
+2. Check whether that hash exists on the blockchain.
+3. If the hash exists, retrieve the associated metadata.
+
+<hr/>
+<a name="1">1:</a>A tool such as [MetaMask](https://github.com/MetaMask/metamask-extension) can be used for the signing process.
 
 ## Getting Started
 
 After cloning this repository, install the prerequisites listed and follow the instructions below to get the project up and running on your local machine (for development and testing purposes).
 
-There is an [overview](docs/OVERVIEW.md), too, which shows how **Provenator** should be used.
+However, if you'd rather just use **Provenator**, then we are porting the code to the Ethereum testnet [rinkeby](https://www.rinkeby.io) and the content delivery network [ipfs](https://ipfs.io/). *Please watch this space*. Once that's ready, it won't cost any real Ether to load a media resource and register its provenance. However, you will need some test Ether, and the [rinkeby faucet](https://www.rinkeby.io/#faucet) has instructions for getting some of that.
 
-However, if you'd rather just use **Provenator**, then we are in the midst of porting the code to the Ethereum testnet [rinkeby](https://www.rinkeby.io) and the content delivery network [ipfs](https://ipfs.io/). *Please watch this space*. Once that's ready, it won't cost any real Ether to load a media resource and register its provenance. However, you will need some test Ether, and the [rinkeby faucet](https://www.rinkeby.io/#faucet) has instructions for getting some of that.
-
-Meanwhile, if you have any problems, or you would like to get involved (perhaps by helping to port the application to the Ethereum testnet [rinkeby](https://www.rinkeby.io) and the content delivery network [ipfs](https://ipfs.io/)), then please email s dot huckle at sussex dot ac dot uk.
+Meanwhile, if you have any problems, or you would like to get involved, perhaps by helping to port the application to the Ethereum testnet [rinkeby](https://www.rinkeby.io) and the content delivery network [ipfs](https://ipfs.io/), or by getting involved in [future work](#2), then please email s dot huckle at sussex dot ac dot uk.
 
 ## Prerequisites
 
@@ -48,13 +63,13 @@ Then fire up a browser, go to the URL [http://localhost:8081](http://localhost:8
 
 ## Demo'
 
-Here's a tempting screenshot of **Provenator** in action:
+There is an [overview](docs/OVERVIEW.md), which shows how **Provenator** should be used. Meanwhile, here's a tempting screenshot of **Provenator** in action:
 
 ![Provenator homepage](images/fakeNewsApp.png)
 
 ## Deployment
 
-We are in the midst of porting the code to the Ethereum testnet [rinkeby](https://www.rinkeby.io). *Please watch this space*. Meanwhile, if you would like to help port the application to the Ethereum testnet [rinkeby](https://www.rinkeby.io) and the content delivery network [ipfs](https://ipfs.io/)), then please email s dot huckle at sussex dot ac dot uk.
+We are in the midst of porting the code to the Ethereum testnet [rinkeby](https://www.rinkeby.io). *Please watch this space*. Meanwhile, if you would like to help port the application to the Ethereum testnet [rinkeby](https://www.rinkeby.io) and the content delivery network [ipfs](https://ipfs.io/)), or you want to help [develop the application further](#2), then please email s dot huckle at sussex dot ac dot uk.
 
 ## Built With
 
@@ -62,8 +77,15 @@ We are in the midst of porting the code to the Ethereum testnet [rinkeby](https:
 - [Truffle Ethereum Development Framework](https://github.com/trufflesuite/truffle)
 - [REACT](https://reactjs.org/)
 
+<a name="2">&nbsp;</a>
+## Future work
+
+A current limitation of **Provenator** is also its strength - the same digital media resource will always generate the same hash. Hence, if two hashes match, you are certain that they are the same object. However, if a single pixel of some digital resource is changed, then that resource will generate a different hash entirely. Therefore, 'similar' media objects will never match. Now, it should be possible to extend **Provenator** so that it uses techniques for finding similar hashes. Perceptual hashing is one such candidate, but there may be others; by using such techniques, it should be possible to make **Provenator** more capable. The intention is to extend the application and write an academic paper about that extension. Want to help? Then please email s dot huckle at sussex dot ac dot uk.
+
 ## Licensing
 
-![CC BY-NC-SA 4.0](images/ccbyncsa.png)
+Copyright © Steve Huckle at the University of Sussex, 2017.
 
-Please be aware of [licensing](docs/LICENSE.md). In short, everything in this repository is shared under the Creative Commons license [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/). That allows you to share, copy and redistribute the material in any medium or format, as well as remix, transform, and build upon the material. However, any use must not be commercial, you must give appropriate credit, and any derivatives must be shared under the same [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) license.
+![CC BY-NC-SA 4.0](/images/ccbyncsa.png)
+
+This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0). It is attributed to Steve Huckle at the University of Sussex. The license lets you remix, tweak, and build upon the work non-commercially, as long as you credit Steve Huckle and license your new creations under the identical terms.
