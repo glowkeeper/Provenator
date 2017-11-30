@@ -2,9 +2,9 @@
 
 **Provenator** is the result of the academic paper called, **Fake News - a Technological Approach to Proving Provenance Using Blockchains**. It is an early prototype, developed by [Steve Huckle](http://www.sussex.ac.uk/profiles/307882) in the [University of Sussex Informatics Department](http://www.sussex.ac.uk/informatics/).
 
-The [Install Guide](docs/INSTALL.md) gives brief instructions as to how to get the application running from the [source code](src) directory. If you have any problems, please email s dot huckle at sussex dot ac dot uk. There is an [overview](docs/OVERVIEW.md), too, which shows how **Provenator** should be used.
+The [Install Guide](docs/INSTALL.md) gives brief instructions as to how to get the application running from the [source code](src). If you have any problems, please email s dot huckle at sussex dot ac dot uk. There is an [overview](docs/OVERVIEW.md), too, which shows how **Provenator** should be used.
 
-If, rather than install from the [source](src), you'd rather just use **Provenator**, then we are in the midst of porting the code to the Ethereum testnet [rinkeby](https://www.rinkeby.io) - *please watch this space*. Once that's ready, it won't cost any real Ether to load a media resource and register its provenance. However, you will neded some test Ether, and the [rinkeby website](https://www.rinkeby.io/#faucet) has instructions for getting some of that.
+If, rather than install from the [source](src), you'd rather just use **Provenator**, then we are in the midst of porting the code to the Ethereum testnet [rinkeby](https://www.rinkeby.io) - *please watch this space*. Once that's ready, it won't cost any real Ether to load a media resource and register its provenance. However, you will neded some test Ether, and the [rinkeby faucet](https://www.rinkeby.io/#faucet) has instructions for getting some of that.
 
 Meanwhile, here's a tempting screenshot of the app' in action:
 
