@@ -1,6 +1,6 @@
 # How to Contribute
 
-A great place to get started is to look through [issues](https://github.com/glowkeeper/Provenator/issues) that are tagged **good first issues**. If you decide you would like to work on one of those, first check the comment thread to make sure somebody else is not already working on it. If not, please leave a comment to let everyone know your intentions.
+A great place to get started is to look through [issues](https://github.com/glowkeeper/Provenator/issues) that are tagged **good first issue**. If you decide you would like to work on one of those, first check the comment thread to make sure somebody else is not already working on it. If not, please leave a comment to let everyone know your intentions.
 
 ## Sending a Pull Request
 
