@@ -8,6 +8,7 @@
     "url": "git+https://github.com/glowkeeper/Provenator.git"
   },
   "scripts": {
+    "compile": "./node_modules/.bin/webpack --config ./webpack.dev.js",
     "watch": "./node_modules/.bin/webpack --config ./webpack.dev.js --watch",
     "dev": "./node_modules/.bin/webpack --config ./webpack.dev.js",
     "prod": "./node_modules/.bin/webpack --config ./webpack.prod.js",
