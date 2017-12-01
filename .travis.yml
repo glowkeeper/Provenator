@@ -6,6 +6,5 @@ before_install:
 cache:
   directories:
   - "node_modules"
-stages:
-  - compile
-  - test
+install:
+  - npm run compile
