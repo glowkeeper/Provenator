@@ -3,7 +3,7 @@
 [![Travis build](	https://img.shields.io/travis/glowkeeper/Provenator.svg?style=flat-square)](https://travis-ci.org/glowkeeper/Provenator)
 [![Issues open](https://img.shields.io/github/issues-raw/badges/shields.svg?style=flat-square)](https://github.com/glowkeeper/Provenator/issues)
 [![GitHub version](https://badge.fury.io/gh/glowkeeper%2FProvenator.svg?style=flat-square)](https://badge.fury.io/gh/glowkeeper%2FProvenator)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/glowkeeper/Provenator/docs/prs.md)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](/docs/prs.md)
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg?style=flat-square)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 This is the repository for **Provenator**, a prototype application for proving the origins of captured digital media. It does so using cryptographic tools and blockchain technology. By using the trust mechanisms of blockchain technology, the aim of the application is to show, beyond doubt, the provenance of any source of digital media.
