@@ -5,14 +5,14 @@ class Web3Handler {
   constructor () {
 
     //const localHost = '139.184.49.174'
-    const localHost = '127.0.0.1'
-    const web3Port = '7545'
+    const host = '127.0.0.1'
+    const port = '7545'
     //const host = 'https://rinkeby.infura.io'
 
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
     if (typeof web3 !== 'undefined') {
-         // Use Mist/MetaMask's provider
-      //console.log('MetaMask!')
+      // Use Mist/MetaMask's provider
+      console.log('MetaMask!')
       window.web3 = new Web3(web3.currentProvider)
     } else {
       console.log('No web3? You should consider trying MetaMask!')
