@@ -81,8 +81,10 @@ Meanwhile, if you would like to help port the application, or you want to help w
 
 ## Built Using...
 
-- [TestRPC](https://github.com/ethereumjs/testrpc)
-- [Truffle Ethereum Development Framework](https://github.com/trufflesuite/truffle)
+- [node](https://nodejs.org/en/)
+- [npm](https://www.npmjs.com/)
+- [Ganache](https://github.com/trufflesuite/ganache)
+- [Truffle](https://github.com/trufflesuite/truffle)
 - [REACT](https://reactjs.org/)
 <a name="1">&nbsp;</a>
 ## Future work
