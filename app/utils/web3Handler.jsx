@@ -5,8 +5,9 @@ class Web3Handler {
   constructor () {
 
     //const localHost = '139.184.49.174'
-    //const web3Port = '8545'
-    const host = 'https://rinkeby.infura.io'
+    const localHost = '127.0.0.1'
+    const web3Port = '7545'
+    //const host = 'https://rinkeby.infura.io'
 
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
     if (typeof web3 !== 'undefined') {
@@ -16,8 +17,8 @@ class Web3Handler {
     } else {
       console.log('No web3? You should consider trying MetaMask!')
        // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
-      // window.web3 = new Web3(new Web3.providers.HttpProvider('http://' + host + ':' + port))
-      window.web3 = new Web3(new Web3.providers.HttpProvider(host))
+      window.web3 = new Web3(new Web3.providers.HttpProvider('http://' + host + ':' + port))
+      // window.web3 = new Web3(new Web3.providers.HttpProvider(host))
     }
     this.web3 = window.web3
     this.web3.eth.defaultAccount = this.web3.eth.accounts[0]
