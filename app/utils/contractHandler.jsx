@@ -1841,7 +1841,6 @@ class ContractHandler {
   PremisEvent: 0x8f0483125fcb9aaaefa9209d8e9d7b9c8b9fb90f
   PremisObject: 0x9fbda871d559710256a2502a2517b794b482db40
   PremisRights: 0x2c2b9c9a4a25e24b174f26114e8926a9f2128fe4
-
   */
 
   static premisObjectContractAddress = '0x9fbda871d559710256a2502a2517b794b482db40'
