@@ -16,17 +16,19 @@ If you would like to help with [further work](#1), then please email s dot huckl
 
 The instructions below allow you to play with a demo' of **Provenator**, which is running on [ipfs](https://ipfs.io/) and Ethereum's test network, [rinkeby](https://www.rinkeby.io).
 
+**Provenator** is alpha software. [MetaMask](https://metamask.io/) (discussed below) is beta software. In other words, both have their 'rinkles'! If you are having problems, please email s dot huckle at sussex dot ac dot uk.
+
 ### Prerequisites
 
-To run the demo', you must first install the browser plugin [MetaMask](https://metamask.io/), which allows you to sign transactions on [Ethereum](https://www.ethereum.org/) networks. **Provenator** is running on [rinkeby](https://www.rinkeby.io), so once you've installed [MetaMask](https://metamask.io/), please select [rinkeby](https://www.rinkeby.io).
+To run the demo', you must first install the browser plugin [MetaMask](https://metamask.io/), which allows you to sign transactions on [Ethereum](https://www.ethereum.org/) networks. **Provenator** is running on [rinkeby](https://www.rinkeby.io), so once you've installed [MetaMask](https://metamask.io/), please set it to use [rinkeby](https://www.rinkeby.io).
 
-To add records to **Provenator**, you will need some test Ether. To get some, follow thje instructions at the [rinkeby faucet](https://www.rinkeby.io/#faucet).
+To add records to **Provenator**, you will need some test Ether. To get some, follow the instructions at the [rinkeby faucet](https://www.rinkeby.io/#faucet).
 
 ### Running the Demo'
 
-Load the live demo of **Provenator** by loading the following URL into your [MetaMask](https://metamask.io/) enabled browser (having selected the [rinkeby](https://www.rinkeby.io) Ethereum network): [https://gateway.ipfs.io/ipfs/Qmd1wMefUk9k3ch9tcXAmWKDYmsuo3i4AVRSC6oLmZFueD/](https://gateway.ipfs.io/ipfs/Qmd1wMefUk9k3ch9tcXAmWKDYmsuo3i4AVRSC6oLmZFueD/).
+Load the live demo of **Provenator** by loading the following URL into your browser: [https://gateway.ipfs.io/ipfs/Qmd1wMefUk9k3ch9tcXAmWKDYmsuo3i4AVRSC6oLmZFueD/](https://gateway.ipfs.io/ipfs/Qmd1wMefUk9k3ch9tcXAmWKDYmsuo3i4AVRSC6oLmZFueD/). If you have not followed the prerequisites above (you have not installed [MetaMask](https://metamask.io/) and set it to use [rinkeby](https://www.rinkeby.io)), then **Provenator** will not load.
 
-If you want to get a record of an image already added to **Provenator** (you will not need any test Ether for this), download this image of an [evil cat](/image/evilCat.bmp), then click on the [Get Object](https://gateway.ipfs.io/ipfs/Qmd1wMefUk9k3ch9tcXAmWKDYmsuo3i4AVRSC6oLmZFueD/#/read) link on **Provenator**, and select the [evil cat](/image/evilCat.bmp) image you just downloaded.
+If you want to get a record of an image already added to **Provenator**, you will not need any test Ether for this; download this image of an [evil cat](/image/evilCat.bmp), then click on the [Get Object](https://gateway.ipfs.io/ipfs/Qmd1wMefUk9k3ch9tcXAmWKDYmsuo3i4AVRSC6oLmZFueD/#/read) link on **Provenator**. Then 'BROWSE' for the [evil cat](/image/evilCat.bmp) image you just downloaded.
 
 ### Demo' Screenshot
 
