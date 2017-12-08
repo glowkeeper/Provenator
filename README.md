@@ -10,7 +10,7 @@ This is the repository for **Provenator**, a prototype application for proving t
 
 **Provenator** is the result of the academic paper called, **Fake News - a Technological Approach to Proving Provenance Using Blockchains**, by Steve Huckle and Martin White, of the [University of Sussex Informatics Department](http://www.sussex.ac.uk/informatics/). That paper is going to be published in December, 2017, in a special issue on fake news for Mary Anne Liebert's [Big Data](http://www.liebertpub.com/big).
 
-If you would like to contribute, perhaps by helping with [further work](#1), then please email s dot huckle at sussex dot ac dot uk.
+If you would like to contribute, perhaps by helping with [future work](#1), then please email s dot huckle at sussex dot ac dot uk.
 
 ## Demo
 
