@@ -16,7 +16,7 @@ If you would like to contribute (perhaps by helping with [future work](#1), or b
 
 The instructions below allow you to use a demo' of **Provenator**, which is running on [ipfs](https://ipfs.io/) and Ethereum's test network, [rinkeby](https://www.rinkeby.io). Both [ipfs](https://ipfs.io/) and [rinkeby](https://www.rinkeby.io) are distributed, peer-to-peer technologies, so by utilising them, **Provenator** is itself wholly distributed.
 
-**Provenator** is alpha software. [MetaMask](https://metamask.io/) (discussed below) is beta software. In other words, both have their 'rinkles'! However, if you are having problems with the demo', please email s dot huckle at sussex dot ac dot uk.
+**Provenator** is alpha software. [MetaMask](https://metamask.io/) (discussed below) is beta software. In other words, both have their 'wrinkles'! Hence, please be patient; however, if you are having problems with the demo', please email s dot huckle at sussex dot ac dot uk - he will be pleased to help.
 
 ### Prerequisites
 
