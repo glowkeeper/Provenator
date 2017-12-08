@@ -56,12 +56,6 @@ The instruction below enable you to run **Provenator** on a local, private, Ethe
 
 After cloning this repository, install the prerequisites listed and follow the instructions below to get the project up and running on your local machine (for development and testing purposes).
 
-However, if you'd rather just use **Provenator**, then it is currently being ported to the Ethereum testnet [rinkeby](https://www.rinkeby.io) and the content delivery network [ipfs](https://ipfs.io/). *Please watch this space*.
-
-Once **Provenator** is running on [rinkeby](https://www.rinkeby.io) and [ipfs](https://ipfs.io/), it won't cost any real Ether to load a media resource and register its provenance. However, you will need some test Ether, and the [rinkeby faucet](https://www.rinkeby.io/#faucet) has instructions for getting some of that.
-
-Meanwhile, if you have any problems, or you would like to get involved, perhaps by helping to port the application to the Ethereum testnet, or by getting involved in [future work](#1), then please email s dot huckle at sussex dot ac dot uk.
-
 ### Prerequisites
 
 After cloning this repository, download and install the dependencies:
