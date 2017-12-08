@@ -28,7 +28,7 @@ To add records to **Provenator**, you will need some test Ether. To get some, fo
 
 Load the live demo of **Provenator** by loading the following URL into your browser: [https://gateway.ipfs.io/ipfs/Qmd1wMefUk9k3ch9tcXAmWKDYmsuo3i4AVRSC6oLmZFueD/](https://gateway.ipfs.io/ipfs/Qmd1wMefUk9k3ch9tcXAmWKDYmsuo3i4AVRSC6oLmZFueD/). If you have not followed the prerequisites above (you have not installed [MetaMask](https://metamask.io/) and set it to use [rinkeby](https://www.rinkeby.io)), then **Provenator** will not load.
 
-If you want to get a record of an image already added to **Provenator**, you will not need any test Ether for this; download this image of an [evil cat](/image/evilCat.bmp), then click on the [Get Object](https://gateway.ipfs.io/ipfs/Qmd1wMefUk9k3ch9tcXAmWKDYmsuo3i4AVRSC6oLmZFueD/#/read) link on **Provenator**. Then 'BROWSE' for the [evil cat](/image/evilCat.bmp) image you just downloaded.
+If you want to get a record of an image already added to **Provenator**, you will not need any test Ether for this; download this image of an [evil cat](/images/evilCat.bmp), then click on the [Get Object](https://gateway.ipfs.io/ipfs/Qmd1wMefUk9k3ch9tcXAmWKDYmsuo3i4AVRSC6oLmZFueD/#/read) link on **Provenator**. Then 'BROWSE' for the [evil cat](/images/evilCat.bmp) image you just downloaded.
 
 ### Demo' Screenshot
 
