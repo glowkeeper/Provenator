@@ -2,28 +2,28 @@ pragma solidity ^0.4.11;
 
 contract Rights {
 
-  function setObject(string _rightsId, string _objectHash);
-  function setBasis(string _rightsId, string _basis);
+  function setObject(string _rightsId, string _objectHash) public;
+  function setBasis(string _rightsId, string _basis) public;
   function setCopyrightInfo(string _rightsId,
                             string _status,
                             string _jurisdictionCountryCode,
                             string _determinationDate,
-                            string _note );
-  function setRightsGranted(string _rightsId, string _act, string _restriction);
-  function setAgent(string _rightsId, string _agentId);
+                            string _note ) public;
+  function setRightsGranted(string _rightsId, string _act, string _restriction) public;
+  function setAgent(string _rightsId, string _agentId) public;
 
-  function getRightsExists(string _rightsId) constant returns (uint256);
+  function getRightsExists(string _rightsId) public constant returns (uint256);
 
-  function getNumRights() constant returns (uint256);
-  function getRights(uint256 _index) constant returns (string);
+  function getNumRights() public constant returns (uint256);
+  function getRights(uint256 _index) public constant returns (string);
 
-  function getObject(string _rightsId) constant returns (string, string);
-  function getRightsBasis(string _rightsId) constant returns (string, string);
-  function getCopyrightStatus(string _rightsId) constant returns (string, string);
-  function getCopyrightJurisdiction(string _rightsId) constant returns (string, string);
-  function getCopyrightDeterminationDate(string _rightsId) constant returns (string, string);
-  function getCopyrightNote(string _rightsId) constant returns (string, string);
-  function getGrantedAct(string _rightsId) constant returns (string, string);
-  function getGrantedRestriction(string _rightsId) constant returns (string, string);
-  function getAgent(string _rightsId) constant returns (string, string);
+  function getObject(string _rightsId) public constant returns (string, string);
+  function getRightsBasis(string _rightsId) public constant returns (string, string);
+  function getCopyrightStatus(string _rightsId) public constant returns (string, string);
+  function getCopyrightJurisdiction(string _rightsId) public constant returns (string, string);
+  function getCopyrightDeterminationDate(string _rightsId) public constant returns (string, string);
+  function getCopyrightNote(string _rightsId) public constant returns (string, string);
+  function getGrantedAct(string _rightsId) public constant returns (string, string);
+  function getGrantedRestriction(string _rightsId) public constant returns (string, string);
+  function getAgent(string _rightsId) public constant returns (string, string);
 }

@@ -3,11 +3,10 @@ pragma solidity ^0.4.11;
 // Fake News Premis Object
 // Steve Huckle
 
-import "Mortal.sol";
 import "Event.sol";
 import "Strings.sol";
 
-contract PremisEvent is Event, Mortal {
+contract PremisEvent is Event {
 
   struct EventData {
     string eventType;
@@ -25,11 +24,11 @@ contract PremisEvent is Event, Mortal {
   /* function PremisEvent() {
   } */
 
-  function setEventType(string _eventType) onlyOwner {
+  function setEventType(string _eventType) public {
     eventTypes.push(_eventType);
   }
 
-  function setEvent(string _eventId, string _type, string _time, string _objectHash, string _agentId) onlyOwner {
+  function setEvent(string _eventId, string _type, string _time, string _objectHash, string _agentId) public {
     premisEvents[_eventId].eventType = _type;
     premisEvents[_eventId].time = _time;
     premisEvents[_eventId].objectHash = _objectHash;
@@ -39,12 +38,12 @@ contract PremisEvent is Event, Mortal {
   }
 
   // These 'Exists?' functions return max(uint256) if not, the index otherwise
-  function getEventTypeExists(string _eventType) constant returns (uint256) {
+  function getEventTypeExists(string _eventType) public constant returns (uint256) {
     return Strings.getIndex(_eventType, eventTypes);
   }
 
 
-  function getEventExists(string _eventId) constant returns (uint256) {
+  function getEventExists(string _eventId) public constant returns (uint256) {
     return Strings.getIndex(_eventId, events);
   }
 
@@ -61,7 +60,7 @@ contract PremisEvent is Event, Mortal {
     return events.length;
   }
 
-  function getEvent(uint256 _eventIndex) constant returns (string) {
+  function getEvent(uint256 _eventIndex) public constant returns (string) {
     return events[_eventIndex];
   }
 

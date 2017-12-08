@@ -1836,17 +1836,19 @@ class ContractHandler {
     }
   ]
 
-  /*
-  PremisAgent: 0xf25186b5081ff5ce73482ad761db0eb0d25abfbf
-  PremisEvent: 0x8f0483125fcb9aaaefa9209d8e9d7b9c8b9fb90f
-  PremisObject: 0x9fbda871d559710256a2502a2517b794b482db40
-  PremisRights: 0x2c2b9c9a4a25e24b174f26114e8926a9f2128fe4
+  /* The addresses of the contracts on Rinkeby, are as follows:
+
+  PremisAgent: 0x027337a879ce2af4a710f2bd207c3dda0e7a304a
+  PremisEvent: 0xe558ab306f14c24b9af9811159d4882aa9548e16
+  PremisObject: 0x56846456e814d9aefc67891df0f2077f18a34b1f
+  PremisRights: 0x16bf506c8a9d56baa902a6036a36dd0246786059
+
   */
 
-  static premisObjectContractAddress = '0x9fbda871d559710256a2502a2517b794b482db40'
-  static premisEventContractAddress = '0x8f0483125fcb9aaaefa9209d8e9d7b9c8b9fb90f'
-  static premisAgentContractAddress = '0xf25186b5081ff5ce73482ad761db0eb0d25abfbf'
-  static premisRightsContractAddress = '0x2c2b9c9a4a25e24b174f26114e8926a9f2128fe4'
+  static premisObjectContractAddress = '0x56846456e814d9aefc67891df0f2077f18a34b1f'
+  static premisEventContractAddress = '0xe558ab306f14c24b9af9811159d4882aa9548e16'
+  static premisAgentContractAddress = '0x027337a879ce2af4a710f2bd207c3dda0e7a304a'
+  static premisRightsContractAddress = '0x16bf506c8a9d56baa902a6036a36dd0246786059'
 
   constructor (_web3Handler) {
     //console.log(_web3)

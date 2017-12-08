@@ -3,11 +3,10 @@ pragma solidity ^0.4.11;
 // Fake News Premis Object
 // Steve Huckle
 
-import "Mortal.sol";
 import "Rights.sol";
 import "Strings.sol";
 
-contract PremisRights is Rights, Mortal {
+contract PremisRights is Rights {
 
   struct CopyrightInfo {
     string status;
@@ -45,18 +44,18 @@ contract PremisRights is Rights, Mortal {
   /* function PremisRights() {
   } */
 
-  function setObject(string _rightsId, string _objectHash) onlyOwner {
+  function setObject(string _rightsId, string _objectHash) public {
     rights.push(_rightsId);
     premisRights[_rightsId].objectHash = _objectHash;
     RightsSetObject(_rightsId, _objectHash);
   }
 
-  function setBasis(string _rightsId, string _basis) onlyOwner {
+  function setBasis(string _rightsId, string _basis) public {
     premisRights[_rightsId].basis = _basis;
     RightsSetBasis(_rightsId, _basis);
   }
 
-  function setCopyrightInfo(string _rightsId, string _status, string _jurisdictionCountryCode, string _determinationDate, string _note ) onlyOwner {
+  function setCopyrightInfo(string _rightsId, string _status, string _jurisdictionCountryCode, string _determinationDate, string _note ) public {
     premisRights[_rightsId].copyrightData.status = _status;
     premisRights[_rightsId].copyrightData.jurisdictionCountryCode = _jurisdictionCountryCode;
     premisRights[_rightsId].copyrightData.determinationDate = _determinationDate;
@@ -64,62 +63,62 @@ contract PremisRights is Rights, Mortal {
     RightsSetCopyrightInfo(_rightsId, _status, _jurisdictionCountryCode, _determinationDate, _note);
   }
 
-  function setRightsGranted(string _rightsId, string _act, string _restriction) onlyOwner {
+  function setRightsGranted(string _rightsId, string _act, string _restriction) public {
     premisRights[_rightsId].rightsGrantedData.act = _act;
     premisRights[_rightsId].rightsGrantedData.restriction = _restriction;
     RightsSetRightsGranted(_rightsId, _act, _restriction);
   }
 
-  function setAgent(string _rightsId, string _agentId) onlyOwner {
+  function setAgent(string _rightsId, string _agentId) public {
       premisRights[_rightsId].agentId = _agentId;
       RightsSetAgent(_rightsId, _agentId);
   }
 
   // This 'Exists?' function return max(uint256) if not, the index otherwise
-  function getRightsExists(string _rightsId) constant returns (uint256) {
+  function getRightsExists(string _rightsId) public constant returns (uint256) {
     return Strings.getIndex(_rightsId, rights);
   }
 
-  function getNumRights() constant returns (uint256) {
+  function getNumRights() public constant returns (uint256) {
     return rights.length;
   }
 
-  function getRights(uint256 _index) constant returns (string) {
+  function getRights(uint256 _index) public constant returns (string) {
     return rights[_index];
   }
 
-  function getObject(string _rightsId) constant returns (string, string) {
+  function getObject(string _rightsId) public constant returns (string, string) {
     return (_rightsId, premisRights[_rightsId].objectHash);
   }
 
-  function getRightsBasis(string _rightsId) constant returns (string, string) {
+  function getRightsBasis(string _rightsId) public constant returns (string, string) {
     return (_rightsId, premisRights[_rightsId].basis);
   }
 
-  function getCopyrightStatus(string _rightsId) constant returns (string, string) {
+  function getCopyrightStatus(string _rightsId) public constant returns (string, string) {
     return (_rightsId, premisRights[_rightsId].copyrightData.status);
   }
-  function getCopyrightJurisdiction(string _rightsId) constant returns (string, string) {
+  function getCopyrightJurisdiction(string _rightsId) public constant returns (string, string) {
     return (_rightsId, premisRights[_rightsId].copyrightData.jurisdictionCountryCode);
   }
 
-  function getCopyrightDeterminationDate(string _rightsId) constant returns (string, string) {
+  function getCopyrightDeterminationDate(string _rightsId) public constant returns (string, string) {
     return (_rightsId, premisRights[_rightsId].copyrightData.determinationDate);
   }
 
-  function getCopyrightNote(string _rightsId) constant returns (string, string) {
+  function getCopyrightNote(string _rightsId) public constant returns (string, string) {
     return (_rightsId, premisRights[_rightsId].copyrightData.note);
   }
 
-  function getGrantedAct(string _rightsId) constant returns (string, string) {
+  function getGrantedAct(string _rightsId) public constant returns (string, string) {
     return (_rightsId, premisRights[_rightsId].rightsGrantedData.act);
   }
 
-  function getGrantedRestriction(string _rightsId) constant returns (string, string) {
+  function getGrantedRestriction(string _rightsId) public constant returns (string, string) {
     return (_rightsId, premisRights[_rightsId].rightsGrantedData.restriction);
   }
 
-  function getAgent(string _rightsId) constant returns (string, string) {
+  function getAgent(string _rightsId) public constant returns (string, string) {
     return (_rightsId, premisRights[_rightsId].agentId);
   }
 
