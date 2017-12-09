@@ -64,7 +64,7 @@ After cloning this repository, download and install the dependencies (if you hav
 
 ### Install
 
-Follow the instructions in the [Ganache](https://github.com/trufflesuite/ganache) repository for downloading and installing Ganache; basically, you need to clone the [Ganache](https://github.com/trufflesuite/ganache) repository, then build the appropriate image for your platform.
+Follow the instructions in the [Ganache](https://github.com/trufflesuite/ganache) repository for downloading and installing Ganache; tl;dr - you need to clone the [Ganache](https://github.com/trufflesuite/ganache) repository, then run `npm install && npm start`.
 
 In the **Provinator** repository's home directory, type `npm install`. That should install everything listed in [package.json](/package.json), which form the components of the REACT-based web frontend to this application.
 
