@@ -32,7 +32,7 @@ class HashFile extends React.Component {
   render () {
     return (
       <div>
-        <File heading={HashStrings.heading} parentFunc={this._handleSubmitFile.bind(this)} label={HashStrings.browseFileLabel} buttonLabel={HashStrings.browseFileButtonLabel} />
+        <File heading={HashStrings.heading} parentFunc={this._handleSubmitFile.bind(this)} label={HashStrings.browseFileLabel} tip={HashStrings.browseFileTip} buttonLabel={HashStrings.browseFileButtonLabel} />
         <PremisTextOutput label={HashStrings.fileLabel} text={this.state.fileName} />
         <PremisTextOutput label={HashStrings.hashLabel} text={this.state.hash} />
       </div>

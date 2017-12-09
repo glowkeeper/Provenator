@@ -48,6 +48,7 @@ class HashStrings {
   static fileLabel = 'Filename: '
   static hashLabel = 'Hash: '
   static browseFileLabel = 'Select file:'
+  static browseFileTip = 'Upload a file to get its cryptohash'
   static browseFileButtonLabel = 'Browse'
 
 }

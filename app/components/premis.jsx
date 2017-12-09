@@ -4,6 +4,7 @@ import Select from 'react-select'
 
 import { rTComponents } from './theme'
 import { Button } from 'react-toolbox/lib/button'
+import MdDone from 'react-icons/lib/md/done'
 
 class AppHeading extends React.Component {
 
@@ -240,7 +241,7 @@ class FormSubmit extends React.Component {
     return (
       <div className="section">
         <p>{this.props.label}</p>
-        <Button className={rTComponents.buttonPrimary} onClick={this._handleSubmit.bind(this)} raised ripple>{this.props.buttonLabel}</Button>
+        <Button className={rTComponents.buttonPrimary} onClick={this._handleSubmit.bind(this)} raised ripple><MdDone/></Button>
       </div>
     );
   }
