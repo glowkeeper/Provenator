@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import Select from 'react-select'
 
@@ -6,6 +7,7 @@ import { rTComponents } from './theme'
 import { Button } from 'react-toolbox/lib/button'
 import MdDone from 'react-icons/lib/md/done'
 import { Tooltip } from 'react-tippy'
+import ReactMarkdown from 'react-markdown'
 
 class AppHeading extends React.Component {
 
@@ -47,13 +49,13 @@ PremisHeading.propTypes = {
 
 class PremisPlainTextOutput extends React.Component {
 
-  /* constructor(props) {
+  constructor(props) {
     super(props)
-  } */
+  }
 
   render () {
     return (
-      <p>{this.props.text}</p>
+      <ReactMarkdown escapeHtml={false} source={this.props.text} />
     )
   }
 }

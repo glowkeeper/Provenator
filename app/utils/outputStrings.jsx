@@ -14,7 +14,7 @@ class HomeStrings {
 
   static heading = 'Home'
 
-  static info = 'Use this application to record digital media objects and to get digital media object information.'
+  static info = 'Use this application to record digital media objects and to get digital media object information.<br /><br />Read the [About](/#/about) section to learn about the origins of **Provinator**.<br /><br />The [Overview](/#/overview) section describes a scenario where Alice uses **Provenator** to store information about a photograph she has taken.<br /><br />The [Help](/#/help) section gives brief instructions as to how to use **Provenator** - in essence, to store a record about a digital resource, click on the [Record Object](/#/create) link and fill in all fields. To retrieve information, click on the [Get Object](/#/read) link and upload a digital resource.'
 
 }
 
@@ -22,7 +22,7 @@ class AboutStrings {
 
   static heading = 'About Provenator'
 
-  static info = 'This app came about as a result of an academic paper titled: \"Fake News - a Technological Approach to Proving the Origins of Content, Using Blockchains\". The article discusses how the trust mechanisms of blockchain technology might be used to combat fake news. The general idea is that content creators must have the ability to store relevant authentication information about their creations so that the data can be retrieved and used to prove the ownership and licensing of those same resources.'
+  static info = '**Provenator** is the result of an academic paper titled: _Fake News - a Technological Approach to Proving the Origins of Content, Using Blockchains_. The article discusses how the trust mechanisms of blockchain technology might be used to combat fake news. The general idea is that content creators must have the ability to store relevant authentication information about their creations so that the data can be retrieved and used to prove the ownership and licensing of those same resources.<br /><br />For more information about **Provenator**, please contact s dot huckle at sussex dot ac dot uk.'
 
 }
 
@@ -30,7 +30,7 @@ class OverviewStrings {
 
   static heading = 'Overview of Provenator'
 
-  static info = 'The \'store\' behaviour of the app\' allows content generators to specify information about their digital creations using the PREMIS format, which describes a resource using four relations, 1) Objects, 2) Events, 3) Agents, and 4) Rights. Suppose Alice, a professional landscape photographer, takes a vivid black and white still of an angry storm gathering over the English Channel (it is about to rage over the seaside town of Brighton). Later, she intends to send the photo to prospective buyers, so she needs to establish ownership and copyright. To do so, she loads the photograph into Provenator, which immediately creates a cryptographic hash of the picture _object_ (due to the deterministic and collision resistance properties of cryptographic hashes, that hash will be unique to that image). Alice then adds a description (which should further help identify her picture). She also records an event (the date of the taking of the photo), and lists herself as the agent. Finally, Alice creates a right - the image\'s license. Having established ownership rights of the photograph, Alice posts the picture online. Sometime later, a nature magazine is running a story about climate change, and they intend to use a dramatic weather-based photograph on their front cover.  They find Alice\'s image and wish to identify the owner to discuss the fee for its acquisition.  Hence, they load the image into the _read_ section of Provenator, which matches the cryptographic hash of the _object_ stored by Alice earlier. Consequently, the magazine identifies Alice as the owner of the photograph and arranges with her a fee for its use.'
+  static info = 'Suppose Alice, a professional landscape photographer, takes a vivid black and white still of an angry storm gathering over the English Channel (it is about to rage over the seaside town of Brighton). Later, she intends to send the photo to prospective buyers, so she needs to establish ownership and copyright. To do so, she loads the photograph into Provenator (using the [Record Object](/#/create) link), which immediately creates a cryptographic hash of the picture _object_ (due to the deterministic and collision resistance properties of cryptographic hashes, that hash will be unique to that image). Alice then adds a description (which should further help identify her picture). She also records an _event_ (the date of the taking of the photo), and lists herself as the _agent_. Finally, Alice creates a _right_ - the image\'s license. <br /><br />Having established ownership rights of the photograph, Alice posts the picture online.<br/><br/>Sometime later, a nature magazine is running a story about climate change, and they intend to use a dramatic weather-based photograph on their front cover.  They find Alice\'s image and wish to identify the owner to discuss the fee for its acquisition.  Hence, they load the image into the [Get Object](/#/read) section of Provenator, which matches the cryptographic hash of the _object_ stored by Alice earlier. Consequently, the magazine identifies Alice as the owner of the photograph and arranges with her a fee for its use.'
 
 }
 
@@ -38,7 +38,7 @@ class HelpStrings {
 
   static heading = 'Help'
 
-  static info = 'To store a record about a digital resource, click on the \'Create\' link and fill in all fields. To retrieve information, click on the \'Read\' link and upload a digital resource. If no information is retrieved, there are no records for that resource.'
+  static info = '**Provenator** allows content generators to specify information about their digital creations using PREMIS metadata, which describes a resource using four relations, 1) **Objects**, 2) **Events**, 3) **Agents**, and 4) **Rights**.<br /><br />Have a read of the [Overview](/#/overview), which describes a scenario where Alice uses **Provenator** to store information about a photograph she has taken.<br /><br />In essence, to store a record about a digital resource, click on the [Record Object](/#/create) link and fill in all fields. To retrieve information, click on the [Get Object](/#/read) link and upload a digital resource. If no information is retrieved, there are no records for that resource.'
 
 }
 
