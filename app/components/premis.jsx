@@ -5,6 +5,7 @@ import Select from 'react-select'
 import { rTComponents } from './theme'
 import { Button } from 'react-toolbox/lib/button'
 import MdDone from 'react-icons/lib/md/done'
+import { Tooltip } from 'react-tippy'
 
 class AppHeading extends React.Component {
 
@@ -93,13 +94,15 @@ class PremisTextInput extends React.Component {
   render () {
     return (
       <div className="textInput">
-        <p>{this.props.label}
-          <input
-            type="text"
-            placeholder={this.props.placeHolder}
-            onChange={this._handleChange.bind(this)}
-          />
-        </p>
+        <Tooltip title={this.props.tip} position="top">
+          <p>{this.props.label}
+            <input
+              type="text"
+              placeholder={this.props.placeHolder}
+              onChange={this._handleChange.bind(this)}
+            />
+          </p>
+        </Tooltip>
       </div>
     )
   }
@@ -108,7 +111,8 @@ class PremisTextInput extends React.Component {
 PremisTextInput.propTypes = {
   parentFunc: PropTypes.func,
   placeHolder: PropTypes.string,
-  label: PropTypes.string
+  label: PropTypes.string,
+  tip: PropTypes.string
 }
 
 class PremisTextAreaInput extends React.Component {
@@ -124,12 +128,14 @@ class PremisTextAreaInput extends React.Component {
   render () {
     return (
       <div className="textAreaInput">
-        <p>{this.props.label}
-          <textarea
-            placeholder={this.props.placeHolder}
-            onChange={this._handleChange.bind(this)}
-          />
-        </p>
+        <Tooltip title={this.props.tip} position="top">
+          <p>{this.props.label}
+            <textarea
+              placeholder={this.props.placeHolder}
+              onChange={this._handleChange.bind(this)}
+            />
+          </p>
+        </Tooltip>
       </div>
     )
   }
@@ -138,7 +144,8 @@ class PremisTextAreaInput extends React.Component {
 PremisTextAreaInput.propTypes = {
   parentFunc: PropTypes.func,
   placeHolder: PropTypes.string,
-  label: PropTypes.string
+  label: PropTypes.string,
+  tip: PropTypes.string
 }
 
 class PremisSelect extends React.Component {
@@ -154,16 +161,17 @@ class PremisSelect extends React.Component {
   render () {
     return (
       <div className="select">
-        <p>{this.props.label}</p>
-        <Select
-          placeholder={this.props.placeHolder}
-          searchable={this.props.searchable}
-          disabled={this.props.disabled}
-          clearable={this.props.clearable}
-          options={this.props.selections}
-          value={this.props.selection}
-          onChange={this._handleChange.bind(this)}
-        />
+        <Tooltip title={this.props.tip} position="top">
+          <Select
+            placeholder={this.props.placeHolder}
+            searchable={this.props.searchable}
+            disabled={this.props.disabled}
+            clearable={this.props.clearable}
+            options={this.props.selections}
+            value={this.props.selection}
+            onChange={this._handleChange.bind(this)}
+          />
+        </Tooltip>
       </div>
     )
   }
@@ -175,7 +183,7 @@ PremisSelect.propTypes = {
   selection: PropTypes.number,
   searchable: PropTypes.bool,
   placeHolder: PropTypes.string,
-  label: PropTypes.string
+  tip: PropTypes.string
 }
 
 PremisSelect.defaultProps = {
@@ -197,16 +205,17 @@ class PremisSelectPlus extends React.Component {
   render () {
     return (
       <div className="select">
-        <p>{this.props.label}</p>
-        <Select.Creatable
-          placeholder={this.props.placeHolder}
-          searchable={this.props.searchable}
-          disabled={this.props.disabled}
-          clearable={this.props.clearable}
-          options={this.props.selections}
-          value={this.props.selection}
-          onChange={this._handleChange.bind(this)}
-        />
+        <Tooltip title={this.props.tip} position="top">
+          <Select.Creatable
+            placeholder={this.props.placeHolder}
+            searchable={this.props.searchable}
+            disabled={this.props.disabled}
+            clearable={this.props.clearable}
+            options={this.props.selections}
+            value={this.props.selection}
+            onChange={this._handleChange.bind(this)}
+          />
+        </Tooltip>
       </div>
     )
   }
@@ -218,7 +227,7 @@ PremisSelectPlus.propTypes = {
   // selection: PropTypes.string,
   searchable: PropTypes.bool,
   placeHolder: PropTypes.string,
-  label: PropTypes.string
+  tip: PropTypes.string
 }
 
 PremisSelectPlus.defaultProps = {
@@ -240,8 +249,9 @@ class FormSubmit extends React.Component {
   render() {
     return (
       <div className="section">
-        <p>{this.props.label}</p>
-        <Button className={rTComponents.buttonPrimary} onClick={this._handleSubmit.bind(this)} raised ripple><MdDone/></Button>
+        <Tooltip title={this.props.tip} position="right">
+          <Button className={rTComponents.buttonPrimary} onClick={this._handleSubmit.bind(this)} raised ripple><MdDone/></Button>
+        </Tooltip>
       </div>
     );
   }
@@ -250,7 +260,7 @@ class FormSubmit extends React.Component {
 FormSubmit.propTypes = {
   parentFunc:PropTypes.func,
   label:PropTypes.string,
-  buttonLabel:PropTypes.string
+  tip:PropTypes.string
 }
 
 export {AppHeading, PremisHeading, PremisPlainTextOutput, PremisTextOutput, PremisTextInput,

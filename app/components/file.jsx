@@ -6,10 +6,7 @@ import FileReaderInput from 'react-file-reader-input'
 import { rTComponents } from './theme'
 import { Button } from 'react-toolbox/lib/button'
 import MdFileUpload from 'react-icons/lib/md/file-upload'
-
-import {
-  Tooltip,
-} from 'react-tippy'
+import { Tooltip } from 'react-tippy'
 
 class File extends React.Component {
 
@@ -31,10 +28,7 @@ class File extends React.Component {
             as="binary"
             id="my-file-input"
             onChange={this._handleSetFilename.bind(this)}>
-            <Tooltip
-                title={this.props.tip}
-                position="right"
-            >
+            <Tooltip title={this.props.tip} position="right">
               <Button className={rTComponents.buttonPrimary} raised ripple><MdFileUpload/></Button>
             </Tooltip>
           </FileReaderInput>
@@ -47,9 +41,7 @@ class File extends React.Component {
 File.propTypes = {
   parentFunc: PropTypes.func,
   heading: PropTypes.string,
-  label: PropTypes.string,
-  tip: PropTypes.string,
-  buttonLabel: PropTypes.string
+  tip: PropTypes.string
 }
 
 export default File

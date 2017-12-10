@@ -36,8 +36,8 @@ class SetPremisAgent extends React.Component {
     return (
       <div>
         <PremisHeading heading={PremisAgentStrings.heading} />
-        <PremisTextInput parentFunc={this._handleName.bind(this)} placeHolder={PremisAgentStrings.namePlaceHolder} label={PremisAgentStrings.nameLabel} />
-        <PremisSelect parentFunc={this._handleType.bind(this)} placeHolder={PremisAgentStrings.typePlaceHolder} label={PremisAgentStrings.typeLabel} selections={this.state.typeSelections} selection={this.state.typeId} />
+        <PremisTextInput parentFunc={this._handleName.bind(this)} placeHolder={PremisAgentStrings.namePlaceHolder} label={PremisAgentStrings.nameLabel} tip={PremisAgentStrings.nameTip} />
+        <PremisSelect parentFunc={this._handleType.bind(this)} placeHolder={PremisAgentStrings.typePlaceHolder} tip={PremisAgentStrings.typeTip} selections={this.state.typeSelections} selection={this.state.typeId} />
       </div>
     )
   }

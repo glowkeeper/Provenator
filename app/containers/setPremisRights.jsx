@@ -85,13 +85,13 @@ class SetPremisRights extends React.Component {
     return (
       <div>
         <PremisHeading heading={PremisRightsStrings.heading} />
-        <PremisSelect parentFunc={this._handleBasis.bind(this)} placeHolder={PremisRightsStrings.basisPlaceHolder} label={PremisRightsStrings.basisLabel} selections={this.state.basisSelections} selection={this.state.basisId} />
-        <PremisTextInput parentFunc={this._handleStatus.bind(this)} placeHolder={PremisRightsStrings.statusPlaceHolder} label={PremisRightsStrings.statusLabel} />
-        <PremisSelect parentFunc={this._handleCountryCode.bind(this)} placeHolder={PremisRightsStrings.countryCodePlaceHolder} label={PremisRightsStrings.countryCodeLabel} selections={this.state.countryCodeSelections} selection={this.state.countryCodeId} />
-        <PremisTextInput parentFunc={this._handleDeterminationDate.bind(this)} placeHolder={PremisRightsStrings.determinationDatePlaceHolder} label={PremisRightsStrings.determinationDateLabel} />
-        <PremisTextAreaInput parentFunc={this._handleNote.bind(this)} placeHolder={PremisRightsStrings.notePlaceHolder} label={PremisRightsStrings.noteLabel} />
-        <PremisSelect parentFunc={this._handleRightsGrantedAct.bind(this)} placeHolder={PremisRightsStrings.actPlaceHolder} label={PremisRightsStrings.actLabel} selections={this.state.actSelections} selection={this.state.actId} />
-        <PremisSelect parentFunc={this._handleRightsGrantedRestriction.bind(this)} placeHolder={PremisRightsStrings.restrictionPlaceHolder} label={PremisRightsStrings.restrictionLabel} selections={this.state.restrictionSelections} selection={this.state.restrictionId} />
+        <PremisSelect parentFunc={this._handleBasis.bind(this)} placeHolder={PremisRightsStrings.basisPlaceHolder} tip={PremisRightsStrings.basisTip} selections={this.state.basisSelections} selection={this.state.basisId} />
+        <PremisTextInput parentFunc={this._handleStatus.bind(this)} placeHolder={PremisRightsStrings.statusPlaceHolder} label={PremisRightsStrings.statusLabel} tip={PremisRightsStrings.statusTip} />
+        <PremisSelect parentFunc={this._handleCountryCode.bind(this)} placeHolder={PremisRightsStrings.countryCodePlaceHolder} tip={PremisRightsStrings.countryCodeTip} selections={this.state.countryCodeSelections} selection={this.state.countryCodeId} />
+        <PremisTextInput parentFunc={this._handleDeterminationDate.bind(this)} placeHolder={PremisRightsStrings.determinationDatePlaceHolder} label={PremisRightsStrings.determinationDateLabel} tip={PremisRightsStrings.determinationDateTip} />
+        <PremisTextAreaInput parentFunc={this._handleNote.bind(this)} placeHolder={PremisRightsStrings.notePlaceHolder} label={PremisRightsStrings.noteLabel} tip={PremisRightsStrings.noteTip} />
+        <PremisSelect parentFunc={this._handleRightsGrantedAct.bind(this)} placeHolder={PremisRightsStrings.actPlaceHolder} tip={PremisRightsStrings.actTip} selections={this.state.actSelections} selection={this.state.actId} />
+        <PremisSelect parentFunc={this._handleRightsGrantedRestriction.bind(this)} placeHolder={PremisRightsStrings.restrictionPlaceHolder} tip={PremisRightsStrings.restrictionTip} selections={this.state.restrictionSelections} selection={this.state.restrictionId} />
       </div>
     )
   }

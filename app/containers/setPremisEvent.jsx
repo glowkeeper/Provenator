@@ -37,8 +37,8 @@ class SetPremisEvent extends React.Component {
     return (
       <div>
         <PremisHeading heading={PremisEventStrings.heading} />
-        <PremisSelectPlus parentFunc={this._handleEvent.bind(this)} placeHolder={PremisEventStrings.eventPlaceHolder} label={PremisEventStrings.eventLabel} selections={this.state.eventSelections} selection={this.state.eventId} />
-        <PremisTextInput parentFunc={this._handleEventDate.bind(this)} placeHolder={PremisEventStrings.datePlaceHolder} label={PremisEventStrings.dateLabel} />
+        <PremisSelectPlus parentFunc={this._handleEvent.bind(this)} placeHolder={PremisEventStrings.eventPlaceHolder} tip={PremisEventStrings.eventTip} selections={this.state.eventSelections} selection={this.state.eventId} />
+        <PremisTextInput parentFunc={this._handleEventDate.bind(this)} placeHolder={PremisEventStrings.datePlaceHolder} label={PremisEventStrings.dateLabel} tip={PremisEventStrings.dateTip} />
       </div>
     )
   }

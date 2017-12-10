@@ -129,7 +129,7 @@ class ObjectWriter extends React.Component {
         <hr />
         <SetPremisRights rightsHandler={this.premisRightsHandler} />
         <hr />
-        <FormSubmit parentFunc={this.handleSubmit.bind(this)} label={ObjectWriterStrings.submitObjectLabel} buttonLabel={ObjectWriterStrings.submitObjectButtonLabel} />
+        <FormSubmit parentFunc={this.handleSubmit.bind(this)} label={ObjectWriterStrings.submitObjectLabel} tip={ObjectWriterStrings.submitObjectTip} />
       </div>
     )
   }

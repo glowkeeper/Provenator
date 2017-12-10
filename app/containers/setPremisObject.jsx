@@ -55,10 +55,10 @@ class SetPremisObject extends React.Component {
     return (
       <div>
         <PremisHeading heading={PremisObjectStrings.heading} />
-        <PremisSelect parentFunc={this._handleCategory.bind(this)} placeHolder={PremisObjectStrings.categoryPlaceHolder} label={PremisObjectStrings.categoryLabel} selections={this.state.categorySelections} selection={this.state.categoryId} />
-        <PremisTextInput parentFunc={this._handleFormat.bind(this)} placeHolder={PremisObjectStrings.formatPlaceHolder} label={PremisObjectStrings.formatLabel} />
-        <PremisSelectPlus parentFunc={this._handlePropertyType.bind(this)} placeHolder={PremisObjectStrings.propertyTypePlaceHolder} label={PremisObjectStrings.propertyTypeLabel} selections={this.state.propertyTypeSelections} selection={this.state.propertyTypeId} />
-        <PremisTextAreaInput parentFunc={this._handlePropertyValue.bind(this)} placeHolder={PremisObjectStrings.propertyValuePlaceHolder} label={PremisObjectStrings.propertyValueLabel} />
+        <PremisSelect parentFunc={this._handleCategory.bind(this)} placeHolder={PremisObjectStrings.categoryPlaceHolder} tip={PremisObjectStrings.categoryTip} selections={this.state.categorySelections} selection={this.state.categoryId} />
+        <PremisTextInput parentFunc={this._handleFormat.bind(this)} placeHolder={PremisObjectStrings.formatPlaceHolder} label={PremisObjectStrings.formatLabel} tip={PremisObjectStrings.formatTip} />
+        <PremisSelectPlus parentFunc={this._handlePropertyType.bind(this)} placeHolder={PremisObjectStrings.propertyTypePlaceHolder} tip={PremisObjectStrings.propertyTypeTip} selections={this.state.propertyTypeSelections} selection={this.state.propertyTypeId} />
+        <PremisTextAreaInput parentFunc={this._handlePropertyValue.bind(this)} placeHolder={PremisObjectStrings.propertyValuePlaceHolder} label={PremisObjectStrings.propertyValueLabel} tip={PremisObjectStrings.propertyValueTip} />
       </div>
     )
   }

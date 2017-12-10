@@ -47,9 +47,7 @@ class HashStrings {
   static heading = 'Select a File Object for Hashing'
   static fileLabel = 'Filename: '
   static hashLabel = 'Hash: '
-  static browseFileLabel = 'Select file:'
   static browseFileTip = 'Upload a file to get its cryptohash'
-  static browseFileButtonLabel = 'Browse'
 
 }
 
@@ -111,28 +109,30 @@ class ObjectWriterStrings {
   static writing = 'Writing records to the blockchain.'
   static finishedWriting = 'Finished writing records to the blockchain.'
   static submitting = 'Submitting records to the blockchain.'
-
   static submitObjectLabel = 'Submit Object Information:'
-  static submitObjectButtonLabel = 'Submit'
+  static submitObjectTip = 'Record this object information'
 }
 
 class PremisRightsStrings {
 
   static heading = 'Object Rights Information'
   static basisPlaceHolder = 'Basis'
-  static basisLabel = 'Basis: '
+  static basisTip = 'Choose the object\'s rights basis for this record'
   static statusPlaceHolder = 'Status'
   static statusLabel = 'Status: '
+  static statusTip = 'Define the status of the rights basis above, e.g: "Copyrighted", "Licensed"'
   static countryCodePlaceHolder = 'Jurisdiction Country Code'
-  static countryCodeLabel = 'Jurisdiction Country Code: '
+  static countryCodeTip = 'To what country does this rights basis pertain?'
   static determinationDatePlaceHolder = 'Determination Date'
   static determinationDateLabel = 'Determination Date: '
+  static determinationDateTip = 'From what date does this rights basis apply?'
   static notePlaceHolder = 'Note'
   static noteLabel = 'Note: '
+  static noteTip = 'Supply additional notes for this rights basis'
   static actPlaceHolder = 'Rights Granted Act'
-  static actLabel = 'Rights Granted Act: '
+  static actTip = 'Choose the rights act'
   static restrictionPlaceHolder = 'Rights Granted Restriction'
-  static restrictionLabel = 'Rights Granted Restriction: '
+  static restrictionTip = 'Choose the rights granted restriction'
 
 }
 
@@ -140,13 +140,15 @@ class PremisObjectStrings {
 
   static heading = 'Object Information'
   static categoryPlaceHolder = 'Category'
-  static categoryLabel = 'Category: '
+  static categoryTip = 'Categorise the digital object type'
   static formatPlaceHolder = 'Format'
   static formatLabel = 'Format: '
+  static formatTip = 'Set the object\'s format, e.g JPEG, MP4'
   static propertyTypePlaceHolder = 'Property Type'
-  static propertyTypeLabel = 'Property Type: '
+  static propertyTypeTip = 'You may use this to describe any particular property of an object: "Description" is one such example of a valid Object Property'
   static propertyValuePlaceHolder = 'Property Value'
   static propertyValueLabel = 'Property Value: '
+  static propertyValueTip = 'Elaborate on the property type above, e.g, if the property type is "Description", here you would provide that description'
 }
 
 class PremisAgentStrings {
@@ -154,19 +156,22 @@ class PremisAgentStrings {
   static heading = 'Object Agent Information'
   static namePlaceHolder = 'Name'
   static nameLabel = 'Name: '
+  static nameTip = 'Name the object\'s agent'
   static typePlaceHolder = 'Type'
-  static typeLabel = 'Type: '
+  static typeTip = 'Is the agent an individual, or an organisation?'
 
 }
 
 class PremisEventStrings {
 
+  // static info = 'Blockchain write events will appear here.'
+
   static heading = 'Object Event Information'
-  static info = 'Blockchain write events will appear here.'
   static eventPlaceHolder = 'Event Type'
-  static nameLabel = 'Event Type: '
+  static eventTip = 'Record object events here, e.g "Image Capture", "Image Upload", "Film Posted to Youtube" and so forth'
   static datePlaceHolder = 'Event Date'
   static dateLabel = 'Event Date: '
+  static dateTip = 'The date of the event'
 
 }
 
