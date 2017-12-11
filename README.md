@@ -42,7 +42,7 @@ The picture above shows that to describe a digital resource, users of **Provenat
 2. Create and submit metadata pertaining to the digital resource.
 3. Sign the transactions created, using [MetaMask](https://github.com/MetaMask/metamask-extension). That will store the cryptographic hash of the digital resource, and its associated metadata, on the [rinkeby](https://www.rinkeby.io) blockchain.
 
-Subsequently, users are able to check a digital resource's provenance data using the [Get Object](https://gateway.ipfs.io/ipfs/QmXgBDGETiwTbdRx9bYaNZbZD2wJWP6zHbXQkknoegzZ5f/#/read) link on **Provenator**. There, users can 'BROWSE' for a resource, which will create its cryptographic hash - if that exists on [rinkeby](https://www.rinkeby.io), then the associated metadata will be retrieved.
+Subsequently, by uploading a file to **Provenator** (using the [Get Object](https://gateway.ipfs.io/ipfs/QmXgBDGETiwTbdRx9bYaNZbZD2wJWP6zHbXQkknoegzZ5f/#/read) link), if the cryptographic hash has been stored on **Provenator**, users will be able to check that resource's provenance data.
 
 ## Installing **Provenator** Locally
 
@@ -106,8 +106,6 @@ A current limitation of **Provenator** is also its strength - the same digital m
 
 ## Licensing
 
-Copyright © Steve Huckle at the University of Sussex, 2017.
+GNU General Public License v3.0
 
-![CC BY-NC-SA 4.0](/images/ccbyncsa.png)
-
-This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0). It is attributed to Steve Huckle at the University of Sussex. The license lets you remix, tweak, and build upon the work non-commercially, as long as you credit Steve Huckle and license your new creations under the identical terms.
+See [COPYING](/docs/COPYING.txt) to see the full text.
