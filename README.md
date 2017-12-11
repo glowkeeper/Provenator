@@ -40,7 +40,7 @@ The picture above shows that to describe a digital resource, users of **Provenat
 2. Create and submit metadata pertaining to the digital resource.
 3. Sign the transactions created, using [MetaMask](https://github.com/MetaMask/metamask-extension). That will store the cryptographic hash of the digital resource, and its associated metadata, on the [rinkeby](https://www.rinkeby.io) blockchain.
 
-Subsequently, by uploading a file to **Provenator** (using the [Get Object](https://gateway.ipfs.io/ipfs/QmXgBDGETiwTbdRx9bYaNZbZD2wJWP6zHbXQkknoegzZ5f/#/read) link), if the cryptographic hash has been stored on **Provenator**, users will be able to check that resource's provenance data.
+Subsequently, by uploading a file to **Provenator** (using the [Get Object](https://gateway.ipfs.io/ipfs/QmXgBDGETiwTbdRx9bYaNZbZD2wJWP6zHbXQkknoegzZ5f/#/read) link), if its cryptographic hash has been stored on **Provenator**, users will be able to check that resource's provenance data.
 
 ## Installing **Provenator** Locally
 
