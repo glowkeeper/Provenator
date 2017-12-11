@@ -6,7 +6,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](/docs/prs.md)
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg?style=flat-square)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-This is the repository for **Provenator**, a prototype distributed application (dApp) for proving the origins of captured digital media. It does so using cryptographic tools and blockchain technology. By using the trust mechanisms of blockchains, the aim of the application is to show, beyond doubt, the provenance of any source of digital media.
+This is the repository for **Provenator**, a prototype distributed application (dApp) for proving the origins of captured digital media. It does so using cryptographic tools and blockchain technology. By using the trust mechanisms of blockchains, the application aims to show, beyond doubt, the provenance of any source of digital media.
 
 **Provenator** is the result of the academic paper called, **Fake News - a Technological Approach to Proving Provenance Using Blockchains**, by Steve Huckle and Martin White, of the [University of Sussex Informatics Department](http://www.sussex.ac.uk/informatics/). That paper is going to be published in December, 2017, in a special issue on fake news for Mary Anne Liebert's [Big Data](http://www.liebertpub.com/big).
 
@@ -14,23 +14,23 @@ If you would like to contribute (perhaps by helping with [future work](#1), or b
 
 ## Demo
 
-The instructions below allow you to use a demo' of **Provenator**, which is running on [ipfs](https://ipfs.io/) and Ethereum's test network, [rinkeby](https://www.rinkeby.io). Both [ipfs](https://ipfs.io/) and [rinkeby](https://www.rinkeby.io) are distributed, peer-to-peer technologies, so by utilising them, **Provenator** is itself wholly distributed.
+The instructions below allow you to use a demo of **Provenator**, which is running on [ipfs](https://ipfs.io/) and Ethereum's test network, [rinkeby](https://www.rinkeby.io). Both [ipfs](https://ipfs.io/) and [rinkeby](https://www.rinkeby.io) are distributed, peer-to-peer technologies, so by utilising them, **Provenator** is itself wholly distributed.
 
-**Provenator** is alpha software. [MetaMask](https://metamask.io/) (discussed below) is beta software. In other words, both have their 'wrinkles'! Hence, please be patient; however, if you are having problems with the demo', please email s dot huckle at sussex dot ac dot uk - he will be pleased to help.
+**Provenator** is alpha software. [MetaMask](https://metamask.io/) (discussed below) is beta software. In other words, both have their 'wrinkles'! Hence, please be patient; however, if you are having problems with the demo, please email s dot huckle at sussex dot ac dot uk - he will be pleased to help.
 
 ### Prerequisites
 
-To run the demo', you must first install the browser plugin [MetaMask](https://metamask.io/), which allows you to sign transactions on [Ethereum](https://www.ethereum.org/) networks. **Provenator** is running on the [rinkeby](https://www.rinkeby.io) test Ethereum network, so once you've installed [MetaMask](https://metamask.io/), please set it to use [rinkeby](https://www.rinkeby.io).
+To run the demo, you must first install the browser plugin [MetaMask](https://metamask.io/), which allows you to sign transactions on [Ethereum](https://www.ethereum.org/) networks. **Provenator** is running on the [rinkeby](https://www.rinkeby.io) test Ethereum network, so once you've installed [MetaMask](https://metamask.io/), please set it to use [rinkeby](https://www.rinkeby.io).
 
 To add records to **Provenator**, you will need some test Ether. To get some, follow the instructions at the [rinkeby faucet](https://www.rinkeby.io/#faucet).
 
-### Running the Demo'
+### Running the Demo
 
 Load the live demo of **Provenator** by loading the following URL into your browser: [https://gateway.ipfs.io/ipfs/QmXgBDGETiwTbdRx9bYaNZbZD2wJWP6zHbXQkknoegzZ5f/#/](https://gateway.ipfs.io/ipfs/QmXgBDGETiwTbdRx9bYaNZbZD2wJWP6zHbXQkknoegzZ5f/#/). If you have not followed the prerequisites above (if you have not installed [MetaMask](https://metamask.io/) and set it to use [rinkeby](https://www.rinkeby.io)), then **Provenator** will not load.
 
 Getting records from **Provenator** is free, so if you do not yet have any test Ether, you can get retrieve a record of an image of an [evil cat](/images/evilCat.bmp), which has already been added to **Provenator**. To find that record, download the [evil cat](/images/evilCat.bmp), then click on the [Get Object](https://gateway.ipfs.io/ipfs/QmXgBDGETiwTbdRx9bYaNZbZD2wJWP6zHbXQkknoegzZ5f/#/read) link within **Provenator**. Finally, 'BROWSE' for the image of the evil cat that you just downloaded - **Provenator** should find its hash on [rinkeby](https://www.rinkeby.io), and retrieve the associated metadata.
 
-### Demo' Screenshot
+### Demo Screenshot
 
 Here's a screenshot of a very early prototype of **Provenator**:
 
