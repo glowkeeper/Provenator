@@ -38,7 +38,7 @@ class HelpStrings {
 
   static heading = 'Help'
 
-  static info = '**Provenator** allows content generators to specify information about their digital creations using PREMIS metadata, which describes a resource using four relations, 1) **Objects**, 2) **Events**, 3) **Agents**, and 4) **Rights**.<br /><br />Have a read of the [Overview](#/overview), which describes a scenario where Alice uses **Provenator** to store information about a photograph she has taken.<br /><br />In essence, to store a record about a digital resource, click on the [Record Object](#/create) link and fill in all fields. To retrieve information, click on the [Get Object](#/read) link and upload a digital resource. If no information is retrieved, there are no records for that resource.'
+  static info = '**Provenator** allows content generators to specify information about their digital creations using PREMIS metadata, which describes a resource using four relations, 1) **Objects**, 2) **Events**, 3) **Agents**, and 4) **Rights**.<br /><br />Have a read of the [Overview](#/overview), which describes a scenario where Alice uses **Provenator** to store information about a photograph she has taken.<br /><br />To store a record about a digital resource, click on the [Record Object](#/create) link. Once you have filled in all fields, click on the ![done](/images/done.png) icon to submit the record. That will create some blockchain transactions, which can be signed in [MetaMask](https://metamask.io/).<br /><br />To retrieve information, click on the [Get Object](#/read) link and upload a digital resource. If no information is retrieved, there are no records for that resource.'
 
 }
 
