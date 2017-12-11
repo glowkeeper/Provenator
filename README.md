@@ -1,8 +1,6 @@
 # Provenator
 
 [![Travis build](	https://img.shields.io/travis/glowkeeper/Provenator.svg?style=flat-square)](https://travis-ci.org/glowkeeper/Provenator)
-[![Issues open](https://img.shields.io/github/issues-raw/badges/shields.svg?style=flat-square)](https://github.com/glowkeeper/Provenator/issues)
-[![SemVer]](http://semver.org)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](/docs/prs.md)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
