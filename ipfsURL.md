@@ -1,3 +1,3 @@
 # Gateway Address
 
-https://gateway.ipfs.io/ipfs/Qmd1wMefUk9k3ch9tcXAmWKDYmsuo3i4AVRSC6oLmZFueD/#/read
+https://gateway.ipfs.io/ipfs/QmPufXyxehgEp1LFNVi8BWbrqTmZ3KkbYL6EtRBwHfYowP/#/
