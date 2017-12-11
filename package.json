@@ -12,7 +12,7 @@
     "watch": "./node_modules/.bin/webpack --config ./webpack.dev.js --watch",
     "dev": "./node_modules/.bin/webpack --config ./webpack.dev.js",
     "prod": "./node_modules/.bin/webpack --config ./webpack.prod.js",
-    "copy": "cp ./node_modules/react-select/dist/react-select.css build",
+    "copy": "cp ./node_modules/react-select/dist/react-select.css ./build && cp ./images/favicon-16x16.png ./build/favicon.ico",
     "test": "./node_modules/.bin/mocha",
     "start": "http-server -p 8081 build/"
   },
