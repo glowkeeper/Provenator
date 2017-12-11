@@ -85,8 +85,9 @@ static premisRightsContractAddress = '0xec6a5f11e7865aadc61f27faf8707795c1cda868
 Now create the web application:
 
 1. Change to the **Provinator** repository's home directory.
-2. Build the REACT frontend by typing `npm run copy && npm run watch`.
-3. Startup an instance of [http-server](https://www.npmjs.com/package/http-server) by typing `npm run start`.
+2. Build the REACT frontend by typing `npm run watch`.
+3. Copy some needed resources to the build directory by tyong `npm run copy`.
+4. Startup an instance of [http-server](https://www.npmjs.com/package/http-server) by typing `npm run start`.
 
 Then fire up a browser, go to the URL [http://localhost:8081](http://localhost:8081), and use the links to create a digital media resource and subsequently, get details about that resource.
 
