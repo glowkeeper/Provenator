@@ -26,9 +26,9 @@ To add records to **Provenator**, you will need some test Ether. To get some, fo
 
 ### Running the Demo'
 
-Load the live demo of **Provenator** by loading the following URL into your browser: [https://gateway.ipfs.io/ipfs/QmPufXyxehgEp1LFNVi8BWbrqTmZ3KkbYL6EtRBwHfYowP/#/](https://gateway.ipfs.io/ipfs/QmPufXyxehgEp1LFNVi8BWbrqTmZ3KkbYL6EtRBwHfYowP/#/). If you have not followed the prerequisites above (if you have not installed [MetaMask](https://metamask.io/) and set it to use [rinkeby](https://www.rinkeby.io)), then **Provenator** will not load.
+Load the live demo of **Provenator** by loading the following URL into your browser: [https://gateway.ipfs.io/ipfs/QmXgBDGETiwTbdRx9bYaNZbZD2wJWP6zHbXQkknoegzZ5f/#/](https://gateway.ipfs.io/ipfs/QmXgBDGETiwTbdRx9bYaNZbZD2wJWP6zHbXQkknoegzZ5f/#/). If you have not followed the prerequisites above (if you have not installed [MetaMask](https://metamask.io/) and set it to use [rinkeby](https://www.rinkeby.io)), then **Provenator** will not load.
 
-Getting records from **Provenator** is free, so if you do not yet have any test Ether, you can get retrieve a record of an image of an [evil cat](/images/evilCat.bmp), which has already been added to **Provenator**. To find that record, download the [evil cat](/images/evilCat.bmp), then click on the [Get Object](https://gateway.ipfs.io/ipfs/QmPufXyxehgEp1LFNVi8BWbrqTmZ3KkbYL6EtRBwHfYowP/#/read) link within **Provenator**. Finally, 'BROWSE' for the image of the evil cat that you just downloaded - **Provenator** should find its hash on [rinkeby](https://www.rinkeby.io), and retrieve the associated metadata.
+Getting records from **Provenator** is free, so if you do not yet have any test Ether, you can get retrieve a record of an image of an [evil cat](/images/evilCat.bmp), which has already been added to **Provenator**. To find that record, download the [evil cat](/images/evilCat.bmp), then click on the [Get Object](https://gateway.ipfs.io/ipfs/QmXgBDGETiwTbdRx9bYaNZbZD2wJWP6zHbXQkknoegzZ5f/#/read) link within **Provenator**. Finally, 'BROWSE' for the image of the evil cat that you just downloaded - **Provenator** should find its hash on [rinkeby](https://www.rinkeby.io), and retrieve the associated metadata.
 
 ### Demo' Screenshot
 
@@ -42,7 +42,7 @@ The picture above shows that to describe a digital resource, users of **Provenat
 2. Create and submit metadata pertaining to the digital resource.
 3. Sign the transactions created, using [MetaMask](https://github.com/MetaMask/metamask-extension). That will store the cryptographic hash of the digital resource, and its associated metadata, on the [rinkeby](https://www.rinkeby.io) blockchain.
 
-Subsequently, users are able to check a digital resource's provenance data using the [Get Object](https://gateway.ipfs.io/ipfs/QmPufXyxehgEp1LFNVi8BWbrqTmZ3KkbYL6EtRBwHfYowP/#/read) link on **Provenator**. There, users can 'BROWSE' for a resource, which will create its cryptographic hash - if that exists on [rinkeby](https://www.rinkeby.io), then the associated metadata will be retrieved.
+Subsequently, users are able to check a digital resource's provenance data using the [Get Object](https://gateway.ipfs.io/ipfs/QmXgBDGETiwTbdRx9bYaNZbZD2wJWP6zHbXQkknoegzZ5f/#/read) link on **Provenator**. There, users can 'BROWSE' for a resource, which will create its cryptographic hash - if that exists on [rinkeby](https://www.rinkeby.io), then the associated metadata will be retrieved.
 
 ## Installing **Provenator** Locally
 
