@@ -17,7 +17,7 @@
     "start": "http-server -p 8081 build/"
   },
   "author": "Steve Huckle",
-  "license": "ISC",
+  "license": "GPLv3",
   "dependencies": {
     "caniuse-lite": "^1.0.30000715",
     "classnames": "^2.2.5",
@@ -69,7 +69,7 @@
     "webpack-merge": "^4.1.0"
   },
   "bugs": {
-    "url": "https://github.com/glowkeeper/FakeNews/issues"
+    "url": "https://github.com/glowkeeper/Provenator/issues"
   },
-  "homepage": "https://github.com/glowkeeper/FakeNews#readme"
+  "homepage": "https://github.com/glowkeeper/Provenator#readme"
 }
