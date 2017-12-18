@@ -17,7 +17,7 @@
     "start": "http-server -p 8081 build/"
   },
   "author": "Steve Huckle",
-  "license": "GPLv3",
+  "license": "LGPL-3.0",
   "dependencies": {
     "caniuse-lite": "^1.0.30000715",
     "classnames": "^2.2.5",
