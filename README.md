@@ -98,10 +98,18 @@ Then fire up a browser, go to the URL [http://localhost:8081](http://localhost:8
 - [Ganache](https://github.com/trufflesuite/ganache)
 - [Truffle](https://github.com/trufflesuite/truffle)
 - [REACT](https://reactjs.org/)
+
+## Contributing
+
+Have a look at [future work](#1), [open issues](https://github.com/glowkeeper/Provenator/issues), or visit **Provinator's** [Kanban board](https://trello.com/b/aYk6GwSf/provenator) for some ideas as to how you may contribute. However, other suggestions are very welcome!
 <a name="1">&nbsp;</a>
 ## Future work
 
 A current limitation of **Provenator** is also its strength - the same digital media resource will always generate the same hash. Hence, if two hashes match, you are certain that they are the same object. However, if a single pixel of some digital resource is changed, then that resource will generate a different hash entirely. Therefore, 'similar' media objects will never match. Now, it should be possible to extend **Provenator** so that it uses techniques for finding similar hashes, too. [Perceptual hashing](https://www.phash.org/) is one such candidate, but there may be other methods; by using such techniques, it should be possible to make **Provenator** more capable. The intention is to extend the application and write an academic paper about that extension. Want to help? Then please email s dot huckle at sussex dot ac dot uk.
+
+## Credits
+
+Original author: Steve Huckle, s dot huckle at sussex dot ac dot uk.
 
 ## Licensing
 
