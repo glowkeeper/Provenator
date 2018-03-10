@@ -42,6 +42,7 @@
     "react-tap-event-plugin": "^2.0.1",
     "react-tippy": "^1.2.2",
     "react-toolbox": "^2.0.0-beta.12",
+    "unist-util-is": "^2.1.1",
     "web3": "^0.19.1"
   },
   "devDependencies": {
