@@ -74,7 +74,7 @@ class Web3Handler {
             console.log(err)
           } else {
             _cb(_caller, result)
-  ropsten        }
+          }
         }))
       } else {
         // console.log('blah ' + _func)
