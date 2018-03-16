@@ -206,7 +206,7 @@ class PremisSelectPlus extends React.Component {
 
   render () {
     return (
-      <div className="select">
+      <div className="rTSelect.select">
         <Tooltip title={this.props.tip} position="top">
           <Select.Creatable
             placeholder={this.props.placeHolder}
