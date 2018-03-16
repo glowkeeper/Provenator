@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import Select from 'react-select'
 
-import { rTComponents } from './theme'
+import { rTComponents, rTSelect } from './theme'
 import { Button } from 'react-toolbox/lib/button'
 import MdDone from 'react-icons/lib/md/done'
 import { Tooltip } from 'react-tippy'
@@ -162,7 +162,7 @@ class PremisSelect extends React.Component {
 
   render () {
     return (
-      <div className="select">
+      <div className="rTSelect.select">
         <Tooltip title={this.props.tip} position="top">
           <Select
             placeholder={this.props.placeHolder}
