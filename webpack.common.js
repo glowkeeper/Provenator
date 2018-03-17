@@ -34,7 +34,7 @@ var config = {
             loader: "css-loader",
             options: {
               modules: true, // default is false
-              sourceMap: true,
+              sourceMap: false,
               importLoaders: 1,
               localIdentName: "[name]--[local]--[hash:base64:8]"
             }

@@ -12,7 +12,6 @@
     "watch": "./node_modules/.bin/webpack --config ./webpack.dev.js --watch",
     "dev": "./node_modules/.bin/webpack --config ./webpack.dev.js",
     "prod": "./node_modules/.bin/webpack --config ./webpack.prod.js",
-    "copy": "cp ./node_modules/react-select/dist/react-select.css ./build && cp ./images/favicon-16x16.png ./build/favicon.ico && cp ./images/done.png ./build && cp ./images/fileUpload.png ./build",
     "test": "./node_modules/.bin/mocha",
     "start": "http-server -p 8081 build/"
   },
@@ -39,6 +38,7 @@
     "react-markdown": "^3.3.0",
     "react-router-dom": "^4.1.1",
     "react-select": "^1.2.1",
+    "react-styled-select": "^1.0.0",
     "react-tap-event-plugin": "^2.0.1",
     "react-tippy": "^1.2.2",
     "react-toolbox": "^2.0.0-beta.12",

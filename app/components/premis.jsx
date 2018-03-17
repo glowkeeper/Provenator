@@ -1,9 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import classNames from 'classnames/bind'
 import Select from 'react-select'
 
-import { rTComponents, rTSelect } from './theme'
+import '!style-loader!css-loader!react-select/dist/react-select.css'
+
+import { rTComponents } from './theme'
+
 import { Button } from 'react-toolbox/lib/button'
 import MdDone from 'react-icons/lib/md/done'
 import { Tooltip } from 'react-tippy'
@@ -152,9 +156,9 @@ PremisTextAreaInput.propTypes = {
 
 class PremisSelect extends React.Component {
 
-  /* constructor(props) {
+  constructor(props) {
     super(props)
-  } */
+  }
 
   _handleChange (value) {
     this.props.parentFunc(value)
@@ -162,19 +166,17 @@ class PremisSelect extends React.Component {
 
   render () {
     return (
-      <div className="rTSelect.select">
-        <Tooltip title={this.props.tip} position="top">
-          <Select
-            placeholder={this.props.placeHolder}
-            searchable={this.props.searchable}
-            disabled={this.props.disabled}
-            clearable={this.props.clearable}
-            options={this.props.selections}
-            value={this.props.selection}
-            onChange={this._handleChange.bind(this)}
-          />
-        </Tooltip>
-      </div>
+      <Tooltip title={this.props.tip} position="top">
+        <Select
+          placeholder={this.props.placeHolder}
+          searchable={this.props.searchable}
+          disabled={this.props.disabled}
+          clearable={this.props.clearable}
+          options={this.props.selections}
+          value={this.props.selection}
+          onChange={this._handleChange.bind(this)}
+        />
+      </Tooltip>
     )
   }
 }
@@ -196,9 +198,9 @@ PremisSelect.defaultProps = {
 
 class PremisSelectPlus extends React.Component {
 
-  /* constructor(props) {
+  constructor(props) {
     super(props)
-  } */
+  }
 
   _handleChange (value) {
     this.props.parentFunc(value)
@@ -206,19 +208,17 @@ class PremisSelectPlus extends React.Component {
 
   render () {
     return (
-      <div className="rTSelect.select">
-        <Tooltip title={this.props.tip} position="top">
-          <Select.Creatable
-            placeholder={this.props.placeHolder}
-            searchable={this.props.searchable}
-            disabled={this.props.disabled}
-            clearable={this.props.clearable}
-            options={this.props.selections}
-            value={this.props.selection}
-            onChange={this._handleChange.bind(this)}
-          />
-        </Tooltip>
-      </div>
+      <Tooltip title={this.props.tip} position="top">
+        <Select.Creatable
+          placeholder={this.props.placeHolder}
+          searchable={this.props.searchable}
+          disabled={this.props.disabled}
+          clearable={this.props.clearable}
+          options={this.props.selections}
+          value={this.props.selection}
+          onChange={this._handleChange.bind(this)}
+        />
+      </Tooltip>
     )
   }
 }
