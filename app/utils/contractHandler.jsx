@@ -1836,21 +1836,12 @@ class ContractHandler {
     }
   ]
 
-  /*
+  /* The addresses of the contracts on Rinkeby, are as follows:
 
   PremisAgent: 0x78dbfca6d18f0f4dec22bdccd4c3f90295ff1831
   PremisEvent: 0x00ac4b12eb39de040860ddae3cbba3f5e7145c5f
   PremisObject: 0x235513cd4b877440366d775a78fa26cc28ceaf42
   PremisRights: 0x33ccd7b78df9673a3d73a4ecca35eb5a95081c88
-
-  */
-
-  /* The addresses of the contracts on Rinkeby, are as follows:
-
-  PremisAgent: 0x027337a879ce2af4a710f2bd207c3dda0e7a304a
-  PremisEvent: 0xe558ab306f14c24b9af9811159d4882aa9548e16
-  PremisObject: 0x56846456e814d9aefc67891df0f2077f18a34b1f
-  PremisRights: 0x16bf506c8a9d56baa902a6036a36dd0246786059
 
   */
 
