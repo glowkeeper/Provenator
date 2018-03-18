@@ -14,7 +14,7 @@ If you would like to contribute (perhaps by helping with [future work](#1), or b
 
 The instructions below allow you to use a demo of **Provenator**, which is running on [ipfs](https://ipfs.io/) and Ethereum's test network, [rinkeby](https://www.rinkeby.io). Both [ipfs](https://ipfs.io/) and [rinkeby](https://www.rinkeby.io) are distributed, peer-to-peer technologies, so by utilising them, **Provenator** is itself wholly distributed.
 
-**Provenator** is alpha software. [MetaMask](https://metamask.io/) (discussed below) is beta software. In other words, both have their 'wrinkles'! Hence, please be patient; however, if you are having problems with the demo, please email s dot huckle at sussex dot ac dot uk - he will be pleased to help.
+**Provenator** is alpha software. [MetaMask](https://metamask.io/) (discussed below) is beta software. In other words, both have their 'wrinkles'! Hence, please be patient; however, if you are having problems with the demo, please email s dot huckle at sussex dot ac dot uk.
 
 ### Prerequisites
 
@@ -27,7 +27,7 @@ The following prerequisites are required to run the demo:
 
 Load the live demo of **Provenator** by loading the following URL into your browser: [https://gateway.ipfs.io/ipfs/QmesSUrVz4d6LyVgKx58wWTUbMq2FmnWJ96LNNKhwj95n6/#/](https://gateway.ipfs.io/ipfs/QmesSUrVz4d6LyVgKx58wWTUbMq2FmnWJ96LNNKhwj95n6/#/). If you have not followed the prerequisites above (if you have not installed [MetaMask](https://metamask.io/) and set it to use [rinkeby](https://www.rinkeby.io)), then **Provenator** will not load.
 
-Getting records from **Provenator** is free, so if you do not yet have any test Ether, you can get retrieve a record of an image of an [evil cat](images/evilCat.bmp), which has already been added to **Provenator**. To find that record, download the [evil cat](images/evilCat.bmp), then click on the [Get Object](https://gateway.ipfs.io/ipfs/QmesSUrVz4d6LyVgKx58wWTUbMq2FmnWJ96LNNKhwj95n6/#/read) link within **Provenator**. Finally, 'BROWSE' for the image of the evil cat that you just downloaded - **Provenator** should find its hash on [rinkeby](https://www.rinkeby.io), and retrieve the associated metadata.
+Getting records from **Provenator** is free, so if you do not yet have any test Ether, you can retrieve a record of an image of an [evil cat](images/evilCat.bmp), which has already been added to **Provenator**. To find that record, download the [evil cat](images/evilCat.bmp), then click on the [Get Object](https://gateway.ipfs.io/ipfs/QmesSUrVz4d6LyVgKx58wWTUbMq2FmnWJ96LNNKhwj95n6/#/read) link within **Provenator**. Finally, 'BROWSE' for the image of the evil cat that you just downloaded - **Provenator** should find its hash on [rinkeby](https://www.rinkeby.io), and retrieve the associated metadata.
 
 ### Demo Screenshot
 
@@ -65,7 +65,7 @@ Download and install the following dependencies (if you have not already done so
 
 Install [Provenator](https://github.com/glowkeeper/Provenator):
 
-1. Clone the [Provenator](https://github.com/glowkeeper/Provenator) repository
+1. Clone the [Provenator](https://github.com/glowkeeper/Provenator) repository to your local machine
 2. In the **Provinator** repository's home directory, type `npm install`. That will install everything listed in [package.json](/package.json), which are the components of the [React](https://reactjs.org/) frontend to this application
 
 Publish the contracts to your local blockchain (via [Ganache](https://github.com/trufflesuite/ganache)):
@@ -87,10 +87,10 @@ static premisAgentContractAddress = '0xc3a182dd01e3d9ffdbe95ce568b9c8d936e2ca9d'
 static premisRightsContractAddress = '0xec6a5f11e7865aadc61f27faf8707795c1cda868'
 ````
 2. Change to the **Provinator** repository's home directory.
-3. Build the [React](https://reactjs.org/) frontend by typing `npm run watch`.
+3. Build the [React](https://reactjs.org/) frontend by typing `npm run dev`.
 4. Startup an instance of [http-server](https://www.npmjs.com/package/http-server) by typing `npm run start`.
 
-Now load **Provinator**: into a [MetaMask](https://github.com/MetaMask/metamask-extension) enabled browser:
+Now load **Provinator** into a [MetaMask](https://github.com/MetaMask/metamask-extension) enabled browser:
 
 1. Ensure [MetaMask](https://metamask.io/) is using [Localhost 8545](http://localhost:8545)
 2. Copy the key of a [Ganache](https://github.com/trufflesuite/ganache) account, and import that into [MetaMask](https://metamask.io/). That ensures we have some test Ether to submit transactions to the blockchain
@@ -104,7 +104,7 @@ The instruction below enable you to run **Provenator** on the Ethereum test netw
 
 ### Getting Started
 
-Install the prerequisites below and then follow the instructions to get the project up and running on the Ethereum test network [rinkeby](https://www.rinkeby.io).
+In addition to the prerequisites above, also install those below. Then follow the install instructions to get the project up and running on the Ethereum test network [rinkeby](https://www.rinkeby.io).
 
 ### Prerequisites
 
