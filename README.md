@@ -104,7 +104,7 @@ The instruction below enable you to run **Provenator** on the Ethereum test netw
 
 ### Getting Started
 
-In addition to the prerequisites above, also install those below. Then follow the install instructions to get the project up and running on the Ethereum test network [rinkeby](https://www.rinkeby.io).
+In addition to the prerequisites for running **Provenator** locally, also install those listed below. Then follow the instructions to get the project up and running on the Ethereum test network [rinkeby](https://www.rinkeby.io).
 
 ### Prerequisites
 
