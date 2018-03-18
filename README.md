@@ -115,27 +115,31 @@ As well as the dependencies above, also install the following:
 
 ### Install
 
-There's a good [GitHub Gist](https://gist.github.com/cryptogoth/10a98e8078cfd69f7ca892ddbdcf26bc) that details how to get running on [rinkeby](https://www.rinkeby.io). However, we're going to do things slightly differently, and use Once you have [geth](https://github.com/ethereum/go-ethereum) installed, point the `geth` binary at rinkeby, startup a `geth` console and create an account, then send funds to that account:
+There's a good [GitHub Gist](https://gist.github.com/cryptogoth/10a98e8078cfd69f7ca892ddbdcf26bc) that details how to get running on [rinkeby](https://www.rinkeby.io). However, we're going to do things slightly differently, and use [MetaMask](https://metamask.io/) for account management.
+
+Firstly, lets start [geth](https://github.com/ethereum/go-ethereum):
 
 1. Run `geth --rinkeby --rpc --rpcapi db,eth,net,web3,personal --syncmode "fast" --cache 2048`
-2. Start a `geth` console by referencing the [rinkeby](https://www.rinkeby.io) directory and [geth](https://github.com/ethereum/go-ethereum)'s ipc file. On a MAC, the command looks like this: `geth --datadir=$HOME/Library/Ethereum/rinkeby attach ipc:$HOME/Library/Ethereum/rinkeby/geth.ipc console`
-3. In the console, check the accounts: `eth.accounts`
-4. Create an account: `personal.newAccount()`. Type in (**and remember**) the passphrase. That will return the new account's address
-5. Check that the address is the primary address of the local [geth](https://github.com/ethereum/go-ethereum) instance: `eth.coinbase`
-6. Confirm the coinbase balance: `eth.getBalance(eth.coinbase)`
 
-No fund the coinbase by using the Rinkeby faucet to send funds via Twitter, Facebook or Google+. Below references Twitter:
+Now fund a [rinkeby](https://www.rinkeby.io) account and use that to migrate the smart contracts to the blockchain:
 
-1. Tweet your coinbase address
-2. Copy-paste the tweets URL into the [Rinkeby Faucet](https://www.rinkeby.io/#faucet) and request that it gives you Ether
-3. You can use [Etherscan](https://rinkeby.etherscan.io/) to check whether the test Ether has reached your address. If your local [geth](https://github.com/ethereum/go-ethereum) instance is up to date with the rest of the blockchain network, then your coinbase address will also have been updated: `eth.getBalance(eth.coinbase)`
+1. Load a [MetaMask](https://metamask.io/) enabled browser and ensure it is using [rinkeby](https://www.rinkeby.io)
+2. Tweet the [MetaMask](https://metamask.io/) account address
+3. Copy-paste the tweets URL into the [Rinkeby Faucet](https://www.rinkeby.io/#faucet) and request that it gives you Ether
+4. You can use [Etherscan](https://rinkeby.etherscan.io/) to check whether the test Ether has reached your address
+5. From [MetaMask](https://metamask.io/), export the private key of that account to a file called _newKey.prv_
+6. Run `geth --rinkeby account import newKey.prv`. Give it a passphrase.
+7. Startup a [geth](https://github.com/ethereum/go-ethereum) console: `geth --datadir=$HOME/Library/Ethereum/rinkeby attach ipc:$HOME/Library/Ethereum/rinkeby/geth.ipc console`
+8. `eth.accounts` will now also show the newly imported account
+9. `eth.getBalance("accountAddress")` should show the correct balance
+10. Unlock the imported account: `personal.unlockAccount("accountAddress")`
 
-Now, publish the contracts to [rinkeby](https://www.rinkeby.io):
+Now use [Truffle](https://github.com/trufflesuite/truffle) to publish the **Provinator** smart contracts to [rinkeby](https://www.rinkeby.io):
 
 1. Change to the **Provinator** repository's home directory.
-2. Edit the file [blockchain/truffle.js](/blockchain/truffle.js) so the default _from address_ is the coinbase address from above
-3. In the `geth` console, unlock the coinbase address `personal.unlockAccount(eth.coinbase)`. You will be prompted to supply the passphrase
-4. Change to the **Provinator** directory [blockchain/contracts](/blockchain/contracts), and type `truffle migrate --network rinkeby`.
+2. Edit the file [blockchain/truffle.js](/blockchain/truffle.js) so the default _from address_ is the address from above
+3. Change to the **Provinator** directory [blockchain/contracts](/blockchain/contracts), and type `truffle migrate --network rinkeby`
+4. Once `truffle` has returned, you can use [Etherscan](https://rinkeby.etherscan.io/) to check the contract addresses
 
 Create the web application:
 
@@ -147,11 +151,10 @@ Publish to [IPFS](https://ipfs.io/):
 
 1. Change to the **Provinator** directory [build](build), and type `ipfs add -r build`
 
-Now load **Provinator** into a [MetaMask](https://metamask.io/) enabled browser:
+Now load **Provinator**:
 
-1. Ensure [MetaMask](https://metamask.io/) is using [rinkeby](https://www.rinkeby.io)
-2. Set [MetaMask](https://metamask.io/) to use the coinbase address that we created above
-3. Note the address of the [build](build) directory generated by `ipfs add` above. For example, imagine the address was QmXtrx1KYiJHriwAKFZTQd1ZLeqKxJQfFkgus4VjmcDu7g, then the URL would be [https://gateway.ipfs.io/ipfs/QmdMTucY6CfpH8Yx5orCyq2enYgyKXiqo8hKimozNDwfp6](https://gateway.ipfs.io/ipfs/QmdMTucY6CfpH8Yx5orCyq2enYgyKXiqo8hKimozNDwfp6)
+1. In the [MetaMask](https://metamask.io/) enabled browser, which should still be pointing at [rinkeby](https://www.rinkeby.io)
+3. Note the address of the [build](build) directory generated by `ipfs add` above. We need to load that address. For example, imagine the address was QmXtrx1KYiJHriwAKFZTQd1ZLeqKxJQfFkgus4VjmcDu7g, then the URL would be [https://gateway.ipfs.io/ipfs/QmdMTucY6CfpH8Yx5orCyq2enYgyKXiqo8hKimozNDwfp6](https://gateway.ipfs.io/ipfs/QmdMTucY6CfpH8Yx5orCyq2enYgyKXiqo8hKimozNDwfp6)
 4. Use the links within **Provinator** to create a digital media resource and subsequently, get details about that resource
 
 ### Built Using...
