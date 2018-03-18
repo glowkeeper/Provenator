@@ -18,15 +18,16 @@ The instructions below allow you to use a demo of **Provenator**, which is runni
 
 ### Prerequisites
 
-To run the demo, you must first install the browser plugin [MetaMask](https://metamask.io/), which allows you to sign transactions on [Ethereum](https://www.ethereum.org/) networks. **Provenator** is running on the [rinkeby](https://www.rinkeby.io) test Ethereum network, so once you've installed [MetaMask](https://metamask.io/), please set it to use [rinkeby](https://www.rinkeby.io).
+The following prerequisites are required to run the demo:
 
-To add records to **Provenator**, you will need some test Ether. To get some, follow the instructions at the [rinkeby faucet](https://www.rinkeby.io/#faucet).
+- Install the browser plugin [MetaMask](https://metamask.io/), which allows you to sign transactions on [Ethereum](https://www.ethereum.org/) networks. **Provenator** is running on the [rinkeby](https://www.rinkeby.io) test Ethereum network, so once you've installed [MetaMask](https://metamask.io/), please set it to use [rinkeby](https://www.rinkeby.io).
+- To add records to **Provenator**, you will need some test Ether. To get some, follow the instructions at the [rinkeby faucet](https://www.rinkeby.io/#faucet).
 
 ### Running the Demo
 
 Load the live demo of **Provenator** by loading the following URL into your browser: [https://gateway.ipfs.io/ipfs/QmesSUrVz4d6LyVgKx58wWTUbMq2FmnWJ96LNNKhwj95n6/#/](https://gateway.ipfs.io/ipfs/QmesSUrVz4d6LyVgKx58wWTUbMq2FmnWJ96LNNKhwj95n6/#/). If you have not followed the prerequisites above (if you have not installed [MetaMask](https://metamask.io/) and set it to use [rinkeby](https://www.rinkeby.io)), then **Provenator** will not load.
 
-Getting records from **Provenator** is free, so if you do not yet have any test Ether, you can get retrieve a record of an image of an [evil cat](/images/evilCat.bmp), which has already been added to **Provenator**. To find that record, download the [evil cat](/images/evilCat.bmp), then click on the [Get Object](https://gateway.ipfs.io/ipfs/QmesSUrVz4d6LyVgKx58wWTUbMq2FmnWJ96LNNKhwj95n6/#/read) link within **Provenator**. Finally, 'BROWSE' for the image of the evil cat that you just downloaded - **Provenator** should find its hash on [rinkeby](https://www.rinkeby.io), and retrieve the associated metadata.
+Getting records from **Provenator** is free, so if you do not yet have any test Ether, you can get retrieve a record of an image of an [evil cat](images/evilCat.bmp), which has already been added to **Provenator**. To find that record, download the [evil cat](images/evilCat.bmp), then click on the [Get Object](https://gateway.ipfs.io/ipfs/QmesSUrVz4d6LyVgKx58wWTUbMq2FmnWJ96LNNKhwj95n6/#/read) link within **Provenator**. Finally, 'BROWSE' for the image of the evil cat that you just downloaded - **Provenator** should find its hash on [rinkeby](https://www.rinkeby.io), and retrieve the associated metadata.
 
 ### Demo Screenshot
 
@@ -52,7 +53,7 @@ Install the prerequisites listed below then follow the instructions to get the p
 
 ### Prerequisites
 
-After cloning this repository, download and install the following dependencies (if you have not already done so):
+Download and install the following dependencies (if you have not already done so):
 
 - [node](https://nodejs.org/en/)
 - [npm](https://www.npmjs.com/)
@@ -62,33 +63,40 @@ After cloning this repository, download and install the following dependencies (
 
 ### Install
 
-Follow the instructions in the [Ganache](https://github.com/trufflesuite/ganache) repository for downloading and installing Ganache; tl;dr - you need to clone the [Ganache](https://github.com/trufflesuite/ganache) repository, then run `npm install && npm start`.
+Install [Provenator](https://github.com/glowkeeper/Provenator):
 
-In the **Provinator** repository's home directory, type `npm install`. That should install everything listed in [package.json](/package.json), which form the components of the REACT-based web frontend to this application.
+1. Clone the [Provenator](https://github.com/glowkeeper/Provenator) repository
+2. In the **Provinator** repository's home directory, type `npm install`. That will install everything listed in [package.json](/package.json), which are the components of the [React](https://reactjs.org/) frontend to this application
 
-Now, publish the contracts to your local blockchain (via [Ganache](https://github.com/trufflesuite/ganache)):
+Publish the contracts to your local blockchain (via [Ganache](https://github.com/trufflesuite/ganache)):
 
-1. Change directory to the [Ganache](https://github.com/trufflesuite/ganache) repository.
-2. Start [Ganache](https://github.com/trufflesuite/ganache) by typing `npm start`.
-3. Ensure [Ganache](https://github.com/trufflesuite/ganache) is running on [http://localhost:8545](http://localhost:8545) (you may need to change its settings to do so).
-4. Change to the **Provinator** repository's home directory.
-5. Change to the **Provinator** directory [/blockchain/contracts](/blockchain/contracts), and type `truffle migrate`.
-6. Edit the **Provinator** source file [/app/utils/contractHandler.jsx](/app/utils/contractHandler.jsx) so that the four static variables `premisObjectContractAddress`, `premisEventContractAddress`, `premisAgentContractAddress` and `premisRightsContractAddress` contain the addresses generated by `truffle migrate`, above. e.g
+1. Clone the [Ganache](https://github.com/trufflesuite/ganache) repository
+2. Change to the home directory of the [Ganache](https://github.com/trufflesuite/ganache) repository
+3. Install the dependencies for [Ganache](https://github.com/trufflesuite/ganache) by running `npm install`
+4. Start [Ganache](https://github.com/trufflesuite/ganache) by typing `npm start`.
+5. Ensure [Ganache](https://github.com/trufflesuite/ganache) is running on [http://localhost:8545](http://localhost:8545) (you may need to change its settings to do so).
+6. Change to the **Provinator** directory [blockchain/contracts](/blockchain/contracts), and type `truffle migrate`.
 
+Create the web application:
+
+1. Edit the **Provinator** source file [app/utils/contractHandler.jsx](/app/utils/contractHandler.jsx) so that the four static variables `premisObjectContractAddress`, `premisEventContractAddress`, `premisAgentContractAddress` and `premisRightsContractAddress` contain the addresses generated by `truffle migrate`, above. e.g
 ````
 static premisObjectContractAddress = '0xb9bfd8ff77db391a28a45b6c1cb72b0028695219'
 static premisEventContractAddress = '0x12dba0b95a32239a5ba3e6bf7d05471d18f30d1f'
 static premisAgentContractAddress = '0xc3a182dd01e3d9ffdbe95ce568b9c8d936e2ca9d'
 static premisRightsContractAddress = '0xec6a5f11e7865aadc61f27faf8707795c1cda868'
 ````
+2. Change to the **Provinator** repository's home directory.
+3. Build the [React](https://reactjs.org/) frontend by typing `npm run watch`.
+4. Startup an instance of [http-server](https://www.npmjs.com/package/http-server) by typing `npm run start`.
 
-Now create the web application:
+Now load **Provinator**: into a [MetaMask](https://github.com/MetaMask/metamask-extension) enabled browser:
 
-1. Change to the **Provinator** repository's home directory.
-2. Build the REACT frontend by typing `npm run watch`.
-3. Startup an instance of [http-server](https://www.npmjs.com/package/http-server) by typing `npm run start`.
-
-Then fire up a browser, go to the URL [http://localhost:8081](http://localhost:8081), and use the links to create a digital media resource and subsequently, get details about that resource.
+1. Ensure [MetaMask](https://metamask.io/) is using [Localhost 8545](http://localhost:8545)
+2. Copy the key of a [Ganache](https://github.com/trufflesuite/ganache) account, and import that into [MetaMask](https://metamask.io/). That ensures we have some test Ether to submit transactions to the blockchain
+3. Disable any add blocker software in your [MetaMask](https://metamask.io/) enabled browser
+4. Run Provenator by loading the address [http://localhost:8081](http://localhost:8081)
+5. Use the links within **Provinator** to create a digital media resource and subsequently, get details about that resource
 
 ## Installing **Provenator** on Rinkeby
 
@@ -107,12 +115,12 @@ As well as the dependencies above, also install the following:
 
 ### Install
 
-There's a good [GitHub Gist](https://gist.github.com/cryptogoth/10a98e8078cfd69f7ca892ddbdcf26bc) that details how to get running on [rinkeby](https://www.rinkeby.io). Once you have geth installed, point the `geth` binary at rinkeby, startup a `geth` console to create an account and then send funds to that account:
+There's a good [GitHub Gist](https://gist.github.com/cryptogoth/10a98e8078cfd69f7ca892ddbdcf26bc) that details how to get running on [rinkeby](https://www.rinkeby.io). However, we're going to do things slightly differently, and use Once you have [geth](https://github.com/ethereum/go-ethereum) installed, point the `geth` binary at rinkeby, startup a `geth` console and create an account, then send funds to that account:
 
-1. Run `geth --rpc --syncmode "fast" --cache 2048`
+1. Run `geth --rinkeby --rpc --rpcapi db,eth,net,web3,personal --syncmode "fast" --cache 2048`
 2. Start a `geth` console by referencing the [rinkeby](https://www.rinkeby.io) directory and [geth](https://github.com/ethereum/go-ethereum)'s ipc file. On a MAC, the command looks like this: `geth --datadir=$HOME/Library/Ethereum/rinkeby attach ipc:$HOME/Library/Ethereum/rinkeby/geth.ipc console`
 3. In the console, check the accounts: `eth.accounts`
-4. Create an account: `personal.newAccount("123456789")`. That will return the new account's address
+4. Create an account: `personal.newAccount()`. Type in (**and remember**) the passphrase. That will return the new account's address
 5. Check that the address is the primary address of the local [geth](https://github.com/ethereum/go-ethereum) instance: `eth.coinbase`
 6. Confirm the coinbase balance: `eth.getBalance(eth.coinbase)`
 
@@ -125,20 +133,15 @@ No fund the coinbase by using the Rinkeby faucet to send funds via Twitter, Face
 Now, publish the contracts to [rinkeby](https://www.rinkeby.io):
 
 1. Change to the **Provinator** repository's home directory.
-5. Change to the **Provinator** directory [/blockchain/contracts](/blockchain/contracts), and type `truffle migrate`.
-6. Edit the **Provinator** source file [/app/utils/contractHandler.jsx](/app/utils/contractHandler.jsx) so that the four static variables `premisObjectContractAddress`, `premisEventContractAddress`, `premisAgentContractAddress` and `premisRightsContractAddress` contain the addresses generated by `truffle migrate`, above. e.g
-
-````
-static premisObjectContractAddress = '0xb9bfd8ff77db391a28a45b6c1cb72b0028695219'
-static premisEventContractAddress = '0x12dba0b95a32239a5ba3e6bf7d05471d18f30d1f'
-static premisAgentContractAddress = '0xc3a182dd01e3d9ffdbe95ce568b9c8d936e2ca9d'
-static premisRightsContractAddress = '0xec6a5f11e7865aadc61f27faf8707795c1cda868'
-````
+2. Edit the file [blockchain/truffle.js](/blockchain/truffle.js) so the default _from address_ is the coinbase address from above
+3. In the `geth` console, unlock the coinbase address `personal.unlockAccount(eth.coinbase)`. You will be prompted to supply the passphrase
+4. Change to the **Provinator** directory [blockchain/contracts](/blockchain/contracts), and type `truffle migrate --network rinkeby`.
 
 Create the web application:
 
-1. Change to the **Provinator** repository's home directory.
-2. Build the REACT frontend by typing `npm run prod`.
+1. Edit the **Provinator** source file [/app/utils/contractHandler.jsx](/app/utils/contractHandler.jsx) so that the four static variables `premisObjectContractAddress`, `premisEventContractAddress`, `premisAgentContractAddress` and `premisRightsContractAddress` contain the addresses generated by `truffle migrate --network rinkeby`
+2. Change to the **Provinator** repository's home directory.
+3. Build the [React](https://reactjs.org/) frontend by typing `npm run prod`.
 
 Publish to [IPFS](https://ipfs.io/):
 
@@ -159,7 +162,7 @@ Now load **Provinator** into a [MetaMask](https://metamask.io/) enabled browser:
 - [geth](https://github.com/ethereum/go-ethereum)
 - [Ganache](https://github.com/trufflesuite/ganache)
 - [Truffle](https://github.com/trufflesuite/truffle)
-- [REACT](https://reactjs.org/)
+- [React](https://reactjs.org/)
 
 ## Contributing
 
