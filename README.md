@@ -130,7 +130,7 @@ Now fund an account. Later, we will use that to publish the **Provinator** smart
 4. You can use [Etherscan](https://rinkeby.etherscan.io/) to check whether the test Ether has reached your address. As soon as it does, your [MetaMask](https://metamask.io/) account will also show the new balance
 5. From [MetaMask](https://metamask.io/), export the private key of the newly funded account to a file called _newKey.prv_
 6. Run `geth --rinkeby account import newKey.prv`. Give it a passphrase
-7. Startup a [geth](https://github.com/ethereum/go-ethereum) console: `geth --datadir=$HOME/Library/Ethereum/rinkeby attach ipc:$HOME/Library/Ethereum/rinkeby/geth.ipc console`
+7. Startup a [geth](https://github.com/ethereum/go-ethereum) console: `geth attach rpc:http://localhost:8545 console`
 8. `eth.accounts` will show the newly imported account (and any others that might have been created beforehand)
 9. Suppose the imported account has the address _0x9ef3569b5dc377eb66cd0895af35b36efec94a88_: `eth.getBalance("0x9ef3569b5dc377eb66cd0895af35b36efec94a88")` would show its balance
 10. Unlock the imported account: `personal.unlockAccount("0x9ef3569b5dc377eb66cd0895af35b36efec94a88")`
