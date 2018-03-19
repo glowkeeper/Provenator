@@ -110,7 +110,7 @@ In addition to the prerequisites for running **Provenator** locally, also instal
 
 Install the following:
 
-- [geth](https://github.com/ethereum/go-ethereum)
+- ([geth](https://github.com/ethereum/go-ethereum))
 - [IPFS](https://ipfs.io/)
 
 ### Install
