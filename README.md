@@ -119,7 +119,8 @@ There's a good [GitHub Gist](https://gist.github.com/cryptogoth/10a98e8078cfd69f
 
 Firstly, lets start [geth](https://github.com/ethereum/go-ethereum):
 
-1. Run `geth --rinkeby --rpc --rpcapi db,eth,net,web3,personal --syncmode "fast" --cache 2048`
+1. Close [Ganache](https://github.com/trufflesuite/ganache)
+2. Run `geth --rinkeby --rpc --rpcapi db,eth,net,web3,personal --syncmode "fast" --cache 2048`
 
 Now fund an account. Later, we will use that to publish the **Provinator** smart contracts to [rinkeby](https://www.rinkeby.io):
 
