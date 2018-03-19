@@ -14,7 +14,7 @@ class HomeStrings {
 
   static heading = 'Home'
 
-  static info = 'Use this application to record digital media objects and to get digital media object information.<br /><br />Read the [About](#/about) section to learn about the origins of **Provinator**.<br /><br />The [Overview](#/overview) section describes a scenario where Alice uses **Provenator** to store information about a photograph she has taken.<br /><br />The [Help](#/help) section gives brief instructions as to how to use **Provenator** - in essence, to store a record about a digital resource, click on the [Record Object](#/create) link and fill in all fields. To retrieve information, click on the [Get Object](#/read) link and upload a digital resource.'
+  static info = 'Use this application to record digital media objects and to get digital media object information.<br /><br />Read the [About](#/about) section to learn about the origins of **Provenator**.<br /><br />The [Overview](#/overview) section describes a scenario where Alice uses **Provenator** to store information about a photograph she has taken.<br /><br />The [Help](#/help) section gives brief instructions as to how to use **Provenator** - in essence, to store a record about a digital resource, click on the [Record Object](#/create) link and fill in all fields. To retrieve information, click on the [Get Object](#/read) link and upload a digital resource.'
 
 }
 
