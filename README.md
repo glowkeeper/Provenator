@@ -122,7 +122,7 @@ Firstly, lets start [geth](https://github.com/ethereum/go-ethereum):
 1. Close [Ganache](https://github.com/trufflesuite/ganache)
 2. Run `geth --rinkeby --rpc --rpcapi db,eth,net,web3,personal --syncmode "light" --cache 2048`
 
-Now fund an account. Later, we will use that to publish the **Provenator** smart contracts to [rinkeby](https://www.rinkeby.io):
+Now fund an account:
 
 1. Load a [MetaMask](https://metamask.io/) enabled browser and ensure it is using [rinkeby](https://www.rinkeby.io)
 2. Tweet the [MetaMask](https://metamask.io/) account address
