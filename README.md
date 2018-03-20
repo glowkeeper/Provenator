@@ -164,7 +164,7 @@ static premisRightsContractAddress = '0x33ccd7b78df9673a3d73a4ecca35eb5a95081c88
 2. Change to the **Provenator** repository's home directory
 3. Build the [React](https://reactjs.org/) frontend by typing `npm run prod`
 
-Publish to [IPFS](https://ipfs.io/):
+Publish to [IPFS](https://ipfs.io/). [IPFS](https://ipfs.io/) is a distributed filesystem (just as blockchains are a distributed database (with a few bells and whistles)), so by publishing the web front end there, **Provenator** also becomes wholly distributed:
 
 1. Initialise [IPFS](https://ipfs.io/): `ipfs init`
 2. Run the [IPFS](https://ipfs.io/) daemon: `ipfs daemon`
