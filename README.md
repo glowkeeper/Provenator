@@ -128,7 +128,7 @@ _If you do not wish to use your copy of **Provenator's** smart contracts, you ca
 
 <blockquote>
 
-  Start [geth](https://github.com/ethereum/go-ethereum) :<br/><br/>
+  Start [geth](https://github.com/ethereum/go-ethereum):<br/><br/>
 
   1. Close [Ganache](https://github.com/trufflesuite/ganache)<br/>
   2. Run `geth --rinkeby --rpc --rpcapi db,eth,net,web3,personal --syncmode "light" --cache 2048`<br/><br/>
