@@ -110,7 +110,7 @@ In addition to the prerequisites for running **Provenator** locally, also instal
 
 Install the following:
 
-- ([geth](https://github.com/ethereum/go-ethereum))
+- [geth](https://github.com/ethereum/go-ethereum)
 - [IPFS](https://ipfs.io/)
 
 ### Install
@@ -124,10 +124,10 @@ First fund an account:
 3. Copy-paste the tweet's URL into the [Rinkeby Faucet](https://www.rinkeby.io/#faucet) and request that it gives you Ether
 4. You can use [Etherscan](https://rinkeby.etherscan.io/) to check whether the test Ether has reached your address. As soon as it does, your [MetaMask](https://metamask.io/) account will also show the new balance
 
-_You can skip the following two sections (presented as blockquote's) and simply reference the smart contracts already deployed to [rinkeby](https://www.rinkeby.io)._
+_If you do not wish to use your copy of **Provenator's** smart contracts, you can skip the following blockquoted section and simply reference the smart contracts already deployed to [rinkeby](https://www.rinkeby.io)._
 
 <blockquote>
-  Start [geth](https://github.com/ethereum/go-ethereum):<br/><br/>
+  Start [geth](https://github.com/ethereum/go-ethereum) :<br/><br/>
 
   1. Close [Ganache](https://github.com/trufflesuite/ganache)<br/>
   2. Run `geth --rinkeby --rpc --rpcapi db,eth,net,web3,personal --syncmode "light" --cache 2048`<br/><br/>
