@@ -124,7 +124,7 @@ First fund an account:
 3. Copy-paste the tweet's URL into the [Rinkeby Faucet](https://www.rinkeby.io/#faucet) and request that it gives you Ether
 4. You can use [Etherscan](https://rinkeby.etherscan.io/) to check whether the test Ether has reached your address. As soon as it does, your [MetaMask](https://metamask.io/) account will also show the new balance
 
-_If you do not wish to use your copy of **Provenator's** smart contracts, you can skip the following blockquoted section and simply reference the smart contracts already deployed to [rinkeby](https://www.rinkeby.io)._
+_If you do not wish to use your copy of **Provenator's** smart contracts, you can skip the following blockquoted section and use the smart contracts already deployed to [rinkeby](https://www.rinkeby.io)._
 
 <blockquote>
 
