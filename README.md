@@ -127,6 +127,7 @@ First fund an account:
 _If you do not wish to use your copy of **Provenator's** smart contracts, you can skip the following blockquoted section and simply reference the smart contracts already deployed to [rinkeby](https://www.rinkeby.io)._
 
 <blockquote>
+
   Start [geth](https://github.com/ethereum/go-ethereum) :<br/><br/>
 
   1. Close [Ganache](https://github.com/trufflesuite/ganache)<br/>
@@ -148,6 +149,7 @@ _If you do not wish to use your copy of **Provenator's** smart contracts, you ca
   1. Edit the **Provenator** file [blockchain/truffle.js](/blockchain/truffle.js) so the default _from address_ is the [MetaMask](https://metamask.io/) address from above (0x9ef3569b5dc377eb66cd0895af35b36efec94a88)<br/>
   2. Change to the **Provenator** directory [blockchain/contracts](/blockchain/contracts), and type `truffle migrate --network rinkeby`<br/>
   3. Once `truffle` has returned, you can use [Etherscan](https://rinkeby.etherscan.io/) to check the contract addresses<br/>
+
 </blockquote>
 
 Create the web application:
