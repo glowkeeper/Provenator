@@ -30,7 +30,7 @@
     "react-select": "^1.2.1",
     "react-styled-select": "^1.0.0",
     "unist-util-is": "^2.1.1",
-    "web3": "^1.0.0-beta.34"
+    "web3": "^0.20.6"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

@@ -1,9 +1,14 @@
 import React from 'react'
 //import { HashRouter, Route, Link } from 'react-router-dom'
 import {Route, Link} from 'react-router-dom'
+
+import { Icon, Layout, Menu, Breadcrumb, Row, Col } from 'antd'
+
 import Web3Handler from '../utils/web3Handler'
 import ContractHandler from '../utils/contractHandler'
-import {AppStrings} from '../helpers/outputStrings'
+import {AppStrings, HomeStrings, AboutStrings, OverviewStrings, HelpStrings} from '../helpers/outputStrings'
+import {AppURLS} from '../helpers/urls'
+import {AppPaths} from '../helpers/paths'
 import {AppHeading, IOTagline} from '../components/io'
 
 import Home from './home'
@@ -25,7 +30,7 @@ class App extends React.Component {
 
   render () {
 
-    const { SubMenu } = Menu;
+    const { SubMenu } = Menu
     const { Header, Content, Sider, Footer } = Layout
 
     return (
@@ -33,7 +38,6 @@ class App extends React.Component {
         <Layout>
           <Header>
             <Row>
-              <Col span={2}><img src={logo} /></Col>
               <Col span={11}>
 
                 <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['home']} style={{ lineHeight: '64px' }} >
@@ -66,14 +70,14 @@ class App extends React.Component {
                   <Link to={AppPaths.home}/>
                 </Menu.Item>
 
-                <SubMenu title={<span><Icon type={AccountStrings.createIcon}/><span>{AppStrings.accounts}</span></span>}>
+                <SubMenu title={<span><Icon type={HomeStrings.homeIcon}/><span>{AppStrings.accounts}</span></span>}>
                     <Menu.Item key={AppStrings.create}>
                       <Icon type={HomeStrings.homeIcon}/><span>{AppStrings.create}</span>
                       <Link to={AppPaths.create}/>
                   </Menu.Item>
                 </SubMenu>
 
-                <SubMenu title={<span><Icon type={AssetStrings.assetIcon} /><span>{AppStrings.assets}</span></span>}>
+                <SubMenu title={<span><Icon type={HomeStrings.homeIcon} /><span>{AppStrings.assets}</span></span>}>
                   <Menu.Item key={AppStrings.read}>
                       <Icon type={HomeStrings.homeIcon}/><span>{AppStrings.read}</span>
                       <Link to={AppPaths.read}/>

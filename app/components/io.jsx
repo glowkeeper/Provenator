@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import { Button, Tooltip, Input, TextArea, Card, Select, Radio } from 'antd';
+import { Button, Tooltip, Input, Card, Select, Radio } from 'antd';
 import ReactMarkdown from 'react-markdown'
 
 class IOAppHeading extends React.Component {
@@ -189,6 +189,9 @@ class IOTextAreaInput extends React.Component {
   }
 
   render () {
+
+    const { TextArea } = Input
+
     return (
       <div>
         <p>{this.props.label}
