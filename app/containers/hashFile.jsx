@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { keccak256 } from 'js-sha3';
 import File from '../components/file'
-import {PremisTextOutput} from '../components/premis'
-import {HashStrings} from '../utils/outputStrings'
+import {IOTextOutput} from '../components/io'
+import {HashStrings} from '../helpers/outputStrings'
 
 class HashFile extends React.Component {
 
@@ -33,8 +33,8 @@ class HashFile extends React.Component {
     return (
       <div>
         <File heading={HashStrings.heading} parentFunc={this._handleSubmitFile.bind(this)} tip={HashStrings.browseFileTip} />
-        <PremisTextOutput label={HashStrings.fileLabel} text={this.state.fileName} />
-        <PremisTextOutput label={HashStrings.hashLabel} text={this.state.hash} />
+        <IOTextOutput label={HashStrings.fileLabel} text={this.state.fileName} />
+        <IOTextOutput label={HashStrings.hashLabel} text={this.state.hash} />
       </div>
     )
   }

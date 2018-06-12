@@ -1,7 +1,7 @@
 import Web3Handler from './web3Handler'
 import ContractHandler from '../utils/contractHandler'
 
-import {ObjectReaderStrings} from '../utils/outputStrings'
+import {ObjectReaderStrings} from '../helpers/outputStrings'
 
 class ContractReader {
 

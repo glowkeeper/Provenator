@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import PremisAgentHandler from '../utils/premisAgentHandler'
-import {PremisHeading, PremisTextInput, PremisSelect} from '../components/premis'
-import {PremisAgentStrings} from '../utils/outputStrings'
+import {PremisAgentStrings} from '../helpers/outputStrings'
+import {IOHeading, IOTextInput, IOSelect} from '../components/io'
 
 class SetPremisAgent extends React.Component {
 
@@ -35,9 +35,9 @@ class SetPremisAgent extends React.Component {
   render () {
     return (
       <div>
-        <PremisHeading heading={PremisAgentStrings.heading} />
-        <PremisTextInput parentFunc={this._handleName.bind(this)} placeHolder={PremisAgentStrings.namePlaceHolder} label={PremisAgentStrings.nameLabel} tip={PremisAgentStrings.nameTip} />
-        <PremisSelect parentFunc={this._handleType.bind(this)} placeHolder={PremisAgentStrings.typePlaceHolder} tip={PremisAgentStrings.typeTip} selections={this.state.typeSelections} selection={this.state.typeId} />
+        <IOHeading heading={PremisAgentStrings.heading} />
+        <IOTextInput parentFunc={this._handleName.bind(this)} placeHolder={PremisAgentStrings.namePlaceHolder} label={PremisAgentStrings.nameLabel} tip={PremisAgentStrings.nameTip} />
+        <IOSelect parentFunc={this._handleType.bind(this)} placeHolder={PremisAgentStrings.typePlaceHolder} tip={PremisAgentStrings.typeTip} selections={this.state.typeSelections} selection={this.state.typeId} />
       </div>
     )
   }

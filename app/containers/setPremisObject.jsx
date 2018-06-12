@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import PremisObjectHandler from '../utils/premisObjectHandler'
-import {PremisHeading, PremisTextInput, PremisTextAreaInput, PremisSelect, PremisSelectPlus} from '../components/premis'
-import {PremisObjectStrings} from '../utils/outputStrings'
+// import {PremisHeading, PremisTextInput, PremisTextAreaInput, PremisSelect, PremisSelectPlus} from '../components/premis'
+import {PremisObjectStrings} from '../helpers/outputStrings'
+import {IOHeading, IOTextInput, IOTextAreaInput, IOSelect} from '../components/io'
 
 class SetPremisObject extends React.Component {
 
@@ -54,11 +55,11 @@ class SetPremisObject extends React.Component {
   render () {
     return (
       <div>
-        <PremisHeading heading={PremisObjectStrings.heading} />
-        <PremisSelect parentFunc={this._handleCategory.bind(this)} placeHolder={PremisObjectStrings.categoryPlaceHolder} tip={PremisObjectStrings.categoryTip} selections={this.state.categorySelections} selection={this.state.categoryId} />
-        <PremisTextInput parentFunc={this._handleFormat.bind(this)} placeHolder={PremisObjectStrings.formatPlaceHolder} label={PremisObjectStrings.formatLabel} tip={PremisObjectStrings.formatTip} />
-        <PremisSelectPlus parentFunc={this._handlePropertyType.bind(this)} placeHolder={PremisObjectStrings.propertyTypePlaceHolder} tip={PremisObjectStrings.propertyTypeTip} selections={this.state.propertyTypeSelections} selection={this.state.propertyTypeId} />
-        <PremisTextAreaInput parentFunc={this._handlePropertyValue.bind(this)} placeHolder={PremisObjectStrings.propertyValuePlaceHolder} label={PremisObjectStrings.propertyValueLabel} tip={PremisObjectStrings.propertyValueTip} />
+        <IOHeading heading={PremisObjectStrings.heading} />
+        <IOSelect parentFunc={this._handleCategory.bind(this)} placeHolder={PremisObjectStrings.categoryPlaceHolder} tip={PremisObjectStrings.categoryTip} selections={this.state.categorySelections} selection={this.state.categoryId} />
+        <IOTextInput parentFunc={this._handleFormat.bind(this)} placeHolder={PremisObjectStrings.formatPlaceHolder} label={PremisObjectStrings.formatLabel} tip={PremisObjectStrings.formatTip} />
+        <IOSelect parentFunc={this._handlePropertyType.bind(this)} placeHolder={PremisObjectStrings.propertyTypePlaceHolder} tip={PremisObjectStrings.propertyTypeTip} selections={this.state.propertyTypeSelections} selection={this.state.propertyTypeId} />
+        <IOTextAreaInput parentFunc={this._handlePropertyValue.bind(this)} placeHolder={PremisObjectStrings.propertyValuePlaceHolder} label={PremisObjectStrings.propertyValueLabel} tip={PremisObjectStrings.propertyValueTip} />
       </div>
     )
   }

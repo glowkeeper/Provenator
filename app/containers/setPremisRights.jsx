@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import PremisRightsHandler from '../utils/premisRightsHandler'
-import {PremisHeading, PremisTextInput, PremisTextAreaInput, PremisSelect} from '../components/premis'
-import {PremisRightsStrings} from '../utils/outputStrings'
+import {PremisRightsStrings} from '../helpers/outputStrings'
+import {IOHeading, IOTextInput, IOTextAreaInput, IOSelect} from '../components/io'
 
 class SetPremisRights extends React.Component {
 
@@ -89,7 +89,7 @@ class SetPremisRights extends React.Component {
         <PremisTextInput parentFunc={this._handleStatus.bind(this)} placeHolder={PremisRightsStrings.statusPlaceHolder} label={PremisRightsStrings.statusLabel} tip={PremisRightsStrings.statusTip} />
         <PremisSelect parentFunc={this._handleCountryCode.bind(this)} placeHolder={PremisRightsStrings.countryCodePlaceHolder} tip={PremisRightsStrings.countryCodeTip} selections={this.state.countryCodeSelections} selection={this.state.countryCodeId} />
         <PremisTextInput parentFunc={this._handleDeterminationDate.bind(this)} placeHolder={PremisRightsStrings.determinationDatePlaceHolder} label={PremisRightsStrings.determinationDateLabel} tip={PremisRightsStrings.determinationDateTip} />
-        <PremisTextAreaInput parentFunc={this._handleNote.bind(this)} placeHolder={PremisRightsStrings.notePlaceHolder} label={PremisRightsStrings.noteLabel} tip={PremisRightsStrings.noteTip} />
+        <IOTextAreaInput parentFunc={this._handleNote.bind(this)} placeHolder={PremisRightsStrings.notePlaceHolder} label={PremisRightsStrings.noteLabel} tip={PremisRightsStrings.noteTip} />
         <PremisSelect parentFunc={this._handleRightsGrantedAct.bind(this)} placeHolder={PremisRightsStrings.actPlaceHolder} tip={PremisRightsStrings.actTip} selections={this.state.actSelections} selection={this.state.actId} />
         <PremisSelect parentFunc={this._handleRightsGrantedRestriction.bind(this)} placeHolder={PremisRightsStrings.restrictionPlaceHolder} tip={PremisRightsStrings.restrictionTip} selections={this.state.restrictionSelections} selection={this.state.restrictionId} />
       </div>

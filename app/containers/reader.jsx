@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import HashFile from './hashFile'
 import ObjectReader from './objectReader'
-import {ReaderStrings} from '../utils/outputStrings'
-import {PremisPlainTextOutput} from '../components/premis'
+import {ReaderStrings} from '../helpers/outputStrings'
+import {IOPlainTextOutput} from '../components/io'
 
 class Reader extends React.Component {
 
@@ -30,7 +30,7 @@ class Reader extends React.Component {
     return (
       <div>
         <div className="info">
-          <PremisPlainTextOutput text={this.state.info} />
+          <IOPlainTextOutput text={this.state.info} />
           <hr />
         </div>
         <div>
@@ -40,7 +40,7 @@ class Reader extends React.Component {
           <hr />
         </div>
         <div className="info">
-          <PremisPlainTextOutput text={this.state.info} />
+          <IOPlainTextOutput text={this.state.info} />
           <hr />
         </div>
       </div>

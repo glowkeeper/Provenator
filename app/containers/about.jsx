@@ -1,7 +1,6 @@
 import React from 'react'
-import {AboutStrings} from '../utils/outputStrings'
-import {PremisHeading} from '../components/premis'
-import {PremisPlainTextOutput} from '../components/premis'
+import {AboutStrings} from '../helpers/outputStrings'
+import {IOHeading, IOPlainTextOutput} from '../components/io'
 
 class About extends React.Component {
 
@@ -12,8 +11,8 @@ class About extends React.Component {
   render () {
     return (
       <div>
-        <PremisHeading heading={AboutStrings.heading} />
-        <PremisPlainTextOutput text={AboutStrings.info} />
+        <IOHeading heading={AboutStrings.heading} />
+        <IOPlainTextOutput text={AboutStrings.info} />
         <hr />
       </div>
     )

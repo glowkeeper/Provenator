@@ -1,12 +1,21 @@
 const path = require('path')
+const fs  = require('fs');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const cleanWebpackPlugin = require('clean-webpack-plugin');
+const lessToJs = require('less-vars-to-js');
+const themeVariables = lessToJs(fs.readFileSync(path.join(__dirname, './app/stylesheets/themeVariables.less'), 'utf8'));
+themeVariables["@icon-url"] = 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:regular,bold,italic&subset=latin,latin-ext';
 
 var config = {
+  node: {
+    console: true,
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty'
+  },
   entry: {
     app: [
       'babel-polyfill',
-      'react-hot-loader/patch',
       './app/index.jsx'
     ]
   },
@@ -27,19 +36,33 @@ var config = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.less$/,
         use: [
-          "style-loader",
           {
-            loader: "css-loader",
-            options: {
-              modules: true, // default is false
-              sourceMap: false,
-              importLoaders: 1,
-              localIdentName: "[name]--[local]--[hash:base64:8]"
-            }
+            loader: "style-loader" // creates style nodes from JS strings
           },
-          "postcss-loader"
+          {
+            loader: "css-loader" // translates CSS into CommonJS
+          },
+          {
+            loader: "less-loader", // compiles Less to CSS
+            options: {
+              javascriptEnabled: true,
+              modifyVars: themeVariables
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(jp(e*)g|png|gif|svg|pdf|ico)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+              name: '[sha512:hash:base64:7].[ext]'
+            }
+          }
         ]
       },
       {

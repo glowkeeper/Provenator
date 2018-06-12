@@ -2,11 +2,11 @@ class AppStrings {
 
   static heading = 'Provenator (alpha)'
   static home = 'Home'
+  static create = 'Create Record'
+  static read = 'Fetch Record'
   static about = 'About'
   static overview = 'Overview'
   static help = 'Help'
-  static create = 'Record Object'
-  static read = 'Get Object'
   static events = 'Events'
 }
 

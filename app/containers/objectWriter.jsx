@@ -9,8 +9,9 @@ import PremisObjectHandler from '../utils/premisObjectHandler'
 import PremisRightsHandler from '../utils/premisRightsHandler'
 import PremisEventHandler from '../utils/premisEventHandler'
 import PremisAgentHandler from '../utils/premisAgentHandler'
-import {ObjectWriterStrings} from '../utils/outputStrings'
-import {FormSubmit} from '../components/premis'
+import {ObjectWriterStrings} from '../helpers/outputStrings'
+// import {FormSubmit} from '../components/premis'
+import {IOButtonLoad} from '../components/io'
 
 class ObjectWriter extends React.Component {
 
@@ -123,13 +124,11 @@ class ObjectWriter extends React.Component {
       <div>
         <SetPremisObject objectHandler={this.premisObjectHandler} contractWriter={this.contractWriter} />
         <hr />
-        <SetPremisEvent eventHandler={this.premisEventHandler} contractWriter={this.contractWriter} />
-        <hr />
         <SetPremisAgent agentHandler={this.premisAgentHandler} />
         <hr />
         <SetPremisRights rightsHandler={this.premisRightsHandler} />
         <hr />
-        <FormSubmit parentFunc={this.handleSubmit.bind(this)} label={ObjectWriterStrings.submitObjectLabel} tip={ObjectWriterStrings.submitObjectTip} />
+        <IOButtonLoad parentFunc={this.handleSubmit.bind(this)} label={ObjectWriterStrings.submitObjectLabel} tip={ObjectWriterStrings.submitObjectTip} />
       </div>
     )
   }
@@ -141,5 +140,10 @@ ObjectWriter.propTypes = {
   contracts: PropTypes.object,
   web3: PropTypes.object
 }
+
+/*
+<SetPremisEvent eventHandler={this.premisEventHandler} contractWriter={this.contractWriter} />
+<hr />
+*/
 
 export default ObjectWriter

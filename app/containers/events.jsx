@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Logger from '../components/logger'
-import {PremisEventStrings} from '../utils/outputStrings'
-import {PremisPlainTextOutput} from '../components/premis'
+import {IOLogger} from '../components/io'
+import {PremisEventStrings} from '../helpers/outputStrings'
+import {IOPlainTextOutput} from '../components/io'
 
 class Events extends React.Component {
 
@@ -69,7 +69,7 @@ class Events extends React.Component {
     return (
       <div>
         <div className="info">
-          <PremisPlainTextOutput text={PremisEventStrings.info} />
+          <IOPlainTextOutput text={PremisEventStrings.info} />
           <hr />
         </div>
         <div>

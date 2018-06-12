@@ -1,12 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-
 import FileReaderInput from 'react-file-reader-input'
-import { rTComponents } from './theme'
-import { Button } from 'react-toolbox/lib/button'
-import MdFileUpload from 'react-icons/lib/md/file-upload'
-import { Tooltip } from 'react-tippy'
 
 class File extends React.Component {
 

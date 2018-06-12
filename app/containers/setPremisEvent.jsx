@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import PremisEventHandler from '../utils/premisEventHandler'
-import {PremisHeading, PremisTextInput, PremisTextOutput, PremisSelectPlus} from '../components/premis'
-import {PremisEventStrings} from '../utils/outputStrings'
+//import {PremisHeading, PremisTextInput, PremisTextOutput, PremisSelectPlus} from '../components/premis'
+import {PremisEventStrings} from '../helpers/outputStrings'
+import {IOHeading, IOTextInput, IOSelect} from '../components/io'
 
 class SetPremisEvent extends React.Component {
 
@@ -36,9 +37,9 @@ class SetPremisEvent extends React.Component {
   render () {
     return (
       <div>
-        <PremisHeading heading={PremisEventStrings.heading} />
-        <PremisSelectPlus parentFunc={this._handleEvent.bind(this)} placeHolder={PremisEventStrings.eventPlaceHolder} tip={PremisEventStrings.eventTip} selections={this.state.eventSelections} selection={this.state.eventId} />
-        <PremisTextInput parentFunc={this._handleEventDate.bind(this)} placeHolder={PremisEventStrings.datePlaceHolder} label={PremisEventStrings.dateLabel} tip={PremisEventStrings.dateTip} />
+        <IOHeading heading={PremisEventStrings.heading} />
+        <IOSelect parentFunc={this._handleEvent.bind(this)} placeHolder={PremisEventStrings.eventPlaceHolder} tip={PremisEventStrings.eventTip} selections={this.state.eventSelections} selection={this.state.eventId} />
+        <IOTextInput parentFunc={this._handleEventDate.bind(this)} placeHolder={PremisEventStrings.datePlaceHolder} label={PremisEventStrings.dateLabel} tip={PremisEventStrings.dateTip} />
       </div>
     )
   }
