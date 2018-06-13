@@ -1,7 +1,5 @@
 import React from 'react'
-//import { HashRouter, Route, Link } from 'react-router-dom'
 import {Route, Link} from 'react-router-dom'
-
 import { Icon, Layout, Menu, Breadcrumb, Row, Col } from 'antd'
 
 import Web3Handler from '../utils/web3Handler'

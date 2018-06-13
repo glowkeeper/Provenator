@@ -1,16 +1,24 @@
 {
   "presets" : [
-      "es2015",
-      [
-        "env", {
-          "targets": {
-            "browsers": ["last 2 versions"]
-          },
-          "modules": false
-        }
-      ],
-      "stage-0",
-      "react"
+    "es2015",
+    [
+      "env", {
+        "targets": {
+          "browsers": ["last 2 versions"]
+        },
+        "modules": false
+      }
+    ],
+    "stage-0",
+    "react"
   ],
-  "plugins": ["transform-class-properties", ["import", { "libraryName": "antd", "style": true }]]
+  "plugins": [
+    "transform-class-properties",
+    [
+      "import", {
+        "libraryName": "antd",
+        "style": true
+      }
+    ]
+  ]
 }
