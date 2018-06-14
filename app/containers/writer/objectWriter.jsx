@@ -1,17 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ContractWriter from '../utils/contractWriter'
+
+import ContractWriter from '../../utils/contractWriter'
+import PremisObjectHandler from '../../utils/premisObjectHandler'
+import PremisRightsHandler from '../../utils/premisRightsHandler'
+import PremisEventHandler from '../../utils/premisEventHandler'
+import PremisAgentHandler from '../../utils/premisAgentHandler'
+
 import SetPremisObject from './setPremisObject'
 import SetPremisAgent from './setPremisAgent'
 import SetPremisRights from './setPremisRights'
 import SetPremisEvent from './setPremisEvent'
-import PremisObjectHandler from '../utils/premisObjectHandler'
-import PremisRightsHandler from '../utils/premisRightsHandler'
-import PremisEventHandler from '../utils/premisEventHandler'
-import PremisAgentHandler from '../utils/premisAgentHandler'
-import {ObjectWriterStrings} from '../helpers/outputStrings'
-// import {FormSubmit} from '../components/premis'
-import {IOButtonLoad} from '../components/io'
+
+import {ObjectWriterStrings} from '../../helpers/outputStrings'
+import {IOButtonLoad} from '../../components/io'
 
 class ObjectWriter extends React.Component {
 

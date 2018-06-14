@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import PremisRightsHandler from '../utils/premisRightsHandler'
-import {PremisRightsStrings} from '../helpers/outputStrings'
-import {IOHeading, IOTextInput, IOTextAreaInput, IOSelect} from '../components/io'
+import PremisRightsHandler from '../../utils/premisRightsHandler'
+import {PremisRightsStrings} from '../../helpers/outputStrings'
+import {IOHeading, IOTextInput, IOTextAreaInput, IOSelect} from '../../components/io'
 
 class SetPremisRights extends React.Component {
 
@@ -84,14 +84,14 @@ class SetPremisRights extends React.Component {
   render () {
     return (
       <div>
-        <PremisHeading heading={PremisRightsStrings.heading} />
-        <PremisSelect parentFunc={this._handleBasis.bind(this)} placeHolder={PremisRightsStrings.basisPlaceHolder} tip={PremisRightsStrings.basisTip} selections={this.state.basisSelections} selection={this.state.basisId} />
-        <PremisTextInput parentFunc={this._handleStatus.bind(this)} placeHolder={PremisRightsStrings.statusPlaceHolder} label={PremisRightsStrings.statusLabel} tip={PremisRightsStrings.statusTip} />
-        <PremisSelect parentFunc={this._handleCountryCode.bind(this)} placeHolder={PremisRightsStrings.countryCodePlaceHolder} tip={PremisRightsStrings.countryCodeTip} selections={this.state.countryCodeSelections} selection={this.state.countryCodeId} />
-        <PremisTextInput parentFunc={this._handleDeterminationDate.bind(this)} placeHolder={PremisRightsStrings.determinationDatePlaceHolder} label={PremisRightsStrings.determinationDateLabel} tip={PremisRightsStrings.determinationDateTip} />
+        <IOHeading heading={PremisRightsStrings.heading} />
+        <IOSelect parentFunc={this._handleBasis.bind(this)} placeHolder={PremisRightsStrings.basisPlaceHolder} tip={PremisRightsStrings.basisTip} selections={this.state.basisSelections} selection={this.state.basisId} />
+        <IOTextInput parentFunc={this._handleStatus.bind(this)} placeHolder={PremisRightsStrings.statusPlaceHolder} label={PremisRightsStrings.statusLabel} tip={PremisRightsStrings.statusTip} />
+        <IOSelect parentFunc={this._handleCountryCode.bind(this)} placeHolder={PremisRightsStrings.countryCodePlaceHolder} tip={PremisRightsStrings.countryCodeTip} selections={this.state.countryCodeSelections} selection={this.state.countryCodeId} />
+        <IOTextInput parentFunc={this._handleDeterminationDate.bind(this)} placeHolder={PremisRightsStrings.determinationDatePlaceHolder} label={PremisRightsStrings.determinationDateLabel} tip={PremisRightsStrings.determinationDateTip} />
         <IOTextAreaInput parentFunc={this._handleNote.bind(this)} placeHolder={PremisRightsStrings.notePlaceHolder} label={PremisRightsStrings.noteLabel} tip={PremisRightsStrings.noteTip} />
-        <PremisSelect parentFunc={this._handleRightsGrantedAct.bind(this)} placeHolder={PremisRightsStrings.actPlaceHolder} tip={PremisRightsStrings.actTip} selections={this.state.actSelections} selection={this.state.actId} />
-        <PremisSelect parentFunc={this._handleRightsGrantedRestriction.bind(this)} placeHolder={PremisRightsStrings.restrictionPlaceHolder} tip={PremisRightsStrings.restrictionTip} selections={this.state.restrictionSelections} selection={this.state.restrictionId} />
+        <IOSelect parentFunc={this._handleRightsGrantedAct.bind(this)} placeHolder={PremisRightsStrings.actPlaceHolder} tip={PremisRightsStrings.actTip} selections={this.state.actSelections} selection={this.state.actId} />
+        <IOSelect parentFunc={this._handleRightsGrantedRestriction.bind(this)} placeHolder={PremisRightsStrings.restrictionPlaceHolder} tip={PremisRightsStrings.restrictionTip} selections={this.state.restrictionSelections} selection={this.state.restrictionId} />
       </div>
     )
   }

@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import HashFile from './hashFile'
+import HashFile from '../helpers/hashFile'
 import ObjectWriter from './objectWriter'
-import {WriterStrings} from '../helpers/outputStrings'
-import {IOPlainTextOutput} from '../components/io'
+import {WriterStrings} from '../../helpers/outputStrings'
+import {IOPlainTextOutput} from '../../components/io'
 
 class Writer extends React.Component {
 
@@ -33,7 +33,7 @@ class Writer extends React.Component {
     return (
       <div>
         <div className="info">
-          <PremisPlainTextOutput text={this.state.info} />
+          <IOPlainTextOutput text={this.state.info} />
           <hr />
         </div>
         <div>

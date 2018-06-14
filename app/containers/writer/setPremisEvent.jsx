@@ -1,9 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import PremisEventHandler from '../utils/premisEventHandler'
-//import {PremisHeading, PremisTextInput, PremisTextOutput, PremisSelectPlus} from '../components/premis'
-import {PremisEventStrings} from '../helpers/outputStrings'
-import {IOHeading, IOTextInput, IOSelect} from '../components/io'
+import PremisEventHandler from '../../utils/premisEventHandler'
+import {PremisEventStrings} from '../../helpers/outputStrings'
+import {IOHeading, IOTextInput, IOSelect} from '../../components/io'
 
 class SetPremisEvent extends React.Component {
 

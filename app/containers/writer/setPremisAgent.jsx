@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import PremisAgentHandler from '../utils/premisAgentHandler'
-import {PremisAgentStrings} from '../helpers/outputStrings'
-import {IOHeading, IOTextInput, IOSelect} from '../components/io'
+import PremisAgentHandler from '../../utils/premisAgentHandler'
+import {PremisAgentStrings} from '../../helpers/outputStrings'
+import {IOHeading, IOTextInput, IOSelect} from '../../components/io'
 
 class SetPremisAgent extends React.Component {
 

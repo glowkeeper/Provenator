@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {IOLogger} from '../components/io'
-import {PremisEventStrings} from '../helpers/outputStrings'
-import {IOPlainTextOutput} from '../components/io'
+import {PremisEventStrings} from '../../helpers/outputStrings'
+import {IOLogger, IOPlainTextOutput} from '../../components/io'
 
 class Events extends React.Component {
 

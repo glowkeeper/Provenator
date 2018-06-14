@@ -1,9 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import PremisObjectHandler from '../utils/premisObjectHandler'
-// import {PremisHeading, PremisTextInput, PremisTextAreaInput, PremisSelect, PremisSelectPlus} from '../components/premis'
-import {PremisObjectStrings} from '../helpers/outputStrings'
-import {IOHeading, IOTextInput, IOTextAreaInput, IOSelect} from '../components/io'
+import PremisObjectHandler from '../../utils/premisObjectHandler'
+import {PremisObjectStrings} from '../../helpers/outputStrings'
+import {IOHeading, IOTextInput, IOTextAreaInput, IOSelect} from '../../components/io'
 
 class SetPremisObject extends React.Component {
 

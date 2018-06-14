@@ -1,6 +1,6 @@
 import React from 'react'
-import {HomeStrings} from '../helpers/outputStrings'
-import {IOHeading, IOPlainTextOutput} from '../components/io'
+import {HomeStrings} from '../../helpers/outputStrings'
+import {IOHeading, IOPlainTextOutput} from '../../components/io'
 
 class Home extends React.Component {
 

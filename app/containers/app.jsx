@@ -9,13 +9,13 @@ import {AppURLS} from '../helpers/urls'
 import {AppPaths} from '../helpers/paths'
 import {AppHeading, IOTagline} from '../components/io'
 
-import Home from './home'
-import About from './about'
-import Overview from './overview'
-import Help from './help'
-import Writer from './writer'
-import Reader from './reader'
-import Events from './events'
+import Events from './helpers/events'
+import Home from './helpers/home'
+import About from './helpers/about'
+import Overview from './helpers/overview'
+import Help from './helpers/help'
+import Writer from './writer/writer'
+import Reader from './reader/reader'
 
 class App extends React.Component {
 
@@ -63,6 +63,7 @@ class App extends React.Component {
           </Header>
         </Layout>
         <Layout>
+
           <Sider width={200}>
             <Menu mode="inline" defaultSelectedKeys={['1']} defaultOpenKeys={['Home']} style={{ height: '100%', borderRight: 0 }} >
               <Menu.Item key={AppStrings.create}>

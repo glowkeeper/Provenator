@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { keccak256 } from 'js-sha3';
-import File from '../components/file'
-import {IOTextOutput} from '../components/io'
-import {HashStrings} from '../helpers/outputStrings'
+import { keccak256 } from 'js-sha3'
+import File from '../../components/file'
+import {IOTextOutput} from '../../components/io'
+import {HashStrings} from '../../helpers/outputStrings'
 
 class HashFile extends React.Component {
 

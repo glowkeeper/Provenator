@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ContractReader from '../utils/contractReader'
-import {ObjectReaderStrings} from '../helpers/outputStrings'
-import {IOLogger} from '../components/io'
+import ContractReader from '../../utils/contractReader'
+import {ObjectReaderStrings} from '../../helpers/outputStrings'
+import {IOLogger} from '../../components/io'
 
 class ObjectReader extends React.Component {
 

@@ -1,6 +1,6 @@
 import React from 'react'
-import {OverviewStrings} from '../helpers/outputStrings'
-import {IOHeading, IOPlainTextOutput} from '../components/io'
+import {OverviewStrings} from '../../helpers/outputStrings'
+import {IOHeading, IOPlainTextOutput} from '../../components/io'
 
 class Overview extends React.Component {
 

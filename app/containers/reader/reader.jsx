@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import HashFile from './hashFile'
+import HashFile from '../helpers/hashFile'
 import ObjectReader from './objectReader'
-import {ReaderStrings} from '../helpers/outputStrings'
-import {IOPlainTextOutput} from '../components/io'
+import {ReaderStrings} from '../../helpers/outputStrings'
+import {IOPlainTextOutput} from '../../components/io'
 
 class Reader extends React.Component {
 
