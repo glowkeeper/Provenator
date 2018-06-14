@@ -8,6 +8,9 @@ class AppStrings {
   static overview = 'Overview'
   static help = 'Help'
   static events = 'Events'
+
+  static copyright = 'University of Sussex © 2018. Created by Steven Huckle'
+  static tagLine = 'Proving the Origins of Digital Media'
 }
 
 class HomeStrings {
