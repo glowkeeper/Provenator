@@ -13,7 +13,6 @@ class Home extends React.Component {
       <div>
         <IOHeading heading={HomeStrings.heading} />
         <IOPlainTextOutput text={HomeStrings.info} />
-        <hr />
       </div>
     )
   }

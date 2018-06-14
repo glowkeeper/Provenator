@@ -13,7 +13,6 @@ class Overview extends React.Component {
       <div>
         <IOHeading heading={OverviewStrings.heading} />
         <IOPlainTextOutput text={OverviewStrings.info} />
-        <hr />
       </div>
     )
   }

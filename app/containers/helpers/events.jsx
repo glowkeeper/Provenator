@@ -72,8 +72,7 @@ class Events extends React.Component {
           <hr />
         </div>
         <div>
-          <Logger heading={PremisEventStrings.heading} log={this.state.log} />
-          <hr />
+          <IOLogger heading={PremisEventStrings.heading} log={this.state.log} />
         </div>
       </div>
     )

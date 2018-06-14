@@ -13,7 +13,6 @@ class Help extends React.Component {
       <div>
         <IOHeading heading={HelpStrings.heading} />
         <IOPlainTextOutput text={HelpStrings.info} />
-        <hr />
       </div>
     )
   }

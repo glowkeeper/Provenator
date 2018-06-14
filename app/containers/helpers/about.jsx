@@ -13,7 +13,6 @@ class About extends React.Component {
       <div>
         <IOHeading heading={AboutStrings.heading} />
         <IOPlainTextOutput text={AboutStrings.info} />
-        <hr />
       </div>
     )
   }

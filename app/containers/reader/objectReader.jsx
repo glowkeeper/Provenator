@@ -140,7 +140,7 @@ class ObjectReader extends React.Component {
   render () {
     return (
       <div>
-        <Logger heading={ObjectReaderStrings.heading} log={this.state.outputData} />
+        <IOLogger heading={ObjectReaderStrings.heading} log={this.state.outputData} />
       </div>
     )
   }

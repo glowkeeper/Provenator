@@ -44,7 +44,6 @@ class Writer extends React.Component {
         </div>
         <div className="info">
           <IOPlainTextOutput text={this.state.info} />
-          <hr />
         </div>
       </div>
     )
