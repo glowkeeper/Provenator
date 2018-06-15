@@ -28,6 +28,7 @@ class File extends React.Component {
             onChange={this._handleSetFilename.bind(this)}>
             <Tooltip title={this.props.tip}>
               <IOButton
+                type='normal'
                 icon={null}
                 onClick={null}
                 label={ObjectWriterStrings.fileLoad}
