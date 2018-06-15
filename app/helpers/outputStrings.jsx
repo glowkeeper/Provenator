@@ -47,10 +47,10 @@ class HelpStrings {
 
 class HashStrings {
 
-  static heading = 'Select a File Object for Hashing'
+  static heading = 'Select Digital Media Resource'
   static fileLabel = 'Filename: '
   static hashLabel = 'Hash: '
-  static browseFileTip = 'Upload a file to get its cryptohash'
+  static browseFileTip = 'Upload a digital media resource to get its cryptohash'
 
 }
 
@@ -68,10 +68,10 @@ class ReaderStrings {
 
 class ObjectReaderStrings {
 
-  static heading = 'Object Information'
-  static eventHeading = 'Object Event Information'
-  static agentHeading = 'Object Agent Information'
-  static rightsHeading = 'Object Rights Information'
+  static heading = 'Digital Media Info\''
+  static eventHeading = 'Event Information'
+  static agentHeading = 'Agent Information'
+  static rightsHeading = 'Rights Information'
   static categoryLabel = 'Category: '
   static formatLabel = 'Format: '
   static numPropertiesLabel = 'No. Properties: '
@@ -113,13 +113,13 @@ class ObjectWriterStrings {
   static writing = 'Writing records to the blockchain.'
   static finishedWriting = 'Finished writing records to the blockchain.'
   static submitting = 'Submitting records to the blockchain.'
-  static submitObjectLabel = 'Submit Object Information:'
-  static submitObjectTip = 'Record this object information'
+  static submitObjectLabel = 'Submit Digital Media Info\''
+  static submitObjectTip = 'Record this digital media info\' to the blockchain'
 }
 
 class PremisRightsStrings {
 
-  static heading = 'Object Rights Information'
+  static heading = ObjectReaderStrings.rightsHeading
   static basisPlaceHolder = 'Basis'
   static basisTip = 'Choose the object\'s rights basis for this record'
   static statusPlaceHolder = 'Status'
@@ -169,7 +169,7 @@ class PremisRightsStrings {
 
 class PremisObjectStrings {
 
-  static heading = 'Object Information'
+  static heading = ObjectReaderStrings.heading
   static categoryLabel = ObjectReaderStrings.categoryLabel
   static categoryIntellectual = 'INTELLECTUALENTITY'
   static categoryRepresentation = 'REPRESENTATION'
@@ -188,7 +188,7 @@ class PremisObjectStrings {
 
 class PremisAgentStrings {
 
-  static heading = 'Object Agent Information'
+  static heading = ObjectReaderStrings.agentHeading
   static namePlaceHolder = 'Name'
   static nameLabel = 'Name: '
   static nameTip = 'Name the object\'s agent'
@@ -201,9 +201,7 @@ class PremisAgentStrings {
 
 class PremisEventStrings {
 
-  // static info = 'Blockchain write events will appear here.'
-
-  static heading = 'Object Event Information'
+  static heading = ObjectReaderStrings.eventHeading
   static eventPlaceHolder = 'Event Type'
   static eventTip = 'Record object events here, e.g "Image Capture", "Image Upload", "Film Posted to Youtube" and so forth'
   static datePlaceHolder = 'Event Date'
@@ -212,11 +210,4 @@ class PremisEventStrings {
 
 }
 
-class FakeNewsEventStrings {
-
-  static heading = 'Provenator News Events'
-  static info = 'Blockchain write events will appear here.'
-
-}
-
-export {AppStrings, HomeStrings, AboutStrings, OverviewStrings, HelpStrings, HashStrings, WriterStrings, ReaderStrings, ObjectReaderStrings, ObjectWriterStrings, PremisRightsStrings, PremisObjectStrings, PremisAgentStrings, PremisEventStrings, FakeNewsEventStrings}
+export {AppStrings, HomeStrings, AboutStrings, OverviewStrings, HelpStrings, HashStrings, WriterStrings, ReaderStrings, ObjectReaderStrings, ObjectWriterStrings, PremisRightsStrings, PremisObjectStrings, PremisAgentStrings, PremisEventStrings}
