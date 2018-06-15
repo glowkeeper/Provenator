@@ -8,18 +8,6 @@ class SetPremisAgent extends React.Component {
 
   constructor (props) {
     super(props)
-
-    const numTypes = PremisAgentHandler.typeOptions.length
-    let typeSelections = []
-    for (let i = 0; i < numTypes; i++) {
-      typeSelections[i] = { value: i, label: PremisAgentHandler.typeOptions[i] }
-    }
-
-
-    this.state = {
-      typeId: undefined,
-      typeSelections: typeSelections
-    }
   }
 
   _handleName (_name) {
@@ -37,7 +25,12 @@ class SetPremisAgent extends React.Component {
       <div>
         <IOHeading heading={PremisAgentStrings.heading} />
         <IOTextInput parentFunc={this._handleName.bind(this)} placeHolder={PremisAgentStrings.namePlaceHolder} label={PremisAgentStrings.nameLabel} tip={PremisAgentStrings.nameTip} />
-        <IOSelect parentFunc={this._handleType.bind(this)} placeHolder={PremisAgentStrings.typePlaceHolder} tip={PremisAgentStrings.typeTip} selections={this.state.typeSelections} selection={this.state.typeId} />
+        <IOSelect
+          parentFunc={this._handleType.bind(this)}
+          selections={PremisAgentHandler.typeOptions}
+          label={PremisAgentStrings.agentTypeLabel}
+          tip={PremisAgentStrings.typeTip}
+        />
       </div>
     )
   }

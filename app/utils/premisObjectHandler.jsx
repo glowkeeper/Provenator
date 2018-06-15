@@ -1,12 +1,12 @@
-import {ObjectWriterStrings} from '../helpers/outputStrings'
+import {PremisObjectStrings} from '../helpers/outputStrings'
 
 class PremisObjectHandler {
 
   static categoryOptions = [
-    ObjectWriterStrings.categoryIntellectual,
-    ObjectWriterStrings.categoryRepresentation,
-    ObjectWriterStrings.categoryFile,
-    ObjectWriterStrings.categoryBitStream
+    PremisObjectStrings.categoryIntellectual,
+    PremisObjectStrings.categoryRepresentation,
+    PremisObjectStrings.categoryFile,
+    PremisObjectStrings.categoryBitStream
   ]
 
   constructor () {

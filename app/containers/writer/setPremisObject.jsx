@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import PremisObjectHandler from '../../utils/premisObjectHandler'
-import {PremisObjectStrings, ObjectWriterStrings} from '../../helpers/outputStrings'
+import {PremisObjectStrings} from '../../helpers/outputStrings'
 import {IOHeading, IOTextInput, IOTextAreaInput, IOSelect} from '../../components/io'
 
 class SetPremisObject extends React.Component {
@@ -10,8 +10,6 @@ class SetPremisObject extends React.Component {
     super(props)
 
     this.state = {
-      categoryId: undefined,
-      categorySelections: PremisObjectHandler.categoryOptions,
       propertyTypeId: undefined,
       propertyTypeSelections: []
     }
@@ -52,8 +50,8 @@ class SetPremisObject extends React.Component {
         <IOHeading heading={PremisObjectStrings.heading} />
         <IOSelect
           parentFunc={this._handleCategory.bind(this)}
-          selections={this.state.categorySelections}
-          label={ObjectWriterStrings.categoryLabel}
+          selections={PremisObjectHandler.categoryOptions}
+          label={PremisObjectStrings.categoryLabel}
           tip={PremisObjectStrings.categoryTip}
         />
         <IOTextInput parentFunc={this._handleFormat.bind(this)} placeHolder={PremisObjectStrings.formatPlaceHolder} label={PremisObjectStrings.formatLabel} tip={PremisObjectStrings.formatTip} />

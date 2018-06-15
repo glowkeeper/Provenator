@@ -8,41 +8,6 @@ class SetPremisRights extends React.Component {
 
   constructor (props) {
     super(props)
-
-    const numBasis = PremisRightsHandler.basisOptions.length
-    let basisSelections = []
-    for (let i = 0; i < numBasis; i++) {
-      basisSelections[i] = { value: i, label: PremisRightsHandler.basisOptions[i] }
-    }
-
-    const numActs = PremisRightsHandler.actOptions.length
-    let actSelections = []
-    for (let i = 0; i < numActs; i++) {
-      actSelections[i] = { value: i, label: PremisRightsHandler.actOptions[i] }
-    }
-
-    const numRestrictions = PremisRightsHandler.restrictionsOptions.length
-    let restrictionSelections = []
-    for (let i = 0; i < numRestrictions; i++) {
-      restrictionSelections[i] = { value: i, label: PremisRightsHandler.restrictionsOptions[i] }
-    }
-
-    const numCountryCodes = PremisRightsHandler.jurisdictionCountryCodes.length
-    let countryCodeSelections = []
-    for (let i = 0; i < numCountryCodes; i++) {
-      countryCodeSelections[i] = { value: i, label: PremisRightsHandler.jurisdictionCountryCodes[i] }
-    }
-
-    this.state = {
-      basisId: undefined,
-      basisSelections: basisSelections,
-      countryCodeId: undefined,
-      countryCodeSelections: countryCodeSelections,
-      actId: undefined,
-      actSelections: actSelections,
-      restrictionId: undefined,
-      restrictionSelections: restrictionSelections
-    }
   }
 
   // Set new values
@@ -85,13 +50,33 @@ class SetPremisRights extends React.Component {
     return (
       <div>
         <IOHeading heading={PremisRightsStrings.heading} />
-        <IOSelect parentFunc={this._handleBasis.bind(this)} placeHolder={PremisRightsStrings.basisPlaceHolder} tip={PremisRightsStrings.basisTip} selections={this.state.basisSelections} selection={this.state.basisId} />
+        <IOSelect
+          parentFunc={this._handleBasis.bind(this)}
+          selections={PremisRightsHandler.basisOptions}
+          label={PremisRightsStrings.basisLabel}
+          tip={PremisRightsStrings.basisTip}
+        />
         <IOTextInput parentFunc={this._handleStatus.bind(this)} placeHolder={PremisRightsStrings.statusPlaceHolder} label={PremisRightsStrings.statusLabel} tip={PremisRightsStrings.statusTip} />
-        <IOSelect parentFunc={this._handleCountryCode.bind(this)} placeHolder={PremisRightsStrings.countryCodePlaceHolder} tip={PremisRightsStrings.countryCodeTip} selections={this.state.countryCodeSelections} selection={this.state.countryCodeId} />
+        <IOSelect
+          parentFunc={this._handleCountryCode.bind(this)}
+          selections={PremisRightsStrings.jurisdictionCountryCodes}
+          label={PremisRightsStrings.jurisdictionLabel}
+          tip={PremisRightsStrings.countryCodeTip}
+        />
         <IOTextInput parentFunc={this._handleDeterminationDate.bind(this)} placeHolder={PremisRightsStrings.determinationDatePlaceHolder} label={PremisRightsStrings.determinationDateLabel} tip={PremisRightsStrings.determinationDateTip} />
         <IOTextAreaInput parentFunc={this._handleNote.bind(this)} placeHolder={PremisRightsStrings.notePlaceHolder} label={PremisRightsStrings.noteLabel} tip={PremisRightsStrings.noteTip} />
-        <IOSelect parentFunc={this._handleRightsGrantedAct.bind(this)} placeHolder={PremisRightsStrings.actPlaceHolder} tip={PremisRightsStrings.actTip} selections={this.state.actSelections} selection={this.state.actId} />
-        <IOSelect parentFunc={this._handleRightsGrantedRestriction.bind(this)} placeHolder={PremisRightsStrings.restrictionPlaceHolder} tip={PremisRightsStrings.restrictionTip} selections={this.state.restrictionSelections} selection={this.state.restrictionId} />
+        <IOSelect
+          parentFunc={this._handleRightsGrantedAct.bind(this)}
+          selections={PremisRightsHandler.actOptions}
+          label={PremisRightsStrings.actLabel}
+          tip={PremisRightsStrings.actTip}
+        />
+        <IOSelect
+          parentFunc={this._handleRightsGrantedRestriction.bind(this)}
+          selections={PremisRightsHandler.restrictionsOptions}
+          label={PremisRightsStrings.restrictionsLabel}
+          tip={PremisRightsStrings.restrictionTip}
+        />
       </div>
     )
   }

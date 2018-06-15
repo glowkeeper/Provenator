@@ -114,12 +114,6 @@ class ObjectWriterStrings {
   static submitting = 'Submitting records to the blockchain.'
   static submitObjectLabel = 'Submit Object Information:'
   static submitObjectTip = 'Record this object information'
-
-  static categoryLabel = ObjectReaderStrings.categoryLabel
-  static categoryIntellectual = 'INTELLECTUALENTITY'
-  static categoryRepresentation = 'REPRESENTATION'
-  static categoryFile = 'FILE'
-  static categoryBitStream = 'BITSTREAM'
 }
 
 class PremisRightsStrings {
@@ -143,12 +137,43 @@ class PremisRightsStrings {
   static restrictionPlaceHolder = 'Rights Granted Restriction'
   static restrictionTip = 'Choose the rights granted restriction'
 
+  static jurisdictionLabel = ObjectReaderStrings.rightsCopyrightJurisdictionLabel
+  static jurisdictionCountryCodes = ['AD', 'AE', 'AF', 'AG', 'AI', 'AL', 'AM', 'AO', 'AQ', 'AR', 'AS', 'AT', 'AU', 'AW', 'AX', 'AZ', 'BA', 'BB', 'BD', 'BE', 'BF', 'BG', 'BH', 'BI', 'BJ', 'BL', 'BM', 'BN', 'BO', 'BQ', 'BR', 'BS', 'BT', 'BV', 'BW', 'BY', 'BZ', 'CA', 'CC', 'CD', 'CF', 'CG', 'CH', 'CI', 'CK', 'CL', 'CM', 'CN', 'CO', 'CR', 'CU', 'CV', 'CW', 'CX', 'CY', 'CZ', 'DE', 'DJ', 'DK', 'DM', 'DO', 'DZ', 'EC', 'EE', 'EG', 'EH', 'ER', 'ES', 'ET', 'FI', 'FJ', 'FK', 'FM', 'FO', 'FR', 'GA', 'GB', 'GD', 'GE', 'GF', 'GG', 'GH', 'GI', 'GL', 'GM', 'GN', 'GP', 'GQ', 'GR', 'GS', 'GT', 'GU', 'GW', 'GY', 'HK', 'HM', 'HN', 'HR', 'HT', 'HU', 'ID', 'IE', 'IL', 'IM', 'IN', 'IO', 'IQ', 'IR', 'IS', 'IT', 'JE', 'JM', 'JO', 'JP', 'KE', 'KG', 'KH', 'KI', 'KM', 'KN', 'KP', 'KR', 'KW', 'KY', 'KZ', 'LA', 'LB', 'LC', 'LI', 'LK', 'LR', 'LS', 'LT', 'LU', 'LV', 'LY', 'MA', 'MC', 'MD', 'ME', 'MF', 'MG', 'MH', 'MK', 'ML', 'MM', 'MN', 'MO', 'MP', 'MQ', 'MR', 'MS', 'MT', 'MU', 'MV', 'MW', 'MX', 'MY', 'MZ', 'NA', 'NC', 'NE', 'NF', 'NG', 'NI', 'NL', 'NO', 'NP', 'NR', 'NU', 'NZ', 'OM', 'PA', 'PE', 'PF', 'PG', 'PH', 'PK', 'PL', 'PM', 'PN', 'PR', 'PS', 'PT', 'PW', 'PY', 'QA', 'RE', 'RO', 'RS', 'RU', 'RW', 'SA', 'SB', 'SC', 'SD', 'SE', 'SG', 'SH', 'SI', 'SJ', 'SK', 'SL', 'SM', 'SN', 'SO', 'SR', 'SS', 'ST', 'SV', 'SX', 'SY', 'SZ', 'TC', 'TD', 'TF', 'TG', 'TH', 'TJ', 'TK', 'TL', 'TM', 'TN', 'TO', 'TR', 'TT', 'TV', 'TW', 'TZ', 'UA', 'UG', 'UM', 'US', 'UY', 'UZ', 'VA', 'VC', 'VE', 'VG', 'VI', 'VN', 'VU', 'WF', 'WS', 'YE', 'YT', 'ZA', 'ZM', 'ZW']
+
+  static actLabel = ObjectReaderStrings.rightsGrantedActLabel
+  static actReplicate = 'Replicate'
+  static actMigrate = 'Migrate'
+  static actModify = 'Modify'
+  static actUse = 'Use'
+  static actDisseminate = 'Disseminate'
+  static actDelete = 'Delete'
+
+  static restrictionsLabel = ObjectReaderStrings.rightsGrantedRestrictionLabel
+  static restrictionsAllow = 'Allow'
+  static restrictionsDisallow = 'Disallow'
+  static restrictionsConditional = 'Conditional'
+
+  static basisLabel = ObjectReaderStrings.rightsBasisLabel
+  static basisCopyright = 'Copyright'
+  static basisStatute = 'Statute'
+  static basisLicense = 'License'
+  static basisDonor = 'Donor'
+  static basisPolicy = 'Policy'
+  static basisOther = 'Other'
+  static basisGrants = 'Acts granted or restricted'
+
+
+
 }
 
 class PremisObjectStrings {
 
   static heading = 'Object Information'
-  static categoryPlaceHolder = 'Category'
+  static categoryLabel = ObjectReaderStrings.categoryLabel
+  static categoryIntellectual = 'INTELLECTUALENTITY'
+  static categoryRepresentation = 'REPRESENTATION'
+  static categoryFile = 'FILE'
+  static categoryBitStream = 'BITSTREAM'
   static categoryTip = 'Categorise the digital object type'
   static formatPlaceHolder = 'Format'
   static formatLabel = 'Format: '
@@ -166,7 +191,9 @@ class PremisAgentStrings {
   static namePlaceHolder = 'Name'
   static nameLabel = 'Name: '
   static nameTip = 'Name the object\'s agent'
-  static typePlaceHolder = 'Type'
+  static agentTypeLabel = ObjectReaderStrings.agentTypeLabel
+  static agentIndividual = 'INDIVIDUAL'
+  static agentCompany = 'COMPANY'
   static typeTip = 'Is the agent an individual, or an organisation?'
 
 }
