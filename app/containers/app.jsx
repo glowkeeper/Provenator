@@ -36,7 +36,10 @@ class App extends React.Component {
         <Layout>
           <Header>
             <Row>
-              <Col span={11}>
+              <Col span={4}>
+                &nbsp;
+              </Col>
+              <Col span={10}>
                 <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['home']} style={{ lineHeight: '64px' }} >
                   <Menu.Item key={AppStrings.home}>
                     <Icon type={HomeStrings.homeIcon}/><span>{AppStrings.home}</span>
@@ -56,8 +59,8 @@ class App extends React.Component {
                   </Menu.Item>
                 </Menu>
               </Col>
-              <Col span={11} style={{ textAlign: 'right' }}>
-                {AppStrings.tagLine}
+              <Col span={10} style={{ textAlign: 'right' }}>
+                <h5>{AppStrings.tagLine}</h5>
               </Col>
             </Row>
           </Header>
@@ -106,13 +109,12 @@ class App extends React.Component {
               />
 
             </Content>
-
-            <Footer style={{ textAlign: 'center' }}>
-              <hr/>
-              {AppStrings.copyright}
-            </Footer>
-
           </Layout>
+        </Layout>
+        <Layout>
+          <Footer style={{ textAlign: 'center' }}>
+            <h5>{AppStrings.copyright}</h5>
+          </Footer>
         </Layout>
       </div>
 
