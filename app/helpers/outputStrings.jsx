@@ -108,6 +108,7 @@ class ObjectReaderStrings {
 
 class ObjectWriterStrings {
 
+  static fileLoad = 'File'
   static completeAll = 'Please ensure all fields have been completed.'
   static writing = 'Writing records to the blockchain.'
   static finishedWriting = 'Finished writing records to the blockchain.'

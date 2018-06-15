@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import FileReaderInput from 'react-file-reader-input'
 import {Tooltip} from 'antd'
 import {IOButton} from './io'
+import {ObjectWriterStrings} from '../helpers/outputStrings'
 
 class File extends React.Component {
 
@@ -26,9 +27,11 @@ class File extends React.Component {
             id="my-file-input"
             onChange={this._handleSetFilename.bind(this)}>
             <Tooltip title={this.props.tip}>
-              <IOButton icon={null} onClick={null}>
-                Load
-              </IOButton>
+              <IOButton
+                icon={null}
+                onClick={null}
+                label={ObjectWriterStrings.fileLoad}
+              />
             </Tooltip>
           </FileReaderInput>
         </div>
