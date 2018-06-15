@@ -41,18 +41,18 @@ contract PremisRights is Rights {
   event RightsSetRightsGranted(string _rightsId, string _act, string _restriction);
   event RightsSetAgent(string _rightsId, string _agentId);
 
-  /* function PremisRights() {
-  } */
+  constructor() public {
+  }
 
   function setObject(string _rightsId, string _objectHash) public {
     rights.push(_rightsId);
     premisRights[_rightsId].objectHash = _objectHash;
-    RightsSetObject(_rightsId, _objectHash);
+    emit RightsSetObject(_rightsId, _objectHash);
   }
 
   function setBasis(string _rightsId, string _basis) public {
     premisRights[_rightsId].basis = _basis;
-    RightsSetBasis(_rightsId, _basis);
+    emit RightsSetBasis(_rightsId, _basis);
   }
 
   function setCopyrightInfo(string _rightsId, string _status, string _jurisdictionCountryCode, string _determinationDate, string _note ) public {
@@ -60,18 +60,18 @@ contract PremisRights is Rights {
     premisRights[_rightsId].copyrightData.jurisdictionCountryCode = _jurisdictionCountryCode;
     premisRights[_rightsId].copyrightData.determinationDate = _determinationDate;
     premisRights[_rightsId].copyrightData.note = _note;
-    RightsSetCopyrightInfo(_rightsId, _status, _jurisdictionCountryCode, _determinationDate, _note);
+    emit RightsSetCopyrightInfo(_rightsId, _status, _jurisdictionCountryCode, _determinationDate, _note);
   }
 
   function setRightsGranted(string _rightsId, string _act, string _restriction) public {
     premisRights[_rightsId].rightsGrantedData.act = _act;
     premisRights[_rightsId].rightsGrantedData.restriction = _restriction;
-    RightsSetRightsGranted(_rightsId, _act, _restriction);
+    emit RightsSetRightsGranted(_rightsId, _act, _restriction);
   }
 
   function setAgent(string _rightsId, string _agentId) public {
-      premisRights[_rightsId].agentId = _agentId;
-      RightsSetAgent(_rightsId, _agentId);
+    premisRights[_rightsId].agentId = _agentId;
+    emit RightsSetAgent(_rightsId, _agentId);
   }
 
   // This 'Exists?' function return max(uint256) if not, the index otherwise

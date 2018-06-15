@@ -25,29 +25,29 @@ contract PremisAgent is Agent {
   event AgentSetEvent(string _address, string _eventId);
   event AgentSetRights(string _address, string _rightsId);
 
-  /* function PremisAgent() {
-  } */
+  constructor() public {
+  }
 
   function setAgent(string _agentId, string _name, string _type) public {
     premisAgents[_agentId].name = _name;
     premisAgents[_agentId].agentType = _type;
     agents.push(_agentId);
-    AgentSet(_agentId, _name, _type);
+    emit AgentSet(_agentId, _name, _type);
   }
 
   function setObject(string _agentId, string _objectHash) public {
     premisAgents[_agentId].objects.push(_objectHash);
-    AgentSetObject(_agentId, _objectHash);
+    emit AgentSetObject(_agentId, _objectHash);
   }
 
   function setEvent(string _agentId, string _eventId) public {
     premisAgents[_agentId].events.push(_eventId);
-    AgentSetEvent(_agentId, _eventId);
+    emit AgentSetEvent(_agentId, _eventId);
   }
 
   function setRights(string _agentId, string _rightsId) public {
     premisAgents[_agentId].rights.push(_rightsId);
-    AgentSetRights(_agentId, _rightsId);
+    emit AgentSetRights(_agentId, _rightsId);
   }
 
   // These 'Exists?' functions return max(uint256) if not, the index otherwise

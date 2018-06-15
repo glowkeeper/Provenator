@@ -21,8 +21,8 @@ contract PremisEvent is Event {
 
   event EventSet(string _eventId, string _type, string _time, string _objectHash, string _agentId);
 
-  /* function PremisEvent() {
-  } */
+  constructor() public {
+  }
 
   function setEventType(string _eventType) public {
     eventTypes.push(_eventType);
@@ -34,7 +34,7 @@ contract PremisEvent is Event {
     premisEvents[_eventId].objectHash = _objectHash;
     premisEvents[_eventId].agentId = _agentId;
     events.push(_eventId);
-    EventSet(_eventId, _type, _time, _objectHash, _agentId);
+    emit EventSet(_eventId, _type, _time, _objectHash, _agentId);
   }
 
   // These 'Exists?' functions return max(uint256) if not, the index otherwise

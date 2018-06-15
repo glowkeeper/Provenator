@@ -33,8 +33,8 @@ contract PremisObject is Object {
   event ObjectSetRights(string _objectHash, string _rightsId);
   event ObjectSetAgent(string _objectHash, string _agentId);
 
-  /* function PremisObject() {
-  } */
+  constructor() public {
+  }
 
   function setPropertyType(string _propType) public {
     propTypes.push(_propType);
@@ -44,17 +44,17 @@ contract PremisObject is Object {
     premisObjects[_objectHash].category = _category;
     premisObjects[_objectHash].format = _format;
     objects.push(_objectHash);
-    ObjectSet(_objectHash, _category, _format);
+    emit ObjectSet(_objectHash, _category, _format);
   }
 
   function setProperties(string _objectHash, string _type, string _value) public {
     premisObjects[_objectHash].properties.push(ObjectProperties(_type,_value));
-    ObjectSetProperties(_objectHash, _type, _value);
+    emit ObjectSetProperties(_objectHash, _type, _value);
   }
 
   function setEvent(string _objectHash, string _eventId) public {
     premisObjects[_objectHash].events.push(_eventId);
-    ObjectSetEvent(_objectHash, _eventId);
+    emit ObjectSetEvent(_objectHash, _eventId);
   }
 
   function setAgent(string _objectHash, string _agentId) public {
