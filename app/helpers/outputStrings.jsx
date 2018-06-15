@@ -114,6 +114,12 @@ class ObjectWriterStrings {
   static submitting = 'Submitting records to the blockchain.'
   static submitObjectLabel = 'Submit Object Information:'
   static submitObjectTip = 'Record this object information'
+
+  static categoryLabel = ObjectReaderStrings.categoryLabel
+  static categoryIntellectual = 'INTELLECTUALENTITY'
+  static categoryRepresentation = 'REPRESENTATION'
+  static categoryFile = 'FILE'
+  static categoryBitStream = 'BITSTREAM'
 }
 
 class PremisRightsStrings {
