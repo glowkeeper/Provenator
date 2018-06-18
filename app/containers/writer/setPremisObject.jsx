@@ -55,8 +55,7 @@ class SetPremisObject extends React.Component {
           tip={PremisObjectStrings.categoryTip}
         />
         <IOTextInput parentFunc={this._handleFormat.bind(this)} placeHolder={PremisObjectStrings.formatPlaceHolder} label={PremisObjectStrings.formatLabel} tip={PremisObjectStrings.formatTip} />
-        <IOSelect parentFunc={this._handlePropertyType.bind(this)} placeHolder={PremisObjectStrings.propertyTypePlaceHolder} tip={PremisObjectStrings.propertyTypeTip} selections={this.state.propertyTypeSelections} selection={this.state.propertyTypeId} />
-        <IOTextAreaInput parentFunc={this._handlePropertyValue.bind(this)} placeHolder={PremisObjectStrings.propertyValuePlaceHolder} label={PremisObjectStrings.propertyValueLabel} tip={PremisObjectStrings.propertyValueTip} />
+        <IOTextAreaInput parentFunc={this._handlePropertyValue.bind(this)} label={PremisObjectStrings.propertyDescriptionLabel} tip={PremisObjectStrings.propertyDescriptionTip} />
       </div>
     )
   }

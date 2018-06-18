@@ -179,11 +179,8 @@ class PremisObjectStrings {
   static formatPlaceHolder = 'Format'
   static formatLabel = 'Format: '
   static formatTip = 'Set the object\'s format, e.g JPEG, MP4'
-  static propertyTypePlaceHolder = 'Property Type'
-  static propertyTypeTip = 'You may use this to describe any particular property of an object: "Description" is one such example of a valid Object Property'
-  static propertyValuePlaceHolder = 'Property Value'
-  static propertyValueLabel = 'Property Value: '
-  static propertyValueTip = 'Elaborate on the property type above, e.g, if the property type is "Description", here you would provide that description'
+  static propertyDescriptionLabel = 'Description:'
+  static propertyDescriptionTip = 'You may use this to describe the digital media object'
 }
 
 class PremisAgentStrings {

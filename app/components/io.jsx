@@ -194,13 +194,14 @@ class IOTextAreaInput extends React.Component {
 
     return (
       <div>
-        <p>{this.props.label}
-          <TextArea
-            rows={this.props.numRows}
-            placeholder={this.props.placeHolder}
-            onChange={this._handleChange.bind(this)}
-          />
-        </p>
+        <Tooltip title={this.props.tip}>
+          <p>{this.props.label}
+            <TextArea
+              rows={this.props.numRows}
+              onChange={this._handleChange.bind(this)}
+            />
+          </p>
+        </Tooltip>
       </div>
     )
   }
@@ -208,7 +209,6 @@ class IOTextAreaInput extends React.Component {
 
 IOTextAreaInput.propTypes = {
   parentFunc: PropTypes.func,
-  placeHolder: PropTypes.string,
   numRows: PropTypes.number,
   label: PropTypes.string,
   tip: PropTypes.string
