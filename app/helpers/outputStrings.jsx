@@ -205,7 +205,7 @@ class ObjectStrings {
   static propertyDescriptionLabel = 'Description:'
   static propertyDescriptionTip = 'Describe the digital media object'
 
-  static formats = ['JPEG','GIF','PNG','TIFF','BMP','TGA','PSD','Animated GIF','SWF','MOV','MPG','MPG2','MPG4','MKV','OGG','OGV','FLV','FLA','MP3','WAV','WMA','WMV','MIDI','MOV','AVI','WMV','FLV','DVDs','Blu-ray','Flash', 'Other']
+  static formats = ['JPEG','GIF','PNG','TIFF','BMP','TGA','PSD','Animated GIF','SWF','MOV','AVI','MPG','MPG2','MPG4','MKV','OGG','OGV','FLV','WMV','DVDs','Blu-ray','FLA','MP3','WAV','MIDI','WMA','Flash','Other']
 
   static categoryOptions = [
     ObjectStrings.categoryIntellectual,

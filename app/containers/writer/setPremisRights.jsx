@@ -12,8 +12,7 @@ class SetPremisRights extends React.Component {
 
   // Set new values
   _handleBasis (_selection) {
-    this.props.rightsHandler.setBasis(_selection.label)
-    this.setState({basisId: _selection.value})
+    this.props.rightsHandler.setBasis(_selection)
   }
 
   _handleStatus (_status) {
@@ -21,8 +20,7 @@ class SetPremisRights extends React.Component {
   }
 
   _handleCountryCode (_selection) {
-    this.props.rightsHandler.setCountryCode(_selection.label)
-    this.setState({countryCodeId: _selection.value})
+    this.props.rightsHandler.setCountryCode(_selection)
   }
 
   _handleDeterminationDate (_date) {
@@ -34,16 +32,11 @@ class SetPremisRights extends React.Component {
   }
 
   _handleRightsGrantedAct (_selection) {
-    this.props.rightsHandler.setAct(_selection.label)
-    this.setState({actId: _selection.value})
+    this.props.rightsHandler.setAct(_selection)
   }
 
   _handleRightsGrantedRestriction (_selection) {
-    // console.log('Restriction Id is ' + selection.value + '. Restriction Name is ' + selection.label)
-    // this.rights.restrictionName = selection.label
-    this.props.rightsHandler.setRestriction(_selection.label)
-    this.setState({restrictionId: _selection.value})
-    // this.props.parentFunc(this.rights)
+    this.props.rightsHandler.setRestriction(_selection)
   }
 
   render () {

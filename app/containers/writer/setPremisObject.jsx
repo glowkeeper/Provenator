@@ -15,16 +15,16 @@ class SetPremisObject extends React.Component {
 
   _handleCategory (_selection) {
     // console.log('Category is ' + category)
-    this.props.objectHandler.setCategory(_selection.label)
+    this.props.objectHandler.setCategory(_selection)
   }
 
   _handleFormat (_format) {
-    // console.log('format is ' + format)
+    //console.log('format is ' + _format)
     this.props.objectHandler.setFormat(_format)
   }
 
   _handleSetDescription (_description) {
-    console.log(_description)
+    //console.log(_description)
     this.props.objectHandler.setPropertyValue(_description)
   }
 

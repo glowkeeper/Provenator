@@ -10,7 +10,6 @@ import PremisAgentHandler from '../../utils/premisAgentHandler'
 import SetPremisObject from './setPremisObject'
 import SetPremisAgent from './setPremisAgent'
 import SetPremisRights from './setPremisRights'
-import SetPremisEvent from './setPremisEvent'
 
 import {ObjectWriterStrings} from '../../helpers/outputStrings'
 import {IOButtonLoad} from '../../components/io'

@@ -15,9 +15,8 @@ class SetPremisAgent extends React.Component {
   }
 
   _handleType (_selection) {
-    // console.log(_selection.value)
-    this.props.agentHandler.setType(_selection.label)
-    this.setState({typeId: _selection.value})
+    //console.log(_selection)
+    this.props.agentHandler.setType(_selection)
   }
 
   render () {
