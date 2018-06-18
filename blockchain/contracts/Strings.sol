@@ -1,4 +1,4 @@
-pragma solidity ^0.4.19;
+pragma solidity ^0.4.24;
 
 library Strings {
     /// @dev Does a byte-by-byte lexicographical comparison of two strings.
