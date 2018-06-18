@@ -12,7 +12,7 @@ contract PremisObject is Object {
     string propType;
     string propValue;
   }
-
+ 
   struct ObjectData {
     string category;
     string format;

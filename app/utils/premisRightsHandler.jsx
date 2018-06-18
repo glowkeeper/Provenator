@@ -3,31 +3,6 @@ import {PremisRightsStrings} from '../helpers/outputStrings'
 
 class PremisRightsHandler {
 
-  static actOptions = [
-    PremisRightsStrings.actReplicate,
-    PremisRightsStrings.actMigrate,
-    PremisRightsStrings.actModify,
-    PremisRightsStrings.actUse,
-    PremisRightsStrings.actDisseminate,
-    PremisRightsStrings.actDelete
-  ]
-
-  static restrictionsOptions = [
-    PremisRightsStrings.restrictionsAllow,
-    PremisRightsStrings.restrictionsDisallow,
-    PremisRightsStrings.restrictionsConditional,
-  ]
-
-  static basisOptions = [
-    PremisRightsStrings.basisCopyright,
-    PremisRightsStrings.basisStatute,
-    PremisRightsStrings.basisLicense,
-    PremisRightsStrings.basisDonor,
-    PremisRightsStrings.basisPolicy,
-    PremisRightsStrings.basisOther,
-    PremisRightsStrings.basisGrants
-  ]
-
   constructor () {
 
     this.rights = {

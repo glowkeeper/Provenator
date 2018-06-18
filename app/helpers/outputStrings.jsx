@@ -117,7 +117,7 @@ class ObjectWriterStrings {
   static submitObjectTip = 'Record this digital media info\' to the blockchain'
 }
 
-class PremisRightsStrings {
+class RightsStrings {
 
   static heading = ObjectReaderStrings.rightsHeading
   static basisPlaceHolder = 'Basis'
@@ -163,11 +163,34 @@ class PremisRightsStrings {
   static basisOther = 'Other'
   static basisGrants = 'Acts granted or restricted'
 
+  static actOptions = [
+    RightsStrings.actReplicate,
+    RightsStrings.actMigrate,
+    RightsStrings.actModify,
+    RightsStrings.actUse,
+    RightsStrings.actDisseminate,
+    RightsStrings.actDelete
+  ]
 
+  static restrictionsOptions = [
+    RightsStrings.restrictionsAllow,
+    RightsStrings.restrictionsDisallow,
+    RightsStrings.restrictionsConditional,
+  ]
+
+  static basisOptions = [
+    RightsStrings.basisCopyright,
+    RightsStrings.basisStatute,
+    RightsStrings.basisLicense,
+    RightsStrings.basisDonor,
+    RightsStrings.basisPolicy,
+    RightsStrings.basisOther,
+    RightsStrings.basisGrants
+  ]
 
 }
 
-class PremisObjectStrings {
+class ObjectStrings {
 
   static heading = ObjectReaderStrings.heading
   static categoryLabel = ObjectReaderStrings.categoryLabel
@@ -180,10 +203,19 @@ class PremisObjectStrings {
   static formatLabel = 'Format: '
   static formatTip = 'Set the object\'s format, e.g JPEG, MP4'
   static propertyDescriptionLabel = 'Description:'
-  static propertyDescriptionTip = 'You may use this to describe the digital media object'
+  static propertyDescriptionTip = 'Describe the digital media object'
+
+  static formats = ['JPEG','GIF','PNG','TIFF','BMP','TGA','PSD','Animated GIF','SWF','MOV','MPG','MPG2','MPG4','MKV','OGG','OGV','FLV','FLA','MP3','WAV','WMA','WMV','MIDI','MOV','AVI','WMV','FLV','DVDs','Blu-ray','Flash', 'Other']
+
+  static categoryOptions = [
+    ObjectStrings.categoryIntellectual,
+    ObjectStrings.categoryRepresentation,
+    ObjectStrings.categoryFile,
+    ObjectStrings.categoryBitStream
+  ]
 }
 
-class PremisAgentStrings {
+class AgentStrings {
 
   static heading = ObjectReaderStrings.agentHeading
   static namePlaceHolder = 'Name'
@@ -194,9 +226,14 @@ class PremisAgentStrings {
   static agentCompany = 'COMPANY'
   static typeTip = 'Is the agent an individual, or an organisation?'
 
+  static typeOptions = [
+    AgentStrings.agentIndividual,
+    AgentStrings.agentCompany
+  ]
+
 }
 
-class PremisEventStrings {
+class EventStrings {
 
   static heading = ObjectReaderStrings.eventHeading
   static eventPlaceHolder = 'Event Type'
@@ -207,4 +244,4 @@ class PremisEventStrings {
 
 }
 
-export {AppStrings, HomeStrings, AboutStrings, OverviewStrings, HelpStrings, HashStrings, WriterStrings, ReaderStrings, ObjectReaderStrings, ObjectWriterStrings, PremisRightsStrings, PremisObjectStrings, PremisAgentStrings, PremisEventStrings}
+export {AppStrings, HomeStrings, AboutStrings, OverviewStrings, HelpStrings, HashStrings, WriterStrings, ReaderStrings, ObjectReaderStrings, ObjectWriterStrings, RightsStrings, ObjectStrings, AgentStrings, EventStrings}

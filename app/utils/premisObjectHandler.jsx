@@ -2,13 +2,6 @@ import {PremisObjectStrings} from '../helpers/outputStrings'
 
 class PremisObjectHandler {
 
-  static categoryOptions = [
-    PremisObjectStrings.categoryIntellectual,
-    PremisObjectStrings.categoryRepresentation,
-    PremisObjectStrings.categoryFile,
-    PremisObjectStrings.categoryBitStream
-  ]
-
   constructor () {
 
     this.object = {

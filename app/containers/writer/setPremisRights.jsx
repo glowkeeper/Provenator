@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import PremisRightsHandler from '../../utils/premisRightsHandler'
-import {PremisRightsStrings} from '../../helpers/outputStrings'
+import {RightsStrings} from '../../helpers/outputStrings'
 import {IOHeading, IOTextInput, IOTextAreaInput, IOSelect} from '../../components/io'
 
 class SetPremisRights extends React.Component {
@@ -49,33 +49,48 @@ class SetPremisRights extends React.Component {
   render () {
     return (
       <div>
-        <IOHeading heading={PremisRightsStrings.heading} />
+        <IOHeading heading={RightsStrings.heading} />
         <IOSelect
           parentFunc={this._handleBasis.bind(this)}
-          selections={PremisRightsHandler.basisOptions}
-          label={PremisRightsStrings.basisLabel}
-          tip={PremisRightsStrings.basisTip}
+          selections={RightsStrings.basisOptions}
+          label={RightsStrings.basisLabel}
+          tip={RightsStrings.basisTip}
         />
-        <IOTextInput parentFunc={this._handleStatus.bind(this)} placeHolder={PremisRightsStrings.statusPlaceHolder} label={PremisRightsStrings.statusLabel} tip={PremisRightsStrings.statusTip} />
+        <IOTextInput
+          parentFunc={this._handleStatus.bind(this)}
+          placeHolder={RightsStrings.statusPlaceHolder}
+          label={RightsStrings.statusLabel}
+          tip={RightsStrings.statusTip}
+        />
         <IOSelect
           parentFunc={this._handleCountryCode.bind(this)}
-          selections={PremisRightsStrings.jurisdictionCountryCodes}
-          label={PremisRightsStrings.jurisdictionLabel}
-          tip={PremisRightsStrings.countryCodeTip}
+          selections={RightsStrings.jurisdictionCountryCodes}
+          label={RightsStrings.jurisdictionLabel}
+          tip={RightsStrings.countryCodeTip}
         />
-        <IOTextInput parentFunc={this._handleDeterminationDate.bind(this)} placeHolder={PremisRightsStrings.determinationDatePlaceHolder} label={PremisRightsStrings.determinationDateLabel} tip={PremisRightsStrings.determinationDateTip} />
-        <IOTextAreaInput parentFunc={this._handleNote.bind(this)} placeHolder={PremisRightsStrings.notePlaceHolder} label={PremisRightsStrings.noteLabel} tip={PremisRightsStrings.noteTip} />
+        <IOTextInput
+          parentFunc={this._handleDeterminationDate.bind(this)}
+          placeHolder={RightsStrings.determinationDatePlaceHolder}
+          label={RightsStrings.determinationDateLabel}
+          tip={RightsStrings.determinationDateTip}
+        />
+        <IOTextAreaInput
+          parentFunc={this._handleNote.bind(this)}
+          placeHolder={RightsStrings.notePlaceHolder}
+          label={RightsStrings.noteLabel}
+          tip={RightsStrings.noteTip}
+        />
         <IOSelect
           parentFunc={this._handleRightsGrantedAct.bind(this)}
-          selections={PremisRightsHandler.actOptions}
-          label={PremisRightsStrings.actLabel}
-          tip={PremisRightsStrings.actTip}
+          selections={RightsStrings.actOptions}
+          label={RightsStrings.actLabel}
+          tip={RightsStrings.actTip}
         />
         <IOSelect
           parentFunc={this._handleRightsGrantedRestriction.bind(this)}
-          selections={PremisRightsHandler.restrictionsOptions}
-          label={PremisRightsStrings.restrictionsLabel}
-          tip={PremisRightsStrings.restrictionTip}
+          selections={RightsStrings.restrictionsOptions}
+          label={RightsStrings.restrictionsLabel}
+          tip={RightsStrings.restrictionTip}
         />
       </div>
     )

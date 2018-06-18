@@ -3,11 +3,6 @@ import {PremisAgentStrings} from '../helpers/outputStrings'
 
 class PremisAgentHandler {
 
-  static typeOptions = [
-    PremisAgentStrings.agentIndividual,
-    PremisAgentStrings.agentCompany
-  ]
-
   constructor () {
 
     this.agent = {

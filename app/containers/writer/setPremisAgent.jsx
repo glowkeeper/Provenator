@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import PremisAgentHandler from '../../utils/premisAgentHandler'
-import {PremisAgentStrings} from '../../helpers/outputStrings'
+import {AgentStrings} from '../../helpers/outputStrings'
 import {IOHeading, IOTextInput, IOSelect} from '../../components/io'
 
 class SetPremisAgent extends React.Component {
@@ -23,13 +23,18 @@ class SetPremisAgent extends React.Component {
   render () {
     return (
       <div>
-        <IOHeading heading={PremisAgentStrings.heading} />
-        <IOTextInput parentFunc={this._handleName.bind(this)} placeHolder={PremisAgentStrings.namePlaceHolder} label={PremisAgentStrings.nameLabel} tip={PremisAgentStrings.nameTip} />
+        <IOHeading heading={AgentStrings.heading} />
+        <IOTextInput
+          parentFunc={this._handleName.bind(this)}
+          placeHolder={AgentStrings.namePlaceHolder}
+          label={AgentStrings.nameLabel}
+          tip={AgentStrings.nameTip}
+        />
         <IOSelect
           parentFunc={this._handleType.bind(this)}
-          selections={PremisAgentHandler.typeOptions}
-          label={PremisAgentStrings.agentTypeLabel}
-          tip={PremisAgentStrings.typeTip}
+          selections={AgentStrings.typeOptions}
+          label={AgentStrings.agentTypeLabel}
+          tip={AgentStrings.typeTip}
         />
       </div>
     )
