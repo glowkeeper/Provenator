@@ -1,5 +1,5 @@
 import { keccak256 } from 'js-sha3'
-import {PremisAgentStrings} from '../helpers/outputStrings'
+import {PremisAgentStrings} from '../../helpers/outputStrings'
 
 class PremisAgentHandler {
 

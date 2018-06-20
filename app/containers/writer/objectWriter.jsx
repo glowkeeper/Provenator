@@ -1,18 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import ContractWriter from '../../utils/contractWriter'
-import PremisObjectHandler from '../../utils/premisObjectHandler'
-import PremisRightsHandler from '../../utils/premisRightsHandler'
-import PremisEventHandler from '../../utils/premisEventHandler'
-import PremisAgentHandler from '../../utils/premisAgentHandler'
+import ContractWriter from '../../utils/writer/contractWriter'
+import PremisObjectHandler from '../../utils/writer/premisObjectHandler'
+import PremisRightsHandler from '../../utils/writer/premisRightsHandler'
+import PremisEventHandler from '../../utils/writer/premisEventHandler'
+import PremisAgentHandler from '../../utils/writer/premisAgentHandler'
 
 import SetPremisObject from './setPremisObject'
 import SetPremisAgent from './setPremisAgent'
 import SetPremisRights from './setPremisRights'
 
 import {ObjectWriterStrings} from '../../helpers/outputStrings'
-import {IOButtonLoad} from '../../components/io'
+import {IOButton} from '../../components/io'
 
 class ObjectWriter extends React.Component {
 
@@ -32,9 +32,13 @@ class ObjectWriter extends React.Component {
   }
 
   _checkFieldsSet() {
+    const rightsSet = this.premisRightsHandler.checkSet()
+    const objectsSet = this.premisObjectHandler.checkSet()
+    const eventsSet = this.premisEventHandler.checkSet()
+    const agentsSet = this.premisAgentHandler.checkSet()
+    console.log(rightsSet, objectsSet, eventsSet, agentsSet)
     if ((this.premisRightsHandler.checkSet()) &&
         (this.premisObjectHandler.checkSet()) &&
-        (this.premisEventHandler.checkSet()) &&
         (this.premisAgentHandler.checkSet())) {
       return true
     } else {
@@ -129,7 +133,11 @@ class ObjectWriter extends React.Component {
         <hr />
         <SetPremisRights rightsHandler={this.premisRightsHandler} />
         <hr />
-        <IOButtonLoad parentFunc={this.handleSubmit.bind(this)} label={ObjectWriterStrings.submitObjectLabel} tip={ObjectWriterStrings.submitObjectTip} />
+        <IOButton
+          parentFunc={this.handleSubmit.bind(this)}
+          label={ObjectWriterStrings.submitObjectLabel}
+          tip={ObjectWriterStrings.submitObjectTip}
+        />
       </div>
     )
   }

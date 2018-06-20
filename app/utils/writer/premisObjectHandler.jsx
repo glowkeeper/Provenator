@@ -1,4 +1,4 @@
-import {PremisObjectStrings} from '../helpers/outputStrings'
+import {PremisObjectStrings} from '../../helpers/outputStrings'
 
 class PremisObjectHandler {
 
@@ -22,6 +22,7 @@ class PremisObjectHandler {
   }
 
   checkSet () {
+    //console.log(this.object.hash, this.object.category, this.object.format, this.object.propertyType, this.object.propertyValue)
     if ((this.object.hash === undefined) ||
         (this.object.category === undefined) ||
         (this.object.format === undefined) ||

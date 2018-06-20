@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ContractReader from '../../utils/contractReader'
+import ContractReader from '../../utils/reader/contractReader'
 import {ObjectReaderStrings} from '../../helpers/outputStrings'
 import {IOLogger} from '../../components/io'
 

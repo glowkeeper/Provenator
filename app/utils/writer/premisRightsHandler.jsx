@@ -1,5 +1,5 @@
 import { keccak256 } from 'js-sha3'
-import {PremisRightsStrings} from '../helpers/outputStrings'
+import {PremisRightsStrings} from '../../helpers/outputStrings'
 
 class PremisRightsHandler {
 

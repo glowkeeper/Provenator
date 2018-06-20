@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import FileReaderInput from 'react-file-reader-input'
-import {Tooltip} from 'antd'
+import {Tooltip, Button} from 'antd'
 import {IOButton} from './io'
 import {ObjectWriterStrings} from '../helpers/outputStrings'
 
@@ -13,6 +13,7 @@ class File extends React.Component {
   } */
 
   _handleSetFilename (e, results) {
+    //console.log(e, results)
     this.props.parentFunc(e, results)
   }
 
@@ -27,12 +28,12 @@ class File extends React.Component {
             id="my-file-input"
             onChange={this._handleSetFilename.bind(this)}>
             <Tooltip title={this.props.tip}>
-              <IOButton
+              <Button
                 type='normal'
                 icon={null}
-                onClick={null}
-                label={ObjectWriterStrings.fileLoad}
-              />
+              >
+                {ObjectWriterStrings.fileLoad}
+              </Button>
             </Tooltip>
           </FileReaderInput>
         </div>

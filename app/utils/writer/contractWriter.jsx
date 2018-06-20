@@ -1,10 +1,12 @@
-import Web3Handler from './web3Handler'
-import ContractHandler from '../utils/contractHandler'
+import Web3Handler from '../web3Handler'
+import ContractHandler from '../contractHandler'
 
-import PremisObjectHandler from '../utils/premisObjectHandler'
-import PremisRightsHandler from '../utils/premisRightsHandler'
-import PremisEventHandler from '../utils/premisEventHandler'
-import PremisAgentHandler from '../utils/premisAgentHandler'
+import PremisObjectHandler from './premisObjectHandler'
+import PremisRightsHandler from './premisRightsHandler'
+import PremisEventHandler from './premisEventHandler'
+import PremisAgentHandler from './premisAgentHandler'
+
+import {PremisEventStrings} from '../../helpers/strings'
 
 class ContractWriter {
 
@@ -79,7 +81,7 @@ class ContractWriter {
 
   // Premis Object Stuff
 
-  _checkPropType(_self, _propTypeIndex) {
+  _setPropType(_self, _propTypeIndex) {
     // console.log('Checking new property type exists with index ' + _propTypeIndex)
     // console.log('Setting Object proptype ' + _propTypeIndex)
     if ( _self._isNewIndex(_propTypeIndex) ) {
@@ -92,7 +94,7 @@ class ContractWriter {
     }
   }
 
-  _checkObject(_self, _objectIndex) {
+  _setObject(_self, _objectIndex) {
     // console.log('Object index ' + _objectIndex)
     if ( _self._isNewIndex(_objectIndex) ) {
       const hash = _self.premisObjectData.getHash()
@@ -106,7 +108,7 @@ class ContractWriter {
     }
   }
 
-  _checkObjectEvent(_self, _eventIndex) {
+  _setObjectEvent(_self, _eventIndex) {
     // console.log('Setting Object event ' + _eventIndex)
     if ( _self._isNewIndex(_eventIndex) ) {
       const hash = _self.premisObjectData.getHash()
@@ -119,7 +121,7 @@ class ContractWriter {
     }
   }
 
-  _checkObjectAgent(_self, _agentIndex) {
+  _setObjectAgent(_self, _agentIndex) {
     // console.log('Setting Object agent ' + _agentIndex)
     if ( _self._isNewIndex(_agentIndex) ) {
       const hash = _self.premisObjectData.getHash()
@@ -132,7 +134,7 @@ class ContractWriter {
     }
   }
 
-  _checkObjectRights(_self, _rightsIndex) {
+  _setObjectRights(_self, _rightsIndex) {
     // console.log('Object Rights Index ' + _rightsIndex)
     if ( _self._isNewIndex(_rightsIndex) ) {
       const hash = _self.premisObjectData.getHash()
@@ -153,25 +155,25 @@ class ContractWriter {
     const eventId = this.premisEventData.getId()
     const rightsId = this.premisRightsData.getId()
     let params = [propType]
-    this.web3Handler.callParamHandler(this, this.premisObject.getPropertyTypeExists, params, this._checkPropType, false)
+    this.web3Handler.callParamHandler(this, this.premisObject.getPropertyTypeExists, params, this._setPropType, false)
     params = [hash]
-    this.web3Handler.callParamHandler(this, this.premisObject.getObjectExists, params, this._checkObject, false)
+    this.web3Handler.callParamHandler(this, this.premisObject.getObjectExists, params, this._setObject, false)
     params = [hash, propType, propValue, this.defaultTO]
     this.web3Handler.callParamHandler(this, this.premisObject.setProperties, params, this._blockchainWriter, false)
     params = [hash, eventId]
-    this.web3Handler.callParamHandler(this, this.premisObject.getObjectEventExists, params, this._checkObjectEvent, false)
+    this.web3Handler.callParamHandler(this, this.premisObject.getObjectEventExists, params, this._setObjectEvent, false)
     params = [hash, agentId]
-    this.web3Handler.callParamHandler(this, this.premisObject.getObjectAgentExists, params, this._checkObjectAgent, false)
+    this.web3Handler.callParamHandler(this, this.premisObject.getObjectAgentExists, params, this._setObjectAgent, false)
     params = [hash, rightsId]
-    this.web3Handler.callParamHandler(this, this.premisObject.getObjectRightsExists, params, this._checkObjectRights, false)
+    this.web3Handler.callParamHandler(this, this.premisObject.getObjectRightsExists, params, this._setObjectRights, false)
   }
 
   // Premis Event Stuff
 
-  _checkEventType(_self, _eventTypeIndex) {
+  _setEventType(_self, _eventTypeIndex) {
     // console.log('Setting event type ' + _eventTypeIndex)
     if ( _self._isNewIndex(_eventTypeIndex) ) {
-      const eventTypeName = _self.premisEventData.getName()
+      const eventTypeName = _self.premisEventData.getType()
       const params = [eventTypeName, _self.defaultTO]
       _self.web3Handler.callParamHandler(_self, _self.premisEvent.setEventType, params, _self._blockchainWriter, false)
     } else {
@@ -180,11 +182,11 @@ class ContractWriter {
     }
   }
 
-  _checkEvent(_self, _eventIndex) {
+  _setEvent(_self, _eventIndex) {
     // console.log('Setting Event ' + _eventIndex)
     if ( _self._isNewIndex(_eventIndex) ) {
       const eventId = _self.premisEventData.getId()
-      const eventTypeName = _self.premisEventData.getName()
+      const eventTypeName = _self.premisEventData.getType()
       const date = _self.premisEventData.getDate()
       const hash = _self.premisObjectData.getHash()
       const agentId = _self.premisAgentData.getId()
@@ -197,17 +199,19 @@ class ContractWriter {
   }
 
   _eventSubmit () {
+    this.premisEventData.setType(PremisEventStrings.objectRecord)
+    //console.log(PremisEventStrings.objectRecord)
     const eventId = this.premisEventData.getId()
-    const eventTypeName = this.premisEventData.getName()
-    let params = [eventTypeName]
-    this.web3Handler.callParamHandler(this, this.premisEvent.getEventTypeExists, params, this._checkEventType, false)
+    let params = [PremisEventStrings.objectRecord]
+    //console.log(PremisEventStrings.objectRecord)
+    this.web3Handler.callParamHandler(this, this.premisEvent.getEventTypeExists, params, this._setEventType, false)
     params = [eventId]
-    this.web3Handler.callParamHandler(this, this.premisEvent.getEventExists, params, this._checkEvent, false)
+    this.web3Handler.callParamHandler(this, this.premisEvent.getEventExists, params, this._setEvent, false)
   }
 
   // Premis Agent Stuff
 
-  _checkAgent(_self, _agentIndex) {
+  _setAgent(_self, _agentIndex) {
     // console.log('Setting Agent ' + _agentIndex)
     if ( _self._isNewIndex(_agentIndex) ) {
       const agentId = _self.premisAgentData.getId()
@@ -221,7 +225,7 @@ class ContractWriter {
     }
   }
 
-  _checkAgentObject(_self, _objectIndex) {
+  _setAgentObject(_self, _objectIndex) {
     // console.log('Setting Agent Object ' + _objectIndex)
     if ( _self._isNewIndex(_objectIndex) ) {
       const agentId = _self.premisAgentData.getId()
@@ -234,7 +238,7 @@ class ContractWriter {
     }
   }
 
-  _checkAgentEvent(_self, _eventIndex) {
+  _setAgentEvent(_self, _eventIndex) {
     // console.log('Setting Agent event ' + _eventIndex)
     if ( _self._isNewIndex(_eventIndex) ) {
       const agentId = _self.premisAgentData.getId()
@@ -247,7 +251,7 @@ class ContractWriter {
     }
   }
 
-  _checkAgentRights(_self, _rightsIndex) {
+  _setAgentRights(_self, _rightsIndex) {
     // console.log('Setting Agent rights ' + _rightsIndex)
     if ( _self._isNewIndex(_rightsIndex) ) {
       const agentId = _self.premisAgentData.getId()
@@ -266,18 +270,18 @@ class ContractWriter {
     const eventId = this.premisEventData.getId()
     const rightsId = this.premisRightsData.getId()
     let params = [agentId]
-    this.web3Handler.callParamHandler(this, this.premisAgent.getAgentExists, params, this._checkAgent, false)
+    this.web3Handler.callParamHandler(this, this.premisAgent.getAgentExists, params, this._setAgent, false)
     params = [agentId, hash]
-    this.web3Handler.callParamHandler(this, this.premisAgent.getAgentObjectExists, params, this._checkAgentObject, false)
+    this.web3Handler.callParamHandler(this, this.premisAgent.getAgentObjectExists, params, this._setAgentObject, false)
     params = [agentId, eventId]
-    this.web3Handler.callParamHandler(this, this.premisAgent.getAgentEventExists, params, this._checkAgentEvent, false)
+    this.web3Handler.callParamHandler(this, this.premisAgent.getAgentEventExists, params, this._setAgentEvent, false)
     params = [agentId, rightsId]
-    this.web3Handler.callParamHandler(this, this.premisAgent.getAgentRightsExists, params, this._checkAgentRights, false)
+    this.web3Handler.callParamHandler(this, this.premisAgent.getAgentRightsExists, params, this._setAgentRights, false)
   }
 
   // Premis Rights Stuff
 
-  _checkRights(_self, _rightsIndex) {
+  _setRights(_self, _rightsIndex) {
     // console.log('Setting rights ' + _rightsIndex)
     if ( _self._isNewIndex(_rightsIndex) ) {
       // since the rights index key is made up of every field, we need to update everything here
@@ -310,7 +314,7 @@ class ContractWriter {
   _rightsSubmit () {
     const rightsId = this.premisRightsData.getId()
     let params = [rightsId]
-    this.web3Handler.callParamHandler(this, this.premisRights.getRightsExists, params, this._checkRights, false)
+    this.web3Handler.callParamHandler(this, this.premisRights.getRightsExists, params, this._setRights, false)
   }
 
   setData (_premisObjectHandler, _premisEventHandler, _premisAgentHandler, _premisRightsHandler) {

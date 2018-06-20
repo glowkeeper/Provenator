@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import PremisRightsHandler from '../../utils/premisRightsHandler'
+import PremisRightsHandler from '../../utils/writer/premisRightsHandler'
 import {RightsStrings} from '../../helpers/outputStrings'
 import {IOHeading, IOTextInput, IOTextAreaInput, IOSelect} from '../../components/io'
 

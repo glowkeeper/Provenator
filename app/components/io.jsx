@@ -299,7 +299,13 @@ class IOButtonLoad extends React.Component {
     return (
       <div>
         <Tooltip title={this.props.tip}>
-          <Button icon={this.props.icon} loading={this.props.loading} onClick={this._handleSubmit.bind(this)}>{this.props.label}</Button>
+          <Button
+            icon={this.props.icon}
+            loading={this.props.loading}
+            onClick={this._handleSubmit.bind(this)}
+          >
+              {this.props.label}
+          </Button>
         </Tooltip>
       </div>
     );

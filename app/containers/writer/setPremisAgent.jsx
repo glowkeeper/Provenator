@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import PremisAgentHandler from '../../utils/premisAgentHandler'
+import PremisAgentHandler from '../../utils/writer/premisAgentHandler'
 import {AgentStrings} from '../../helpers/outputStrings'
 import {IOHeading, IOTextInput, IOSelect} from '../../components/io'
 

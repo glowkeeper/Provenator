@@ -32,19 +32,13 @@ class Writer extends React.Component {
   render () {
     return (
       <div>
-        <div className="info">
-          <IOPlainTextOutput text={this.state.info} />
-          <hr />
-        </div>
-        <div>
-          <HashFile parentFunc={this.handleHashFile.bind(this)} />
-          <hr />
-          <ObjectWriter messageFunc={this.handleInfo.bind(this)} hash={this.state.hash} contracts={this.props.contracts} web3={this.props.web3} />
-          <hr />
-        </div>
-        <div className="info">
-          <IOPlainTextOutput text={this.state.info} />
-        </div>
+        <IOPlainTextOutput text={this.state.info} />
+        <hr />
+        <HashFile parentFunc={this.handleHashFile.bind(this)} />
+        <hr />
+        <ObjectWriter messageFunc={this.handleInfo.bind(this)} hash={this.state.hash} contracts={this.props.contracts} web3={this.props.web3} />
+        <hr />
+        <IOPlainTextOutput text={this.state.info} />
       </div>
     )
   }
