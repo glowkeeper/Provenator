@@ -63,8 +63,11 @@ class ContractWriter {
     this.numWrites = 0;
   }
 
-  _blockchainWriter (_self, _result) {
+  _blockchainWriter (_self) {
     _self.numWrites += 1;
+    if ( _self.numWrites == _self.numTransactions ) {
+      _self.web3Handler.executeBatch()
+    }
     // console.log(_self.numWrites)
   }
 
@@ -87,7 +90,7 @@ class ContractWriter {
     if ( _self._isNewIndex(_propTypeIndex) ) {
       const propType = _self.premisObjectData.getPropertyType()
       const params = [propType, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisObject.setPropertyType, params, _self._blockchainWriter, false)
+      _self.web3Handler.callParamHandler(_self, _self.premisObject.setPropertyType, params, _self._blockchainWriter, true)
     } else {
       _self.numWrites += 1
       // console.log(_self.numWrites)
@@ -101,7 +104,7 @@ class ContractWriter {
       const category = _self.premisObjectData.getCategory()
       const format = _self.premisObjectData.getFormat()
       const params = [hash, category, format, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisObject.setObject, params, _self._blockchainWriter, false)
+      _self.web3Handler.callParamHandler(_self, _self.premisObject.setObject, params, _self._blockchainWriter, true)
     } else {
       _self.numWrites += 1
       // console.log(_self.numWrites)
@@ -114,7 +117,7 @@ class ContractWriter {
       const hash = _self.premisObjectData.getHash()
       const eventId = _self.premisEventData.getId()
       const params = [hash, eventId, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisObject.setEvent, params, _self._blockchainWriter, false)
+      _self.web3Handler.callParamHandler(_self, _self.premisObject.setEvent, params, _self._blockchainWriter, true)
     } else {
       _self.numWrites += 1
       // console.log(_self.numWrites)
@@ -127,7 +130,7 @@ class ContractWriter {
       const hash = _self.premisObjectData.getHash()
       const agentId = _self.premisAgentData.getId()
       const params = [hash, agentId, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisObject.setAgent, params, _self._blockchainWriter, false)
+      _self.web3Handler.callParamHandler(_self, _self.premisObject.setAgent, params, _self._blockchainWriter, true)
     } else {
       _self.numWrites += 1
       // console.log(_self.numWrites)
@@ -140,7 +143,7 @@ class ContractWriter {
       const hash = _self.premisObjectData.getHash()
       const rightsId = _self.premisRightsData.getId()
       const params = [hash, rightsId, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisObject.setRights, params, _self._blockchainWriter, false)
+      _self.web3Handler.callParamHandler(_self, _self.premisObject.setRights, params, _self._blockchainWriter, true)
     } else {
       _self.numWrites += 1
       // console.log(_self.numWrites)
@@ -159,7 +162,7 @@ class ContractWriter {
     params = [hash]
     this.web3Handler.callParamHandler(this, this.premisObject.getObjectExists, params, this._setObject, false)
     params = [hash, propType, propValue, this.defaultTO]
-    this.web3Handler.callParamHandler(this, this.premisObject.setProperties, params, this._blockchainWriter, false)
+    this.web3Handler.callParamHandler(this, this.premisObject.setProperties, params, this._blockchainWriter, true)
     params = [hash, eventId]
     this.web3Handler.callParamHandler(this, this.premisObject.getObjectEventExists, params, this._setObjectEvent, false)
     params = [hash, agentId]
@@ -175,7 +178,7 @@ class ContractWriter {
     if ( _self._isNewIndex(_eventTypeIndex) ) {
       const eventTypeName = _self.premisEventData.getType()
       const params = [eventTypeName, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisEvent.setEventType, params, _self._blockchainWriter, false)
+      _self.web3Handler.callParamHandler(_self, _self.premisEvent.setEventType, params, _self._blockchainWriter, true)
     } else {
       _self.numWrites += 1
       // console.log(_self.numWrites)
@@ -191,7 +194,7 @@ class ContractWriter {
       const hash = _self.premisObjectData.getHash()
       const agentId = _self.premisAgentData.getId()
       const params = [eventId, eventTypeName, date, hash, agentId, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisEvent.setEvent, params, _self._blockchainWriter, false)
+      _self.web3Handler.callParamHandler(_self, _self.premisEvent.setEvent, params, _self._blockchainWriter, true)
     } else {
       _self.numWrites += 1
       // console.log(_self.numWrites)
@@ -218,7 +221,7 @@ class ContractWriter {
       const name = _self.premisAgentData.getName()
       const agentType = _self.premisAgentData.getType()
       const params = [agentId, name, agentType, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisAgent.setAgent, params, _self._blockchainWriter, false)
+      _self.web3Handler.callParamHandler(_self, _self.premisAgent.setAgent, params, _self._blockchainWriter, true)
     } else {
       _self.numWrites += 1
       // console.log(_self.numWrites)
@@ -231,7 +234,7 @@ class ContractWriter {
       const agentId = _self.premisAgentData.getId()
       const hash = _self.premisObjectData.getHash()
       const params = [agentId, hash, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisAgent.setObject, params, _self._blockchainWriter, false)
+      _self.web3Handler.callParamHandler(_self, _self.premisAgent.setObject, params, _self._blockchainWriter, true)
     } else {
       _self.numWrites += 1
       // console.log(_self.numWrites)
@@ -244,7 +247,7 @@ class ContractWriter {
       const agentId = _self.premisAgentData.getId()
       const eventId = _self.premisEventData.getId()
       const params = [agentId, eventId, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisAgent.setEvent, params, _self._blockchainWriter, false)
+      _self.web3Handler.callParamHandler(_self, _self.premisAgent.setEvent, params, _self._blockchainWriter, true)
     } else {
       _self.numWrites += 1
       // console.log(_self.numWrites)
@@ -257,7 +260,7 @@ class ContractWriter {
       const agentId = _self.premisAgentData.getId()
       const rightsId = _self.premisRightsData.getId()
       const params = [agentId, rightsId, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisAgent.setRights, params, _self._blockchainWriter, false)
+      _self.web3Handler.callParamHandler(_self, _self.premisAgent.setRights, params, _self._blockchainWriter, true)
     } else {
       _self.numWrites += 1
       // console.log(_self.numWrites)
@@ -296,15 +299,15 @@ class ContractWriter {
       const hash = _self.premisObjectData.getHash()
       const agentId = _self.premisAgentData.getId()
       let params = [rightsId, hash, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisRights.setObject, params, _self._blockchainWriter, false)
+      _self.web3Handler.callParamHandler(_self, _self.premisRights.setObject, params, _self._blockchainWriter, true)
       params = [rightsId, basis, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisRights.setBasis, params, _self._blockchainWriter, false)
+      _self.web3Handler.callParamHandler(_self, _self.premisRights.setBasis, params, _self._blockchainWriter, true)
       params = [rightsId, status, code, date, note, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisRights.setCopyrightInfo, params, _self._blockchainWriter, false)
+      _self.web3Handler.callParamHandler(_self, _self.premisRights.setCopyrightInfo, params, _self._blockchainWriter, true)
       params = [rightsId, act, restriction, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisRights.setRightsGranted, params, _self._blockchainWriter, false)
+      _self.web3Handler.callParamHandler(_self, _self.premisRights.setRightsGranted, params, _self._blockchainWriter, true)
       params = [rightsId, agentId, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisRights.setAgent, params, _self._blockchainWriter, false)
+      _self.web3Handler.callParamHandler(_self, _self.premisRights.setAgent, params, _self._blockchainWriter, true)
     } else {
       _self.numWrites += 5
       // console.log(_self.numWrites)

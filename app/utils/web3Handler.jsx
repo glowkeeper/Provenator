@@ -35,6 +35,10 @@ class Web3Handler {
     this.account = this.web3.eth.defaultAccount
     console.log('This account ' + this.account)
     setInterval(this._setAccount.bind(this), 3000)
+
+    this.state = {
+      batch: []
+    }
   }
 
   // metamask sets its account to web3.eth.accounts[0]
@@ -69,13 +73,11 @@ class Web3Handler {
   _call (_caller, _func, _cb, _isBatch) {
     if (this._callChecker(_func, _cb)) {
       if (_isBatch) {
-        this.batch.add(_func(function (err, result) {
-          if (err) {
-            console.log(err)
-          } else {
-            _cb(_caller, result)
-          }
-        }))
+        const batchFunc = _func().apply()
+        let batch = this.state.batch
+        batch.push(batchFunc)
+        this.setState({batch: batch})
+        _cb(_caller)
       } else {
         // console.log('blah ' + _func)
         _func(function (err, result) {
@@ -92,13 +94,11 @@ class Web3Handler {
   _call1Params (_caller, _func, _params, _cb, _isBatch) {
     if (this._callParamsChecker(_func, _params, _cb)) {
       if (_isBatch) {
-        this.batch.add(_func(_params[0], function (err, result) {
-          if (err) {
-            console.log(err)
-          } else {
-            _cb(_caller, result)
-          }
-        }))
+        const batchFunc = _func(_params[0]).apply()
+        let batch = this.state.batch
+        batch.push(batchFunc)
+        this.setState({batch: batch})
+        _cb(_caller)
       } else {
         _func(_params[0], function (err, result) {
           if (err) {
@@ -114,13 +114,11 @@ class Web3Handler {
   _call2Params (_caller, _func, _params, _cb, _isBatch) {
     if (this._callParamsChecker(_func, _params, _cb)) {
       if (_isBatch) {
-        this.batch.add(_func(_params[0], _params[1], function (err, result) {
-          if (err) {
-            console.log(err)
-          } else {
-            _cb(_caller, result)
-          }
-        }))
+        const batchFunc = _func(_params[0], _params[1]).apply()
+        let batch = this.state.batch
+        batch.push(batchFunc)
+        this.setState({batch: batch})
+        _cb(_caller)
       } else {
         _func(_params[0], _params[1], function (err, result) {
           if (err) {
@@ -141,13 +139,11 @@ class Web3Handler {
     console.log('batch ' + _isBatch) */
     if (this._callParamsChecker(_func, _params, _cb)) {
       if (_isBatch) {
-        this.batch.add(_func(_params[0], _params[1], _params[2], function (err, result) {
-          if (err) {
-            console.log(err)
-          } else {
-            _cb(_caller, result)
-          }
-        }))
+        const batchFunc = _func(_params[0], _params[1], _params[2]).apply()
+        let batch = this.state.batch
+        batch.push(batchFunc)
+        this.setState({batch: batch})
+        _cb(_caller)
       } else {
         _func(_params[0], _params[1], _params[2], function (err, result) {
           if (err) {
@@ -168,17 +164,11 @@ class Web3Handler {
     console.log('batch ' + _isBatch) */
     if (this._callParamsChecker(_func, _params, _cb)) {
       if (_isBatch) {
-        /* console.log('param0 ' + _params[0])
-        console.log('param0 ' + _params[1])
-        console.log('param0 ' + _params[2])
-        console.log('param0 ' + _params[3]) */
-        this.batch.add(_func(_params[0], _params[1], _params[2], _params[3], function (err, result) {
-          if (err) {
-            console.log(err)
-          } else {
-            _cb(_caller, result)
-          }
-        }))
+        const batchFunc = _func(_params[0], _params[1], _params[2], _params[3]).apply()
+        let batch = this.state.batch
+        batch.push(batchFunc)
+        this.setState({batch: batch})
+        _cb(_caller)
       } else {
         _func(_params[0], _params[1], _params[2], _params[3], function (err, result) {
           if (err) {
@@ -194,13 +184,11 @@ class Web3Handler {
   _call5Params (_caller, _func, _params, _cb, _isBatch) {
     if (this._callParamsChecker(_func, _params, _cb)) {
       if (_isBatch) {
-        this.batch.add(_func(_params[0], _params[1], _params[2], _params[3], _params[4], function (err, result) {
-          if (err) {
-            console.log(err)
-          } else {
-            _cb(_caller, result)
-          }
-        }))
+        const batchFunc = _func(_params[0], _params[1], _params[2], _params[3], _params[4]).apply()
+        let batch = this.state.batch
+        batch.push(batchFunc)
+        this.setState({batch: batch})
+        _cb(_caller)
       } else {
         _func(_params[0], _params[1], _params[2], _params[3], _params[4], function (err, result) {
           if (err) {
@@ -216,13 +204,11 @@ class Web3Handler {
   _call6Params (_caller, _func, _params, _cb, _isBatch) {
     if (this._callParamsChecker(_func, _params, _cb)) {
       if (_isBatch) {
-        this.batch.add(_func(_params[0], _params[1], _params[2], _params[3], _params[4], _params[5], function (err, result) {
-          if (err) {
-            console.log(err)
-          } else {
-            _cb(_caller, result)
-          }
-        }))
+        const batchFunc = _func(_params[0], _params[1], _params[2], _params[3], _params[4], _params[5]).apply()
+        let batch = this.state.batch
+        batch.push(batchFunc)
+        this.setState({batch: batch})
+        _cb(_caller)
       } else {
         _func(_params[0], _params[1], _params[2], _params[3], _params[4], _params[5], function (err, result) {
           if (err) {
@@ -243,13 +229,22 @@ class Web3Handler {
     return this.web3
   }
 
-  createBatch () {
-    this.batch = undefined
-    this.batch = this.web3.createBatch()
-  }
-
   executeBatch () {
-    this.batch.execute()
+    let batch = this.web3.createBatch()
+    let thisBatch = this.state.batch
+    console.log(thisBatch)
+    const batchLength = thisBatch.length
+    for (var i = 0; i < batchLength; i++) {
+      batch.add(thisBatch[i], function (err, result) {
+        if (err) {
+          console.log(err)
+        } else {
+          console.log(result)
+        }
+      })
+    }
+    batch.execute()
+    this.setState({batch: []})
   }
 
   callHandler (_caller, _func, _cb, _isBatch) {
