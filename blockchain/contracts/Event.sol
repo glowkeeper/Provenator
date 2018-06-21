@@ -5,8 +5,8 @@ contract Event {
   function setEventType(string _eventType) public;
   function setEvent(string _eventId, string _type, string _time, string _objectHash, string _agentId) public;
 
-  function getEventTypeExists(string _eventType) public constant returns (uint256);
-  function getEventExists(string _eventId) public constant returns (uint256);
+  function getEventTypeExists(string _eventType) public constant returns (bool);
+  function getEventExists(string _eventId) public constant returns (bool);
 
   function getNumEventTypes() public constant returns (uint256);
   function getEventType(uint256 _eventTypeIndex) public constant returns (string);

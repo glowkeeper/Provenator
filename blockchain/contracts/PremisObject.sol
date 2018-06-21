@@ -12,7 +12,7 @@ contract PremisObject is Object {
     string propType;
     string propValue;
   }
- 
+
   struct ObjectData {
     string category;
     string format;
@@ -66,24 +66,44 @@ contract PremisObject is Object {
   }
 
   // These 'Exists?' functions return max(uint256) if not, the index otherwise
-  function getPropertyTypeExists(string _propType) public constant returns (uint256) {
-    return Strings.getIndex(_propType, propTypes);
+  function getPropertyTypeExists(string _propType) public constant returns (bool) {
+    uint256 index = Strings.getIndex(_propType, propTypes);
+    return index != propTypes.length;
   }
 
-  function getObjectExists(string _objectHash) public constant returns (uint256) {
-    return Strings.getIndex(_objectHash, objects);
+  function getObjectExists(string _objectHash) public constant returns (bool) {
+    uint256 index = Strings.getIndex(_objectHash, objects);
+    return index != objects.length;
   }
 
-  function getObjectEventExists(string _objectHash, string _eventId) public constant returns (uint256) {
-    return Strings.getIndex(_eventId, premisObjects[_objectHash].events);
+  function getObjectPropertiesExist(string _objectHash, string _propType, string _propValue) public constant returns (bool) {
+    bool exists = false;
+    if(getObjectExists(_objectHash)) {
+      for (uint256 x = 0; x < premisObjects[_objectHash].properties.length; x++) {
+        if (Strings.equal(_propType, premisObjects[_objectHash].properties[x].propType)) {
+          if(Strings.equal(_propValue, premisObjects[_objectHash].properties[x].propValue)) {
+            exists = true;
+          }
+          break;
+        }
+      }
+    }
+    return exists;
   }
 
-  function getObjectAgentExists(string _objectHash, string _agentId) public constant returns (uint256) {
-    return Strings.getIndex(_agentId, premisObjects[_objectHash].agents);
+  function getObjectEventExists(string _objectHash, string _eventId) public constant returns (bool) {
+    uint256 index = Strings.getIndex(_eventId, premisObjects[_objectHash].events);
+    return index != premisObjects[_objectHash].events.length;
   }
 
-  function getObjectRightsExists(string _objectHash, string _rightsId) public constant returns (uint256) {
-    return Strings.getIndex(_rightsId, premisObjects[_objectHash].rights);
+  function getObjectAgentExists(string _objectHash, string _agentId) public constant returns (bool) {
+    uint256 index = Strings.getIndex(_agentId, premisObjects[_objectHash].agents);
+    return index != premisObjects[_objectHash].agents.length;
+  }
+
+  function getObjectRightsExists(string _objectHash, string _rightsId) public constant returns (bool) {
+    uint256 index = Strings.getIndex(_rightsId, premisObjects[_objectHash].rights);
+    return index != premisObjects[_objectHash].rights.length;
   }
 
   function getNumPropTypes() public constant returns (uint256) {

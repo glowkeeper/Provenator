@@ -12,7 +12,7 @@ contract Rights {
   function setRightsGranted(string _rightsId, string _act, string _restriction) public;
   function setAgent(string _rightsId, string _agentId) public;
 
-  function getRightsExists(string _rightsId) public constant returns (uint256);
+  function getRightsExists(string _rightsId) public constant returns (bool);
 
   function getNumRights() public constant returns (uint256);
   function getRights(uint256 _index) public constant returns (string);

@@ -7,10 +7,10 @@ contract Agent {
   function setEvent(string _agentId, string _eventId) public;
   function setRights(string _agentId, string _rightsId) public;
 
-  function getAgentExists(string _agentId) public constant returns (uint256);
-  function getAgentObjectExists(string _agentId, string _objectHash) public constant returns (uint256);
-  function getAgentEventExists(string _agentId, string _eventId) public constant returns (uint256);
-  function getAgentRightsExists(string _agentId, string _rightsId) public constant returns (uint256);
+  function getAgentExists(string _agentId) public constant returns (bool);
+  function getAgentObjectExists(string _agentId, string _objectHash) public constant returns (bool);
+  function getAgentEventExists(string _agentId, string _eventId) public constant returns (bool);
+  function getAgentRightsExists(string _agentId, string _rightsId) public constant returns (bool);
 
   function getNumAgents() public constant returns (uint256);
   function getNumObjects(string _agentId) public constant returns (uint256);

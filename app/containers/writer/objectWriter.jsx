@@ -32,11 +32,11 @@ class ObjectWriter extends React.Component {
   }
 
   _checkFieldsSet() {
-    const rightsSet = this.premisRightsHandler.checkSet()
+    /*const rightsSet = this.premisRightsHandler.checkSet()
     const objectsSet = this.premisObjectHandler.checkSet()
     const eventsSet = this.premisEventHandler.checkSet()
     const agentsSet = this.premisAgentHandler.checkSet()
-    console.log(rightsSet, objectsSet, eventsSet, agentsSet)
+    console.log(rightsSet, objectsSet, eventsSet, agentsSet)*/
     if ((this.premisRightsHandler.checkSet()) &&
         (this.premisObjectHandler.checkSet()) &&
         (this.premisAgentHandler.checkSet())) {

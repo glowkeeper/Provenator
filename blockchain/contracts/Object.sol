@@ -9,11 +9,12 @@ contract Object {
   function setAgent(string _objectHash, string _agentId) public;
   function setRights(string _objectHash, string _rightsId) public;
 
-  function getPropertyTypeExists(string _propType) public constant returns (uint256);
-  function getObjectExists(string _objectHash) public constant returns (uint256);
-  function getObjectEventExists(string _objectHash, string _eventId) public constant returns (uint256);
-  function getObjectAgentExists(string _objectHash, string _agentId) public constant returns (uint256);
-  function getObjectRightsExists(string _objectHash, string _rightsId) public constant returns (uint256);
+  function getPropertyTypeExists(string _propType) public constant returns (bool);
+  function getObjectExists(string _objectHash) public constant returns (bool);
+  function getObjectPropertiesExist(string _objectHash, string _propType, string _propValue) public constant returns (bool);
+  function getObjectEventExists(string _objectHash, string _eventId) public constant returns (bool);
+  function getObjectAgentExists(string _objectHash, string _agentId) public constant returns (bool);
+  function getObjectRightsExists(string _objectHash, string _rightsId) public constant returns (bool);
 
   function getNumPropTypes() public constant returns (uint256);
   function getNumObjects() public constant returns (uint256);

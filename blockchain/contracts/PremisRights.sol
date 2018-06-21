@@ -75,8 +75,9 @@ contract PremisRights is Rights {
   }
 
   // This 'Exists?' function return max(uint256) if not, the index otherwise
-  function getRightsExists(string _rightsId) public constant returns (uint256) {
-    return Strings.getIndex(_rightsId, rights);
+  function getRightsExists(string _rightsId) public constant returns (bool) {
+    uint256 index = Strings.getIndex(_rightsId, rights);
+    return index != rights.length;
   }
 
   function getNumRights() public constant returns (uint256) {

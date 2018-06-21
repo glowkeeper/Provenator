@@ -57,12 +57,6 @@ class SetPremisObject extends React.Component {
   /* componentWillUpdate() {
 
   } */
-
-  componentDidMount () {
-    // console.log('In object ' + this.props.premisObject)
-    this.props.contractWriter.getPropTypes(this, this.setPropTypeName)
-  }
-
 }
 
 SetPremisObject.propTypes = {

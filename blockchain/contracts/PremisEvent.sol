@@ -38,13 +38,15 @@ contract PremisEvent is Event {
   }
 
   // These 'Exists?' functions return max(uint256) if not, the index otherwise
-  function getEventTypeExists(string _eventType) public constant returns (uint256) {
-    return Strings.getIndex(_eventType, eventTypes);
+  function getEventTypeExists(string _eventType) public constant returns (bool) {
+      uint256 index = Strings.getIndex(_eventType, eventTypes);
+      return index != eventTypes.length;
   }
 
 
-  function getEventExists(string _eventId) public constant returns (uint256) {
-    return Strings.getIndex(_eventId, events);
+  function getEventExists(string _eventId) public constant returns (bool) {
+    uint256 index = Strings.getIndex(_eventId, events);
+    return index != events.length;
   }
 
 

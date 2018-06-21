@@ -57,7 +57,7 @@ library Strings {
 
     // S.Huckle - extra hack to find the index of a string in a string storage array
     function getIndex(string _id, string[] storage _store) public view returns (uint256) {
-      uint index = 2**256 - 1; // max size held by uint256
+      uint256 index = _store.length;
       for (uint256 x = 0; x < _store.length; x++)
       {
         if (equal(_id, _store[x])) {

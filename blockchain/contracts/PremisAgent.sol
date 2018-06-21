@@ -51,20 +51,24 @@ contract PremisAgent is Agent {
   }
 
   // These 'Exists?' functions return max(uint256) if not, the index otherwise
-  function getAgentExists(string _agentId) public constant returns (uint256) {
-    return Strings.getIndex(_agentId, agents);
+  function getAgentExists(string _agentId) public constant returns (bool) {
+    uint256 index = Strings.getIndex(_agentId, agents);
+    return index != agents.length;
   }
 
-  function getAgentObjectExists(string _agentId, string _objectHash) public constant returns (uint256) {
-    return Strings.getIndex(_objectHash, premisAgents[_agentId].objects);
+  function getAgentObjectExists(string _agentId, string _objectHash) public constant returns (bool) {
+    uint256 index = Strings.getIndex(_objectHash, premisAgents[_agentId].objects);
+    return index !=  premisAgents[_agentId].objects.length;
   }
 
-  function getAgentEventExists(string _agentId, string _eventId) public constant returns (uint256) {
-    return Strings.getIndex(_eventId, premisAgents[_agentId].events);
+  function getAgentEventExists(string _agentId, string _eventId) public constant returns (bool) {
+    uint256 index = Strings.getIndex(_eventId, premisAgents[_agentId].events);
+    return index != premisAgents[_agentId].events.length;
   }
 
-  function getAgentRightsExists(string _agentId, string _rightsId) public constant returns (uint256) {
-    return Strings.getIndex(_rightsId, premisAgents[_agentId].rights);
+  function getAgentRightsExists(string _agentId, string _rightsId) public constant returns (bool) {
+    uint256 index = Strings.getIndex(_rightsId, premisAgents[_agentId].rights);
+    return index != premisAgents[_agentId].rights.length;
   }
 
   function getNumAgents() public constant returns (uint256) {
