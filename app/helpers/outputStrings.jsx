@@ -51,18 +51,21 @@ class HashStrings {
   static fileLabel = 'Filename: '
   static hashLabel = 'Hash: '
   static browseFileTip = 'Upload a digital media resource to get its cryptohash'
+  static icon = 'upload'
 
 }
 
 class WriterStrings {
 
   static info = 'Use this form to record information about a media object.'
+  static icon = 'plus'
 
 }
 
 class ReaderStrings {
 
   static info = 'Use this form to get information about a media object.'
+  static icon = 'plus'
 
 }
 
@@ -115,6 +118,7 @@ class ObjectWriterStrings {
   static submitting = 'Submitting records to the blockchain.'
   static submitObjectLabel = 'Submit Digital Media Info\''
   static submitObjectTip = 'Record this digital media info\' to the blockchain'
+  static icon='check'
 }
 
 class RightsStrings {

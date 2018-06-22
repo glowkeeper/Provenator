@@ -27,6 +27,7 @@ class ObjectWriter extends React.Component {
     this.contractWriter = new ContractWriter(this.props.web3, this.props.contracts)
 
     this.state = {
+      loading: false,
       render: false
     }
   }
@@ -71,12 +72,14 @@ class ObjectWriter extends React.Component {
     const numTransactions = this.contractWriter.getNumTransactions()
     let numWrites = 0
     while (numWrites < numTransactions) {
-      this.props.messageFunc(ObjectWriterStrings.writing)
+      this.setState({loading: true})
+      this.props.messageFunc(ObjectWriterStrings.writing, this.state.loading)
       await this._sleep(wait)
       numWrites = this.contractWriter.getNumWrites()
     }
 
-    this.props.messageFunc(ObjectWriterStrings.finishedWriting)
+    this.setState({loading: false})
+    this.props.messageFunc(ObjectWriterStrings.finishedWriting, this.state.loading)
     this._resetData()
     this._render()
   }
@@ -114,13 +117,15 @@ class ObjectWriter extends React.Component {
   handleSubmit () {
     this._setKeys()
     if (this._checkFieldsSet()) {
-      this.props.messageFunc(ObjectWriterStrings.submitting)
+      this.setState({loading: true})
+      this.props.messageFunc(ObjectWriterStrings.submitting, this.state.loading)
       this._checkWrite()
       this.contractWriter.resetData()
       this.contractWriter.setData(this.premisObjectHandler, this.premisEventHandler, this.premisAgentHandler, this.premisRightsHandler)
       this.contractWriter.dispatcher()
     } else {
-      this.props.messageFunc(ObjectWriterStrings.completeAll)
+      this.setState({loading: false})
+      this.props.messageFunc(ObjectWriterStrings.completeAll, this.state.loading)
     }
   }
 
@@ -136,6 +141,8 @@ class ObjectWriter extends React.Component {
         <IOButton
           parentFunc={this.handleSubmit.bind(this)}
           label={ObjectWriterStrings.submitObjectLabel}
+          loading={this.state.loading}
+          icon={ObjectWriterStrings.icon}
           tip={ObjectWriterStrings.submitObjectTip}
         />
       </div>

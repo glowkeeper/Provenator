@@ -185,7 +185,7 @@ class IOTextAreaInput extends React.Component {
   } */
 
   _handleChange (e) {
-    console.log(e.target.value)
+    //console.log(e.target.value)
     this.props.parentFunc(e.target.value)
   }
 
@@ -374,6 +374,7 @@ class IOButton extends React.Component {
         <Tooltip title={this.props.tip}>
           <Button
             icon={this.props.icon}
+            loading={this.props.loading}
             onClick={this._handleSubmit.bind(this)}
           >
             {this.props.label}
@@ -388,7 +389,12 @@ IOButton.propTypes = {
   parentFunc: PropTypes.func,
   icon: PropTypes.string,
   label: PropTypes.string,
+  loading: PropTypes.bool,
   tip: PropTypes.string
+}
+
+IOButton.defaultProps = {
+  loading: false
 }
 
 export {IOAppHeading, IOTagline, IOHeading, IORadioOptions, IOPlainTextOutput, IOTextOutput, IOTextInput,

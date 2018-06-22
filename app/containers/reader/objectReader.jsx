@@ -26,6 +26,7 @@ class ObjectReader extends React.Component {
 
     this.hash = undefined
     this.lastRead = Date.now()
+    this.isLoading = false
 
     this.state = {
       outputData: []
@@ -72,7 +73,8 @@ class ObjectReader extends React.Component {
     while ((Date.now() - this.lastRead) < wait) {
       await this._sleep(wait)
     }
-    this.props.messageFunc(ObjectReaderStrings.finishedFetching)
+    this.isLoading = false
+    this.props.messageFunc(ObjectReaderStrings.finishedFetching, this.isLoading)
     this._outputData()
   }
 
@@ -122,8 +124,9 @@ class ObjectReader extends React.Component {
     if (this.props.hash !== this.hash) {
 
       this.hash = this.props.hash
+      this.isLoading = true
 
-      this.props.messageFunc(ObjectReaderStrings.fetching)
+      this.props.messageFunc(ObjectReaderStrings.fetching, this.isLoading)
       this.objectData = []
       this.eventData = []
       this.agentData = []

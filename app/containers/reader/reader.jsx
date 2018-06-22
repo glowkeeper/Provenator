@@ -4,6 +4,7 @@ import HashFile from '../helpers/hashFile'
 import ObjectReader from './objectReader'
 import {ReaderStrings} from '../../helpers/outputStrings'
 import {IOPlainTextOutput} from '../../components/io'
+import { Icon } from 'antd'
 
 class Reader extends React.Component {
 
@@ -14,12 +15,14 @@ class Reader extends React.Component {
 
     this.state = {
       info: info,
+      spinning: false,
       hash: undefined
     }
   }
 
-  handleInfo (_info) {
+  handleInfo (_info, _isLoading) {
     this.setState({ info: _info })
+    this.setState({ spinning: _isLoading })
   }
 
   handleHashFile (_hash) {
@@ -30,7 +33,7 @@ class Reader extends React.Component {
     return (
       <div>
         <div>
-          <IOPlainTextOutput text={this.state.info} />
+          <Icon type={ReaderStrings.icon} spin={this.state.spinning} /> {this.state.info}
           <hr />
         </div>
         <div>
@@ -40,7 +43,7 @@ class Reader extends React.Component {
           <hr />
         </div>
         <div>
-          <IOPlainTextOutput text={this.state.info} />
+          <Icon type={ReaderStrings.icon} spin={this.state.spinning} /> {this.state.info}
         </div>
       </div>
     )

@@ -8,13 +8,23 @@ import {ObjectWriterStrings} from '../helpers/outputStrings'
 
 class File extends React.Component {
 
-  /* constructor (props) {
+  constructor (props) {
     super(props)
-  } */
+
+    this.state = {
+      loading: false
+    }
+  }
 
   _handleSetFilename (e, results) {
     //console.log(e, results)
     this.props.parentFunc(e, results)
+    this.setState({loading: false})
+  }
+
+  _setLoading () {
+    const loading = !(this.state.loading)
+    this.setState({loading: loading})
   }
 
   render () {
@@ -29,8 +39,10 @@ class File extends React.Component {
             onChange={this._handleSetFilename.bind(this)}>
             <Tooltip title={this.props.tip}>
               <Button
+                loading={this.state.loading}
+                onClick={this._setLoading.bind(this)}
                 type='normal'
-                icon={null}
+                icon={this.props.icon}
               >
                 {ObjectWriterStrings.fileLoad}
               </Button>
@@ -45,6 +57,7 @@ class File extends React.Component {
 File.propTypes = {
   parentFunc: PropTypes.func,
   heading: PropTypes.string,
+  icon: PropTypes.string,
   tip: PropTypes.string
 }
 

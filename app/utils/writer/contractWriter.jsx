@@ -28,7 +28,7 @@ class ContractWriter {
 
     this.numTransactions = 17
     this.numWrites = 0
-    this.batchWrites = true //can't get batch writes working :()
+    this.batchWrites = false //can't get batch writes working :()
   }
 
   getNumTransactions () {

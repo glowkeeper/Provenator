@@ -4,6 +4,7 @@ import HashFile from '../helpers/hashFile'
 import ObjectWriter from './objectWriter'
 import {WriterStrings} from '../../helpers/outputStrings'
 import {IOPlainTextOutput} from '../../components/io'
+import { Icon } from 'antd'
 
 class Writer extends React.Component {
 
@@ -17,12 +18,14 @@ class Writer extends React.Component {
 
     this.state = {
       info: info,
+      spinning: false,
       hash: undefined
     }
   }
 
-  handleInfo (_info) {
+  handleInfo (_info, _isLoading) {
     this.setState({ info: _info })
+    this.setState({ spinning: _isLoading })
   }
 
   handleHashFile (_hash) {
@@ -32,13 +35,13 @@ class Writer extends React.Component {
   render () {
     return (
       <div>
-        <IOPlainTextOutput text={this.state.info} />
+        <Icon type={WriterStrings.icon} spin={this.state.spinning} /> {this.state.info}
         <hr />
         <HashFile parentFunc={this.handleHashFile.bind(this)} />
         <hr />
         <ObjectWriter messageFunc={this.handleInfo.bind(this)} hash={this.state.hash} contracts={this.props.contracts} web3={this.props.web3} />
         <hr />
-        <IOPlainTextOutput text={this.state.info} />
+        <Icon type={WriterStrings.icon} spin={this.state.spinning} /> {this.state.info}
       </div>
     )
   }
