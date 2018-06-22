@@ -193,12 +193,6 @@ class RightsStrings {
 class ObjectStrings {
 
   static heading = ObjectReaderStrings.heading
-  static categoryLabel = ObjectReaderStrings.categoryLabel
-  static categoryIntellectual = 'INTELLECTUALENTITY'
-  static categoryRepresentation = 'REPRESENTATION'
-  static categoryFile = 'FILE'
-  static categoryBitStream = 'BITSTREAM'
-  static categoryTip = 'Categorise the digital object type'
   static formatPlaceHolder = 'Format'
   static formatLabel = 'Format: '
   static formatTip = 'Set the object\'s format, e.g JPEG, MP4'
@@ -206,13 +200,6 @@ class ObjectStrings {
   static propertyDescriptionTip = 'Describe the digital media object'
 
   static formats = ['JPEG','GIF','PNG','TIFF','BMP','TGA','PSD','Animated GIF','SWF','MOV','AVI','MPG','MPG2','MPG4','MKV','OGG','OGV','FLV','WMV','DVDs','Blu-ray','FLA','MP3','WAV','MIDI','WMA','Flash','Other']
-
-  static categoryOptions = [
-    ObjectStrings.categoryIntellectual,
-    ObjectStrings.categoryRepresentation,
-    ObjectStrings.categoryFile,
-    ObjectStrings.categoryBitStream
-  ]
 }
 
 class AgentStrings {

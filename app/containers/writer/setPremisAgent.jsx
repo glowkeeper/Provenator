@@ -25,7 +25,7 @@ class SetPremisAgent extends React.Component {
         <IOHeading heading={AgentStrings.heading} />
         <IOTextInput
           parentFunc={this._handleName.bind(this)}
-          placeHolder={AgentStrings.namePlaceHolder}
+          placeHolder=''
           label={AgentStrings.nameLabel}
           tip={AgentStrings.nameTip}
         />

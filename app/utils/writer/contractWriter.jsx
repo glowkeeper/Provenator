@@ -28,7 +28,7 @@ class ContractWriter {
 
     this.numTransactions = 17
     this.numWrites = 0
-    this.batchWrites = false //can't get batch writes working :()
+    this.batchWrites = true //can't get batch writes working :()
   }
 
   getNumTransactions () {
@@ -55,7 +55,7 @@ class ContractWriter {
   }
 
   _writeCounter (_self, _result) {
-    console.log(_result)
+    //console.log(_result)
     _self.numWrites += 1
     if ( (_self.numWrites == _self.numTransactions ) &&
          (_self.batchWrites) )  {
@@ -114,7 +114,7 @@ class ContractWriter {
   }
 
   _setObjectAgent(_self, _exists) {
-    console.log('Setting Object agent ' + _exists)
+    //console.log('Setting Object agent ' + _exists)
     if ( _exists ) {
       _self.numWrites += 1
     } else {
@@ -126,7 +126,7 @@ class ContractWriter {
   }
 
   _setObjectRights(_self, _exists) {
-    console.log('Object Rights Index ' + _exists)
+    //console.log('Object Rights Index ' + _exists)
     if ( _exists ) {
       _self.numWrites += 1
     } else {
@@ -162,7 +162,7 @@ class ContractWriter {
   // Premis Event Stuff
 
   _setEventType(_self, _exists) {
-    console.log('Setting event type ' + _exists)
+    //console.log('Setting event type ' + _exists)
     if ( _exists ) {
       _self.numWrites += 1
     } else {
@@ -173,7 +173,7 @@ class ContractWriter {
   }
 
   _setEvent(_self, _exists) {
-    console.log('Setting Event ' + _exists)
+    //console.log('Setting Event ' + _exists)
     if ( _exists ) {
       _self.numWrites += 1
     } else {
@@ -201,7 +201,7 @@ class ContractWriter {
   // Premis Agent Stuff
 
   _setAgent(_self, _exists) {
-    console.log('Setting Agent ' + _exists)
+    //console.log('Setting Agent ' + _exists)
     if ( _exists ) {
       _self.numWrites += 1
     } else {
@@ -214,7 +214,7 @@ class ContractWriter {
   }
 
   _setAgentObject(_self, _exists) {
-    console.log('Setting Agent Object ' + _exists)
+    //console.log('Setting Agent Object ' + _exists)
     if ( _exists ) {
       _self.numWrites += 1
     } else {
@@ -226,7 +226,7 @@ class ContractWriter {
   }
 
   _setAgentEvent(_self, _exists) {
-    console.log('Setting Agent event ' + _exists)
+    //console.log('Setting Agent event ' + _exists)
     if ( _exists ) {
       _self.numWrites += 1
     } else {
@@ -238,7 +238,7 @@ class ContractWriter {
   }
 
   _setAgentRights(_self, _exists) {
-    console.log('Setting Agent rights ' + _exists)
+    //console.log('Setting Agent rights ' + _exists)
     if ( _exists ) {
       _self.numWrites += 1
     } else {
@@ -267,7 +267,7 @@ class ContractWriter {
   // Premis Rights Stuff
 
   _setRights(_self, _exists) {
-    console.log('Setting rights ' + _exists)
+    //console.log('Setting rights ' + _exists)
     if ( _exists ) {
       _self.numWrites += 5
     } else {

@@ -11,11 +11,7 @@ class SetPremisObject extends React.Component {
     super(props)
 
     this.props.objectHandler.setPropertyType(PremisObjectStrings.propertyType)
-  }
-
-  _handleCategory (_selection) {
-    // console.log('Category is ' + category)
-    this.props.objectHandler.setCategory(_selection)
+    this.props.objectHandler.setCategory(PremisObjectStrings.category)
   }
 
   _handleFormat (_format) {
@@ -38,12 +34,6 @@ class SetPremisObject extends React.Component {
           selections={ObjectStrings.formats}
           label={ObjectStrings.formatLabel}
           tip={ObjectStrings.formatTip}
-        />
-        <IOSelect
-          parentFunc={this._handleCategory.bind(this)}
-          selections={ObjectStrings.categoryOptions}
-          label={ObjectStrings.categoryLabel}
-          tip={ObjectStrings.categoryTip}
         />
         <IOTextAreaInput
           parentFunc={this._handleSetDescription.bind(this)}

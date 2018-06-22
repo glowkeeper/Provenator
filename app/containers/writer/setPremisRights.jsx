@@ -51,7 +51,7 @@ class SetPremisRights extends React.Component {
         />
         <IOTextInput
           parentFunc={this._handleStatus.bind(this)}
-          placeHolder={RightsStrings.statusPlaceHolder}
+          placeHolder=''
           label={RightsStrings.statusLabel}
           tip={RightsStrings.statusTip}
         />
@@ -63,13 +63,13 @@ class SetPremisRights extends React.Component {
         />
         <IOTextInput
           parentFunc={this._handleDeterminationDate.bind(this)}
-          placeHolder={RightsStrings.determinationDatePlaceHolder}
+          placeHolder=''
           label={RightsStrings.determinationDateLabel}
           tip={RightsStrings.determinationDateTip}
         />
         <IOTextAreaInput
           parentFunc={this._handleNote.bind(this)}
-          placeHolder={RightsStrings.notePlaceHolder}
+          placeHolder=''
           label={RightsStrings.noteLabel}
           tip={RightsStrings.noteTip}
         />

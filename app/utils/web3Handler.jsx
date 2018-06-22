@@ -44,7 +44,7 @@ class Web3Handler {
     if (this.web3.eth.accounts[0] !== this.account) {
       this.account = this.web3.eth.accounts[0]
     }
-    console.log("In set account for ", this.account)
+    //console.log("In set account for ", this.account)
   }
 
   _callChecker (_func, _cb) {
@@ -79,7 +79,7 @@ class Web3Handler {
             _cb(_caller, result)
           }
         }))
-        _cb(_caller, result)
+        _cb(_caller, 'In batch')
       } else {
         // console.log('blah ' + _func)
         _func(function (err, result) {
@@ -105,7 +105,7 @@ class Web3Handler {
             _cb(_caller, result)
           }
         }))
-        _cb(_caller, result)
+        _cb(_caller, 'In batch')
       } else {
         _func(_params[0], function (err, result) {
           if (err) {
@@ -130,7 +130,7 @@ class Web3Handler {
             _cb(_caller, result)
           }
         }))
-        _cb(_caller, result)
+        _cb(_caller, 'In batch')
       } else {
         _func(_params[0], _params[1], function (err, result) {
           if (err) {
@@ -160,7 +160,7 @@ class Web3Handler {
             _cb(_caller, result)
           }
         }))
-        _cb(_caller, result)
+        _cb(_caller, 'In batch')
       } else {
         _func(_params[0], _params[1], _params[2], function (err, result) {
           if (err) {
@@ -190,7 +190,7 @@ class Web3Handler {
             _cb(_caller, result)
           }
         }))
-        _cb(_caller, result)
+        _cb(_caller, 'In batch')
       } else {
         _func(_params[0], _params[1], _params[2], _params[3], function (err, result) {
           if (err) {
@@ -215,7 +215,7 @@ class Web3Handler {
             _cb(_caller, result)
           }
         }))
-        _cb(_caller, result)
+        _cb(_caller, 'In batch')
       } else {
         _func(_params[0], _params[1], _params[2], _params[3], _params[4], function (err, result) {
           if (err) {
@@ -240,7 +240,7 @@ class Web3Handler {
             _cb(_caller, result)
           }
         }))
-        _cb(_caller, result)
+        _cb(_caller, 'In batch')
       } else {
         _func(_params[0], _params[1], _params[2], _params[3], _params[4], _params[5], function (err, result) {
           if (err) {

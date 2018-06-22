@@ -5,6 +5,7 @@ class PremisRightsStrings {
 class PremisObjectStrings {
 
   static propertyType = 'Description'
+  static category = 'FILE'
 
 }
 
