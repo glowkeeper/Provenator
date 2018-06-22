@@ -2,6 +2,8 @@ import React from 'react'
 import {Route, Link} from 'react-router-dom'
 import { Icon, Layout, Menu, Breadcrumb, Row, Col } from 'antd'
 
+import {logo} from '../images'
+
 import Web3Handler from '../utils/web3Handler'
 import ContractHandler from '../utils/contractHandler'
 import {AppStrings, HomeStrings, AboutStrings, OverviewStrings, HelpStrings} from '../helpers/outputStrings'
@@ -36,9 +38,7 @@ class App extends React.Component {
         <Layout>
           <Header>
             <Row>
-              <Col span={4}>
-                &nbsp;
-              </Col>
+              <Col span={4}><img src={logo} /></Col>
               <Col span={10}>
                 <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['home']} style={{ lineHeight: '64px' }} >
                   <Menu.Item key={AppStrings.home}>
