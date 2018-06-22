@@ -12,8 +12,6 @@ class ContractWriter {
 
   constructor (_web3Handler, _contractHandler) {
     //console.log(_web3)
-    console.log('Max index is ' + this.maxIndex)
-
     this.web3Handler = _web3Handler
     const contractHandler = _contractHandler
     this.premisObject = contractHandler.getPremisObject()
@@ -30,7 +28,7 @@ class ContractWriter {
 
     this.numTransactions = 17
     this.numWrites = 0
-    this.batchWrites = true
+    this.batchWrites = false //can't get batch writes working :()
   }
 
   getNumTransactions () {
@@ -56,101 +54,85 @@ class ContractWriter {
     this.numWrites = 0
   }
 
-  _writeCounter (_self, _wasCall) {
-    console.log('Number calls: ', _self.numCalls)
+  _writeCounter (_self) {
     _self.numWrites += 1
     if ( (_self.numWrites == _self.numTransactions ) &&
-         (this.batchWrites) )  {
+         (_self.batchWrites) )  {
       _self.web3Handler.executeBatch()
-    }
-    // console.log(_self.numWrites)
-  }
-
-  _isNewIndex (_index) {
-    console.log('In index checker ' + Number(_index))
-    if ( _index === this.maxIndex ) {
-      console.log('No match')
-      return true
-    } else {
-      console.log('Match')
-      return false
     }
   }
 
   // Premis Object Stuff
 
-  _setPropType(_self, _propTypeIndex) {
+  _setPropType(_self, _exists) {
     // console.log('Checking new property type exists with index ' + _propTypeIndex)
-    console.log('Setting Object proptype ' + _propTypeIndex)
-    if ( _self._isNewIndex(_propTypeIndex) ) {
+    if ( _exists ) {
+      _self.numWrites += 1
+    } else {
       const propType = _self.premisObjectData.getPropertyType()
       const params = [propType, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisObject.setPropertyType, params, _self._writeCounter, this.batchWrites)
-    } else {
-      _self.numWrites += 1
+      _self.web3Handler.callParamHandler(_self, _self.premisObject.setPropertyType, params, _self._writeCounter, _self.batchWrites)
     }
   }
 
-  _setObject(_self, _objectIndex) {
-    console.log('Object index ' + _objectIndex)
-    if ( _self._isNewIndex(_objectIndex) ) {
+  _setObject(_self, _exists) {
+    if (_exists) {
+      _self.numWrites += 1
+    } else {
       const hash = _self.premisObjectData.getHash()
       const category = _self.premisObjectData.getCategory()
       const format = _self.premisObjectData.getFormat()
       const params = [hash, category, format, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisObject.setObject, params, _self._writeCounter, this.batchWrites)
-    } else {
-      _self.numWrites += 1
+      _self.web3Handler.callParamHandler(_self, _self.premisObject.setObject, params, _self._writeCounter, _self.batchWrites)
     }
   }
 
-  _setObjectProperties(_self, _objectPropertiesIndex) {
+  _setObjectProperties(_self, _exists) {
     // console.log('Checking new property type exists with index ' + _propTypeIndex)
-    console.log('Setting Object properties ' + _objectPropertiesIndex)
-    if (_self._isNewIndex(_objectPropertiesIndex) ) {
-      const hash = _self.premisObjectData.getHash()
-      const propType = this.premisObjectData.getPropertyType()
-      const propValue = this.premisObjectData.getPropertyValue()
-      params = [hash, propType, propValue, this.defaultTO]
-      this.web3Handler.callParamHandler(this, this.premisObject.setProperties, params, this._writeCounter, this.batchWrites)
-    } else {
+    if (_exists ) {
       _self.numWrites += 1
+    } else {
+      const hash = _self.premisObjectData.getHash()
+      const propType = _self.premisObjectData.getPropertyType()
+      const propValue = _self.premisObjectData.getPropertyValue()
+      const params = [hash, propType, propValue, _self.defaultTO]
+      _self.web3Handler.callParamHandler(_self, _self.premisObject.setProperties, params, _self._writeCounter, _self.batchWrites)
     }
   }
 
-  _setObjectEvent(_self, _eventIndex) {
-    console.log('Setting Object event ' + _eventIndex)
-    if ( _self._isNewIndex(_eventIndex) ) {
+  _setObjectEvent(_self, _exists) {
+    //console.log('Setting Object event ' + _exists)
+    if ( _exists ) {
+      _self.numWrites += 1
+    } else {
       const hash = _self.premisObjectData.getHash()
       const eventId = _self.premisEventData.getId()
       const params = [hash, eventId, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisObject.setEvent, params, _self._writeCounter, this.batchWrites)
-    } else {
-      _self.numWrites += 1
+      _self.web3Handler.callParamHandler(_self, _self.premisObject.setEvent, params, _self._writeCounter, _self.batchWrites)
     }
   }
 
-  _setObjectAgent(_self, _agentIndex) {
-    console.log('Setting Object agent ' + _agentIndex)
-    if ( _self._isNewIndex(_agentIndex) ) {
+  _setObjectAgent(_self, _exists) {
+    console.log('Setting Object agent ' + _exists)
+    if ( _exists ) {
+      _self.numWrites += 1
+    } else {
       const hash = _self.premisObjectData.getHash()
       const agentId = _self.premisAgentData.getId()
       const params = [hash, agentId, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisObject.setAgent, params, _self._writeCounter, this.batchWrites)
-    } else {
-      _self.numWrites += 1
+      _self.web3Handler.callParamHandler(_self, _self.premisObject.setAgent, params, _self._writeCounter, _self.batchWrites)
     }
   }
 
-  _setObjectRights(_self, _rightsIndex) {
-    console.log('Object Rights Index ' + Number(_rightsIndex))
-    if ( _self._isNewIndex(_rightsIndex) ) {
+  _setObjectRights(_self, _exists) {
+    console.log('Object Rights Index ' + _exists)
+    if ( _exists ) {
+      _self.numWrites += 1
+    } else {
       const hash = _self.premisObjectData.getHash()
       const rightsId = _self.premisRightsData.getId()
       const params = [hash, rightsId, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisObject.setRights, params, _self._writeCounter, this.batchWrites)
-    } else {
-      _self.numWrites += 1
+      _self.web3Handler.callParamHandler(_self, _self.premisObject.setRights, params, _self._writeCounter, _self.batchWrites)
     }
   }
 
@@ -178,29 +160,29 @@ class ContractWriter {
 
   // Premis Event Stuff
 
-  _setEventType(_self, _eventTypeIndex) {
-    console.log('Setting event type ' + _eventTypeIndex)
-    if ( _self._isNewIndex(_eventTypeIndex) ) {
+  _setEventType(_self, _exists) {
+    console.log('Setting event type ' + _exists)
+    if ( _exists ) {
+      _self.numWrites += 1
+    } else {
       const eventTypeName = _self.premisEventData.getType()
       const params = [eventTypeName, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisEvent.setEventType, params, _self._writeCounter, this.batchWrites)
-    } else {
-      _self.numWrites += 1
+      _self.web3Handler.callParamHandler(_self, _self.premisEvent.setEventType, params, _self._writeCounter, _self.batchWrites)
     }
   }
 
-  _setEvent(_self, _eventIndex) {
-    console.log('Setting Event ' + _eventIndex)
-    if ( _self._isNewIndex(_eventIndex) ) {
+  _setEvent(_self, _exists) {
+    console.log('Setting Event ' + _exists)
+    if ( _exists ) {
+      _self.numWrites += 1
+    } else {
       const eventId = _self.premisEventData.getId()
       const eventTypeName = _self.premisEventData.getType()
       const date = _self.premisEventData.getDate()
       const hash = _self.premisObjectData.getHash()
       const agentId = _self.premisAgentData.getId()
       const params = [eventId, eventTypeName, date, hash, agentId, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisEvent.setEvent, params, _self._writeCounter, this.batchWrites)
-    } else {
-      _self.numWrites += 1
+      _self.web3Handler.callParamHandler(_self, _self.premisEvent.setEvent, params, _self._writeCounter, _self.batchWrites)
     }
   }
 
@@ -217,52 +199,52 @@ class ContractWriter {
 
   // Premis Agent Stuff
 
-  _setAgent(_self, _agentIndex) {
-    console.log('Setting Agent ' + _agentIndex)
-    if ( _self._isNewIndex(_agentIndex) ) {
+  _setAgent(_self, _exists) {
+    console.log('Setting Agent ' + _exists)
+    if ( _exists ) {
+      _self.numWrites += 1
+    } else {
       const agentId = _self.premisAgentData.getId()
       const name = _self.premisAgentData.getName()
       const agentType = _self.premisAgentData.getType()
       const params = [agentId, name, agentType, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisAgent.setAgent, params, _self._writeCounter, this.batchWrites)
-    } else {
-      _self.numWrites += 1
+      _self.web3Handler.callParamHandler(_self, _self.premisAgent.setAgent, params, _self._writeCounter, _self.batchWrites)
     }
   }
 
-  _setAgentObject(_self, _objectIndex) {
-    console.log('Setting Agent Object ' + _objectIndex)
-    if ( _self._isNewIndex(_objectIndex) ) {
+  _setAgentObject(_self, _exists) {
+    console.log('Setting Agent Object ' + _exists)
+    if ( _exists ) {
+      _self.numWrites += 1
+    } else {
       const agentId = _self.premisAgentData.getId()
       const hash = _self.premisObjectData.getHash()
       const params = [agentId, hash, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisAgent.setObject, params, _self._writeCounter, this.batchWrites)
-    } else {
-      _self.numWrites += 1
+      _self.web3Handler.callParamHandler(_self, _self.premisAgent.setObject, params, _self._writeCounter, _self.batchWrites)
     }
   }
 
-  _setAgentEvent(_self, _eventIndex) {
-    console.log('Setting Agent event ' + _eventIndex)
-    if ( _self._isNewIndex(_eventIndex) ) {
+  _setAgentEvent(_self, _exists) {
+    console.log('Setting Agent event ' + _exists)
+    if ( _exists ) {
+      _self.numWrites += 1
+    } else {
       const agentId = _self.premisAgentData.getId()
       const eventId = _self.premisEventData.getId()
       const params = [agentId, eventId, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisAgent.setEvent, params, _self._writeCounter, this.batchWrites)
-    } else {
-      _self.numWrites += 1
+      _self.web3Handler.callParamHandler(_self, _self.premisAgent.setEvent, params, _self._writeCounter, _self.batchWrites)
     }
   }
 
-  _setAgentRights(_self, _rightsIndex) {
-    console.log('Setting Agent rights ' + _rightsIndex)
-    if ( _self._isNewIndex(_rightsIndex) ) {
+  _setAgentRights(_self, _exists) {
+    console.log('Setting Agent rights ' + _exists)
+    if ( _exists ) {
+      _self.numWrites += 1
+    } else {
       const agentId = _self.premisAgentData.getId()
       const rightsId = _self.premisRightsData.getId()
       const params = [agentId, rightsId, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisAgent.setRights, params, _self._writeCounter, this.batchWrites)
-    } else {
-      _self.numWrites += 1
+      _self.web3Handler.callParamHandler(_self, _self.premisAgent.setRights, params, _self._writeCounter, _self.batchWrites)
     }
   }
 
@@ -283,9 +265,11 @@ class ContractWriter {
 
   // Premis Rights Stuff
 
-  _setRights(_self, _rightsIndex) {
-    console.log('Setting rights ' + _rightsIndex)
-    if ( _self._isNewIndex(_rightsIndex) ) {
+  _setRights(_self, _exists) {
+    console.log('Setting rights ' + _exists)
+    if ( _exists ) {
+      _self.numWrites += 5
+    } else {
       // since the rights index key is made up of every field, we need to update everything here
       const rightsId = _self.premisRightsData.getId()
       const basis = _self.premisRightsData.getBasis()
@@ -298,17 +282,15 @@ class ContractWriter {
       const hash = _self.premisObjectData.getHash()
       const agentId = _self.premisAgentData.getId()
       let params = [rightsId, hash, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisRights.setObject, params, _self._writeCounter, this.batchWrites)
+      _self.web3Handler.callParamHandler(_self, _self.premisRights.setObject, params, _self._writeCounter, _self.batchWrites)
       params = [rightsId, basis, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisRights.setBasis, params, _self._writeCounter, this.batchWrites)
+      _self.web3Handler.callParamHandler(_self, _self.premisRights.setBasis, params, _self._writeCounter, _self.batchWrites)
       params = [rightsId, status, code, date, note, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisRights.setCopyrightInfo, params, _self._writeCounter, this.batchWrites)
+      _self.web3Handler.callParamHandler(_self, _self.premisRights.setCopyrightInfo, params, _self._writeCounter, _self.batchWrites)
       params = [rightsId, act, restriction, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisRights.setRightsGranted, params, _self._writeCounter, this.batchWrites)
+      _self.web3Handler.callParamHandler(_self, _self.premisRights.setRightsGranted, params, _self._writeCounter, _self.batchWrites)
       params = [rightsId, agentId, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisRights.setAgent, params, _self._writeCounter, this.batchWrites)
-    } else {
-      _self.numWrites += 5
+      _self.web3Handler.callParamHandler(_self, _self.premisRights.setAgent, params, _self._writeCounter, _self.batchWrites)
     }
   }
 

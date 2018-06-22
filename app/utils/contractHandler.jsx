@@ -4,519 +4,10 @@ class ContractHandler {
 
   static premisObjectAbi = [
     {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_index",
-          "type": "uint256"
-        }
-      ],
-      "name": "getPropertyTypeName",
-      "outputs": [
-        {
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_objectHash",
-          "type": "string"
-        },
-        {
-          "name": "_rightsId",
-          "type": "string"
-        }
-      ],
-      "name": "getObjectRightsExists",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_objectHash",
-          "type": "string"
-        }
-      ],
-      "name": "getCategory",
-      "outputs": [
-        {
-          "name": "",
-          "type": "string"
-        },
-        {
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_index",
-          "type": "uint256"
-        }
-      ],
-      "name": "getObject",
-      "outputs": [
-        {
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
       "inputs": [],
-      "name": "getNumObjects",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
       "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_propType",
-          "type": "string"
-        }
-      ],
-      "name": "getPropertyTypeExists",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [],
-      "name": "kill",
-      "outputs": [],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_objectHash",
-          "type": "string"
-        },
-        {
-          "name": "_type",
-          "type": "string"
-        },
-        {
-          "name": "_value",
-          "type": "string"
-        }
-      ],
-      "name": "setProperties",
-      "outputs": [],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_objectHash",
-          "type": "string"
-        },
-        {
-          "name": "_eventId",
-          "type": "string"
-        }
-      ],
-      "name": "setEvent",
-      "outputs": [],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_objectHash",
-          "type": "string"
-        }
-      ],
-      "name": "getObjectExists",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_objectHash",
-          "type": "string"
-        },
-        {
-          "name": "_rightsId",
-          "type": "string"
-        }
-      ],
-      "name": "setRights",
-      "outputs": [],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_objectHash",
-          "type": "string"
-        }
-      ],
-      "name": "getNumProperties",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_objectHash",
-          "type": "string"
-        }
-      ],
-      "name": "getNumAgents",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_objectHash",
-          "type": "string"
-        },
-        {
-          "name": "_eventId",
-          "type": "string"
-        }
-      ],
-      "name": "getObjectEventExists",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_objectHash",
-          "type": "string"
-        }
-      ],
-      "name": "getFormat",
-      "outputs": [
-        {
-          "name": "",
-          "type": "string"
-        },
-        {
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_propType",
-          "type": "string"
-        }
-      ],
-      "name": "setPropertyType",
-      "outputs": [],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_objectHash",
-          "type": "string"
-        },
-        {
-          "name": "_agentId",
-          "type": "string"
-        }
-      ],
-      "name": "getObjectAgentExists",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "getNumPropTypes",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_objectHash",
-          "type": "string"
-        },
-        {
-          "name": "_rightsIndex",
-          "type": "uint256"
-        }
-      ],
-      "name": "getRights",
-      "outputs": [
-        {
-          "name": "",
-          "type": "string"
-        },
-        {
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_objectHash",
-          "type": "string"
-        },
-        {
-          "name": "_eventIndex",
-          "type": "uint256"
-        }
-      ],
-      "name": "getEvent",
-      "outputs": [
-        {
-          "name": "",
-          "type": "string"
-        },
-        {
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_objectHash",
-          "type": "string"
-        }
-      ],
-      "name": "getNumRights",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_objectHash",
-          "type": "string"
-        },
-        {
-          "name": "_propertyIndex",
-          "type": "uint256"
-        }
-      ],
-      "name": "getProperties",
-      "outputs": [
-        {
-          "name": "",
-          "type": "string"
-        },
-        {
-          "name": "",
-          "type": "string"
-        },
-        {
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_objectHash",
-          "type": "string"
-        }
-      ],
-      "name": "getNumEvents",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_objectHash",
-          "type": "string"
-        },
-        {
-          "name": "_agentIndex",
-          "type": "uint256"
-        }
-      ],
-      "name": "getAgent",
-      "outputs": [
-        {
-          "name": "",
-          "type": "string"
-        },
-        {
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_objectHash",
-          "type": "string"
-        },
-        {
-          "name": "_agentId",
-          "type": "string"
-        }
-      ],
-      "name": "setAgent",
-      "outputs": [],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_newOwner",
-          "type": "address"
-        }
-      ],
-      "name": "transferOwnership",
-      "outputs": [],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_objectHash",
-          "type": "string"
-        },
-        {
-          "name": "_category",
-          "type": "string"
-        },
-        {
-          "name": "_format",
-          "type": "string"
-        }
-      ],
-      "name": "setObject",
-      "outputs": [],
-      "payable": false,
-      "type": "function"
+      "stateMutability": "nonpayable",
+      "type": "constructor"
     },
     {
       "anonymous": false,
@@ -612,137 +103,70 @@ class ContractHandler {
       ],
       "name": "ObjectSetAgent",
       "type": "event"
-    }
-  ]
-
-  static premisAgentAbi = [
+    },
     {
       "constant": false,
       "inputs": [
         {
-          "name": "_agentId",
+          "name": "_propType",
+          "type": "string"
+        }
+      ],
+      "name": "setPropertyType",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_objectHash",
           "type": "string"
         },
         {
-          "name": "_objectHash",
+          "name": "_category",
+          "type": "string"
+        },
+        {
+          "name": "_format",
           "type": "string"
         }
       ],
       "name": "setObject",
       "outputs": [],
       "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_agentId",
-          "type": "string"
-        },
-        {
-          "name": "_objectHash",
-          "type": "string"
-        }
-      ],
-      "name": "getAgentObjectExists",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_agentId",
-          "type": "string"
-        }
-      ],
-      "name": "getNumObjects",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
       "constant": false,
       "inputs": [
         {
-          "name": "_agentId",
-          "type": "string"
-        },
-        {
-          "name": "_name",
+          "name": "_objectHash",
           "type": "string"
         },
         {
           "name": "_type",
           "type": "string"
-        }
-      ],
-      "name": "setAgent",
-      "outputs": [],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
+        },
         {
-          "name": "_index",
-          "type": "uint256"
-        }
-      ],
-      "name": "getAgent",
-      "outputs": [
-        {
-          "name": "",
+          "name": "_value",
           "type": "string"
         }
       ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_agentId",
-          "type": "string"
-        }
-      ],
-      "name": "getAgentExists",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [],
-      "name": "kill",
+      "name": "setProperties",
       "outputs": [],
       "payable": false,
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
       "constant": false,
       "inputs": [
         {
-          "name": "_agentId",
+          "name": "_objectHash",
           "type": "string"
         },
         {
@@ -753,35 +177,32 @@ class ContractHandler {
       "name": "setEvent",
       "outputs": [],
       "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_agentId",
-          "type": "string"
-        },
-        {
-          "name": "_rightsId",
-          "type": "string"
-        }
-      ],
-      "name": "getAgentRightsExists",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
       "constant": false,
       "inputs": [
         {
+          "name": "_objectHash",
+          "type": "string"
+        },
+        {
           "name": "_agentId",
+          "type": "string"
+        }
+      ],
+      "name": "setAgent",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_objectHash",
           "type": "string"
         },
         {
@@ -792,35 +213,79 @@ class ContractHandler {
       "name": "setRights",
       "outputs": [],
       "payable": false,
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
       "constant": true,
       "inputs": [
         {
-          "name": "_agentId",
+          "name": "_propType",
           "type": "string"
         }
       ],
-      "name": "getName",
+      "name": "getPropertyTypeExists",
       "outputs": [
         {
           "name": "",
-          "type": "string"
-        },
-        {
-          "name": "",
-          "type": "string"
+          "type": "bool"
         }
       ],
       "payable": false,
+      "stateMutability": "view",
       "type": "function"
     },
     {
       "constant": true,
       "inputs": [
         {
-          "name": "_agentId",
+          "name": "_objectHash",
+          "type": "string"
+        }
+      ],
+      "name": "getObjectExists",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_objectHash",
+          "type": "string"
+        },
+        {
+          "name": "_propType",
+          "type": "string"
+        },
+        {
+          "name": "_propValue",
+          "type": "string"
+        }
+      ],
+      "name": "getObjectPropertiesExist",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_objectHash",
           "type": "string"
         },
         {
@@ -828,7 +293,67 @@ class ContractHandler {
           "type": "string"
         }
       ],
-      "name": "getAgentEventExists",
+      "name": "getObjectEventExists",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_objectHash",
+          "type": "string"
+        },
+        {
+          "name": "_agentId",
+          "type": "string"
+        }
+      ],
+      "name": "getObjectAgentExists",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_objectHash",
+          "type": "string"
+        },
+        {
+          "name": "_rightsId",
+          "type": "string"
+        }
+      ],
+      "name": "getObjectRightsExists",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getNumPropTypes",
       "outputs": [
         {
           "name": "",
@@ -836,43 +361,146 @@ class ContractHandler {
         }
       ],
       "payable": false,
+      "stateMutability": "view",
       "type": "function"
     },
     {
       "constant": true,
-      "inputs": [
-        {
-          "name": "_agentId",
-          "type": "string"
-        }
-      ],
-      "name": "getType",
+      "inputs": [],
+      "name": "getNumObjects",
       "outputs": [
         {
           "name": "",
-          "type": "string"
-        },
-        {
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_agentId",
-          "type": "string"
-        },
-        {
-          "name": "_rightsIndex",
           "type": "uint256"
         }
       ],
-      "name": "getRights",
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_objectHash",
+          "type": "string"
+        }
+      ],
+      "name": "getNumProperties",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_objectHash",
+          "type": "string"
+        }
+      ],
+      "name": "getNumEvents",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_objectHash",
+          "type": "string"
+        }
+      ],
+      "name": "getNumAgents",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_objectHash",
+          "type": "string"
+        }
+      ],
+      "name": "getNumRights",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_index",
+          "type": "uint256"
+        }
+      ],
+      "name": "getPropertyTypeName",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_index",
+          "type": "uint256"
+        }
+      ],
+      "name": "getObject",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_objectHash",
+          "type": "string"
+        }
+      ],
+      "name": "getCategory",
       "outputs": [
         {
           "name": "",
@@ -884,13 +512,68 @@ class ContractHandler {
         }
       ],
       "payable": false,
+      "stateMutability": "view",
       "type": "function"
     },
     {
       "constant": true,
       "inputs": [
         {
-          "name": "_agentId",
+          "name": "_objectHash",
+          "type": "string"
+        }
+      ],
+      "name": "getFormat",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        },
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_objectHash",
+          "type": "string"
+        },
+        {
+          "name": "_propertyIndex",
+          "type": "uint256"
+        }
+      ],
+      "name": "getProperties",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        },
+        {
+          "name": "",
+          "type": "string"
+        },
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_objectHash",
           "type": "string"
         },
         {
@@ -910,17 +593,190 @@ class ContractHandler {
         }
       ],
       "payable": false,
+      "stateMutability": "view",
       "type": "function"
     },
     {
       "constant": true,
       "inputs": [
         {
+          "name": "_objectHash",
+          "type": "string"
+        },
+        {
+          "name": "_agentIndex",
+          "type": "uint256"
+        }
+      ],
+      "name": "getAgent",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        },
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_objectHash",
+          "type": "string"
+        },
+        {
+          "name": "_rightsIndex",
+          "type": "uint256"
+        }
+      ],
+      "name": "getRights",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        },
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ]
+
+  static premisEventAbi = [
+    {
+      "inputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "_eventId",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "name": "_type",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "name": "_time",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "name": "_objectHash",
+          "type": "string"
+        },
+        {
+          "indexed": false,
           "name": "_agentId",
           "type": "string"
         }
       ],
-      "name": "getNumRights",
+      "name": "EventSet",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_eventType",
+          "type": "string"
+        }
+      ],
+      "name": "setEventType",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_eventId",
+          "type": "string"
+        },
+        {
+          "name": "_type",
+          "type": "string"
+        },
+        {
+          "name": "_time",
+          "type": "string"
+        },
+        {
+          "name": "_objectHash",
+          "type": "string"
+        },
+        {
+          "name": "_agentId",
+          "type": "string"
+        }
+      ],
+      "name": "setEvent",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_eventType",
+          "type": "string"
+        }
+      ],
+      "name": "getEventTypeExists",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_eventId",
+          "type": "string"
+        }
+      ],
+      "name": "getEventExists",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getNumEventTypes",
       "outputs": [
         {
           "name": "",
@@ -928,16 +784,31 @@ class ContractHandler {
         }
       ],
       "payable": false,
+      "stateMutability": "view",
       "type": "function"
     },
     {
       "constant": true,
       "inputs": [
         {
-          "name": "_agentId",
+          "name": "_eventTypeIndex",
+          "type": "uint256"
+        }
+      ],
+      "name": "getEventType",
+      "outputs": [
+        {
+          "name": "",
           "type": "string"
         }
       ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
       "name": "getNumEvents",
       "outputs": [
         {
@@ -946,44 +817,34 @@ class ContractHandler {
         }
       ],
       "payable": false,
+      "stateMutability": "view",
       "type": "function"
     },
     {
       "constant": true,
-      "inputs": [],
-      "name": "getNumAgents",
+      "inputs": [
+        {
+          "name": "_eventIndex",
+          "type": "uint256"
+        }
+      ],
+      "name": "getEvent",
       "outputs": [
         {
           "name": "",
-          "type": "uint256"
+          "type": "string"
         }
       ],
       "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_newOwner",
-          "type": "address"
-        }
-      ],
-      "name": "transferOwnership",
-      "outputs": [],
-      "payable": false,
+      "stateMutability": "view",
       "type": "function"
     },
     {
       "constant": true,
       "inputs": [
         {
-          "name": "_agentId",
+          "name": "_eventId",
           "type": "string"
-        },
-        {
-          "name": "_objectIndex",
-          "type": "uint256"
         }
       ],
       "name": "getObject",
@@ -998,7 +859,86 @@ class ContractHandler {
         }
       ],
       "payable": false,
+      "stateMutability": "view",
       "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_eventId",
+          "type": "string"
+        }
+      ],
+      "name": "getType",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        },
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_eventId",
+          "type": "string"
+        }
+      ],
+      "name": "getTime",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        },
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_eventId",
+          "type": "string"
+        }
+      ],
+      "name": "getAgent",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        },
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ]
+
+  static premisAgentAbi = [
+    {
+      "inputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
     },
     {
       "anonymous": false,
@@ -1072,61 +1012,212 @@ class ContractHandler {
       ],
       "name": "AgentSetRights",
       "type": "event"
-    }
-  ]
-
-  static premisEventAbi = [
+    },
     {
-      "constant": true,
+      "constant": false,
       "inputs": [
+        {
+          "name": "_agentId",
+          "type": "string"
+        },
+        {
+          "name": "_name",
+          "type": "string"
+        },
+        {
+          "name": "_type",
+          "type": "string"
+        }
+      ],
+      "name": "setAgent",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_agentId",
+          "type": "string"
+        },
+        {
+          "name": "_objectHash",
+          "type": "string"
+        }
+      ],
+      "name": "setObject",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_agentId",
+          "type": "string"
+        },
         {
           "name": "_eventId",
           "type": "string"
         }
       ],
-      "name": "getObject",
-      "outputs": [
+      "name": "setEvent",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
         {
-          "name": "",
+          "name": "_agentId",
           "type": "string"
         },
         {
-          "name": "",
+          "name": "_rightsId",
           "type": "string"
         }
       ],
+      "name": "setRights",
+      "outputs": [],
       "payable": false,
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
       "constant": true,
       "inputs": [
         {
-          "name": "_eventTypeIndex",
-          "type": "uint256"
-        }
-      ],
-      "name": "getEventType",
-      "outputs": [
-        {
-          "name": "",
+          "name": "_agentId",
           "type": "string"
         }
       ],
+      "name": "getAgentExists",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
       "payable": false,
+      "stateMutability": "view",
       "type": "function"
     },
     {
-      "constant": false,
-      "inputs": [],
-      "name": "kill",
-      "outputs": [],
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_agentId",
+          "type": "string"
+        },
+        {
+          "name": "_objectHash",
+          "type": "string"
+        }
+      ],
+      "name": "getAgentObjectExists",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
       "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_agentId",
+          "type": "string"
+        },
+        {
+          "name": "_eventId",
+          "type": "string"
+        }
+      ],
+      "name": "getAgentEventExists",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_agentId",
+          "type": "string"
+        },
+        {
+          "name": "_rightsId",
+          "type": "string"
+        }
+      ],
+      "name": "getAgentRightsExists",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
       "type": "function"
     },
     {
       "constant": true,
       "inputs": [],
+      "name": "getNumAgents",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_agentId",
+          "type": "string"
+        }
+      ],
+      "name": "getNumObjects",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_agentId",
+          "type": "string"
+        }
+      ],
       "name": "getNumEvents",
       "outputs": [
         {
@@ -1135,48 +1226,18 @@ class ContractHandler {
         }
       ],
       "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_eventType",
-          "type": "string"
-        }
-      ],
-      "name": "setEventType",
-      "outputs": [],
-      "payable": false,
+      "stateMutability": "view",
       "type": "function"
     },
     {
       "constant": true,
       "inputs": [
         {
-          "name": "_eventIndex",
-          "type": "uint256"
-        }
-      ],
-      "name": "getEvent",
-      "outputs": [
-        {
-          "name": "",
+          "name": "_agentId",
           "type": "string"
         }
       ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_eventId",
-          "type": "string"
-        }
-      ],
-      "name": "getEventExists",
+      "name": "getNumRights",
       "outputs": [
         {
           "name": "",
@@ -1184,17 +1245,37 @@ class ContractHandler {
         }
       ],
       "payable": false,
+      "stateMutability": "view",
       "type": "function"
     },
     {
       "constant": true,
       "inputs": [
         {
-          "name": "_eventId",
-          "type": "string"
+          "name": "_index",
+          "type": "uint256"
         }
       ],
       "name": "getAgent",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_agentId",
+          "type": "string"
+        }
+      ],
+      "name": "getName",
       "outputs": [
         {
           "name": "",
@@ -1206,13 +1287,14 @@ class ContractHandler {
         }
       ],
       "payable": false,
+      "stateMutability": "view",
       "type": "function"
     },
     {
       "constant": true,
       "inputs": [
         {
-          "name": "_eventId",
+          "name": "_agentId",
           "type": "string"
         }
       ],
@@ -1228,144 +1310,19 @@ class ContractHandler {
         }
       ],
       "payable": false,
+      "stateMutability": "view",
       "type": "function"
     },
     {
       "constant": true,
       "inputs": [
-        {
-          "name": "_eventId",
-          "type": "string"
-        }
-      ],
-      "name": "getTime",
-      "outputs": [
-        {
-          "name": "",
-          "type": "string"
-        },
-        {
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_eventType",
-          "type": "string"
-        }
-      ],
-      "name": "getEventTypeExists",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_eventId",
-          "type": "string"
-        },
-        {
-          "name": "_type",
-          "type": "string"
-        },
-        {
-          "name": "_time",
-          "type": "string"
-        },
-        {
-          "name": "_objectHash",
-          "type": "string"
-        },
         {
           "name": "_agentId",
           "type": "string"
-        }
-      ],
-      "name": "setEvent",
-      "outputs": [],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
+        },
         {
-          "name": "_newOwner",
-          "type": "address"
-        }
-      ],
-      "name": "transferOwnership",
-      "outputs": [],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "getNumEventTypes",
-      "outputs": [
-        {
-          "name": "",
+          "name": "_objectIndex",
           "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": false,
-          "name": "_eventId",
-          "type": "string"
-        },
-        {
-          "indexed": false,
-          "name": "_type",
-          "type": "string"
-        },
-        {
-          "indexed": false,
-          "name": "_time",
-          "type": "string"
-        },
-        {
-          "indexed": false,
-          "name": "_objectHash",
-          "type": "string"
-        },
-        {
-          "indexed": false,
-          "name": "_agentId",
-          "type": "string"
-        }
-      ],
-      "name": "EventSet",
-      "type": "event"
-    }
-  ]
-
-  static premisRightsAbi = [
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_rightsId",
-          "type": "string"
         }
       ],
       "name": "getObject",
@@ -1380,17 +1337,22 @@ class ContractHandler {
         }
       ],
       "payable": false,
+      "stateMutability": "view",
       "type": "function"
     },
     {
       "constant": true,
       "inputs": [
         {
-          "name": "_rightsId",
+          "name": "_agentId",
           "type": "string"
+        },
+        {
+          "name": "_eventIndex",
+          "type": "uint256"
         }
       ],
-      "name": "getGrantedRestriction",
+      "name": "getEvent",
       "outputs": [
         {
           "name": "",
@@ -1402,52 +1364,18 @@ class ContractHandler {
         }
       ],
       "payable": false,
+      "stateMutability": "view",
       "type": "function"
     },
     {
       "constant": true,
       "inputs": [
         {
-          "name": "_rightsId",
-          "type": "string"
-        }
-      ],
-      "name": "getRightsBasis",
-      "outputs": [
-        {
-          "name": "",
+          "name": "_agentId",
           "type": "string"
         },
         {
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_rightsId",
-          "type": "string"
-        },
-        {
-          "name": "_objectHash",
-          "type": "string"
-        }
-      ],
-      "name": "setObject",
-      "outputs": [],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_index",
+          "name": "_rightsIndex",
           "type": "uint256"
         }
       ],
@@ -1456,24 +1384,6 @@ class ContractHandler {
         {
           "name": "",
           "type": "string"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_rightsId",
-          "type": "string"
-        }
-      ],
-      "name": "getCopyrightDeterminationDate",
-      "outputs": [
-        {
-          "name": "",
-          "type": "string"
         },
         {
           "name": "",
@@ -1481,253 +1391,17 @@ class ContractHandler {
         }
       ],
       "payable": false,
+      "stateMutability": "view",
       "type": "function"
-    },
+    }
+  ]
+
+  static premisRightsAbi = [
     {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_rightsId",
-          "type": "string"
-        }
-      ],
-      "name": "getCopyrightStatus",
-      "outputs": [
-        {
-          "name": "",
-          "type": "string"
-        },
-        {
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_rightsId",
-          "type": "string"
-        }
-      ],
-      "name": "getGrantedAct",
-      "outputs": [
-        {
-          "name": "",
-          "type": "string"
-        },
-        {
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": false,
       "inputs": [],
-      "name": "kill",
-      "outputs": [],
       "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_rightsId",
-          "type": "string"
-        },
-        {
-          "name": "_act",
-          "type": "string"
-        },
-        {
-          "name": "_restriction",
-          "type": "string"
-        }
-      ],
-      "name": "setRightsGranted",
-      "outputs": [],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_rightsId",
-          "type": "string"
-        },
-        {
-          "name": "_basis",
-          "type": "string"
-        }
-      ],
-      "name": "setBasis",
-      "outputs": [],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_rightsId",
-          "type": "string"
-        },
-        {
-          "name": "_status",
-          "type": "string"
-        },
-        {
-          "name": "_jurisdictionCountryCode",
-          "type": "string"
-        },
-        {
-          "name": "_determinationDate",
-          "type": "string"
-        },
-        {
-          "name": "_note",
-          "type": "string"
-        }
-      ],
-      "name": "setCopyrightInfo",
-      "outputs": [],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_rightsId",
-          "type": "string"
-        }
-      ],
-      "name": "getAgent",
-      "outputs": [
-        {
-          "name": "",
-          "type": "string"
-        },
-        {
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_rightsId",
-          "type": "string"
-        }
-      ],
-      "name": "getRightsExists",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_rightsId",
-          "type": "string"
-        }
-      ],
-      "name": "getCopyrightJurisdiction",
-      "outputs": [
-        {
-          "name": "",
-          "type": "string"
-        },
-        {
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "getNumRights",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_rightsId",
-          "type": "string"
-        },
-        {
-          "name": "_agentId",
-          "type": "string"
-        }
-      ],
-      "name": "setAgent",
-      "outputs": [],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_newOwner",
-          "type": "address"
-        }
-      ],
-      "name": "transferOwnership",
-      "outputs": [],
-      "payable": false,
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_rightsId",
-          "type": "string"
-        }
-      ],
-      "name": "getCopyrightNote",
-      "outputs": [
-        {
-          "name": "",
-          "type": "string"
-        },
-        {
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "payable": false,
-      "type": "function"
+      "stateMutability": "nonpayable",
+      "type": "constructor"
     },
     {
       "anonymous": false,
@@ -1833,6 +1507,371 @@ class ContractHandler {
       ],
       "name": "RightsSetAgent",
       "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_rightsId",
+          "type": "string"
+        },
+        {
+          "name": "_objectHash",
+          "type": "string"
+        }
+      ],
+      "name": "setObject",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_rightsId",
+          "type": "string"
+        },
+        {
+          "name": "_basis",
+          "type": "string"
+        }
+      ],
+      "name": "setBasis",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_rightsId",
+          "type": "string"
+        },
+        {
+          "name": "_status",
+          "type": "string"
+        },
+        {
+          "name": "_jurisdictionCountryCode",
+          "type": "string"
+        },
+        {
+          "name": "_determinationDate",
+          "type": "string"
+        },
+        {
+          "name": "_note",
+          "type": "string"
+        }
+      ],
+      "name": "setCopyrightInfo",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_rightsId",
+          "type": "string"
+        },
+        {
+          "name": "_act",
+          "type": "string"
+        },
+        {
+          "name": "_restriction",
+          "type": "string"
+        }
+      ],
+      "name": "setRightsGranted",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_rightsId",
+          "type": "string"
+        },
+        {
+          "name": "_agentId",
+          "type": "string"
+        }
+      ],
+      "name": "setAgent",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_rightsId",
+          "type": "string"
+        }
+      ],
+      "name": "getRightsExists",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getNumRights",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_index",
+          "type": "uint256"
+        }
+      ],
+      "name": "getRights",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_rightsId",
+          "type": "string"
+        }
+      ],
+      "name": "getObject",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        },
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_rightsId",
+          "type": "string"
+        }
+      ],
+      "name": "getRightsBasis",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        },
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_rightsId",
+          "type": "string"
+        }
+      ],
+      "name": "getCopyrightStatus",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        },
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_rightsId",
+          "type": "string"
+        }
+      ],
+      "name": "getCopyrightJurisdiction",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        },
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_rightsId",
+          "type": "string"
+        }
+      ],
+      "name": "getCopyrightDeterminationDate",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        },
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_rightsId",
+          "type": "string"
+        }
+      ],
+      "name": "getCopyrightNote",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        },
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_rightsId",
+          "type": "string"
+        }
+      ],
+      "name": "getGrantedAct",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        },
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_rightsId",
+          "type": "string"
+        }
+      ],
+      "name": "getGrantedRestriction",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        },
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_rightsId",
+          "type": "string"
+        }
+      ],
+      "name": "getAgent",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        },
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
     }
   ]
 
@@ -1850,6 +1889,7 @@ class ContractHandler {
   PremisEvent: 0x90a0ee96413bb88de38eed7063ed28a99e3409ea
   PremisObject: 0xdb701e191f6d3c331afcb0e15e7e476435fff2ec
   PremisRights: 0x7a42425280fc5871cddc8924acaf27a0ea0ea4ce
+
   */
 
   static premisObjectContractAddress = '0xdb701e191f6d3c331afcb0e15e7e476435fff2ec'
