@@ -42,19 +42,19 @@ class App extends React.Component {
               <Col span={10}>
                 <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['home']} style={{ lineHeight: '64px' }} >
                   <Menu.Item key={AppStrings.home}>
-                    <Icon type={HomeStrings.homeIcon}/><span>{AppStrings.home}</span>
+                    <Icon type={HomeStrings.icon}/><span>{AppStrings.home}</span>
                     <Link to={AppPaths.home}/>
                   </Menu.Item>
                   <Menu.Item key={AppStrings.about}>
-                    <Icon type={AboutStrings.aboutIcon}/><span>{AppStrings.about}</span>
+                    <Icon type={AboutStrings.icon}/><span>{AppStrings.about}</span>
                     <Link to={AppPaths.about}/>
                   </Menu.Item>
                   <Menu.Item key={AppStrings.overview}>
-                    <Icon type={OverviewStrings.overviewIcon}/><span>{AppStrings.overview}</span>
+                    <Icon type={OverviewStrings.icon}/><span>{AppStrings.overview}</span>
                     <Link to={AppPaths.overview}/>
                   </Menu.Item>
                   <Menu.Item key={AppStrings.help}>
-                    <Icon type={HelpStrings.helpIcon}/><span>{AppStrings.help}</span>
+                    <Icon type={HelpStrings.icon}/><span>{AppStrings.help}</span>
                     <Link to={AppPaths.help}/>
                   </Menu.Item>
                 </Menu>
@@ -70,11 +70,11 @@ class App extends React.Component {
           <Sider width={200}>
             <Menu mode="inline" defaultSelectedKeys={['1']} defaultOpenKeys={['Home']} style={{ height: '100%', borderRight: 0 }} >
               <Menu.Item key={AppStrings.create}>
-                <Icon type={HomeStrings.homeIcon}/><span>{AppStrings.create}</span>
+                <Icon type={AppStrings.createIcon}/><span>{AppStrings.create}</span>
                 <Link to={AppPaths.create}/>
               </Menu.Item>
               <Menu.Item key={AppStrings.read}>
-                <Icon type={HomeStrings.homeIcon}/><span>{AppStrings.read}</span>
+                <Icon type={AppStrings.readIcon}/><span>{AppStrings.read}</span>
                 <Link to={AppPaths.read}/>
               </Menu.Item>
             </Menu>
