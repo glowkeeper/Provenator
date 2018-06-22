@@ -41,10 +41,10 @@ class Web3Handler {
 
   // metamask sets its account to web3.eth.accounts[0]
   _setAccount () {
-    // console.log("In account")
     if (this.web3.eth.accounts[0] !== this.account) {
       this.account = this.web3.eth.accounts[0]
     }
+    console.log("In set account for ", this.account)
   }
 
   _callChecker (_func, _cb) {
@@ -76,10 +76,10 @@ class Web3Handler {
             console.log(err)
           } else {
             //console.log(result)
-            _cb(_caller, false)
+            _cb(_caller, result)
           }
         }))
-        _cb(_caller, true)
+        _cb(_caller, result)
       } else {
         // console.log('blah ' + _func)
         _func(function (err, result) {
@@ -87,7 +87,7 @@ class Web3Handler {
             console.log(err)
           } else {
             //console.log(result)
-            _cb(_caller, false)
+            _cb(_caller, result)
           }
         })
       }
@@ -102,17 +102,17 @@ class Web3Handler {
             console.log(err)
           } else {
             //console.log(result)
-            _cb(_caller, false)
+            _cb(_caller, result)
           }
         }))
-        _cb(_caller, true)
+        _cb(_caller, result)
       } else {
         _func(_params[0], function (err, result) {
           if (err) {
             console.log(err)
           } else {
             //console.log(result)
-            _cb(_caller, false)
+            _cb(_caller, result)
           }
         })
       }
@@ -127,17 +127,17 @@ class Web3Handler {
             console.log(err)
           } else {
             //console.log(result)
-            _cb(_caller, false)
+            _cb(_caller, result)
           }
         }))
-        _cb(_caller, true)
+        _cb(_caller, result)
       } else {
         _func(_params[0], _params[1], function (err, result) {
           if (err) {
             console.log(err)
           } else {
             //console.log(result)
-            _cb(_caller, false)
+            _cb(_caller, result)
           }
         })
       }
@@ -157,17 +157,17 @@ class Web3Handler {
             console.log(err)
           } else {
             //console.log(result)
-            _cb(_caller, false)
+            _cb(_caller, result)
           }
         }))
-        _cb(_caller, true)
+        _cb(_caller, result)
       } else {
         _func(_params[0], _params[1], _params[2], function (err, result) {
           if (err) {
             console.log(err)
           } else {
             //console.log(result)
-            _cb(_caller, false)
+            _cb(_caller, result)
           }
         })
       }
@@ -187,17 +187,17 @@ class Web3Handler {
             console.log(err)
           } else {
             //console.log(result)
-            _cb(_caller, false)
+            _cb(_caller, result)
           }
         }))
-        _cb(_caller, true)
+        _cb(_caller, result)
       } else {
         _func(_params[0], _params[1], _params[2], _params[3], function (err, result) {
           if (err) {
             console.log(err)
           } else {
             //console.log(result)
-            _cb(_caller, false)
+            _cb(_caller, result)
           }
         })
       }
@@ -212,17 +212,17 @@ class Web3Handler {
             console.log(err)
           } else {
             //console.log(result)
-            _cb(_caller, false)
+            _cb(_caller, result)
           }
         }))
-        _cb(_caller, true)
+        _cb(_caller, result)
       } else {
         _func(_params[0], _params[1], _params[2], _params[3], _params[4], function (err, result) {
           if (err) {
             console.log(err)
           } else {
             //console.log(result)
-            _cb(_caller, false)
+            _cb(_caller, result)
           }
         })
       }
@@ -237,17 +237,17 @@ class Web3Handler {
             console.log(err)
           } else {
             //console.log(result)
-            _cb(_caller, false)
+            _cb(_caller, result)
           }
         }))
-        _cb(_caller, true)
+        _cb(_caller, result)
       } else {
         _func(_params[0], _params[1], _params[2], _params[3], _params[4], _params[5], function (err, result) {
           if (err) {
             console.log(err)
           } else {
             //console.log(result)
-            _cb(_caller, false)
+            _cb(_caller, result)
           }
         })
       }

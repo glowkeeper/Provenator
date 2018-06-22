@@ -54,7 +54,8 @@ class ContractWriter {
     this.numWrites = 0
   }
 
-  _writeCounter (_self) {
+  _writeCounter (_self, _result) {
+    console.log(_result)
     _self.numWrites += 1
     if ( (_self.numWrites == _self.numTransactions ) &&
          (_self.batchWrites) )  {
