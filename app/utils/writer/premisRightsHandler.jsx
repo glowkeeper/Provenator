@@ -29,8 +29,7 @@ class PremisRightsHandler {
   }
 
   checkSet () {
-    if ((this.rights.id === undefined) ||
-        (this.rights.basis === undefined) ||
+    if ((this.rights.basis === undefined) ||
         (this.rights.status === undefined) ||
         (this.rights.countryCode === undefined) ||
         (this.rights.determinationDate === undefined) ||
@@ -44,14 +43,16 @@ class PremisRightsHandler {
   }
 
   setId () {
-    const keyString = this.rights.id +
-                      this.rights.basis +
-                      this.rights.status +
-                      this.rights.countryCode +
-                      this.rights.determinationDate +
-                      this.rights.act + this.rights.restriction
-    const key = keccak256(keyString)
-    this.rights.id = key;
+    let key = ''
+    if (this.checkSet()) {
+      const keyString = this.rights.basis +
+                        this.rights.status +
+                        this.rights.countryCode +
+                        this.rights.determinationDate +
+                        this.rights.act + this.rights.restriction
+      key = keccak256(keyString)
+    }
+    this.rights.id = key
   }
 
   setBasis (_basis) {
