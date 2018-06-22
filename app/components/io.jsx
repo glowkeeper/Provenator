@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import { Button, Tooltip, Input, Card, Select, Radio } from 'antd';
+import { Icon, Button, Tooltip, Input, Card, Select, Radio, DatePicker } from 'antd';
 import ReactMarkdown from 'react-markdown'
 
 class IOAppHeading extends React.Component {
@@ -185,6 +185,7 @@ class IOTextAreaInput extends React.Component {
   } */
 
   _handleChange (e) {
+    console.log(e.target.value)
     this.props.parentFunc(e.target.value)
   }
 
@@ -216,6 +217,39 @@ IOTextAreaInput.propTypes = {
 
 IOTextAreaInput.defaultProps = {
   numRows: 2
+}
+
+class IODate extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.format = 'DD/MM/YYYY'
+  }
+
+  _handleChange (date) {
+    this.props.parentFunc(date._d.toGMTString())
+  }
+
+  render () {
+    return (
+      <div>
+        <Tooltip title={this.props.tip}>
+          <DatePicker
+            icon='calendar'
+            placeholder={this.props.label}
+            format={this.format}
+            onChange={this._handleChange.bind(this)}
+          />
+        </Tooltip>
+      </div>
+    )
+  }
+}
+
+IODate.propTypes = {
+  parentFunc: PropTypes.func,
+  label: PropTypes.string,
+  tip: PropTypes.string
 }
 
 class IOSelect extends React.Component {
@@ -358,4 +392,4 @@ IOButton.propTypes = {
 }
 
 export {IOAppHeading, IOTagline, IOHeading, IORadioOptions, IOPlainTextOutput, IOTextOutput, IOTextInput,
-        IOTextAreaInput, IOSelect, IOLogger, IOButtonLoad, IOButton}
+        IOTextAreaInput, IODate, IOSelect, IOLogger, IOButtonLoad, IOButton}

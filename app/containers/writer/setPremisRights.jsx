@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import PremisRightsHandler from '../../utils/writer/premisRightsHandler'
 import {RightsStrings} from '../../helpers/outputStrings'
-import {IOHeading, IOTextInput, IOTextAreaInput, IOSelect} from '../../components/io'
+import {IOHeading, IOTextInput, IOTextAreaInput, IODate, IOSelect} from '../../components/io'
 
 class SetPremisRights extends React.Component {
 
@@ -24,6 +24,7 @@ class SetPremisRights extends React.Component {
   }
 
   _handleDeterminationDate (_date) {
+    //console.log(_date)
     this.props.rightsHandler.setDeterminationDate(_date)
   }
 
@@ -61,9 +62,8 @@ class SetPremisRights extends React.Component {
           label={RightsStrings.jurisdictionLabel}
           tip={RightsStrings.countryCodeTip}
         />
-        <IOTextInput
+        <IODate
           parentFunc={this._handleDeterminationDate.bind(this)}
-          placeHolder=''
           label={RightsStrings.determinationDateLabel}
           tip={RightsStrings.determinationDateTip}
         />
