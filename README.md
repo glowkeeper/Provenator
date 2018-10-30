@@ -33,15 +33,13 @@ Getting records from **Provenator** is free, so if you do not yet have any test 
 
 Here's a screenshot of a very early prototype of **Provenator**:
 
-![Provenator homepage](images/fakeNewsApp.png)
+![Provenator Screen Grab](images/provenatorScreenGrab.png)
 
 The picture above shows that to describe a digital resource, users of **Provenator** do the following:
 
 1. Get a hash of the digital media.
 2. Create and submit metadata pertaining to the digital resource.
-3. Sign the transactions created, using [MetaMask](https://github.com/MetaMask/metamask-extension). That will store the cryptographic hash of the digital resource, and its associated metadata, on the [rinkeby](https://www.rinkeby.io) blockchain.
-
-Subsequently, by uploading a file to **Provenator** (using the [Get Object](https://gateway.ipfs.io/ipfs/QmesSUrVz4d6LyVgKx58wWTUbMq2FmnWJ96LNNKhwj95n6/#/read) link), if its cryptographic hash has been stored on **Provenator**, users will be able to check that resource's provenance data.
+3. Sign the transactions created, using [MetaMask](https://github.com/MetaMask/metamask-extension).
 
 ## Installing **Provenator** Locally
 
