@@ -4,9 +4,28 @@ class Web3Handler {
 
   constructor () {
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
-    if (typeof web3 !== 'undefined') {
+    this._setWeb3()
+    setInterval(this._setAccount.bind(this), 3000)
+
+    this.batch = undefined
+  }
+
+  async _setWeb3 () {
+
+    if (window.ethereum) {
+        console.log('New MetaMask!')
+        this.web3 = new Web3(window.ethereum)
+        try {
+            // Request account access if needed
+            await ethereum.enable()
+        } catch (error) {
+          console.log(error)
+        }
+    }
+    // Legacy dapp browsers...
+    else if (typeof window.web3 !== 'undefined') {
       console.log('MetaMask!')
-      this.web3 = new Web3(web3.currentProvider)
+      this.web3 = new Web3(window.web3.currentProvider)
     } else {
       console.log('No web3? You should consider trying MetaMask!')
       let host = '127.0.0.1'
@@ -31,18 +50,13 @@ class Web3Handler {
           console.log('This is a local, unknown network.')
       }
     })
-    this.web3.eth.defaultAccount = this.web3.eth.accounts[0]
-    this.account = this.web3.eth.defaultAccount
-    console.log('This account ' + this.account)
-    setInterval(this._setAccount.bind(this), 3000)
-
-    this.batch = undefined
   }
 
   // metamask sets its account to web3.eth.accounts[0]
   _setAccount () {
     if (this.web3.eth.accounts[0] !== this.account) {
       this.account = this.web3.eth.accounts[0]
+      console.log('This account ' + this.account)
     }
     //console.log("In set account for ", this.account)
   }
@@ -283,6 +297,8 @@ class Web3Handler {
   }
 
   callParamHandler (_caller, _func, _params, _cb, _isBatch) {
+    console.log("Account", this.account)
+    console.log("Calls", _caller, _func, _params, _cb, _isBatch)
     // console.log("in absolutely new call handler")
     // console.log(_transactionObject)
     // console.log(_func)
