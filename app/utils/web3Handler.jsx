@@ -3,15 +3,15 @@ import Web3 from 'web3'
 class Web3Handler {
 
   constructor () {
-    // Checking if Web3 has been injected by the browser (Mist/MetaMask)
+    this.batch = undefined
+    this.account = undefined
+    this.web3 = undefined
     this._setWeb3()
     setInterval(this._setAccount.bind(this), 3000)
-
-    this.batch = undefined
   }
 
   async _setWeb3 () {
-
+    // Checking if Web3 has been injected by the new MetaMask web3 instance
     if (window.ethereum) {
         console.log('New MetaMask!')
         this.web3 = new Web3(window.ethereum)
@@ -56,7 +56,8 @@ class Web3Handler {
   _setAccount () {
     if (this.web3.eth.accounts[0] !== this.account) {
       this.account = this.web3.eth.accounts[0]
-      console.log('This account ' + this.account)
+      this.web3.eth.defaultAccount = this.account
+      // console.log('This account ' + this.account)
     }
     //console.log("In set account for ", this.account)
   }
@@ -146,11 +147,12 @@ class Web3Handler {
         }))
         _cb(_caller, 'In batch')
       } else {
+        //console.log("0", _params[0], "1", _params[1])
         _func(_params[0], _params[1], function (err, result) {
           if (err) {
             console.log(err)
           } else {
-            //console.log(result)
+            console.log("Caller", _caller, "Result", result)
             _cb(_caller, result)
           }
         })
@@ -269,10 +271,12 @@ class Web3Handler {
   }
 
   getAccount () {
+    //console.log("Account", this.account)
     return this.account
   }
 
   getWeb3 () {
+    // console.log("Web3", this.web3)
     return this.web3
   }
 
@@ -281,7 +285,7 @@ class Web3Handler {
   }
 
   executeBatch () {
-    console.log(this.batch)
+    // console.log(this.batch)
     this.batch.execute()
   }
 
@@ -297,8 +301,8 @@ class Web3Handler {
   }
 
   callParamHandler (_caller, _func, _params, _cb, _isBatch) {
-    console.log("Account", this.account)
-    console.log("Calls", _caller, _func, _params, _cb, _isBatch)
+    //console.log("Account", this.account)
+    //console.log("Calls", _caller, _func, _params, _cb, _isBatch)
     // console.log("in absolutely new call handler")
     // console.log(_transactionObject)
     // console.log(_func)
