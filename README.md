@@ -25,7 +25,7 @@ The following prerequisites are required to run the demo:
 
 ### Running the Demo
 
-Load the live demo of **Provenator** by loading the following URL into your browser: [https://gateway.ipfs.io/ipfs/QmesSUrVz4d6LyVgKx58wWTUbMq2FmnWJ96LNNKhwj95n6/#/](https://gateway.ipfs.io/ipfs/QmesSUrVz4d6LyVgKx58wWTUbMq2FmnWJ96LNNKhwj95n6/#/). If you have not followed the prerequisites above (if you have not installed [MetaMask](https://metamask.io/) and set it to use [rinkeby](https://www.rinkeby.io)), then **Provenator** will not load.
+Load the live demo of **Provenator** by loading the following URL into your browser: [https://gateway.ipfs.io/ipfs/QmeJVicUM3wPYL5CxG57YZXeKWbx6iSW2aMSGbjJsP56cn/#/](https://gateway.ipfs.io/ipfs/QmeJVicUM3wPYL5CxG57YZXeKWbx6iSW2aMSGbjJsP56cn/#/). If you have not followed the prerequisites above (if you have not installed [MetaMask](https://metamask.io/) and set it to use [rinkeby](https://www.rinkeby.io)), then **Provenator** will not load.
 
 Getting records from **Provenator** is free, so if you do not yet have any test Ether, you can retrieve a record of an image of an [evil cat](images/evilCat.bmp), which has already been added to **Provenator**. To find that record, download the [evil cat](images/evilCat.bmp), then click on the [Get Object](https://gateway.ipfs.io/ipfs/QmesSUrVz4d6LyVgKx58wWTUbMq2FmnWJ96LNNKhwj95n6/#/read) link within **Provenator**. Finally, 'BROWSE' for the image of the evil cat that you just downloaded - **Provenator** should find its hash on [rinkeby](https://www.rinkeby.io), and retrieve the associated metadata.
 
