@@ -152,7 +152,7 @@ class Web3Handler {
           if (err) {
             console.log(err)
           } else {
-            console.log("Caller", _caller, "Result", result)
+            // console.log("Caller", _caller, "Result", result)
             _cb(_caller, result)
           }
         })

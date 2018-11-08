@@ -155,7 +155,7 @@ class ContractWriter {
     params = [hash, agentId]
     this.web3Handler.callParamHandler(this, this.premisObject.getObjectAgentExists, params, this._setObjectAgent, false)
     params = [hash, rightsId]
-    console.log(rightsId)
+    //console.log(rightsId)
     this.web3Handler.callParamHandler(this, this.premisObject.getObjectRightsExists, params, this._setObjectRights, false)
   }
 
