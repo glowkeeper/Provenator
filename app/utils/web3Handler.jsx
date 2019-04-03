@@ -7,57 +7,44 @@ class Web3Handler {
     this.account = undefined
     this.web3 = undefined
     this._setWeb3()
-    setInterval(this._setAccount.bind(this), 3000)
   }
 
   async _setWeb3 () {
     // Checking if Web3 has been injected by the new MetaMask web3 instance
-    if (window.ethereum) {
-        console.log('New MetaMask!')
-        this.web3 = new Web3(window.ethereum)
-        try {
-            // Request account access if needed
-            await ethereum.enable()
-        } catch (error) {
-          console.log(error)
-        }
-    }
-    // Legacy dapp browsers...
-    else if (typeof window.web3 !== 'undefined') {
-      console.log('MetaMask!')
-      this.web3 = new Web3(window.web3.currentProvider)
-    } else {
-      console.log('No web3? You should consider trying MetaMask!')
-      let host = '127.0.0.1'
-      let port = '8545'
-      this.web3 = new Web3(new Web3.providers.HttpProvider('http://' + host + ':' + port))
-    }
-    this.web3.version.getNetwork((err, netId) => {
-      switch (netId) {
-        case "1":
-          console.log('This is mainnet')
-          break
-        case "2":
-          console.log('This is the deprecated Morden test network.')
-          break
-        case "3":
-          console.log('This is the ropsten test network.')
-          break
-        case "4":
-          console.log('This is the rinkeby test network.')
-          break
-        default:
-          console.log('This is a local, unknown network.')
+    let ethereum = window.ethereum
+    this.web3 = window.web3
+
+
+    if (ethereum) {
+      this.web3 = new Web3(ethereum)
+      try {
+        //console.log('Ethereum')
+        await ethereum.enable()
+      } catch (error) {
+        // User denied account access...
+        console.log("Ethereum disabled")
       }
-    })
+    } else if (this.web3) {
+      //console.log('Legacy dapp browsers...')
+      this.web3 = new Web3(web3.currentProvider);
+    }
+    // Non-dapp browsers...
+    else {
+        //console.log('Non-Ethereum browser detected. You should consider trying MetaMask!')
+        let host = '127.0.0.1'
+        let port = '8545'
+        this.web3 = new Web3(new Web3.providers.HttpProvider('http://' + host + ':' + port))
+    }
+
+    setInterval(this._setAccount.bind(this), 3000)
   }
 
   // metamask sets its account to web3.eth.accounts[0]
-  _setAccount () {
-    if (this.web3.eth.accounts[0] !== this.account) {
-      this.account = this.web3.eth.accounts[0]
-      this.web3.eth.defaultAccount = this.account
-      // console.log('This account ' + this.account)
+  async _setAccount () {
+    const accounts = await this.web3.eth.getAccounts()
+    if (accounts[0] !== this.account) {
+      this.account = accounts[0]
+      //console.log("Setting account", this.account)
     }
     //console.log("In set account for ", this.account)
   }
@@ -76,6 +63,7 @@ class Web3Handler {
   }
 
   _callParamsChecker (_func, _params, _cb) {
+    //console.log('_callParamsChecker', _func, _params, _cb)
     if ((typeof _func === 'function') && (typeof _cb === 'function') && (Array.isArray(_params))) {
       return true
     } else {
@@ -83,25 +71,22 @@ class Web3Handler {
     }
   }
 
-  _call (_caller, _func, _cb, _isBatch) {
+  _call (_caller, _func, _cb, _isCall) {
     if (this._callChecker(_func, _cb)) {
-      if (_isBatch) {
-        this.batch.add(_func(function (err, result) {
+      const transactionObject = {from: this.account}
+      if (_isCall) {
+        _func().call(transactionObject, function (err, result) {
           if (err) {
             console.log(err)
           } else {
-            //console.log(result)
             _cb(_caller, result)
           }
-        }))
-        _cb(_caller, 'In batch')
+        })
       } else {
-        // console.log('blah ' + _func)
-        _func(function (err, result) {
+        _func().send(transactionObject, function (err, result) {
           if (err) {
             console.log(err)
           } else {
-            //console.log(result)
             _cb(_caller, result)
           }
         })
@@ -109,24 +94,23 @@ class Web3Handler {
     }
   }
 
-  _call1Params (_caller, _func, _params, _cb, _isBatch) {
+  _call1Params (_caller, _func, _params, _cb, _isCall) {
     if (this._callParamsChecker(_func, _params, _cb)) {
-      if (_isBatch) {
-        this.batch.add(_func(_params[0], function (err, result) {
+      const transactionObject = _params[0]
+      if (_isCall) {
+        _func().call(transactionObject, function (err, result) {
           if (err) {
             console.log(err)
           } else {
-            //console.log(result)
             _cb(_caller, result)
           }
-        }))
-        _cb(_caller, 'In batch')
+        })
       } else {
-        _func(_params[0], function (err, result) {
+        //console.log('Call1: ', transactionObject)
+        _func().send(transactionObject, (err, result) => {
           if (err) {
             console.log(err)
           } else {
-            //console.log(result)
             _cb(_caller, result)
           }
         })
@@ -134,25 +118,21 @@ class Web3Handler {
     }
   }
 
-  _call2Params (_caller, _func, _params, _cb, _isBatch) {
+  _call2Params (_caller, _func, _params, _cb, _isCall) {
     if (this._callParamsChecker(_func, _params, _cb)) {
-      if (_isBatch) {
-        this.batch.add(_func(_params[0], _params[1], function (err, result) {
+      if (_isCall) {
+        _func(_params[0]).call(_params[1], function (err, result) {
           if (err) {
             console.log(err)
           } else {
-            //console.log(result)
             _cb(_caller, result)
           }
-        }))
-        _cb(_caller, 'In batch')
+        })
       } else {
-        //console.log("0", _params[0], "1", _params[1])
-        _func(_params[0], _params[1], function (err, result) {
+        _func(_params[0]).send(_params[1], function (err, result) {
           if (err) {
             console.log(err)
           } else {
-            // console.log("Caller", _caller, "Result", result)
             _cb(_caller, result)
           }
         })
@@ -160,29 +140,53 @@ class Web3Handler {
     }
   }
 
-  _call3Params (_caller, _func, _params, _cb, _isBatch) {
+  _call3Params (_caller, _func, _params, _cb, _isCall) {
+    //console.log('_call3Params func ' + _func)
+    if (this._callParamsChecker(_func, _params, _cb)) {
+      //console.log('made it here?')
+      if (_isCall) {
+        //console.log('am I here?')
+        _func(_params[0], _params[1]).call(_params[2], function (err, result) {
+          if (err) {
+            console.log(err)
+          } else {
+            _cb(_caller, result)
+          }
+        })
+      } else {
+        //console.log('made it here? ', _params)
+        //const transactionObject = {from: this.account}
+        _func(_params[0], _params[1]).send(_params[2], function (err, result) {
+          if (err) {
+            console.log(err)
+          } else {
+            _cb(_caller, result)
+          }
+        })
+      }
+    }
+  }
+
+  _call4Params (_caller, _func, _params, _cb, _isCall) {
     /* console.log('caller ' + _caller)
     console.log('func ' + _func)
     console.log('params ' + _params)
     console.log('cb ' + _cb)
     console.log('batch ' + _isBatch) */
     if (this._callParamsChecker(_func, _params, _cb)) {
-      if (_isBatch) {
-        this.batch.add(_func(_params[0], _params[1], _params[2], function (err, result) {
+      if (_isCall) {
+        _func(_params[0], _params[1], _params[2]).call(_params[3], function (err, result) {
           if (err) {
             console.log(err)
           } else {
-            //console.log(result)
             _cb(_caller, result)
           }
-        }))
-        _cb(_caller, 'In batch')
+        })
       } else {
-        _func(_params[0], _params[1], _params[2], function (err, result) {
+        _func(_params[0], _params[1], _params[2]).send(_params[3], function (err, result) {
           if (err) {
             console.log(err)
           } else {
-            //console.log(result)
             _cb(_caller, result)
           }
         })
@@ -190,29 +194,21 @@ class Web3Handler {
     }
   }
 
-  _call4Params (_caller, _func, _params, _cb, _isBatch) {
-    /* console.log('caller ' + _caller)
-    console.log('func ' + _func)
-    console.log('params ' + _params)
-    console.log('cb ' + _cb)
-    console.log('batch ' + _isBatch) */
+  _call5Params (_caller, _func, _params, _cb, _isCall) {
     if (this._callParamsChecker(_func, _params, _cb)) {
-      if (_isBatch) {
-        this.batch.add(_func(_params[0], _params[1], _params[2], _params[3], function (err, result) {
+      if (_isCall) {
+        _func(_params[0], _params[1], _params[2], _params[3]).call(_params[4], function (err, result) {
           if (err) {
             console.log(err)
           } else {
-            //console.log(result)
             _cb(_caller, result)
           }
-        }))
-        _cb(_caller, 'In batch')
+        })
       } else {
-        _func(_params[0], _params[1], _params[2], _params[3], function (err, result) {
+        _func(_params[0], _params[1], _params[2], _params[3]).send(_params[4], function (err, result) {
           if (err) {
             console.log(err)
           } else {
-            //console.log(result)
             _cb(_caller, result)
           }
         })
@@ -220,49 +216,21 @@ class Web3Handler {
     }
   }
 
-  _call5Params (_caller, _func, _params, _cb, _isBatch) {
+  _call6Params (_caller, _func, _params, _cb, _isCall) {
     if (this._callParamsChecker(_func, _params, _cb)) {
-      if (_isBatch) {
-        this.batch.add(_func(_params[0], _params[1], _params[2], _params[3], _params[4], function (err, result) {
+      if (_isCall) {
+        _func(_params[0], _params[1], _params[2], _params[3], _params[4]).call(_params[5], function (err, result) {
           if (err) {
             console.log(err)
           } else {
-            //console.log(result)
-            _cb(_caller, result)
-          }
-        }))
-        _cb(_caller, 'In batch')
-      } else {
-        _func(_params[0], _params[1], _params[2], _params[3], _params[4], function (err, result) {
-          if (err) {
-            console.log(err)
-          } else {
-            //console.log(result)
             _cb(_caller, result)
           }
         })
-      }
-    }
-  }
-
-  _call6Params (_caller, _func, _params, _cb, _isBatch) {
-    if (this._callParamsChecker(_func, _params, _cb)) {
-      if (_isBatch) {
-        this.batch.add(_func(_params[0], _params[1], _params[2], _params[3], _params[4], _params[5], function (err, result) {
-          if (err) {
-            console.log(err)
-          } else {
-            //console.log(result)
-            _cb(_caller, result)
-          }
-        }))
-        _cb(_caller, 'In batch')
       } else {
-        _func(_params[0], _params[1], _params[2], _params[3], _params[4], _params[5], function (err, result) {
+        _func(_params[0], _params[1], _params[2], _params[3], _params[4]).send(_params[5], function (err, result) {
           if (err) {
             console.log(err)
           } else {
-            //console.log(result)
             _cb(_caller, result)
           }
         })
@@ -280,55 +248,37 @@ class Web3Handler {
     return this.web3
   }
 
-  createBatch () {
-    this.batch = this.web3.createBatch()
-  }
-
-  executeBatch () {
-    // console.log(this.batch)
-    this.batch.execute()
-  }
-
-  destroyBatch () {
-    this.batch = undefined
-  }
-
-  callHandler (_caller, _func, _cb, _isBatch) {
+  callHandler (_caller, _func, _cb, _isCall) {
     // console.log('in grrrr call handler')
     // console.log(_transactionObject)
     // console.log(_func)
-    this._call(_caller, _func, _cb, _isBatch)
+    this._call(_caller, _func, _cb, _isCall)
   }
 
-  callParamHandler (_caller, _func, _params, _cb, _isBatch) {
-    //console.log("Account", this.account)
-    //console.log("Calls", _caller, _func, _params, _cb, _isBatch)
-    // console.log("in absolutely new call handler")
-    // console.log(_transactionObject)
-    // console.log(_func)
-    // console.log(_params.length)
-    // const transactionObject = {from: this.account, data: params}
+  callParamHandler (_caller, _func, _params, _cb, _isCall) {
+    //const transactionObject = {from: this.account, data: _params}
+    //console.log("in absolutely new call handler", _func)
     switch (_params.length) {
       case 1:
-        this._call1Params(_caller, _func, _params, _cb, _isBatch)
+        this._call1Params(_caller, _func, _params, _cb, _isCall)
         break
       case 2:
-        this._call2Params(_caller, _func, _params, _cb, _isBatch)
+        this._call2Params(_caller, _func, _params, _cb, _isCall)
         break
       case 3:
-        this._call3Params(_caller, _func, _params, _cb, _isBatch)
+        this._call3Params(_caller, _func, _params, _cb, _isCall)
         break
       case 4:
-        this._call4Params(_caller, _func, _params, _cb, _isBatch)
+        this._call4Params(_caller, _func, _params, _cb, _isCall)
         break
       case 5:
-        this._call5Params(_caller, _func, _params, _cb, _isBatch)
+        this._call5Params(_caller, _func, _params, _cb, _isCall)
         break
       case 6:
-        this._call6Params(_caller, _func, _params, _cb, _isBatch)
+        this._call6Params(_caller, _func, _params, _cb, _isCall)
         break
       default:
-        this._call(_caller, _func, _cb, _isBatch)
+        this._call(_caller, _func, _cb, _isCall)
     }
   }
 }

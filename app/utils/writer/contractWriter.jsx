@@ -24,11 +24,8 @@ class ContractWriter {
     this.premisAgentData = undefined
     this.premisRightsData = undefined
 
-    this.defaultTO = {gas: 300000}
-
     this.numTransactions = 17
     this.numWrites = 0
-    this.batchWrites = false //can't get batch writes working :()
   }
 
   getNumTransactions () {
@@ -57,10 +54,6 @@ class ContractWriter {
   _writeCounter (_self, _result) {
     //console.log(_result)
     _self.numWrites += 1
-    if ( (_self.numWrites == _self.numTransactions ) &&
-         (_self.batchWrites) )  {
-      _self.web3Handler.executeBatch()
-    }
   }
 
   // Premis Object Stuff
@@ -71,8 +64,9 @@ class ContractWriter {
       _self.numWrites += 1
     } else {
       const propType = _self.premisObjectData.getPropertyType()
-      const params = [propType, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisObject.setPropertyType, params, _self._writeCounter, _self.batchWrites)
+      const account = _self.web3Handler.getAccount()
+      const params = [propType, {from: account, gas: 300000}]
+      _self.web3Handler.callParamHandler(_self, _self.premisObject.methods.setPropertyType, params, _self._writeCounter, false)
     }
   }
 
@@ -83,8 +77,9 @@ class ContractWriter {
       const hash = _self.premisObjectData.getHash()
       const category = _self.premisObjectData.getCategory()
       const format = _self.premisObjectData.getFormat()
-      const params = [hash, category, format, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisObject.setObject, params, _self._writeCounter, _self.batchWrites)
+      const account = _self.web3Handler.getAccount()
+      const params = [hash, category, format, {from: account, gas: 300000}]
+      _self.web3Handler.callParamHandler(_self, _self.premisObject.methods.setObject, params, _self._writeCounter, false)
     }
   }
 
@@ -96,8 +91,9 @@ class ContractWriter {
       const hash = _self.premisObjectData.getHash()
       const propType = _self.premisObjectData.getPropertyType()
       const propValue = _self.premisObjectData.getPropertyValue()
-      const params = [hash, propType, propValue, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisObject.setProperties, params, _self._writeCounter, _self.batchWrites)
+      const account = _self.web3Handler.getAccount()
+      const params = [hash, propType, propValue, {from: account, gas: 300000}]
+      _self.web3Handler.callParamHandler(_self, _self.premisObject.methods.setProperties, params, _self._writeCounter, false)
     }
   }
 
@@ -108,8 +104,9 @@ class ContractWriter {
     } else {
       const hash = _self.premisObjectData.getHash()
       const eventId = _self.premisEventData.getId()
-      const params = [hash, eventId, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisObject.setEvent, params, _self._writeCounter, _self.batchWrites)
+      const account = _self.web3Handler.getAccount()
+      const params = [hash, eventId, {from: account, gas: 300000}]
+      _self.web3Handler.callParamHandler(_self, _self.premisObject.methods.setEvent, params, _self._writeCounter, false)
     }
   }
 
@@ -120,8 +117,9 @@ class ContractWriter {
     } else {
       const hash = _self.premisObjectData.getHash()
       const agentId = _self.premisAgentData.getId()
-      const params = [hash, agentId, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisObject.setAgent, params, _self._writeCounter, _self.batchWrites)
+      const account = _self.web3Handler.getAccount()
+      const params = [hash, agentId, {from: account, gas: 300000}]
+      _self.web3Handler.callParamHandler(_self, _self.premisObject.methods.setAgent, params, _self._writeCounter, false)
     }
   }
 
@@ -132,8 +130,9 @@ class ContractWriter {
     } else {
       const hash = _self.premisObjectData.getHash()
       const rightsId = _self.premisRightsData.getId()
-      const params = [hash, rightsId, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisObject.setRights, params, _self._writeCounter, _self.batchWrites)
+      const account = _self.web3Handler.getAccount()
+      const params = [hash, rightsId, {from: account, gas: 300000}]
+      _self.web3Handler.callParamHandler(_self, _self.premisObject.methods.setRights, params, _self._writeCounter, false)
     }
   }
 
@@ -144,19 +143,19 @@ class ContractWriter {
     const agentId = this.premisAgentData.getId()
     const eventId = this.premisEventData.getId()
     const rightsId = this.premisRightsData.getId()
-    let params = [propType]
-    this.web3Handler.callParamHandler(this, this.premisObject.getPropertyTypeExists, params, this._setPropType, false)
-    params = [hash]
-    this.web3Handler.callParamHandler(this, this.premisObject.getObjectExists, params, this._setObject, false)
-    params = [hash, propType, propValue, this.defaultTO]
-    this.web3Handler.callParamHandler(this, this.premisObject.getObjectPropertiesExist, params, this._setObjectProperties, false)
-    params = [hash, eventId]
-    this.web3Handler.callParamHandler(this, this.premisObject.getObjectEventExists, params, this._setObjectEvent, false)
-    params = [hash, agentId]
-    this.web3Handler.callParamHandler(this, this.premisObject.getObjectAgentExists, params, this._setObjectAgent, false)
-    params = [hash, rightsId]
-    //console.log(rightsId)
-    this.web3Handler.callParamHandler(this, this.premisObject.getObjectRightsExists, params, this._setObjectRights, false)
+    const account = this.web3Handler.getAccount()
+    let params = [propType, {from: account}]
+    this.web3Handler.callParamHandler(this, this.premisObject.methods.getPropertyTypeExists, params, this._setPropType, true)
+    params = [hash, {from: account}]
+    this.web3Handler.callParamHandler(this, this.premisObject.methods.getObjectExists, params, this._setObject, true)
+    params = [hash, propType, propValue, {from: account}]
+    this.web3Handler.callParamHandler(this, this.premisObject.methods.getObjectPropertiesExist, params, this._setObjectProperties, true)
+    params = [hash, eventId, {from: account}]
+    this.web3Handler.callParamHandler(this, this.premisObject.methods.getObjectEventExists, params, this._setObjectEvent, true)
+    params = [hash, agentId, {from: account}]
+    this.web3Handler.callParamHandler(this, this.premisObject.methods.getObjectAgentExists, params, this._setObjectAgent, true)
+    params = [hash, rightsId, {from: account}]
+    this.web3Handler.callParamHandler(this, this.premisObject.methods.getObjectRightsExists, params, this._setObjectRights, true)
   }
 
   // Premis Event Stuff
@@ -166,9 +165,10 @@ class ContractWriter {
     if ( _exists ) {
       _self.numWrites += 1
     } else {
+      const account = _self.web3Handler.getAccount()
       const eventTypeName = _self.premisEventData.getType()
-      const params = [eventTypeName, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisEvent.setEventType, params, _self._writeCounter, _self.batchWrites)
+      const params = [eventTypeName, {from: account, gas: 300000}]
+      _self.web3Handler.callParamHandler(_self, _self.premisEvent.methods.setEventType, params, _self._writeCounter, false)
     }
   }
 
@@ -182,8 +182,9 @@ class ContractWriter {
       const date = _self.premisEventData.getDate()
       const hash = _self.premisObjectData.getHash()
       const agentId = _self.premisAgentData.getId()
-      const params = [eventId, eventTypeName, date, hash, agentId, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisEvent.setEvent, params, _self._writeCounter, _self.batchWrites)
+      const account = _self.web3Handler.getAccount()
+      const params = [eventId, eventTypeName, date, hash, agentId, {from: account, gas: 300000}]
+      _self.web3Handler.callParamHandler(_self, _self.premisEvent.methods.setEvent, params, _self._writeCounter, false)
     }
   }
 
@@ -191,11 +192,12 @@ class ContractWriter {
     this.premisEventData.setType(PremisEventStrings.objectRecord)
     //console.log(PremisEventStrings.objectRecord)
     const eventId = this.premisEventData.getId()
-    let params = [PremisEventStrings.objectRecord]
+    const account = this.web3Handler.getAccount()
+    let params = [PremisEventStrings.objectRecord, {from: account}]
     //console.log(PremisEventStrings.objectRecord)
-    this.web3Handler.callParamHandler(this, this.premisEvent.getEventTypeExists, params, this._setEventType, false)
-    params = [eventId]
-    this.web3Handler.callParamHandler(this, this.premisEvent.getEventExists, params, this._setEvent, false)
+    this.web3Handler.callParamHandler(this, this.premisEvent.methods.getEventTypeExists, params, this._setEventType, true)
+    params = [eventId, {from: account}]
+    this.web3Handler.callParamHandler(this, this.premisEvent.methods.getEventExists, params, this._setEvent, true)
   }
 
   // Premis Agent Stuff
@@ -208,8 +210,9 @@ class ContractWriter {
       const agentId = _self.premisAgentData.getId()
       const name = _self.premisAgentData.getName()
       const agentType = _self.premisAgentData.getType()
-      const params = [agentId, name, agentType, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisAgent.setAgent, params, _self._writeCounter, _self.batchWrites)
+      const account = _self.web3Handler.getAccount()
+      const params = [agentId, name, agentType, {from: account, gas: 300000}]
+      _self.web3Handler.callParamHandler(_self, _self.premisAgent.methods.setAgent, params, _self._writeCounter, false)
     }
   }
 
@@ -220,8 +223,9 @@ class ContractWriter {
     } else {
       const agentId = _self.premisAgentData.getId()
       const hash = _self.premisObjectData.getHash()
-      const params = [agentId, hash, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisAgent.setObject, params, _self._writeCounter, _self.batchWrites)
+      const account = _self.web3Handler.getAccount()
+      const params = [agentId, hash, {from: account, gas: 300000}]
+      _self.web3Handler.callParamHandler(_self, _self.premisAgent.methods.setObject, params, _self._writeCounter, false)
     }
   }
 
@@ -232,8 +236,9 @@ class ContractWriter {
     } else {
       const agentId = _self.premisAgentData.getId()
       const eventId = _self.premisEventData.getId()
-      const params = [agentId, eventId, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisAgent.setEvent, params, _self._writeCounter, _self.batchWrites)
+      const account = _self.web3Handler.getAccount()
+      const params = [agentId, eventId, {from: account, gas: 300000}]
+      _self.web3Handler.callParamHandler(_self, _self.premisAgent.methods.setEvent, params, _self._writeCounter, false)
     }
   }
 
@@ -244,8 +249,9 @@ class ContractWriter {
     } else {
       const agentId = _self.premisAgentData.getId()
       const rightsId = _self.premisRightsData.getId()
-      const params = [agentId, rightsId, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisAgent.setRights, params, _self._writeCounter, _self.batchWrites)
+      const account = _self.web3Handler.getAccount()
+      const params = [agentId, rightsId, {from: account, gas: 300000}]
+      _self.web3Handler.callParamHandler(_self, _self.premisAgent.methods.setRights, params, _self._writeCounter, false)
     }
   }
 
@@ -254,14 +260,15 @@ class ContractWriter {
     const hash = this.premisObjectData.getHash()
     const eventId = this.premisEventData.getId()
     const rightsId = this.premisRightsData.getId()
-    let params = [agentId]
-    this.web3Handler.callParamHandler(this, this.premisAgent.getAgentExists, params, this._setAgent, false)
-    params = [agentId, hash]
-    this.web3Handler.callParamHandler(this, this.premisAgent.getAgentObjectExists, params, this._setAgentObject, false)
-    params = [agentId, eventId]
-    this.web3Handler.callParamHandler(this, this.premisAgent.getAgentEventExists, params, this._setAgentEvent, false)
-    params = [agentId, rightsId]
-    this.web3Handler.callParamHandler(this, this.premisAgent.getAgentRightsExists, params, this._setAgentRights, false)
+    const account = this.web3Handler.getAccount()
+    let params = [agentId, {from: account}]
+    this.web3Handler.callParamHandler(this, this.premisAgent.methods.getAgentExists, params, this._setAgent, true)
+    params = [agentId, hash, {from: account}]
+    this.web3Handler.callParamHandler(this, this.premisAgent.methods.getAgentObjectExists, params, this._setAgentObject, true)
+    params = [agentId, eventId, {from: account}]
+    this.web3Handler.callParamHandler(this, this.premisAgent.methods.getAgentEventExists, params, this._setAgentEvent, true)
+    params = [agentId, rightsId, {from: account}]
+    this.web3Handler.callParamHandler(this, this.premisAgent.methods.getAgentRightsExists, params, this._setAgentRights, true)
   }
 
   // Premis Rights Stuff
@@ -282,23 +289,25 @@ class ContractWriter {
       const restriction = _self.premisRightsData.getRestriction()
       const hash = _self.premisObjectData.getHash()
       const agentId = _self.premisAgentData.getId()
-      let params = [rightsId, hash, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisRights.setObject, params, _self._writeCounter, _self.batchWrites)
-      params = [rightsId, basis, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisRights.setBasis, params, _self._writeCounter, _self.batchWrites)
-      params = [rightsId, status, code, date, note, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisRights.setCopyrightInfo, params, _self._writeCounter, _self.batchWrites)
-      params = [rightsId, act, restriction, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisRights.setRightsGranted, params, _self._writeCounter, _self.batchWrites)
-      params = [rightsId, agentId, _self.defaultTO]
-      _self.web3Handler.callParamHandler(_self, _self.premisRights.setAgent, params, _self._writeCounter, _self.batchWrites)
+      const account = _self.web3Handler.getAccount()
+      let params = [rightsId, hash, {from: account, gas: 300000}]
+      _self.web3Handler.callParamHandler(_self, _self.premisRights.methods.setObject, params, _self._writeCounter, false)
+      params = [rightsId, basis, {from: account, gas: 300000}]
+      _self.web3Handler.callParamHandler(_self, _self.premisRights.methods.setBasis, params, _self._writeCounter, false)
+      params = [rightsId, status, code, date, note, {from: account, gas: 300000}]
+      _self.web3Handler.callParamHandler(_self, _self.premisRights.methods.setCopyrightInfo, params, _self._writeCounter, false)
+      params = [rightsId, act, restriction, {from: account, gas: 300000}]
+      _self.web3Handler.callParamHandler(_self, _self.premisRights.methods.setRightsGranted, params, _self._writeCounter, false)
+      params = [rightsId, agentId, {from: account, gas: 300000}]
+      _self.web3Handler.callParamHandler(_self, _self.premisRights.methods.setAgent, params, _self._writeCounter, false)
     }
   }
 
   _rightsSubmit () {
     const rightsId = this.premisRightsData.getId()
-    let params = [rightsId]
-    this.web3Handler.callParamHandler(this, this.premisRights.getRightsExists, params, this._setRights, false)
+    const account = this.web3Handler.getAccount()
+    let params = [rightsId, {from: account}]
+    this.web3Handler.callParamHandler(this, this.premisRights.methods.getRightsExists, params, this._setRights, true)
   }
 
   setData (_premisObjectHandler, _premisEventHandler, _premisAgentHandler, _premisRightsHandler) {
@@ -317,8 +326,6 @@ class ContractWriter {
 
   dispatcher () {
     if ( this._checkData() ) {
-      this.web3Handler.destroyBatch()
-      this.web3Handler.createBatch()
       this._resetNumWrites()
       this._objectSubmit()
       this._eventSubmit()

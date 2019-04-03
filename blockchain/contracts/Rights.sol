@@ -1,29 +1,29 @@
-pragma solidity ^0.4.24;
+pragma solidity ^0.5.0;
 
 contract Rights {
 
-  function setObject(string _rightsId, string _objectHash) public;
-  function setBasis(string _rightsId, string _basis) public;
-  function setCopyrightInfo(string _rightsId,
-                            string _status,
-                            string _jurisdictionCountryCode,
-                            string _determinationDate,
-                            string _note ) public;
-  function setRightsGranted(string _rightsId, string _act, string _restriction) public;
-  function setAgent(string _rightsId, string _agentId) public;
+  function setObject(string memory _rightsId, string memory _objectHash) public;
+  function setBasis(string memory _rightsId, string memory _basis) public;
+  function setCopyrightInfo(string memory _rightsId,
+                            string memory _status,
+                            string memory _jurisdictionCountryCode,
+                            string memory _determinationDate,
+                            string memory _note ) public;
+  function setRightsGranted(string memory _rightsId, string memory _act, string memory _restriction) public;
+  function setAgent(string memory _rightsId, string memory _agentId) public;
 
-  function getRightsExists(string _rightsId) public constant returns (bool);
+  function getRightsExists(string memory _rightsId) public view returns (bool);
 
-  function getNumRights() public constant returns (uint256);
-  function getRights(uint256 _index) public constant returns (string);
+  function getNumRights() public view returns (uint256);
+  function getRights(uint256 _index) public view returns (string memory);
 
-  function getObject(string _rightsId) public constant returns (string, string);
-  function getRightsBasis(string _rightsId) public constant returns (string, string);
-  function getCopyrightStatus(string _rightsId) public constant returns (string, string);
-  function getCopyrightJurisdiction(string _rightsId) public constant returns (string, string);
-  function getCopyrightDeterminationDate(string _rightsId) public constant returns (string, string);
-  function getCopyrightNote(string _rightsId) public constant returns (string, string);
-  function getGrantedAct(string _rightsId) public constant returns (string, string);
-  function getGrantedRestriction(string _rightsId) public constant returns (string, string);
-  function getAgent(string _rightsId) public constant returns (string, string);
+  function getObject(string memory _rightsId) public view returns (string memory, string memory);
+  function getRightsBasis(string memory _rightsId) public view returns (string memory, string memory);
+  function getCopyrightStatus(string memory _rightsId) public view returns (string memory, string memory);
+  function getCopyrightJurisdiction(string memory _rightsId) public view returns (string memory, string memory);
+  function getCopyrightDeterminationDate(string memory _rightsId) public view returns (string memory, string memory);
+  function getCopyrightNote(string memory _rightsId) public view returns (string memory, string memory);
+  function getGrantedAct(string memory _rightsId) public view returns (string memory, string memory);
+  function getGrantedRestriction(string memory _rightsId) public view returns (string memory, string memory);
+  function getAgent(string memory _rightsId) public view returns (string memory, string memory);
 }

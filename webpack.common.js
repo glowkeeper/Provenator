@@ -27,7 +27,7 @@ var config = {
     extensions: ['.js', '.jsx']
   },
   plugins: [
-    new cleanWebpackPlugin(['build']),
+    new cleanWebpackPlugin(),
     new htmlWebpackPlugin({
       template: './app/index.html',
       inject: 'body',

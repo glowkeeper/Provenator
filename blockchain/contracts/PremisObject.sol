@@ -1,10 +1,10 @@
-pragma solidity ^0.4.24;
+pragma solidity ^0.5.0;
 
 // Fake News Premis Object
 // Steve Huckle
 
-import "Object.sol";
-import "Strings.sol";
+import "./Object.sol";
+import "./Strings.sol";
 
 contract PremisObject is Object {
 
@@ -36,47 +36,47 @@ contract PremisObject is Object {
   constructor() public {
   }
 
-  function setPropertyType(string _propType) public {
+  function setPropertyType(string memory _propType) public {
     propTypes.push(_propType);
   }
 
-  function setObject(string _objectHash, string _category, string _format) public {
+  function setObject(string memory _objectHash, string memory _category, string memory _format) public {
     premisObjects[_objectHash].category = _category;
     premisObjects[_objectHash].format = _format;
     objects.push(_objectHash);
     emit ObjectSet(_objectHash, _category, _format);
   }
 
-  function setProperties(string _objectHash, string _type, string _value) public {
+  function setProperties(string memory _objectHash, string memory _type, string memory _value) public {
     premisObjects[_objectHash].properties.push(ObjectProperties(_type,_value));
     emit ObjectSetProperties(_objectHash, _type, _value);
   }
 
-  function setEvent(string _objectHash, string _eventId) public {
+  function setEvent(string memory _objectHash, string memory _eventId) public {
     premisObjects[_objectHash].events.push(_eventId);
     emit ObjectSetEvent(_objectHash, _eventId);
   }
 
-  function setAgent(string _objectHash, string _agentId) public {
+  function setAgent(string memory _objectHash, string memory _agentId) public {
     premisObjects[_objectHash].agents.push(_agentId);
   }
 
-  function setRights(string _objectHash, string _rightsId) public {
+  function setRights(string memory _objectHash, string memory _rightsId) public {
     premisObjects[_objectHash].rights.push(_rightsId);
   }
 
   // These 'Exists?' functions return max(uint256) if not, the index otherwise
-  function getPropertyTypeExists(string _propType) public constant returns (bool) {
+  function getPropertyTypeExists(string memory _propType) public view returns (bool) {
     uint256 index = Strings.getIndex(_propType, propTypes);
     return index != propTypes.length;
   }
 
-  function getObjectExists(string _objectHash) public constant returns (bool) {
+  function getObjectExists(string memory _objectHash) public view returns (bool) {
     uint256 index = Strings.getIndex(_objectHash, objects);
     return index != objects.length;
   }
 
-  function getObjectPropertiesExist(string _objectHash, string _propType, string _propValue) public constant returns (bool) {
+  function getObjectPropertiesExist(string memory _objectHash, string memory _propType, string memory _propValue) public view returns (bool) {
     bool exists = false;
     if(getObjectExists(_objectHash)) {
       for (uint256 x = 0; x < premisObjects[_objectHash].properties.length; x++) {
@@ -91,75 +91,75 @@ contract PremisObject is Object {
     return exists;
   }
 
-  function getObjectEventExists(string _objectHash, string _eventId) public constant returns (bool) {
+  function getObjectEventExists(string memory _objectHash, string memory _eventId) public view returns (bool) {
     uint256 index = Strings.getIndex(_eventId, premisObjects[_objectHash].events);
     return index != premisObjects[_objectHash].events.length;
   }
 
-  function getObjectAgentExists(string _objectHash, string _agentId) public constant returns (bool) {
+  function getObjectAgentExists(string memory _objectHash, string memory _agentId) public view returns (bool) {
     uint256 index = Strings.getIndex(_agentId, premisObjects[_objectHash].agents);
     return index != premisObjects[_objectHash].agents.length;
   }
 
-  function getObjectRightsExists(string _objectHash, string _rightsId) public constant returns (bool) {
+  function getObjectRightsExists(string memory _objectHash, string memory _rightsId) public view returns (bool) {
     uint256 index = Strings.getIndex(_rightsId, premisObjects[_objectHash].rights);
     return index != premisObjects[_objectHash].rights.length;
   }
 
-  function getNumPropTypes() public constant returns (uint256) {
+  function getNumPropTypes() public view returns (uint256) {
     return propTypes.length;
   }
 
-  function getNumObjects() public constant returns (uint256) {
+  function getNumObjects() public view returns (uint256) {
     return objects.length;
   }
 
-  function getNumProperties(string _objectHash) public constant returns (uint256) {
+  function getNumProperties(string memory _objectHash) public view returns (uint256) {
     return premisObjects[_objectHash].properties.length;
   }
 
-  function getNumEvents(string _objectHash) public constant returns (uint256) {
+  function getNumEvents(string memory _objectHash) public view returns (uint256) {
     return premisObjects[_objectHash].events.length;
   }
 
-  function getNumAgents(string _objectHash) public constant returns (uint256) {
+  function getNumAgents(string memory _objectHash) public view returns (uint256) {
     return premisObjects[_objectHash].agents.length;
   }
 
-  function getNumRights(string _objectHash) public constant returns (uint256) {
+  function getNumRights(string memory _objectHash) public view returns (uint256) {
     return premisObjects[_objectHash].rights.length;
   }
 
-  function getPropertyTypeName(uint256 _index) public constant returns (string) {
+  function getPropertyTypeName(uint256 _index) public view returns (string memory) {
     return propTypes[_index];
   }
 
-  function getObject(uint256 _index) public constant returns (string) {
+  function getObject(uint256 _index) public view returns (string memory) {
     return objects[_index];
   }
 
-  function getCategory(string _objectHash) public constant returns (string, string) {
+  function getCategory(string memory _objectHash) public view returns (string memory, string memory) {
     return (_objectHash, premisObjects[_objectHash].category);
   }
 
-  function getFormat(string _objectHash) public constant returns (string, string) {
+  function getFormat(string memory _objectHash) public view returns (string memory, string memory) {
     return (_objectHash, premisObjects[_objectHash].format);
   }
 
-  function getProperties(string _objectHash, uint256 _propertyIndex) public constant returns (string, string, string) {
+  function getProperties(string memory _objectHash, uint256 _propertyIndex) public view returns (string memory, string memory, string memory) {
     return (_objectHash, premisObjects[_objectHash].properties[_propertyIndex].propType,
             premisObjects[_objectHash].properties[_propertyIndex].propValue);
   }
 
-  function getEvent(string _objectHash, uint256 _eventIndex) public constant returns (string, string) {
+  function getEvent(string memory _objectHash, uint256 _eventIndex) public view returns (string memory, string memory) {
     return (_objectHash, premisObjects[_objectHash].events[_eventIndex]);
   }
 
-  function getAgent(string _objectHash, uint256 _agentIndex) public constant returns (string, string) {
+  function getAgent(string memory _objectHash, uint256 _agentIndex) public view returns (string memory, string memory) {
     return (_objectHash, premisObjects[_objectHash].agents[_agentIndex]);
   }
 
-  function getRights(string _objectHash, uint256 _rightsIndex) public constant returns (string, string) {
+  function getRights(string memory _objectHash, uint256 _rightsIndex) public view returns (string memory, string memory) {
     return (_objectHash, premisObjects[_objectHash].rights[_rightsIndex]);
   }
 }

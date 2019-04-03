@@ -1892,10 +1892,10 @@ class ContractHandler {
 
   */
 
-  static premisObjectContractAddress = '0x235513cd4b877440366d775a78fa26cc28ceaf42'
-  static premisEventContractAddress = '0x00ac4b12eb39de040860ddae3cbba3f5e7145c5f'
-  static premisAgentContractAddress = '0x78dbfca6d18f0f4dec22bdccd4c3f90295ff1831'
-  static premisRightsContractAddress = '0x33ccd7b78df9673a3d73a4ecca35eb5a95081c88'
+  static premisObjectContractAddress = '0x6B94e44b2f2611963B77E497C96a0B092798651d'
+  static premisEventContractAddress = '0x12fe62A7B6fE261f4c2Fe0A849A2369Fa2966860'
+  static premisAgentContractAddress = '0xe0d8994A35Cf8ea62d3377c8b7793e4b8861C572'
+  static premisRightsContractAddress = '0x9F86B6145a4216C0AEcbf77ac35659802eFD5F8a'
 
   constructor (_web3Handler) {
     //console.log(_web3)
@@ -1903,17 +1903,10 @@ class ContractHandler {
     this.web3Handler = _web3Handler
     const thisWeb3 = this.web3Handler.getWeb3()
 
-    this.premisObjectContract = thisWeb3.eth.contract(ContractHandler.premisObjectAbi)
-    this.premisObject = this.premisObjectContract.at(ContractHandler.premisObjectContractAddress)
-
-    this.premisEventContract = thisWeb3.eth.contract(ContractHandler.premisEventAbi)
-    this.premisEvent = this.premisEventContract.at(ContractHandler.premisEventContractAddress)
-
-    this.premisAgentContract = thisWeb3.eth.contract(ContractHandler.premisAgentAbi)
-    this.premisAgent = this.premisAgentContract.at(ContractHandler.premisAgentContractAddress)
-
-    this.premisRightsContract = thisWeb3.eth.contract(ContractHandler.premisRightsAbi)
-    this.premisRights = this.premisRightsContract.at(ContractHandler.premisRightsContractAddress)
+    this.premisObject = thisWeb3.eth.Contract(ContractHandler.premisObjectAbi, ContractHandler.premisObjectContractAddress)
+    this.premisEvent = thisWeb3.eth.Contract(ContractHandler.premisEventAbi, ContractHandler.premisEventContractAddress)
+    this.premisAgent = thisWeb3.eth.Contract(ContractHandler.premisAgentAbi, ContractHandler.premisAgentContractAddress)
+    this.premisRights = thisWeb3.eth.Contract(ContractHandler.premisRightsAbi, ContractHandler.premisRightsContractAddress)
   }
 
   getPremisObject () {

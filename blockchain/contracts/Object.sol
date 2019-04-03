@@ -1,36 +1,36 @@
-pragma solidity ^0.4.24;
+pragma solidity ^0.5.0;
 
 contract Object {
 
-  function setPropertyType(string _propType) public;
-  function setObject(string _objectHash, string _category, string _format) public;
-  function setProperties(string _objectHash, string _type, string _value) public;
-  function setEvent(string _objectHash, string _eventId) public;
-  function setAgent(string _objectHash, string _agentId) public;
-  function setRights(string _objectHash, string _rightsId) public;
+  function setPropertyType(string memory _propType) public;
+  function setObject(string memory _objectHash, string memory _category, string memory _format) public;
+  function setProperties(string memory _objectHash, string memory _type, string memory _value) public;
+  function setEvent(string memory _objectHash, string memory _eventId) public;
+  function setAgent(string memory _objectHash, string memory _agentId) public;
+  function setRights(string memory _objectHash, string memory _rightsId) public;
 
-  function getPropertyTypeExists(string _propType) public constant returns (bool);
-  function getObjectExists(string _objectHash) public constant returns (bool);
-  function getObjectPropertiesExist(string _objectHash, string _propType, string _propValue) public constant returns (bool);
-  function getObjectEventExists(string _objectHash, string _eventId) public constant returns (bool);
-  function getObjectAgentExists(string _objectHash, string _agentId) public constant returns (bool);
-  function getObjectRightsExists(string _objectHash, string _rightsId) public constant returns (bool);
+  function getPropertyTypeExists(string memory _propType) public view returns (bool);
+  function getObjectExists(string memory _objectHash) public view returns (bool);
+  function getObjectPropertiesExist(string memory _objectHash, string memory _propType, string memory _propValue) public view returns (bool);
+  function getObjectEventExists(string memory _objectHash, string memory _eventId) public view returns (bool);
+  function getObjectAgentExists(string memory _objectHash, string memory _agentId) public view returns (bool);
+  function getObjectRightsExists(string memory _objectHash, string memory _rightsId) public view returns (bool);
 
-  function getNumPropTypes() public constant returns (uint256);
-  function getNumObjects() public constant returns (uint256);
-  function getNumProperties(string _objectHash) public constant returns (uint256);
-  function getNumEvents(string _objectHash) public constant returns (uint256);
-  function getNumAgents(string _objectHash) public constant returns (uint256);
-  function getNumRights(string _objectHash) public constant returns (uint256);
+  function getNumPropTypes() public view returns (uint256);
+  function getNumObjects() public view returns (uint256);
+  function getNumProperties(string memory _objectHash) public view returns (uint256);
+  function getNumEvents(string memory _objectHash) public view returns (uint256);
+  function getNumAgents(string memory _objectHash) public view returns (uint256);
+  function getNumRights(string memory _objectHash) public view returns (uint256);
 
-  function getPropertyTypeName(uint256 _index) public constant returns (string);
+  function getPropertyTypeName(uint256 _index) public view returns (string memory);
 
-  function getObject(uint256 _index) public constant returns (string);
-  function getCategory(string _objectHash) public constant returns (string, string);
-  function getFormat(string _objectHash) public constant returns (string, string);
-  function getProperties(string _objectHash, uint256 _propertyIndex) public constant returns (string, string, string);
-  function getEvent(string _objectHash, uint256 _eventIndex) public constant returns (string, string);
-  function getAgent(string _objectHash, uint256 _agentIndex) public constant returns (string, string);
-  function getRights(string _objectHash, uint256 _rightsIndex) public constant returns (string, string);
+  function getObject(uint256 _index) public view returns (string memory);
+  function getCategory(string memory _objectHash) public view returns (string memory, string memory);
+  function getFormat(string memory _objectHash) public view returns (string memory, string memory);
+  function getProperties(string memory _objectHash, uint256 _propertyIndex) public view returns (string memory, string memory, string memory);
+  function getEvent(string memory _objectHash, uint256 _eventIndex) public view returns (string memory, string memory);
+  function getAgent(string memory _objectHash, uint256 _agentIndex) public view returns (string memory, string memory);
+  function getRights(string memory _objectHash, uint256 _rightsIndex) public view returns (string memory, string memory);
 
 }

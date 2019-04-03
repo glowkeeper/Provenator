@@ -34,10 +34,11 @@ class ContractReader {
 
    _getNumProperties (_self, _numProperties) {
      //console.log(_numProperties)
+     const account = _self.web3Handler.getAccount()
      _self.readNoKeyCb(_self.reader, _self.reader.OUTPUTDATA.OBJECT.value, ObjectReaderStrings.numPropertiesLabel, _numProperties)
      for (let i = 0; i < _numProperties; i++) {
-       const params = [_self.ipfsHash, i]
-       _self.web3Handler.callParamHandler(_self, _self.premisObject.getProperties, params, _self._getProperties, false)
+       const params = [_self.ipfsHash, i, {from: account}]
+       _self.web3Handler.callParamHandler(_self, _self.premisObject.methods.getProperties, params, _self._getProperties, true)
      }
    }
 
@@ -49,17 +50,19 @@ class ContractReader {
    _getObjectData () {
      // console.log(this.premisObject)
      // console.log(this.ipfsHash)
-     const params = [this.ipfsHash]
-     this.web3Handler.callParamHandler(this, this.premisObject.getCategory, params, this._getCategory, false)
-     this.web3Handler.callParamHandler(this, this.premisObject.getFormat, params, this._getFormat, false)
-     this.web3Handler.callParamHandler(this, this.premisObject.getNumProperties, params, this._getNumProperties, false)
+     const account = this.web3Handler.getAccount()
+     const params = [this.ipfsHash, {from: account}]
+     this.web3Handler.callParamHandler(this, this.premisObject.methods.getCategory, params, this._getCategory, true)
+     this.web3Handler.callParamHandler(this, this.premisObject.methods.getFormat, params, this._getFormat, true)
+     this.web3Handler.callParamHandler(this, this.premisObject.methods.getNumProperties, params, this._getNumProperties, true)
    }
 
    _getNumEvents (_self, _numEvents) {
+     const account = _self.web3Handler.getAccount()
      _self.readNoKeyCb(_self.reader, _self.reader.OUTPUTDATA.EVENT.value, ObjectReaderStrings.numEventsLabel, _numEvents)
      for (let i = 0; i < _numEvents; i++) {
-       const params = [_self.ipfsHash, i]
-       _self.web3Handler.callParamHandler(_self, _self.premisObject.getEvent, params, _self._getEvent, false)
+       const params = [_self.ipfsHash, i, {from: account}]
+       _self.web3Handler.callParamHandler(_self, _self.premisObject.methods.getEvent, params, _self._getEvent, true)
      }
    }
 
@@ -67,12 +70,13 @@ class ContractReader {
      //console.log(_eventId)
      const key = _eventId[0]
      const id =  _eventId[1]
+     const account = _self.web3Handler.getAccount()
      _self.readKeyCb(_self.reader, _self.reader.OUTPUTDATA.EVENT.value, key, ObjectReaderStrings.eventLabel, id)
-     const params = [id]
-     _self.web3Handler.callParamHandler(_self, _self.premisEvent.getObject, params, _self._getEventObject, false)
-     _self.web3Handler.callParamHandler(_self, _self.premisEvent.getType, params, _self._getEventType, false)
-     _self.web3Handler.callParamHandler(_self, _self.premisEvent.getAgent, params, _self._getEventAgent, false)
-     _self.web3Handler.callParamHandler(_self, _self.premisEvent.getTime, params, _self._getEventTime, false)
+     const params = [id, {from: account}]
+     _self.web3Handler.callParamHandler(_self, _self.premisEvent.methods.getObject, params, _self._getEventObject, true)
+     _self.web3Handler.callParamHandler(_self, _self.premisEvent.methods.getType, params, _self._getEventType, true)
+     _self.web3Handler.callParamHandler(_self, _self.premisEvent.methods.getAgent, params, _self._getEventAgent, true)
+     _self.web3Handler.callParamHandler(_self, _self.premisEvent.methods.getTime, params, _self._getEventTime, true)
    }
 
    _getEventObject (_self, _eventObject) {
@@ -92,25 +96,28 @@ class ContractReader {
    }
 
    _getEventData () {
-     const params = [this.ipfsHash]
-     this.web3Handler.callParamHandler(this, this.premisObject.getNumEvents, params, this._getNumEvents, false)
+     const account = this.web3Handler.getAccount()
+     const params = [this.ipfsHash, {from: account}]
+     this.web3Handler.callParamHandler(this, this.premisObject.methods.getNumEvents, params, this._getNumEvents, true)
    }
 
    _getNumAgents (_self, _numAgents) {
+     const account = _self.web3Handler.getAccount()
      _self.readNoKeyCb(_self.reader, _self.reader.OUTPUTDATA.AGENT.value, ObjectReaderStrings.numAgentsLabel, _numAgents)
      for (let i = 0; i < _numAgents; i++) {
-       const params = [_self.ipfsHash, i]
-       _self.web3Handler.callParamHandler(_self, _self.premisObject.getAgent, params, _self._getAgent, false)
+       const params = [_self.ipfsHash, i, {from: account}]
+       _self.web3Handler.callParamHandler(_self, _self.premisObject.methods.getAgent, params, _self._getAgent, true)
      }
    }
 
    _getAgent(_self, _agentId) {
+     const account = _self.web3Handler.getAccount()
      const key = _agentId[0]
      const id =  _agentId[1]
      _self.readKeyCb(_self.reader, _self.reader.OUTPUTDATA.AGENT.value, key, ObjectReaderStrings.agentLabel, id )
-     const params = [id]
-     _self.web3Handler.callParamHandler(_self, _self.premisAgent.getName, params, _self._getAgentName, false)
-     _self.web3Handler.callParamHandler(_self, _self.premisAgent.getType, params, _self._getAgentType, false)
+     const params = [id, {from: account}]
+     _self.web3Handler.callParamHandler(_self, _self.premisAgent.methods.getName, params, _self._getAgentName, true)
+     _self.web3Handler.callParamHandler(_self, _self.premisAgent.methods.getType, params, _self._getAgentType, true)
    }
 
    _getAgentName (_self, _agentName) {
@@ -122,32 +129,35 @@ class ContractReader {
    }
 
    _getAgentData () {
-     const params = [this.ipfsHash]
-     this.web3Handler.callParamHandler(this, this.premisObject.getNumAgents, params, this._getNumAgents, false)
+     const account = this.web3Handler.getAccount()
+     const params = [this.ipfsHash, {from: account}]
+     this.web3Handler.callParamHandler(this, this.premisObject.methods.getNumAgents, params, this._getNumAgents, true)
    }
 
    _getNumRights(_self, _numRights) {
+     const account = _self.web3Handler.getAccount()
      _self.readNoKeyCb(_self.reader, _self.reader.OUTPUTDATA.RIGHTS.value, ObjectReaderStrings.numRightsLabel, _numRights)
      for (let i = 0; i < _numRights; i++) {
-       const params = [_self.ipfsHash, i]
-       _self.web3Handler.callParamHandler(_self, _self.premisObject.getRights, params, _self._getRights, false)
+       const params = [_self.ipfsHash, i, {from: account}]
+       _self.web3Handler.callParamHandler(_self, _self.premisObject.methods.getRights, params, _self._getRights, true)
      }
    }
 
    _getRights (_self, _rightsId) {
+     const account = _self.web3Handler.getAccount()
      const key = _rightsId[0]
      const id =  _rightsId[1]
      _self.readKeyCb(_self.reader, _self.reader.OUTPUTDATA.RIGHTS.value, key, ObjectReaderStrings.rightsLabel, id)
-     const params = [id]
-     _self.web3Handler.callParamHandler(_self, _self.premisRights.getObject, params, _self._getRightsObject, false)
-     _self.web3Handler.callParamHandler(_self, _self.premisRights.getRightsBasis, params, _self._getRightsBasis, false)
-     _self.web3Handler.callParamHandler(_self, _self.premisRights.getCopyrightStatus, params, _self._getCopyrightStatus, false)
-     _self.web3Handler.callParamHandler(_self, _self.premisRights.getCopyrightJurisdiction, params, _self._getCopyrightJurisdiction, false)
-     _self.web3Handler.callParamHandler(_self, _self.premisRights.getCopyrightDeterminationDate, params, _self._getCopyrightDeterminationDate, false)
-     _self.web3Handler.callParamHandler(_self, _self.premisRights.getCopyrightNote, params, _self._getCopyrightNote, false)
-     _self.web3Handler.callParamHandler(_self, _self.premisRights.getGrantedAct, params, _self._getGrantedAct, false)
-     _self.web3Handler.callParamHandler(_self, _self.premisRights.getGrantedRestriction, params, _self._getGrantedRestriction, false)
-     _self.web3Handler.callParamHandler(_self, _self.premisRights.getAgent, params, _self._getRightsAgent, false)
+     const params = [id, {from: account}]
+     _self.web3Handler.callParamHandler(_self, _self.premisRights.methods.getObject, params, _self._getRightsObject, true)
+     _self.web3Handler.callParamHandler(_self, _self.premisRights.methods.getRightsBasis, params, _self._getRightsBasis, true)
+     _self.web3Handler.callParamHandler(_self, _self.premisRights.methods.getCopyrightStatus, params, _self._getCopyrightStatus, true)
+     _self.web3Handler.callParamHandler(_self, _self.premisRights.methods.getCopyrightJurisdiction, params, _self._getCopyrightJurisdiction, true)
+     _self.web3Handler.callParamHandler(_self, _self.premisRights.methods.getCopyrightDeterminationDate, params, _self._getCopyrightDeterminationDate, true)
+     _self.web3Handler.callParamHandler(_self, _self.premisRights.methods.getCopyrightNote, params, _self._getCopyrightNote, true)
+     _self.web3Handler.callParamHandler(_self, _self.premisRights.methods.getGrantedAct, params, _self._getGrantedAct, true)
+     _self.web3Handler.callParamHandler(_self, _self.premisRights.methods.getGrantedRestriction, params, _self._getGrantedRestriction, true)
+     _self.web3Handler.callParamHandler(_self, _self.premisRights.methods.getAgent, params, _self._getRightsAgent, true)
    }
 
    _getRightsObject (_self, _rightsObject) {
@@ -187,8 +197,9 @@ class ContractReader {
    }
 
    _getRightsData () {
-     const params = [this.ipfsHash]
-     this.web3Handler.callParamHandler(this, this.premisObject.getNumRights, params, this._getNumRights, false)
+     const account = this.web3Handler.getAccount()
+     const params = [this.ipfsHash, {from: account}]
+     this.web3Handler.callParamHandler(this, this.premisObject.methods.getNumRights, params, this._getNumRights, true)
    }
 
    getReaderData(_callee, _keyCb, _noKeyCb, ipfsHash) {
