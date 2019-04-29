@@ -8,6 +8,8 @@
     "url": "git+https://github.com/glowkeeper/Provenator.git"
   },
   "scripts": {
+    "generate": "cd ./blockchain && mkdir -p ./build/contracts && touch ./build/contracts/fooBar.json && rm ./build/contracts/*json && truffle compile --all",
+    "develMigrate": "cd ./blockchain && truffle migrate --network development",
     "compile": "./node_modules/.bin/webpack --config ./webpack.dev.js --mode development",
     "watch": "./node_modules/.bin/webpack --config ./webpack.dev.js --watch --mode development",
     "dev": "./node_modules/.bin/webpack --config ./webpack.dev.js --mode development",

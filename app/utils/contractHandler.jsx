@@ -1892,10 +1892,10 @@ class ContractHandler {
 
   */
 
-  static premisObjectContractAddress = '0x6B94e44b2f2611963B77E497C96a0B092798651d'
-  static premisEventContractAddress = '0x12fe62A7B6fE261f4c2Fe0A849A2369Fa2966860'
-  static premisAgentContractAddress = '0xe0d8994A35Cf8ea62d3377c8b7793e4b8861C572'
-  static premisRightsContractAddress = '0x9F86B6145a4216C0AEcbf77ac35659802eFD5F8a'
+  static premisObjectContractAddress = '0x2C433289b8A829AA3F34287039083309F542C8C4'
+  static premisEventContractAddress = '0xcA5784A7c10A7CFC6480072FB46f0C54dFbFB989'
+  static premisAgentContractAddress = '0x667CD537e1079044119438B0c8a62d59D557B55A'
+  static premisRightsContractAddress = '0x2C433289b8A829AA3F34287039083309F542C8C4'
 
   constructor (_web3Handler) {
     //console.log(_web3)
