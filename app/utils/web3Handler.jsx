@@ -3,7 +3,6 @@ import Web3 from 'web3'
 class Web3Handler {
 
   constructor () {
-    this.batch = undefined
     this.account = undefined
     this.web3 = undefined
     this._setWeb3()
@@ -171,8 +170,7 @@ class Web3Handler {
     /* console.log('caller ' + _caller)
     console.log('func ' + _func)
     console.log('params ' + _params)
-    console.log('cb ' + _cb)
-    console.log('batch ' + _isBatch) */
+    console.log('cb ' + _cb) */
     if (this._callParamsChecker(_func, _params, _cb)) {
       if (_isCall) {
         _func(_params[0], _params[1], _params[2]).call(_params[3], function (err, result) {
