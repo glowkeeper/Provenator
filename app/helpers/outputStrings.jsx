@@ -11,7 +11,7 @@ class AppStrings {
   static help = 'Help'
   static events = 'Events'
 
-  static copyright = 'University of Sussex © 2018. Created by Steven Huckle'
+  static copyright = 'University of Sussex © 2019. Created by Steven Huckle'
   static tagLine = 'Proving the Origins of Digital Media'
 }
 
