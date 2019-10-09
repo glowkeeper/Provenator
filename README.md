@@ -6,21 +6,19 @@
 
 This is the repository for [Provenator](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9), a prototype distributed application for proving the origins of captured digital media. It uses cryptographic tools and blockchain technology; by using the trust mechanisms of blockchains, the application aims to show, beyond doubt, the provenance of any source of digital media.
 
-[Provenator](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9) is the result of the academic paper called, [Fake News - a Technological Approach to Proving Provenance Using Blockchains](https://doi.org/10.1089/big.2017.0071), by Steve Huckle and Martin White, of the [University of Sussex Informatics Department](http://www.sussex.ac.uk/informatics/), which was published in a special issue on on Computational Propaganda and Political Big Data for Mary Anne Liebert's [Big Data Journal](http://online.liebertpub.com/toc/big/5/4). It currently is part of a suite of blockchain-based software that form a proofs of concept for [Steve Huckle's PhD](https://glowkeeper.github.io/PhDWorks/) at the [University of Sussex]((http://www.sussex.ac.uk/).
+[Provenator](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9) is the result of the academic paper called, [Fake News - a Technological Approach to Proving Provenance Using Blockchains](https://doi.org/10.1089/big.2017.0071), by Steve Huckle and Martin White, of the [University of Sussex Informatics Department](http://www.sussex.ac.uk/informatics/), which was published in a special issue on on Computational Propaganda and Political Big Data for Mary Anne Liebert's [Big Data Journal](http://online.liebertpub.com/toc/big/5/4). It currently is part of a suite of blockchain-based software that form [Steve Huckle's PhD](https://glowkeeper.github.io/PhDWorks/) at the [University of Sussex](http://www.sussex.ac.uk/).
 
 [Provenator](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9) runs on [dat://](https://dat.foundation) and Ethereum's [rinkeby](https://www.rinkeby.io) test network. Both [dat://](https://dat.foundation) and [rinkeby](https://www.rinkeby.io) are distributed, peer-to-peer technologies, so by utilising them, [Provenator](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9) is itself wholly distributed.
-
-If you are interested in [Provenator](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9), please email s dot huckle at sussex dot ac dot uk.
 
 ## Demo
 
 You can trial [Provenator](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9) by clicking on any of its links. However, you must meet the dependencies below.
 
-_[Provenator](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9) is alpha release software. Hence, please be patient! That said, if you are having problems with the demo, please email s dot huckle at sussex dot ac dot uk_
-
 ### Demo Dependencies
 
 To use [Provenator](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9), you will need to be running [Firefox](https://www.mozilla.org/) with the [Dat P2P Protocol](https://addons.mozilla.org/en-GB/firefox/addon/dat-p2p-protocol/) and [MetaMask](https://metamask.io/) extensions installed. [MetaMask](https://metamask.io/) should be pointing at the Rinkeby Test Network, and you will need a few test Ether in your [MetaMask](https://metamask.io/) wallet - you can get those from the [Rinkeby Faucet](https://faucet.rinkeby.io/).
+
+_[Provenator](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9) is alpha release software, so please be patient! That said, if you are having problems with the demo, please open an issue or email s dot huckle at sussex dot ac dot uk_
 
 ### Demo Screenshot
 
@@ -91,7 +89,6 @@ Now load  the app' into a [MetaMask](https://github.com/MetaMask/metamask-extens
 
 - [node](https://nodejs.org/en/)
 - [npm](https://www.npmjs.com/)
-- [IPFS](https://ipfs.io/)
 - [geth](https://github.com/ethereum/go-ethereum)
 - [Ganache](https://github.com/trufflesuite/ganache)
 - [Truffle](https://github.com/trufflesuite/truffle)
