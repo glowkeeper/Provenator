@@ -1,0 +1,123 @@
+Starting migrations...
+======================
+> Network name:    'rinkeby'
+> Network id:      4
+> Block gas limit: 7000375
+
+
+1_initial_migration.js
+======================
+
+   Deploying 'Migrations'
+   ----------------------
+   > transaction hash:    0x2b57b700b2ae3efd5e4af9aac5314f9937fc0ce546acafdcadee016154480e4c
+   > Blocks: 1            Seconds: 16
+   > contract address:    0xeC80a1EeB9d1BEf117b26A1BCF2424328eAF2a8d
+   > account:             0x8F03Ca885434522D695735A28d6A8A93b4390dA9
+   > balance:             7.269652474
+   > gas used:            284908
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00569816 ETH
+
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.00569816 ETH
+
+
+2_deploy_contracts.js
+=====================
+
+   Deploying 'Strings'
+   -------------------
+   > transaction hash:    0xf31b1149d85caf1d83bd40d2a2b958e21db7753b3299f075c93f42019b3f125a
+   > Blocks: 1            Seconds: 16
+   > contract address:    0x33288d818024cf758Ce964017cFa352fc01FDfd3
+   > account:             0x8F03Ca885434522D695735A28d6A8A93b4390dA9
+   > balance:             7.251076254
+   > gas used:            886777
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.01773554 ETH
+
+
+   Linking
+   -------
+   * Contract: PremisAgent <--> Library: Strings (at address: 0x33288d818024cf758Ce964017cFa352fc01FDfd3)
+
+   Linking
+   -------
+   * Contract: PremisEvent <--> Library: Strings (at address: 0x33288d818024cf758Ce964017cFa352fc01FDfd3)
+
+   Linking
+   -------
+   * Contract: PremisObject <--> Library: Strings (at address: 0x33288d818024cf758Ce964017cFa352fc01FDfd3)
+
+   Linking
+   -------
+   * Contract: PremisRights <--> Library: Strings (at address: 0x33288d818024cf758Ce964017cFa352fc01FDfd3)
+
+   Deploying 'PremisAgent'
+   -----------------------
+   > transaction hash:    0x4922c6759f86a400e679463f85638405625445ddb9408ee9a3f88ef6159c35be
+   > Blocks: 0            Seconds: 12
+   > contract address:    0x8AF724be59D960ad5DEbbB329aCD51fB4031d4eE
+   > account:             0x8F03Ca885434522D695735A28d6A8A93b4390dA9
+   > balance:             7.184621094
+   > gas used:            3322758
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.06645516 ETH
+
+
+   Deploying 'PremisEvent'
+   -----------------------
+   > transaction hash:    0x830994fb7ac65691cabccbb06811d0a412bab79f383a3bb2c3d20ae46d7a93b4
+   > Blocks: 1            Seconds: 16
+   > contract address:    0x5c33249064D7D9BC24f64ffC2BA13b4f7FdB7554
+   > account:             0x8F03Ca885434522D695735A28d6A8A93b4390dA9
+   > balance:             7.144428594
+   > gas used:            2009625
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.0401925 ETH
+
+
+   Deploying 'PremisObject'
+   ------------------------
+   > transaction hash:    0x3ebf597281dfa659c815fea71ac9495961085066034312cc8e3874147959aed8
+   > Blocks: 1            Seconds: 16
+   > contract address:    0xF0954cd622829578C5bE3130fbf573AE5658e496
+   > account:             0x8F03Ca885434522D695735A28d6A8A93b4390dA9
+   > balance:             7.049811914
+   > gas used:            4730834
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.09461668 ETH
+
+
+   Deploying 'PremisRights'
+   ------------------------
+   > transaction hash:    0x9a9f107637155ea832aefde0f540b3b834fbbb07ac3a10e1eee36203338c8a79
+   > Blocks: 0            Seconds: 12
+   > contract address:    0x37567FE1F9C385c97D4b4Ec29DEC7978cA7C3de1
+   > account:             0x8F03Ca885434522D695735A28d6A8A93b4390dA9
+   > balance:             6.978652194
+   > gas used:            3557986
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.07115972 ETH
+
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:           0.2901596 ETH
+
+
+Summary
+=======
+> Total deployments:   6
+> Final cost:          0.29585776 ETH

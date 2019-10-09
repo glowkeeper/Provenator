@@ -10,6 +10,7 @@
   "scripts": {
     "generate": "cd ./blockchain && mkdir -p ./build/contracts && touch ./build/contracts/fooBar.json && rm ./build/contracts/*json && truffle compile --all",
     "develMigrate": "cd ./blockchain && truffle migrate --network development",
+    "rinkebyMigrate": "cd ./blockchain && truffle migrate --network rinkeby",
     "compile": "./node_modules/.bin/webpack --config ./webpack.dev.js --mode development",
     "watch": "./node_modules/.bin/webpack --config ./webpack.dev.js --watch --mode development",
     "dev": "./node_modules/.bin/webpack --config ./webpack.dev.js --mode development",
@@ -28,7 +29,7 @@
     "react-file-reader-input": "^2.0.0",
     "react-markdown": "^4.0.6",
     "react-router-dom": "^5.0.0",
-    "web3": "^1.0.0-beta.51"
+    "web3": "^1.2.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -50,7 +51,7 @@
     "mocha": "^6.0.2",
     "should": "^13.2.3",
     "style-loader": "^0.23.1",
-    "uglifyjs-webpack-plugin": "^2.1.2",
+    "terser-webpack-plugin": "^2.1.2",
     "url-loader": "^1.1.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
