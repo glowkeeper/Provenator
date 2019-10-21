@@ -21,7 +21,7 @@ This is the repository for [Provenator](http://31ce36ba92b26fa274537c5a63a6b895b
   - [Dependencies](#dependencies)    
   - [Detailed Instructions](#detailed-instructions)     
   - [Built Using](#built-using)  
-- [Maintainers](#maintainers)
+- [Maintainer](#maintainer)
 - [Contributing](#contributing)
 - [License](#license)
 
