@@ -8,11 +8,30 @@ This is the repository for [Provenator](http://31ce36ba92b26fa274537c5a63a6b895b
 
 [Provenator](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9) is the result of the academic paper called, [Fake News - a Technological Approach to Proving Provenance Using Blockchains](https://doi.org/10.1089/big.2017.0071), by Steve Huckle and Martin White, of the [University of Sussex Informatics Department](http://www.sussex.ac.uk/informatics/), which was published in a special issue on on Computational Propaganda and Political Big Data for Mary Anne Liebert's [Big Data Journal](http://online.liebertpub.com/toc/big/5/4). It currently is part of a suite of blockchain-based software that form [Steve Huckle's PhD](https://glowkeeper.github.io/PhDWorks/) at the [University of Sussex](http://www.sussex.ac.uk/).
 
+## Table of Contents
+
+- [Usage](#usage)
+  - [Demo](#demo)
+  - [Demo Dependencies](#demo-dependencies)   
+  - [Demo Screenshot](#demo-screenshot)   
+- [About](#about-reportaid)
+- [A Proof of concept](#a-proof-of-concept)
+- [Install](#install)
+  - [Getting Started](#getting-started)
+  - [Dependencies](#dependencies)    
+  - [Detailed Instructions](#detailed-instructions)     
+  - [Built Using](#built-using)  
+- [Maintainers](#maintainers)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Usage
+
+Below shows you how to use the demo' [Provenator](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9) application.
+
+### Demo
+
 [Provenator](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9) runs on [dat://](https://dat.foundation) and Ethereum's [rinkeby](https://www.rinkeby.io) test network. Both [dat://](https://dat.foundation) and [rinkeby](https://www.rinkeby.io) are distributed, peer-to-peer technologies, so by utilising them, [Provenator](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9) is itself wholly distributed.
-
-## Demo
-
-You can trial [Provenator](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9) by clicking on any of its links. However, you must meet the dependencies below.
 
 ### Demo Dependencies
 
@@ -32,7 +51,7 @@ The picture above shows that to describe a digital resource, users of [Provenato
 2. Create and submit metadata pertaining to the digital resource.
 3. Sign the transactions created, using [MetaMask](https://github.com/MetaMask/metamask-extension).
 
-## Installing Locally
+## Install
 
 The instruction below enable you to run [Provenator](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9) on a local, private, Ethereum test network (via [Ganache](https://github.com/trufflesuite/ganache)).
 
@@ -40,7 +59,7 @@ The instruction below enable you to run [Provenator](http://31ce36ba92b26fa27453
 
 Install the prerequisites listed below then follow the instructions to get the project up and running on your local machine (for development and testing purposes).
 
-### Prerequisites
+### Dependencies
 
 Download and install the following dependencies (if you have not already done so):
 
@@ -50,7 +69,7 @@ Download and install the following dependencies (if you have not already done so
 - [Truffle](https://github.com/trufflesuite/truffle)
 - [http-server](https://www.npmjs.com/package/http-server)
 
-### Install
+### Detailed Instructions
 
 1. Clone this repository to your local machine
 2. In the repository's home directory, type `npm install`. That will install everything listed in [package.json](/package.json), which are the components of the [React](https://reactjs.org/) frontend to this application
@@ -85,7 +104,7 @@ Now load  the app' into a [MetaMask](https://github.com/MetaMask/metamask-extens
 4. Run Provenator by loading the address [http://localhost:8081](http://localhost:8081)
 5. Use the links within the app' to create a digital media resource and subsequently, get details about that resource
 
-## Built Using...
+## Built Using
 
 - [node](https://nodejs.org/en/)
 - [npm](https://www.npmjs.com/)
@@ -94,20 +113,15 @@ Now load  the app' into a [MetaMask](https://github.com/MetaMask/metamask-extens
 - [Truffle](https://github.com/trufflesuite/truffle)
 - [React](https://reactjs.org/)
 
+## Maintainer
+
+[Steve Huckle](https://glowkeeper.github.io/).
+
 ## Contributing
 
-Have a look at [future work](#1) or [open issues](https://github.com/glowkeeper/Provenator/issues) for some ideas as to how you may contribute. However, other suggestions are very welcome!
+Contributions welcome - please email [Steve Huckle](https://glowkeeper.github.io/).
 
-<a name="1">&nbsp;</a>
-## Future work
-
-A current limitation of [Provenator](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9) is also its strength - the same digital media resource will always generate the same hash. Hence, if two hashes match, you are certain that they are the same object. However, if a single pixel of some digital resource is changed, then that resource will generate a different hash entirely. Therefore, 'similar' media objects will never match. Now, it should be possible to extend [Provenator](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9) so that it uses techniques for finding similar hashes, too. [Perceptual hashing](https://www.phash.org/) is one such candidate, but there may be other methods; by using such techniques, it should be possible to make [Provenator](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9) more capable. The intention is to extend the application and write an academic paper about that extension. Want to help? Then please email s dot huckle at sussex dot ac dot uk.
-
-## Credits
-
-Original author: Steve Huckle, s dot huckle at sussex dot ac dot uk.
-
-## Licensing
+## License
 
 GNU General Public License v3.0
 
