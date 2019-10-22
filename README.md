@@ -57,7 +57,7 @@ The instruction below enable you to run [Provenator](http://31ce36ba92b26fa27453
 
 ### Getting Started
 
-Install the prerequisites listed below then follow the instructions to get the project up and running on your local machine (for development and testing purposes).
+Install the dependencies listed below then follow the instructions to get the project up and running on your local machine (for development and testing purposes).
 
 ### Dependencies
 
