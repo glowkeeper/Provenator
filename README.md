@@ -1,5 +1,6 @@
 # Provenator
 
+[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 [![Travis build](	https://img.shields.io/travis/glowkeeper/Provenator.svg?style=flat-square)](https://travis-ci.org/glowkeeper/Provenator)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](/docs/prs.md)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](/docs/COPYING.txt)
@@ -11,16 +12,12 @@ This is the repository for [Provenator](http://31ce36ba92b26fa274537c5a63a6b895b
 ## Table of Contents
 
 - [Usage](#usage)
-  - [Demo](#demo)
+- [Built Using](#built-using)  
+- [Demo](#demo)
   - [Demo Dependencies](#demo-dependencies)   
-  - [Demo Screenshot](#demo-screenshot)   
-- [About](#about-reportaid)
-- [A Proof of concept](#a-proof-of-concept)
+  - [Demo Screenshot](#demo-screenshot)
 - [Install](#install)
-  - [Getting Started](#getting-started)
-  - [Dependencies](#dependencies)    
-  - [Detailed Instructions](#detailed-instructions)     
-  - [Built Using](#built-using)  
+  - [Dependencies](#dependencies)
 - [Maintainer](#maintainer)
 - [Contributing](#contributing)
 - [License](#license)
@@ -29,7 +26,16 @@ This is the repository for [Provenator](http://31ce36ba92b26fa274537c5a63a6b895b
 
 Below shows you how to use the demo' [Provenator](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9) application.
 
-### Demo
+## Built Using
+
+- [node](https://nodejs.org/en/)
+- [npm](https://www.npmjs.com/)
+- [geth](https://github.com/ethereum/go-ethereum)
+- [Ganache](https://github.com/trufflesuite/ganache)
+- [Truffle](https://github.com/trufflesuite/truffle)
+- [React](https://reactjs.org/)
+
+## Demo
 
 [Provenator](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9) runs on [dat://](https://dat.foundation) and Ethereum's [rinkeby](https://www.rinkeby.io) test network. Both [dat://](https://dat.foundation) and [rinkeby](https://www.rinkeby.io) are distributed, peer-to-peer technologies, so by utilising them, [Provenator](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9) is itself wholly distributed.
 
@@ -53,23 +59,7 @@ The picture above shows that to describe a digital resource, users of [Provenato
 
 ## Install
 
-The instruction below enable you to run [Provenator](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9) on a local, private, Ethereum test network (via [Ganache](https://github.com/trufflesuite/ganache)).
-
-### Getting Started
-
-Install the dependencies listed below then follow the instructions to get the project up and running on your local machine (for development and testing purposes).
-
-### Dependencies
-
-Download and install the following dependencies (if you have not already done so):
-
-- [node](https://nodejs.org/en/)
-- [npm](https://www.npmjs.com/)
-- [Ganache](https://github.com/trufflesuite/ganache)
-- [Truffle](https://github.com/trufflesuite/truffle)
-- [http-server](https://www.npmjs.com/package/http-server)
-
-### Detailed Instructions
+The instruction below enable you to run [Provenator](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9) on a local, private, Ethereum test network (via [Ganache](https://github.com/trufflesuite/ganache)). Before following the instructions below, please install the [dependcies](#dependencies).
 
 1. Clone this repository to your local machine
 2. In the repository's home directory, type `npm install`. That will install everything listed in [package.json](/package.json), which are the components of the [React](https://reactjs.org/) frontend to this application
@@ -104,14 +94,15 @@ Now load  the app' into a [MetaMask](https://github.com/MetaMask/metamask-extens
 4. Run Provenator by loading the address [http://localhost:8081](http://localhost:8081)
 5. Use the links within the app' to create a digital media resource and subsequently, get details about that resource
 
-## Built Using
+### Dependencies
+
+Download ensure you have the following dependencies installed:
 
 - [node](https://nodejs.org/en/)
 - [npm](https://www.npmjs.com/)
-- [geth](https://github.com/ethereum/go-ethereum)
 - [Ganache](https://github.com/trufflesuite/ganache)
 - [Truffle](https://github.com/trufflesuite/truffle)
-- [React](https://reactjs.org/)
+- [http-server](https://www.npmjs.com/package/http-server)
 
 ## Maintainer
 
