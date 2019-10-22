@@ -12,10 +12,10 @@ This is the repository for [Provenator](http://31ce36ba92b26fa274537c5a63a6b895b
 ## Table of Contents
 
 - [Usage](#usage)
-- [Built Using](#built-using)  
 - [Demo](#demo)
   - [Demo Dependencies](#demo-dependencies)   
   - [Demo Screenshot](#demo-screenshot)
+- [Built Using](#built-using)  
 - [Install](#install)
   - [Dependencies](#dependencies)
 - [Maintainer](#maintainer)
@@ -25,15 +25,6 @@ This is the repository for [Provenator](http://31ce36ba92b26fa274537c5a63a6b895b
 ## Usage
 
 Below shows you how to use the demo' [Provenator](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9) application.
-
-## Built Using
-
-- [node](https://nodejs.org/en/)
-- [npm](https://www.npmjs.com/)
-- [geth](https://github.com/ethereum/go-ethereum)
-- [Ganache](https://github.com/trufflesuite/ganache)
-- [Truffle](https://github.com/trufflesuite/truffle)
-- [React](https://reactjs.org/)
 
 ## Demo
 
@@ -56,6 +47,16 @@ The picture above shows that to describe a digital resource, users of [Provenato
 1. Get a hash of the digital media.
 2. Create and submit metadata pertaining to the digital resource.
 3. Sign the transactions created, using [MetaMask](https://github.com/MetaMask/metamask-extension).
+
+## Built Using
+
+- [node](https://nodejs.org/en/)
+- [npm](https://www.npmjs.com/)
+- [geth](https://github.com/ethereum/go-ethereum)
+- [Ganache](https://github.com/trufflesuite/ganache)
+- [Truffle](https://github.com/trufflesuite/truffle)
+- [React](https://reactjs.org/)
+- [MetaMask](https://metamask.io/)
 
 ## Install
 
@@ -103,6 +104,7 @@ You must have the following dependencies installed:
 - [Ganache](https://github.com/trufflesuite/ganache)
 - [Truffle](https://github.com/trufflesuite/truffle)
 - [http-server](https://www.npmjs.com/package/http-server)
+- [MetaMask](https://metamask.io/)
 
 ## Maintainer
 
