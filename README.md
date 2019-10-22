@@ -59,7 +59,7 @@ The picture above shows that to describe a digital resource, users of [Provenato
 
 ## Install
 
-The instruction below enable you to run [Provenator](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9) on a local, private, Ethereum test network (via [Ganache](https://github.com/trufflesuite/ganache)). Before following the instructions below, please install the [dependcies](#dependencies).
+The instruction below enable you to run [Provenator](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9) on a local, private, Ethereum test network (via [Ganache](https://github.com/trufflesuite/ganache)). Before following the instructions below, please install the [dependencies](#dependencies).
 
 1. Clone this repository to your local machine
 2. In the repository's home directory, type `npm install`. That will install everything listed in [package.json](/package.json), which are the components of the [React](https://reactjs.org/) frontend to this application
@@ -96,7 +96,7 @@ Now load  the app' into a [MetaMask](https://github.com/MetaMask/metamask-extens
 
 ### Dependencies
 
-Download ensure you have the following dependencies installed:
+You must have the following dependencies installed:
 
 - [node](https://nodejs.org/en/)
 - [npm](https://www.npmjs.com/)
