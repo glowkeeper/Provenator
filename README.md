@@ -24,13 +24,13 @@ This is the repository for [Provenator](http://31ce36ba92b26fa274537c5a63a6b895b
 
 ## Usage
 
-Below shows a demo' of **Provenator**.
+Below describes a demo' of **Provenator**.
 
 ## Demo
 
 Before you can see the demo, you must install the [demo dependencies](#demo-dependencies).
 
-[Provenator](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9) runs on [dat://](https://dat.foundation) and Ethereum's [rinkeby](https://www.rinkeby.io) test network. Both [dat://](https://dat.foundation) and [rinkeby](https://www.rinkeby.io) are distributed, peer-to-peer technologies, so by utilising them, [Provenator](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9) is itself wholly distributed.
+[Provenator](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9) runs on [dat://](https://dat.foundation) and Ethereum's [rinkeby](https://www.rinkeby.io) test network. Both [dat://](https://dat.foundation) and [rinkeby](https://www.rinkeby.io) are distributed, peer-to-peer technologies, so by utilising them, [Provenator](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9) is itself wholly distributed. the demo is available at [http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9](http://31ce36ba92b26fa274537c5a63a6b895bdaddb6621a675ec616dbc17c01e5ee9).
 
 ### Demo Dependencies
 
