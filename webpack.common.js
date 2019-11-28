@@ -1,10 +1,12 @@
 const path = require('path')
-const fs  = require('fs');
+const fs  = require('fs')
+const webpack = require('webpack')
 const htmlWebpackPlugin = require('html-webpack-plugin');
-const cleanWebpackPlugin = require('clean-webpack-plugin');
+const htmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const lessToJs = require('less-vars-to-js');
-const themeVariables = lessToJs(fs.readFileSync(path.join(__dirname, './app/stylesheets/themeVariables.less'), 'utf8'));
-themeVariables["@icon-url"] = 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:regular,bold,italic&subset=latin,latin-ext';
+const themeVariables = lessToJs(fs.readFileSync(path.join(__dirname, './app/stylesheets/themeVariables.less'), 'utf8'))
+themeVariables["@icon-url"] = 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:regular,bold,italic&subset=latin,latin-ext'
 
 var config = {
   node: {
@@ -15,23 +17,25 @@ var config = {
   },
   entry: {
     app: [
-      'babel-polyfill',
+      '@babel/polyfill',
       './app/index.jsx'
     ]
   },
   output: {
-    path: path.resolve(__dirname, 'build'),
-    filename: 'bundle.js'
+    path: path.resolve(__dirname, 'build')
   },
   resolve: {
     extensions: ['.js', '.jsx']
   },
   plugins: [
-    new cleanWebpackPlugin(),
+    new webpack.ProgressPlugin(),
+    new CleanWebpackPlugin(),
     new htmlWebpackPlugin({
       template: './app/index.html',
       inject: 'body',
-    })
+      inlineSource: '.(js|css)$'
+    }),
+    new htmlWebpackInlineSourcePlugin(),
   ],
   module: {
     rules: [

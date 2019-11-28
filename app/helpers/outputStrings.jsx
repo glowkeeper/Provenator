@@ -245,4 +245,10 @@ class EventStrings {
 
 }
 
+class AppEventStrings {
+
+  static info = `**${AppStrings.heading}** Events`
+
+}
+
 export {AppStrings, HomeStrings, AboutStrings, OverviewStrings, HelpStrings, HashStrings, WriterStrings, ReaderStrings, ObjectReaderStrings, ObjectWriterStrings, RightsStrings, ObjectStrings, AgentStrings, EventStrings}

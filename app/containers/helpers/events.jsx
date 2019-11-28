@@ -1,21 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {PremisEventStrings} from '../../helpers/outputStrings'
-import {IOLogger, IOPlainTextOutput} from '../../components/io'
+import {AppStrings, AppEventStrings} from '../../helpers/outputStrings'
+import {IOLogger, IOHeading, IOPlainTextOutput} from '../../components/io'
 
 class Events extends React.Component {
 
   constructor (props) {
     super(props)
 
-    this.heading = 'Fake News Events'
-
     this.premisObject = this.props.contracts.getPremisObject()
     this.premisEvent = this.props.contracts.getPremisEvent()
     this.premisAgent = this.props.contracts.getPremisAgent()
     this.premisRights = this.props.contracts.getPremisRights()
-
-    this.info = PremisEventStrings.info
 
     this.state = {
       log: []
@@ -68,11 +64,12 @@ class Events extends React.Component {
     return (
       <div>
         <div className="info">
-          <IOPlainTextOutput text={PremisEventStrings.info} />
+          <IOHeading heading={AppStrings.heading} />
+          <IOPlainTextOutput text={AppEventStrings.info} />
           <hr />
         </div>
         <div>
-          <IOLogger heading={PremisEventStrings.heading} log={this.state.log} />
+          <IOLogger log={this.state.log} />
         </div>
       </div>
     )
