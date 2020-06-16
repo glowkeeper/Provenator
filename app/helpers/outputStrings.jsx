@@ -251,4 +251,20 @@ class AppEventStrings {
 
 }
 
-export {AppStrings, HomeStrings, AboutStrings, OverviewStrings, HelpStrings, HashStrings, WriterStrings, ReaderStrings, ObjectReaderStrings, ObjectWriterStrings, RightsStrings, ObjectStrings, AgentStrings, EventStrings}
+export {
+    AppStrings,
+    HomeStrings,
+    AboutStrings,
+    OverviewStrings,
+    HelpStrings,
+    HashStrings,
+    WriterStrings,
+    ReaderStrings,
+    ObjectReaderStrings,
+    ObjectWriterStrings,
+    RightsStrings,
+    ObjectStrings,
+    AgentStrings,
+    EventStrings,
+    AppEventStrings
+}

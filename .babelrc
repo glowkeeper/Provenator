@@ -19,7 +19,8 @@
       "import",
       {
         "libraryName": "antd",
-        "style": true
+        "libraryDirectory": "es",
+        "style": "css"
       }
     ],
     "@babel/plugin-syntax-dynamic-import",

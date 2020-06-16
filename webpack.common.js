@@ -1,8 +1,9 @@
 const path = require('path')
-const fs  = require('fs')
+const fs = require('fs')
 const webpack = require('webpack')
-const htmlWebpackPlugin = require('html-webpack-plugin');
-const htmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin')
+const htmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HTMLInlineCSSWebpackPlugin = require("html-inline-css-webpack-plugin").default;
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const lessToJs = require('less-vars-to-js');
 const themeVariables = lessToJs(fs.readFileSync(path.join(__dirname, './app/stylesheets/themeVariables.less'), 'utf8'))
@@ -17,7 +18,6 @@ var config = {
   },
   entry: {
     app: [
-      '@babel/polyfill',
       './app/index.jsx'
     ]
   },
@@ -25,20 +25,31 @@ var config = {
     path: path.resolve(__dirname, 'build')
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+      extensions: ['.js', '.jsx']
   },
   plugins: [
     new webpack.ProgressPlugin(),
     new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[id].css"
+    }),
     new htmlWebpackPlugin({
       template: './app/index.html',
       inject: 'body',
       inlineSource: '.(js|css)$'
     }),
-    new htmlWebpackInlineSourcePlugin(),
+    new HTMLInlineCSSWebpackPlugin(),
   ],
   module: {
     rules: [
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader"
+        ]
+    },
       {
         test: /\.less$/,
         use: [
@@ -46,14 +57,13 @@ var config = {
             loader: "style-loader" // creates style nodes from JS strings
           },
           {
-            loader: "css-loader" // translates CSS into CommonJS
-          },
-          {
-            loader: "less-loader", // compiles Less to CSS
-            options: {
-              javascriptEnabled: true,
-              modifyVars: themeVariables
-            }
+              loader: 'less-loader',
+              options: {
+                lessOptions: {
+                    javascriptEnabled: true,
+                    modifyVars: themeVariables
+                }
+              }
           }
         ]
       },
@@ -69,12 +79,18 @@ var config = {
           }
         ]
       },
-      {
-        test: /\.jsx?/,
-        include: path.resolve(__dirname, 'app'),
-        exclude: /node_modules/,
-        loader: 'babel-loader'
-      }
+        {
+          test: /\.js$/,
+          use: ["source-map-loader"],
+          exclude: /node_modules/,
+          enforce: "pre"
+        },
+        {
+          test: /\.jsx?/,
+          include: path.resolve(__dirname, 'app'),
+          exclude: /node_modules/,
+          loader: 'babel-loader'
+        }
     ]
   }
 }
