@@ -1,0 +1,27 @@
+pragma solidity >=0.4.16 <0.7.0;
+pragma experimental ABIEncoderV2;
+
+enum Works {
+    NONE,
+    ARTICLE,
+    BOOK,
+    BLOG,
+    CLIP,
+    DIGITALDOCUMENT,
+    DRAWING,
+    MOVIE,
+    MUSICCOMPOSITION,
+    MUSICRECORDING,
+    PAINTING,
+    PHOTOGRAPH,
+    POSTER
+    SHORTSTORY,
+    SOFTWAREAPPLICATION,
+    SOFTWARESOURCECODE,
+    THESIS,
+    VISUALARTWORK,
+    WEBCONTENT,
+    WEBPAGE,
+    WEBSITE,
+    MAX
+}
