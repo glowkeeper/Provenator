@@ -1,10 +1,10 @@
 class App {
 
   static readonly appName = 'Provenator'
-  static readonly title = 'Minima'
-  static readonly tagline = ''
-  static readonly copyright = '© Copyright 2020 Minima GmbH'
-  static readonly author = '[Steven Huckle](https://glowkeeper.github.io/)'
+  static readonly title = 'Provenator'
+  static readonly tagline = 'Prove the provenance of your digital assets'
+  static readonly author = '[Dr Steve Huckle](https://glowkeeper.github.io/)'
+  static readonly copyright = `© Copyright 2020 _${App.author}_`
 }
 
 class Paths {
