@@ -8,12 +8,12 @@ import { get } from '../../utils/list'
 import { Blockchain } from '../../config/strings'
 
 interface InfoProps {
-  chainData: object
+  chainData: ChainDataProps
 }
 
 const info = (props: InfoProps) => {
 
-  const chainInfo = get(props.chainData)
+  const chainInfo = get(props.chainData.data)
 
   return (
       <div>
@@ -25,8 +25,10 @@ const info = (props: InfoProps) => {
 
 const mapStateToProps = (state: ApplicationState): InfoProps => {
 
+    const info = state.chainInfo as ChainDataProps
+    delete info.data.Provider
     return {
-      chainData: state.chainInfo as ChainDataProps
+      chainData: info
     }
 }
 

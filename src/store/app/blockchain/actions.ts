@@ -33,8 +33,8 @@ export const init = () => {
               Name: chainObj.name,
               ChainId: chainObj.chainId,
               ENS: ENSAddress,
-              provider: blockchainProvider,
-              account: account
+              Provider: blockchainProvider,
+              Account: account
             }
           }
 

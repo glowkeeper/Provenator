@@ -5,8 +5,8 @@ const initialInfoState: ChainDataProps = {
     Name: '',
     ChainId: 0,
     ENS: '',
-    provider: {},
-    account: ''
+    Provider: {},
+    Account: ''
   }
 }
 
@@ -14,7 +14,7 @@ export const reducer = (state: ChainDataProps = initialInfoState, action: Action
   //console.log('blockchain info: ', action.type, action.payload)
   if ( action.type == ChainDataActionTypes.ADD_DATA ) {
     //console.log('Chain info: ', action.payload)
-    return Object.assign({}, state, action.payload)
+    return Object.assign({}, state, action.payload.data)
   } else {
     return state
   }

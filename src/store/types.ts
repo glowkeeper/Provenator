@@ -26,8 +26,8 @@ export interface ChainDataProps extends PayloadProps {
     Name: string
     ChainId: number
     ENS: string
-    provider: object,
-    account: string
+    Provider: object,
+    Account: string
   }
 }
 
