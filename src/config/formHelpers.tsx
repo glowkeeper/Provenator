@@ -52,6 +52,13 @@ class FormHelpers {
     ]
 
     static readonly licenses = [
+        "None"
+        "CC BY (Attribution)",
+        "CC BY-SA (Attribution-Share-Alike)",
+        "CC BY-ND (Attribution-No-Derivatives)",
+        "CC BY-NC (Attribution-Non-Commercial)",
+        "CC BY-NC-SA (Attribution-NonCommercial-ShareAlike)",
+        "CC BY-NC-ND (Attribution-NonCommercial-ShareAlike-NoDerivatives)",
         "Apache License 2.0",
         "GNU General Public License v3.0",
         "MIT License",
@@ -80,7 +87,14 @@ class FormHelpers {
         {value: 9, label: `${FormHelpers.licenses[9]}`},
         {value: 10, label: `${FormHelpers.licenses[10]}`},
         {value: 11, label: `${FormHelpers.licenses[11]}`},
-        {value: 12, label: `${FormHelpers.licenses[12]}`}
+        {value: 12, label: `${FormHelpers.licenses[12]}`},
+        {value: 13, label: `${FormHelpers.licenses[13]}`},
+        {value: 14, label: `${FormHelpers.licenses[14]}`},
+        {value: 15, label: `${FormHelpers.licenses[15]}`},
+        {value: 16, label: `${FormHelpers.licenses[16]}`},
+        {value: 17, label: `${FormHelpers.licenses[17]}`},
+        {value: 18, label: `${FormHelpers.licenses[18]}`},        ,
+        {value: 19, label: `${FormHelpers.licenses[19]}`}
     ]
 }
 

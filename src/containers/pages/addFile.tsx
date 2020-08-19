@@ -43,32 +43,32 @@ const addFileSchema = Yup.object().shape({
       .positive(`${FileConfig.validType}`)
   }),
   url: Yup.string()
-    .url(`${FileConfig.validURL}`)
-    .ensure(),
+    .url(`${FileConfig.validURL}`),
   description: Yup.string()
     .required(`${GeneralError.required}`),
   authorName: Yup.string()
     .required(`${GeneralError.required}`),
   authorEMail: Yup.string()
+    .email()
     .required(`${GeneralError.required}`),
   authorURL: Yup.string()
-    .required(`${GeneralError.required}`),
+    .url(`${FileConfig.validURL}`),
   license: Yup.object({
     value: Yup.number()
-      .min(0, `${FileConfig.validLicense}`)
+      .min(0, `${FileConfig.validLicense}`),
   }),
   copyrightHolderName: Yup.string()
     .ensure(),
   copyrightHolderEMail: Yup.string()
-    .ensure(),
+    .email(),
   copyrightHolderURL: Yup.string()
-    .ensure(),
+    .url(`${FileConfig.validURL}`),
   publisherName: Yup.string()
     .ensure(),
   publisherEMail: Yup.string()
-    .ensure(),
+    .email(),
   publisherURL: Yup.string()
-    .ensure(),
+    .url(`${FileConfig.validURL}`),
 })
 
 interface FileStateProps {
@@ -183,7 +183,7 @@ export const getFile = (props: Props) => {
             {FileConfig.fileName}: {fileName}
         </p>
         <Formik
-          initialValues={ {fileHash: hash} }
+          initialValues={ {hash: hash} }
           enableReinitialize={true}
           validationSchema={addFileSchema}
           onSubmit={(values: any) => {

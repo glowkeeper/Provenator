@@ -81,8 +81,8 @@ class File {
 
     static readonly headingFile = "Set the Provenance of a Digital Media File"
     static readonly getFile = "Get the Digital Media File"
-    static readonly fileName = "Filename"
-    static readonly hash = "Hash"
+    static readonly fileName = "File Name"
+    static readonly hash = "File Hash"
     static readonly fileUrl = "File URL"
     static readonly workType = "Works Type"
     static readonly description = 'Description'

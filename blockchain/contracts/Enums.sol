@@ -28,6 +28,12 @@ enum Works {
 
 enum License {
     NONE,
+    CCBY,
+    CCBYSA,
+    CCBYND,
+    CCBYNC,
+    CCBYNCSA,
+    CCBYNCND,
     APACHELICENSESLICENSE20,
     GNUGENERALPUBLICLICENSEV30,
     MITLICENSE,
