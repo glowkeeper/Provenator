@@ -5,26 +5,26 @@ class FormHelpers {
 
     static readonly works = [
         "NONE",
-        "ARTICLE",
-        "BOOK",
-        "BLOG",
-        "CLIP",
-        "DIGITAL DOCUMENT",
-        "DRAWING",
-        "MOVIE",
-        "MUSIC COMPOSITION",
-        "MUSIC RECORDING",
-        "PAINTING",
-        "PHOTOGRAPH",
-        "POSTER",
-        "SHORT STORY",
-        "SOFTWARE APPLICATION",
-        "SOFTWARE SOURCEC ODE",
-        "THESIS",
-        "VISUAL ARTWORK",
-        "WEB CONTENT",
-        "WEBPAGE",
-        "WEBSITE",
+        "Article",
+        "Book",
+        "Blog",
+        "Clip",
+        "Digital Document",
+        "Drawing",
+        "Movie",
+        "Music Composition",
+        "Music Recording",
+        "Painting",
+        "Photograph",
+        "Poster",
+        "Short Story",
+        "Software Application",
+        "Software Source Code",
+        "Thesis",
+        "Visual Artwork",
+        "Web Content",
+        "Webpage",
+        "Website",
         "MAX"
     ]
 
@@ -52,7 +52,7 @@ class FormHelpers {
     ]
 
     static readonly licenses = [
-        "None"
+        "None",
         "CC BY (Attribution)",
         "CC BY-SA (Attribution-Share-Alike)",
         "CC BY-ND (Attribution-No-Derivatives)",
@@ -93,7 +93,7 @@ class FormHelpers {
         {value: 15, label: `${FormHelpers.licenses[15]}`},
         {value: 16, label: `${FormHelpers.licenses[16]}`},
         {value: 17, label: `${FormHelpers.licenses[17]}`},
-        {value: 18, label: `${FormHelpers.licenses[18]}`},        ,
+        {value: 18, label: `${FormHelpers.licenses[18]}`},        
         {value: 19, label: `${FormHelpers.licenses[19]}`}
     ]
 }
