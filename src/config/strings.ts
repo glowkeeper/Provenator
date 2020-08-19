@@ -50,7 +50,7 @@ class Home {
 
 class About {
 
-  static readonly heading = 'About Provenator'
+  static readonly heading = 'About'
 
   static readonly info = `**${App.appName}** version 0.1.0.<br /><br />Created by _${App.author}_`
 
@@ -58,7 +58,7 @@ class About {
 
 class Help {
 
-  static readonly heading = 'Provenator Help'
+  static readonly heading = 'Help'
 
   static readonly info = `Use **${App.appName}** to help prove the provenance of your digital assets. Select _${Paths.addFile}_ from the menu to add an asset **now**.`
 }
@@ -74,20 +74,39 @@ class Contact {
 
   static readonly heading = 'Contact'
 
-  static readonly info = `a dot person at minima dot global`
+  static readonly info = `steve at glowkeeper dot uk`
 }
 
 class File {
 
-    static readonly headingFile = "Hash a File"
-    static readonly getFile = "Get File"
-    static readonly fileTip = "Select a file to be hashed"
+    static readonly headingFile = "Set the Provenance of a Digital Media File"
+    static readonly getFile = "Get the Digital Media File"
     static readonly fileName = "Filename"
     static readonly hash = "Hash"
-    static readonly submitTip = "Submit the hash of the file to the Minima blockchain. The key returned is that used to sign the submitted transaction"
-    static readonly loadingError = "File did not load"
+    static readonly fileUrl = "File URL"
+    static readonly workType = "Works Type"
+    static readonly description = 'Description'
 
-    static readonly addFileButton = "Submit to Minima"
+    static readonly copyrightHolderName = "Copyright Holder Name"
+    static readonly copyrightHolderEMail = "Copyright Holder EMail"
+    static readonly copyrightHolderURL = "Copyright Holder  URL"
+    static readonly authorName = "Author Name"
+    static readonly authorEMail = "Author EMail"
+    static readonly authorURL = "Author URL"
+    static readonly license = "License"
+    static readonly publisherName = "Publisher Name"
+    static readonly publisherEMail = "Publisher EMail"
+    static readonly publisherURL = "Publisher URL"
+
+    static readonly fileTip = "Select a file to be hashed"
+    static readonly submitTip = "Submit the hash of the file to the Ethereum blockchain"
+
+    static readonly loadingError = "File did not load"
+    static readonly validURL = "Please enter a valid URL"
+    static readonly validType = "Please select a valid creative works type"
+    static readonly validLicense = "Please select a valid license (or specify 'none')"
+
+    static readonly addFileButton = "Submit Info"
 }
 
 export { App,

@@ -57,7 +57,6 @@ export interface InfoData {
   contact: InfoProps
 }
 
-
 //Tx stuff
 export interface TxData {
   key: string
@@ -69,13 +68,30 @@ export interface TransactionProps extends PayloadProps {
   data: TxData
 }
 
-// Extra info stuff
-export interface FileProps {
-    fileHash: string
+// Creative Works stuff
+export interface Entity {
+    name: string
+    email: string
+    url: string
 }
 
-export interface FileInfoProps {
-    fileInfo: Array<FileProps>
+export interface CreativeWorks {
+    workType: number
+    license: number
+    hash: string
+    dateCreated: string
+    dateModified: string
+    url: string
+    name: string
+    description: string
+    author: Entity
+    copyrightHolder: Entity
+    publisher: Entity
+}
+
+
+export interface CreativeWorksProps {
+    fileInfo: Array<CreativeWorks>
 }
 
 // Action types

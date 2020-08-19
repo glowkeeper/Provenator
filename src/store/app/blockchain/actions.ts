@@ -5,7 +5,7 @@ import { ethers } from 'ethers'
 import { JsonRpcProvider } from 'ethers/providers/json-rpc-provider'
 
 import { write } from '../../actions'
-import { AppDispatch, ChainDataProps, ChainDataActionTypes, TransactionActionTypes, FileProps } from '../../types'
+import { AppDispatch, ChainDataProps, ChainDataActionTypes, TransactionActionTypes, CreativeWorks } from '../../types'
 
 import { Transaction } from '../../../config'
 
@@ -72,9 +72,10 @@ export const addContract = () => {
     }
 }
 
-export const addFile = (props: FileProps) => {
+export const addFile = (props: CreativeWorks) => {
   return async (dispatch: AppDispatch) => {
 
+      console.log(props)
 
   }
 }

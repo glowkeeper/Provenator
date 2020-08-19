@@ -3,24 +3,22 @@ pragma experimental ABIEncoderV2;
 
 import "./Enums.sol";
 
-struct Person {
-    address             id;
-    string              url;
+struct Entity {
     string              name;
     string              email;
+    string              url;
 }
 
 struct CreativeWorks {
-    bytes32             type;
+    Works               type;
+    License             license;
     bytes32             id;
     bytes32             dateCreated;
     bytes32             dateModified;
     string              url;
     string              name;
-    string              email;
     string              description;
-    string              headline;
-    Person              copyrightHolder;
-    Person              author;
-    Person              publisher;
+    Entity              author;
+    Entity              copyrightHolder;
+    Entity              publisher;
 }

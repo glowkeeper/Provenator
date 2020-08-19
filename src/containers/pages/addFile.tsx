@@ -7,7 +7,8 @@ import SparkMD5 from 'spark-md5'
 
 import * as Yup from 'yup'
 
-import { Formik, Form, Field, FormikProps } from 'formik'
+import Select, { ValueType, components } from 'react-select'
+import { Formik, Form, Field, FormikProps, ErrorMessage } from 'formik'
 import { FormControl } from '@material-ui/core'
 import { TextField } from "material-ui-formik-components"
 
@@ -23,22 +24,52 @@ import { initialise as txInitialise } from '../../store/app/tx/actions'
 
 import { history, getDictEntries } from '../../utils'
 
-import { FormHelpers, GeneralError, Transaction, Local, Misc, File as FileConfig } from '../../config'
+import { NumberOptionType, FormHelpers, GeneralError, Transaction, Local, Misc, File as FileConfig } from '../../config'
 
 import {
     ApplicationState,
     AppDispatch,
-    FileProps,
+    CreativeWorks,
     PayloadProps,
     TxData } from '../../store/types'
 
-//import { TxHelper } from '../../components/tx/txHelper'
+import { themeStyles } from '../../styles'
 
 const addFileSchema = Yup.object().shape({
-  fileHash: Yup.string()
-    .required(`${GeneralError.required}`)
+  hash: Yup.string()
+    .required(`${GeneralError.required}`),
+  workType: Yup.object({
+    value: Yup.number()
+      .positive(`${FileConfig.validType}`)
+  }),
+  url: Yup.string()
+    .url(`${FileConfig.validURL}`)
+    .ensure(),
+  description: Yup.string()
+    .required(`${GeneralError.required}`),
+  authorName: Yup.string()
+    .required(`${GeneralError.required}`),
+  authorEMail: Yup.string()
+    .required(`${GeneralError.required}`),
+  authorURL: Yup.string()
+    .required(`${GeneralError.required}`),
+  license: Yup.object({
+    value: Yup.number()
+      .min(0, `${FileConfig.validLicense}`)
+  }),
+  copyrightHolderName: Yup.string()
+    .ensure(),
+  copyrightHolderEMail: Yup.string()
+    .ensure(),
+  copyrightHolderURL: Yup.string()
+    .ensure(),
+  publisherName: Yup.string()
+    .ensure(),
+  publisherEMail: Yup.string()
+    .ensure(),
+  publisherURL: Yup.string()
+    .ensure(),
 })
-
 
 interface FileStateProps {
   info: PayloadProps
@@ -46,7 +77,7 @@ interface FileStateProps {
 
 interface FileDispatchProps {
   initialise: () => void
-  handleSubmit: (values: FileProps) => void
+  handleSubmit: (values: CreativeWorks) => void
 }
 
 type Props =  FileDispatchProps & FileStateProps
@@ -57,8 +88,12 @@ export const getFile = (props: Props) => {
     const [isLoading, setIsLoading] = useState(false)
     const [fileName, setFileName] = useState("")
     const [hash, setHash] = useState("")
+    const [workType, setWorkType] = useState({ label: FileConfig.workType, value: 0} as NumberOptionType)
+    const [license, setLicense] = useState({ label: FileConfig.license, value: -1} as NumberOptionType)
     const [isSubmitting, setSubmit] = useState(false)
     const [info, setInfo] = useState("")
+
+    const themeClasses = themeStyles()
 
     useEffect(() => {
 
@@ -156,8 +191,35 @@ export const getFile = (props: Props) => {
             setSubmit(true)
             props.initialise()
 
-            const fileInfo: FileProps = {
-                fileHash: hash,
+            const thisWorkType = (workType as NumberOptionType).value
+            const thisLicense = (license as NumberOptionType).value
+
+            let d = new Date(Date.now())
+
+            const fileInfo: CreativeWorks = {
+                workType: thisWorkType,
+                license: thisLicense,
+                hash: hash,
+                dateCreated: d.toString(),
+                dateModified: d.toString(),
+                url: values.url,
+                name: fileName,
+                description: values.description,
+                author: {
+                    name: values.authorName,
+                    email: values.authorEMail,
+                    url:  values.authorURL
+                },
+                copyrightHolder: {
+                    name: values.copyrightHolderName,
+                    email: values.copyrightHolderEMail,
+                    url:  values.copyrightHolderURL
+                },
+                publisher: {
+                    name: values.publisherName,
+                    email: values.publisherEMail,
+                    url:  values.publisherURL
+                }
             }
             props.handleSubmit(fileInfo)
           }}
@@ -166,8 +228,88 @@ export const getFile = (props: Props) => {
             <Form>
               <FormControl fullWidth={true}>
                   <Field
-                    name='fileHash'
+                    name='hash'
                     label={FileConfig.hash}
+                    component={TextField}
+                  />
+                  <Select
+                    name='workType'
+                    value={workType}
+                    onChange={(ev: ValueType<NumberOptionType>) => {
+                        const option = ev as NumberOptionType
+                        formProps.setFieldValue('workType', option)
+                        setWorkType(option)
+                    }}
+                    styles={OptionsStyles}
+                    options={FormHelpers.worksSelect}
+                  />
+                  <ErrorMessage name="workType.value" component="div" className={themeClasses.error}/>
+                  <Field
+                    name='url'
+                    label={FileConfig.fileUrl}
+                    component={TextField}
+                  />
+                  <Field
+                    name='description'
+                    label={FileConfig.description}
+                    component={TextField}
+                  />
+                  <Field
+                    name='authorName'
+                    label={FileConfig.authorName}
+                    component={TextField}
+                  />
+                  <Field
+                    name='authorEMail'
+                    label={FileConfig.authorEMail}
+                    component={TextField}
+                  />
+                  <Field
+                    name='authorURL'
+                    label={FileConfig.authorURL}
+                    component={TextField}
+                  />
+
+                  <Select
+                    name='license'
+                    value={license}
+                    onChange={(ev: ValueType<NumberOptionType>) => {
+                        const option = ev as NumberOptionType
+                        formProps.setFieldValue('license', option)
+                        setLicense(option)
+                    }}
+                    styles={OptionsStyles}
+                    options={FormHelpers.licensesSelect}
+                  />
+                  <ErrorMessage name="workType.value" component="div" className={themeClasses.error}/>
+                  <Field
+                    name='copyrightHolderName'
+                    label={FileConfig.copyrightHolderName}
+                    component={TextField}
+                  />
+                  <Field
+                    name='copyrightHolderEMail'
+                    label={FileConfig.copyrightHolderEMail}
+                    component={TextField}
+                  />
+                  <Field
+                    name='copyrightHolderURL'
+                    label={FileConfig.copyrightHolderURL}
+                    component={TextField}
+                  />
+                  <Field
+                    name='publisherName'
+                    label={FileConfig.publisherName}
+                    component={TextField}
+                  />
+                  <Field
+                    name='publisherEMail'
+                    label={FileConfig.publisherEMail}
+                    component={TextField}
+                  />
+                  <Field
+                    name='publisherURL'
+                    label={FileConfig.publisherURL}
                     component={TextField}
                   />
                   <Grid container>
@@ -203,7 +345,7 @@ const mapStateToProps = (state: ApplicationState): FileStateProps => {
 const mapDispatchToProps = (dispatch: AppDispatch): FileDispatchProps => {
   return {
     initialise: () => dispatch(txInitialise()),
-    handleSubmit: (values: FileProps) => dispatch(addFile(values))
+    handleSubmit: (values: CreativeWorks) => dispatch(addFile(values))
   }
 }
 
