@@ -197,9 +197,9 @@ export const getFile = (props: Props) => {
             let d = new Date(Date.now())
 
             const fileInfo: CreativeWorks = {
-                workType: thisWorkType,
+                type: thisWorkType,
                 license: thisLicense,
-                hash: hash,
+                id: hash,
                 dateCreated: d.toString(),
                 dateModified: d.toString(),
                 url: values.url,

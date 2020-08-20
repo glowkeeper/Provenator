@@ -1,7 +1,16 @@
 pragma solidity >=0.4.16 <0.7.0;
 pragma experimental ABIEncoderV2;
 
-enum Works {
+enum EntityTypes {
+    NONE,
+    AUTHOR,
+    COPYRIGHTHOLDER,
+    PUBLISHER,
+    MAX
+
+}
+
+enum WorksTypes {
     NONE,
     ARTICLE,
     BOOK,
@@ -26,7 +35,7 @@ enum Works {
     MAX
 }
 
-enum License {
+enum LicenseTypes {
     NONE,
     CCBY,
     CCBYSA,

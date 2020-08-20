@@ -76,9 +76,9 @@ export interface Entity {
 }
 
 export interface CreativeWorks {
-    workType: number
+    type: number
     license: number
-    hash: string
+    id: string
     dateCreated: string
     dateModified: string
     url: string
