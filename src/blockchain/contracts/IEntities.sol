@@ -17,17 +17,3 @@ abstract contract IEntitiesFactory {
     function getEntity(bytes32 _id) virtual public view returns (CreativeEntities memory);
     function getEntityContract(bytes32 _id) virtual public view returns (address);
 }
-
-abstract contract IMedia {
-
-    function get() virtual public view returns (CreativeWorks memory);
-    function amend(CreativeWorks memory _work) virtual public;
-}
-
-abstract contract IMediaFactory {
-
-    function addWork(CreativeWorks memory _work) virtual public;
-    function amendWork(CreativeWorks memory _work) virtual public;
-    function getWork(bytes32 _id) virtual public view returns (CreativeWorks memory);
-    function getWorkContract(bytes32 _id) virtual public view returns (address);
-}

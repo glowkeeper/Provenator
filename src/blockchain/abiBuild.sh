@@ -3,12 +3,14 @@
 TARGETDIR="/home/steve/gitrepos/Provenator/src/rest/provenator/internal/contracts"
 
 # Just change the names here, the rest will take care of itself
-WORKS="Subbies"
+ARTEFACTS="Works"
+ENTITIES="Entities"
 
 # Need to stick each contract in its own directory, unfortunately, due to Strings library
-WORKSDIR="${TARGETDIR}/${WORKS}/"
+ARTEFACTSDIR="${TARGETDIR}/${ARTEFACTS}/"
+ENTITIESDIR="${TARGETDIR}/${ENTITIES}/"
 
-CONTRACTSDIR=(${WORKSDIR}})
+CONTRACTSDIR=(${ARTEFACTSDIR} ${ENTITIESDIR})
 
 # Clean up first
 for DIR in "${CONTRACTSDIR[@]}"
@@ -17,4 +19,5 @@ do
     mkdir $DIR
 done
 
-abigen --sol="./contracts/${WORKS}.sol" --pkg="${WORKS}" --out="${WORKSDIR}/${WORKS}.go"
+abigen --sol="./contracts/${ARTEFACTS}.sol" --pkg="${ARTEFACTS}" --out="${ARTEFACTSDIR}/${ARTEFACTS}.go"
+abigen --sol="./contracts/${ENTITIES}.sol" --pkg="${ENTITIES}" --out="${ENTITIESDIR}/${ENTITIES}.go"
