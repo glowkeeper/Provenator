@@ -12,7 +12,7 @@ struct Entities {
 }
 
 struct CreativeWorks {
-    WorksTypes          type;
+    WorksTypes          workType;
     LicenseTypes        license;
     bytes32             id;
     bytes32             dateCreated;
@@ -27,14 +27,14 @@ struct CreativeWorks {
 
 // what we store
 struct Entity {
-    EntityTypes         type;
+    EntityTypes         entityType;
     string              name;
     string              email;
     string              url;
 }
 
 struct Works {
-    WorksTypes          type;
+    WorksTypes          workType;
     LicenseTypes        license;
     bytes32             dateCreated;
     bytes32             dateModified;

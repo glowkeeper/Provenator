@@ -10,27 +10,27 @@ import "./ICreativeWorks.sol";
 
 contract EntityNode is IEntity {
 
-    EntityTypes type;
-    bytes32     id
+    EntityTypes entityType;
+    bytes32     id;
     Entity      entity;
 
-    constructor (Entities memory _entity, EntityTypes _type) public {
+    constructor (Entities memory _entity, EntityTypes _entityType) public {
         require (
-            _type > EntityTypes.NONE &&
-            _type < EntityTypes.MAX &&
+            _entityType > EntityTypes.NONE &&
+            _entityType < EntityTypes.MAX &&
             _work.id[0] != 0
         );
 
-        type = _type;
+        entityType = _entityType;
         id = _work.id;
-        set(_entity)
+        set(_entity);
     }
 
     function get() virtual public view returns (Entities memory) {
 
         Entities memory entities;
 
-        entities.id = id
+        entities.id = id;
         entities.name = entity.name;
         entities.email = entity.email;
         entities.url = entity.url;
@@ -39,13 +39,13 @@ contract EntityNode is IEntity {
     }
 
     function getType() virtual public view returns (EntityTypes) {
-        return type;
+        return entityType;
     }
 
     function amend(Entities memory _entity) virtual public {
         require ( id == _work.id );
 
-        set(_entity)
+        set(_entity);
     }
 
     function set(Entities memory _entity) virtual private {
@@ -54,7 +54,7 @@ contract EntityNode is IEntity {
              bytes(_entity.email).length > 0
         );
 
-        entity.type = type;
+        entity.entityType = entityType;
         entity.name = _entity.name;
         entity.email = _entity.email;
         entity.url = _entity.url;
@@ -71,9 +71,9 @@ contract Entities is IEntitiesFactory, IFactory {
       entityStore.size = 0;
     }
 
-    function addEntity(Entities memory _entity, EntityTypes _type) override virtual public {
+    function addEntity(Entities memory _entity, EntityTypes _entityType) override virtual public {
 
-        EntityNode entity = new EntityNode(_entity, _type);
+        EntityNode entity = new EntityNode(_entity, _entityType);
         entityStore.insert(_entity.id, address(entity));
     }
 
@@ -127,7 +127,7 @@ contract WorksNode is IWorks {
 
         CreativeWorks memory works;
 
-        works.type = work.type;
+        works.workType = work.workType;
         works.license = work.license;
         works.id = id;
         works.dateCreated  = work.dateCreated;
@@ -171,8 +171,8 @@ contract WorksNode is IWorks {
 
     function set(CreativeWorks memory _work) override virtual private {
         require (
-            _work.type > WorksTypes.NONE &&
-            _work.type < WorksTypes.MAX &&
+            _work.workType > WorksTypes.NONE &&
+            _work.workType < WorksTypes.MAX &&
             _work.license > LicenseTypes.NONE &&
             _work.license < LicenseTypes.MAX &&
             _work.dateCreated[0] != 0 &&
@@ -181,16 +181,16 @@ contract WorksNode is IWorks {
              work.author.id[0] != 0 &&
         );
 
-        work.type = _work.type;
+        work.workType = _work.workType;
         work.license = _work.license;
         work.dateCreated = _work.dateCreated;
         work.dateModified = _work.dateModified;
         work.author = _work.author.id;
         work.copyrightHolder = _work.copyrightHolder.id;
         work.publisher = _work.publisher.id;
-        work.url = _work.type;
-        work.name = _work.type;
-        work.description = _work.type;
+        work.url = _work.url;
+        work.name = _work.name;
+        work.description = _work.description;
 
         entities.addEntity(_work.author, EntityTypes.AUTHOR)
 

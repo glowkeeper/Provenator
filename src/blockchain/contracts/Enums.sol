@@ -7,7 +7,6 @@ enum EntityTypes {
     COPYRIGHTHOLDER,
     PUBLISHER,
     MAX
-
 }
 
 enum WorksTypes {

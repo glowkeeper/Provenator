@@ -17,7 +17,7 @@ var config = {
   entry: {
     app: [
       '@babel/polyfill',
-      './src/components/index.tsx'
+      './src/app/components/index.tsx'
     ]
   },
   output: {
@@ -30,7 +30,7 @@ var config = {
     new webpack.ProgressPlugin(),
     new CleanWebpackPlugin(),
     new htmlWebpackPlugin({
-      template: './src/index.html',
+      template: './src/app/index.html',
       inject: 'body',
       inlineSource: '.(js|css)$'
     }),
