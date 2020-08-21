@@ -4,7 +4,7 @@ pragma experimental ABIEncoderV2;
 import "./Enums.sol";
 
 // Input/Output
-struct Entities {
+struct CreativeEntities {
     bytes32             id;
     string              name;
     string              email;
@@ -20,9 +20,9 @@ struct CreativeWorks {
     string              url;
     string              name;
     string              description;
-    Entities            author;
-    Entities            copyrightHolder;
-    Entities            publisher;
+    CreativeEntities    author;
+    CreativeEntities    copyrightHolder;
+    CreativeEntities    publisher;
 }
 
 // what we store

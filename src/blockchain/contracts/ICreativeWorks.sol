@@ -5,31 +5,29 @@ import "./Types.sol";
 
 abstract contract IEntity {
 
-    function get() virtual public view returns (Entities memory);
+    function get() virtual public view returns (CreativeEntities memory);
     function getType() virtual public view returns (EntityTypes);
-    function amend(Entities memory _entity) virtual public;
-    function set(Entities memory _entity) virtual private;
+    function amend(CreativeEntities memory _entity) virtual public;
 }
 
 abstract contract IEntitiesFactory {
 
-    function addEntity(Entities memory _entity, EntityTypes _type) virtual public;
-    function amendEntity(Entities memory _entity) virtual public;
-    function getEntity(bytes32 _id) virtual public view returns (Entities memory);
+    function addEntity(CreativeEntities memory _entity, EntityTypes _type) virtual public;
+    function amendEntity(CreativeEntities memory _entity) virtual public;
+    function getEntity(bytes32 _id) virtual public view returns (CreativeEntities memory);
     function getEntityContract(bytes32 _id) virtual public view returns (address);
 }
 
-abstract contract IWorks {
+abstract contract IMedia {
 
     function get() virtual public view returns (CreativeWorks memory);
     function amend(CreativeWorks memory _work) virtual public;
-    function set(CreativeWorks memory _work) virtual private;
 }
 
-abstract contract IWorksFactory {
+abstract contract IMediaFactory {
 
     function addWork(CreativeWorks memory _work) virtual public;
     function amendWork(CreativeWorks memory _work) virtual public;
-    function getWork(bytes32 _id) virtual public view returns (CreativeWorks memory)
+    function getWork(bytes32 _id) virtual public view returns (CreativeWorks memory);
     function getWorkContract(bytes32 _id) virtual public view returns (address);
 }

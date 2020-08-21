@@ -14,21 +14,21 @@ contract EntityNode is IEntity {
     bytes32     id;
     Entity      entity;
 
-    constructor (Entities memory _entity, EntityTypes _entityType) public {
+    constructor (CreativeEntities memory _entity, EntityTypes _entityType) public {
         require (
             _entityType > EntityTypes.NONE &&
             _entityType < EntityTypes.MAX &&
-            _work.id[0] != 0
+            _entity.id[0] != 0
         );
 
         entityType = _entityType;
-        id = _work.id;
+        id = _entity.id;
         set(_entity);
     }
 
-    function get() virtual public view returns (Entities memory) {
+    function get() override virtual public view returns (CreativeEntities memory) {
 
-        Entities memory entities;
+        CreativeEntities memory entities;
 
         entities.id = id;
         entities.name = entity.name;
@@ -38,17 +38,17 @@ contract EntityNode is IEntity {
         return entities;
     }
 
-    function getType() virtual public view returns (EntityTypes) {
+    function getType() override virtual public view returns (EntityTypes) {
         return entityType;
     }
 
-    function amend(Entities memory _entity) virtual public {
-        require ( id == _work.id );
+    function amend(CreativeEntities memory _entity) override virtual public {
+        require ( id == _entity.id );
 
         set(_entity);
     }
 
-    function set(Entities memory _entity) virtual private {
+    function set(CreativeEntities memory _entity) private {
         require (
              bytes(_entity.name).length > 0 &&
              bytes(_entity.email).length > 0
@@ -71,23 +71,23 @@ contract Entities is IEntitiesFactory, IFactory {
       entityStore.size = 0;
     }
 
-    function addEntity(Entities memory _entity, EntityTypes _entityType) override virtual public {
+    function addEntity(CreativeEntities memory _entity, EntityTypes _entityType) override virtual public {
 
         EntityNode entity = new EntityNode(_entity, _entityType);
         entityStore.insert(_entity.id, address(entity));
     }
 
-    function amendEntity(Entities memory _entity) override virtual public {
+    function amendEntity(CreativeEntities memory _entity) override virtual public {
         require ( entityStore.data[_entity.id].value != address(0x0) );
 
         EntityNode entity = EntityNode(entityStore.data[_entity.id].value);
         entity.amend(_entity);
     }
 
-    function getEntity(bytes32 _id) override virtual public view returns (Entities memory) {
-        require ( entityStore.data[_entity.id].value != address(0x0) );
+    function getEntity(bytes32 _id) override virtual public view returns (CreativeEntities memory) {
+        require ( entityStore.data[_id].value != address(0x0) );
 
-        EntityNode entity = EntityNode(entityStore.data[_entity.id].value);
+        EntityNode entity = EntityNode(entityStore.data[_id].value);
         return entity.get();
     }
 
@@ -110,7 +110,7 @@ contract Entities is IEntitiesFactory, IFactory {
     }
 }
 
-contract WorksNode is IWorks {
+contract MediaNode is IMedia {
 
     IEntitiesFactory    entities;
     bytes32             id;
@@ -120,10 +120,10 @@ contract WorksNode is IWorks {
         require ( _work.id[0] != 0 );
 
         id = _work.id;
-        setWork(_work)
+        set(_work);
     }
 
-    function get() virtual public view returns (CreativeWorks memory) {
+    function get() override virtual public view returns (CreativeWorks memory) {
 
         CreativeWorks memory works;
 
@@ -136,10 +136,12 @@ contract WorksNode is IWorks {
         works.name = work.name;
         works.description = work.description;
 
-        works.author = entities.getEntity(work.author);
+        EntityNode entity = EntityNode(entities.getEntityContract(work.author));
+        require ( entity.getType() == EntityTypes.COPYRIGHTHOLDER );
+        works.author = entity.get();
 
         if ( work.copyrightHolder[0] != 0 ) {
-            EntityNode entity = EntityNode(entities.getEntityContract(work.copyrightHolder);
+            entity = EntityNode(entities.getEntityContract(work.copyrightHolder));
             require ( entity.getType() == EntityTypes.COPYRIGHTHOLDER );
             works.copyrightHolder = entity.get();
         } else {
@@ -150,7 +152,7 @@ contract WorksNode is IWorks {
         }
 
         if ( work.publisher[0] != 0 ) {
-            EntityNode entity = EntityNode(entities.getEntityContract(work.publisher);
+            entity = EntityNode(entities.getEntityContract(work.publisher));
             require ( entity.getType() == EntityTypes.PUBLISHER );
             works.publisher = entity.get();
         } else {
@@ -163,13 +165,13 @@ contract WorksNode is IWorks {
         return works;
     }
 
-    function amend(CreativeWorks memory _work) virtual public {
+    function amend(CreativeWorks memory _work) override virtual public {
         require ( id == _work.id );
 
-        set(_work)
+        set(_work);
     }
 
-    function set(CreativeWorks memory _work) override virtual private {
+    function set(CreativeWorks memory _work) private {
         require (
             _work.workType > WorksTypes.NONE &&
             _work.workType < WorksTypes.MAX &&
@@ -178,7 +180,7 @@ contract WorksNode is IWorks {
             _work.dateCreated[0] != 0 &&
              bytes(_work.name).length > 0 &&
              bytes(_work.description).length > 0 &&
-             work.author.id[0] != 0 &&
+             _work.author.id[0] != 0
         );
 
         work.workType = _work.workType;
@@ -192,7 +194,7 @@ contract WorksNode is IWorks {
         work.name = _work.name;
         work.description = _work.description;
 
-        entities.addEntity(_work.author, EntityTypes.AUTHOR)
+        entities.addEntity(_work.author, EntityTypes.AUTHOR);
 
         if ( work.copyrightHolder[0] != 0 ) {
             entities.addEntity(_work.copyrightHolder, EntityTypes.COPYRIGHTHOLDER);
@@ -204,7 +206,7 @@ contract WorksNode is IWorks {
     }
 }
 
-contract Works is IWorksFactory, IFactory {
+contract MediaFactory is IMediaFactory, IFactory {
 
     IEntitiesFactory entities;
     Data workStore;
@@ -220,14 +222,14 @@ contract Works is IWorksFactory, IFactory {
     }
 
     function addWork(CreativeWorks memory _work) override virtual public {
-        WorksNode work = new WorksNode(_work, entities);
+        MediaNode work = new MediaNode(_work);
         workStore.insert(_work.id, address(work));
     }
 
-    function amendWork(CreativeWorks memory _work) virtual public {
+    function amendWork(CreativeWorks memory _work) override virtual public {
         require ( workStore.data[_work.id].value != address(0x0) );
 
-        WorksNode work = WorksNode(workStore.data[_work.id].value);
+        MediaNode work = MediaNode(workStore.data[_work.id].value);
         work.amend(_work);
     }
 
@@ -235,7 +237,7 @@ contract Works is IWorksFactory, IFactory {
         require ( workStore.data[_id].value != address(0x0)
         );
 
-        WorksNode work = WorksNode(workStore.data[_id].value);
+        MediaNode work = MediaNode(workStore.data[_id].value);
         return work.get();
     }
 
