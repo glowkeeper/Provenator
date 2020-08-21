@@ -4,7 +4,8 @@ import { NavLink } from 'react-router-dom'
 
 // Store stuff
 export interface ApplicationState {
-  chainInfo: ChainDataProps,
+  chainInfo: ChainInfoProps,
+  chainContracts: ContractProps
   info: InfoPageProps
   tx: TransactionProps
 }
@@ -20,14 +21,23 @@ export interface ActionProps extends Action {
 
 export type AppDispatch = ThunkDispatch<ApplicationState, any, ActionProps>
 
-// Blockchain info
-export interface ChainDataProps extends PayloadProps {
+// Blockchain stuff
+export interface ChainInfoProps extends PayloadProps {
   data: {
     Name: string
     ChainId: number
     ENS: string
     Provider: object,
     Account: string
+  }
+}
+
+export interface ContractProps extends PayloadProps {
+  data: {
+    contracts: {
+      entities: object
+      artefacts: object
+    }
   }
 }
 
@@ -76,7 +86,7 @@ export interface Entity {
 }
 
 export interface CreativeWorks {
-    type: number
+    workType: number
     license: number
     id: string
     dateCreated: string
@@ -102,6 +112,11 @@ export const enum TransactionActionTypes {
   TRANSACTION_FAILURE = '@@TransactionActionTypes/TRANSACTION_FAILURE'
 }
 
-export const enum ChainDataActionTypes {
+
+export const enum ChainContractActionTypes {
+  ADD_CONTRACTS = '@@ChainContractAction/ADD_CONTRACTS'
+}
+
+export const enum ChainInfoActionTypes {
   ADD_DATA = '@@ChainInfoAction/ADD_DATA'
 }

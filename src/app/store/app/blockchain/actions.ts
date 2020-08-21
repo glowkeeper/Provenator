@@ -4,8 +4,12 @@ import Web3 from 'web3'
 import { ethers } from 'ethers'
 import { JsonRpcProvider } from 'ethers/providers/json-rpc-provider'
 
+import { Contracts, Config } from '../../../config/contracts'
+import { Entities } from '../../../config/typechain/Entities'
+import { Artefacts } from '../../../config/typechain/Artefacts'
+
 import { write } from '../../actions'
-import { AppDispatch, ChainDataProps, ChainDataActionTypes, TransactionActionTypes, CreativeWorks } from '../../types'
+import { AppDispatch, ContractProps, ChainInfoProps, ChainContractActionTypes, ChainInfoActionTypes, TransactionActionTypes, CreativeWorks } from '../../types'
 
 import { Transaction } from '../../../config'
 
@@ -28,7 +32,7 @@ export const init = () => {
           if (typeof chainObj.ensAddress != 'undefined') {
             ENSAddress = chainObj.ensAddress
           }
-          const infoData: ChainDataProps = {
+          const infoData: ChainInfoProps = {
             data: {
               Name: chainObj.name,
               ChainId: chainObj.chainId,
@@ -38,44 +42,96 @@ export const init = () => {
             }
           }
 
-          await dispatch(write({data: infoData})(ChainDataActionTypes.ADD_DATA))
+          await dispatch(write({data: infoData})(ChainInfoActionTypes.ADD_DATA))
+
+          const contractData: ContractProps = {
+            data: {
+              contracts: {
+                entities: new ethers.Contract(
+                    Contracts.entitiesAddress,
+                    Contracts.entitiesABI,
+                    signer
+                ) as Entities,
+                artefacts: new ethers.Contract(
+                    Contracts.artefactsAddress,
+                    Contracts.artefactsABI,
+                    signer
+                ) as Artefacts
+              }
+            }
+          }
+
+          dispatch(write({data: contractData.data})(ChainContractActionTypes.ADD_CONTRACTS))
       }
   }
 }
 
-export const addContract = () => {
-    return async (dispatch: AppDispatch) => {
-
-        /*const contractData: ContractProps = {
-          data: {
-            contracts: {
-              jobs: new ethers.Contract(
-                  Contracts.jobsAddress,
-                  Contracts.jobsABI,
-                  signer
-              ) as Jobs,
-              spons: new ethers.Contract(
-                  Contracts.sponsAddress,
-                  Contracts.sponsABI,
-                  signer
-              ) as Spons,
-              subbies: new ethers.Contract(
-                  Contracts.subbiesAddress,
-                  Contracts.subbiesABI,
-                  signer
-              ) as Subbies
-            }
-          }
-        }
-
-        dispatch(write({data: chainData.data})(ChainDataActionTypes.ADD_DATA))*/
-    }
-}
-
 export const addFile = (props: CreativeWorks) => {
-  return async (dispatch: AppDispatch) => {
+  return async (dispatch: AppDispatch, getState: Function) => {
 
-      console.log(props)
+
+      const state = getState()
+
+      console.log(props, state.chainContracts)
+
+      const artefactsContract = state.chainContracts.data.contracts.artefacts
+      const provider = state.chainInfo.data.provider
+
+     /*const createInfoWriter: ExtraInfoWriterProps = {
+          fileHash: props.fileHash,
+          fileName: props.fileName,
+          fileUrl: props.fileUrl,
+          description: props.description
+      }
+      const jobRef = setBytes32(props.ref)
+      const workRef = setBytes32(props.workRef)
+      const infoRef = setBytes32(props.infoRef)
+
+      let txData = {
+          transaction:  -1,
+          summary: '',
+          info: {
+              time: ''
+          }
+      }
+
+     let d = new Date(Date.now())
+     try {
+
+        //console.log("dispatching write: ", jobRef, workRef, infoRef, createInfoWriter)
+        const tx = await jobsContract.addInfo(jobRef, workRef, infoRef, createInfoWriter)
+        txData = {
+            transaction:  tx.hash,
+            summary: `${Transaction.pending}`,
+            info: {
+                time: d.toString()
+            }
+        }
+        dispatch(write({data: txData})(TransactionActionTypes.TRANSACTION_PENDING))
+
+        const receipt = await provider.waitForTransaction(tx.hash)
+        d = new Date(Date.now())
+        txData = {
+            transaction:  tx.hash,
+            summary: `${Transaction.success}`,
+            info: {
+                time: d.toString()
+            }
+        }
+        dispatch(write({data: txData})(TransactionActionTypes.TRANSACTION_SUCCESS))
+
+      } catch (error) {
+
+        d = new Date(Date.now())
+        txData = {
+            transaction:  -1,
+            summary: `${Transaction.failure}`,
+            info: {
+                time: d.toString()
+            }
+        }
+        dispatch(write({data: txData})(TransactionActionTypes.TRANSACTION_FAILURE))
+    }*/
 
   }
 }

@@ -2,13 +2,13 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import Markdown from 'react-markdown'
 
-import { ApplicationState, ChainDataProps } from '../../store'
+import { ApplicationState, ChainInfoProps } from '../../store'
 import { get } from '../../utils/list'
 
 import { Blockchain } from '../../config/strings'
 
 interface InfoProps {
-  chainData: ChainDataProps
+  chainData: ChainInfoProps
 }
 
 const info = (props: InfoProps) => {
@@ -25,7 +25,7 @@ const info = (props: InfoProps) => {
 
 const mapStateToProps = (state: ApplicationState): InfoProps => {
 
-    const info = state.chainInfo as ChainDataProps
+    const info = state.chainInfo as ChainInfoProps
     delete info.data.Provider
     return {
       chainData: info

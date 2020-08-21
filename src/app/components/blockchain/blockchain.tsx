@@ -16,6 +16,7 @@ const defaultProps: ChainInitDispatchProps = {
 const chainSet = ( props: ChainInitDispatchProps = defaultProps ) => {
 
     props.handleInit()
+
     return null
  }
 
