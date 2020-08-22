@@ -90,6 +90,7 @@ export const getFile = (props: Props) => {
     const [hash, setHash] = useState("")
     const [workType, setWorkType] = useState({ label: FileConfig.workType, value: 0} as NumberOptionType)
     const [license, setLicense] = useState({ label: FileConfig.license, value: -1} as NumberOptionType)
+    const [summary, setSummary] = useState("")
     const [isSubmitting, setSubmit] = useState(false)
     const [info, setInfo] = useState("")
 
@@ -105,12 +106,13 @@ export const getFile = (props: Props) => {
         } else {
 
             const txData: TxData = props.info.data as TxData
-            const txSummary = txData.summary
-            //console.log("here! ",  info.summary, txSummary, isSubmitting )
             const infoData = getDictEntries(props.info)
             setInfo( infoData )
-            if( txSummary == Transaction.success || txSummary == Transaction.failure ) {
+            if( txData.summary == Transaction.success || txData.summary == Transaction.failure ) {
                 setSubmit(false)
+                /*setTimeout(() => {
+                    history.push(`${Local.home}`)
+                }, Misc.delay)*/
             }
         }
 

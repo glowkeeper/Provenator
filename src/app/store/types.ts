@@ -79,6 +79,12 @@ export interface TransactionProps extends PayloadProps {
 }
 
 // Creative Works stuff
+export enum EntityTypes {
+    Author = 1,
+    CopyrightHolder,
+    Publisher
+}
+
 export interface Author {
     id: string
     name: string

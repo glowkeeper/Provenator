@@ -21,7 +21,7 @@ import Grid from '@material-ui/core/Grid'
 import RightCircleOutlined from '@ant-design/icons/lib/icons/RightCircleOutlined'
 import { Okay, OptionsStyles } from '../../styles'
 
-import { addUser } from '../../store/app/blockchain'
+import { addAuthor } from '../../store/app/blockchain'
 import { initialise as txInitialise } from '../../store/app/tx/actions'
 
 import { history, getDictEntries } from '../../utils'
@@ -70,7 +70,6 @@ export const getUser = (props: Props) => {
 
     useEffect(() => {
 
-        // Stop "Key, summary, time" (info) rendering on first run
         if ( isFirstRun.current ) {
 
             isFirstRun.current = false
@@ -78,12 +77,13 @@ export const getUser = (props: Props) => {
         } else {
 
             const txData: TxData = props.info.data as TxData
-            const txSummary = txData.summary
-            //console.log("here! ",  info.summary, txSummary, isSubmitting )
             const infoData = getDictEntries(props.info)
             setInfo( infoData )
-            if( txSummary == Transaction.success || txSummary == Transaction.failure ) {
+            if( txData.summary == Transaction.success || txData.summary == Transaction.failure ) {
                 setSubmit(false)
+                setTimeout(() => {
+                    history.push(`${Local.home}`)
+                }, Misc.delay)
             }
         }
 
@@ -102,7 +102,8 @@ export const getUser = (props: Props) => {
             setSubmit(true)
             props.initialise()
 
-            const id = ethers.utils.hexZeroPad(props.address, 32)
+            // 0x79b0e7De13a17a74AB23Fd2e6c69AA3Cf93F4E1c
+            const id = props.address + "000000000000000000000000"
 
             const userInfo: Author = {
                 id: id,
@@ -163,7 +164,7 @@ const mapStateToProps = (state: ApplicationState): UserStateProps => {
 const mapDispatchToProps = (dispatch: AppDispatch): UserDispatchProps => {
   return {
     initialise: () => dispatch(txInitialise()),
-    handleSubmit: (values: Author) => dispatch(addUser(values))
+    handleSubmit: (values: Author) => dispatch(addAuthor(values))
   }
 }
 
