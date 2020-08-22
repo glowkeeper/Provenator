@@ -38,7 +38,7 @@ contract ArtefactNode is IArtefact {
         works.description = work.description;
 
         EntityNode entity = EntityNode(entities.getEntityContract(work.author));
-        require ( entity.getType() == EntityTypes.COPYRIGHTHOLDER );
+        require ( entity.getType() == EntityTypes.AUTHOR );
         works.author = entity.get();
 
         if ( work.copyrightHolder[0] != 0 ) {

@@ -79,6 +79,13 @@ export interface TransactionProps extends PayloadProps {
 }
 
 // Creative Works stuff
+export interface Author {
+    id: string
+    name: string
+    email: string
+    url: string
+}
+
 export interface Entity {
     name: string
     email: string

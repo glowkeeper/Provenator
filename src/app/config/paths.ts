@@ -1,6 +1,7 @@
 class Local {
 
   static readonly home = '/'
+  static readonly addUser = '/set-user'
   static readonly addFile = '/add-file'
   static readonly blockchain = '/blockchain'
   static readonly about = '/about'

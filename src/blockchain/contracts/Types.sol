@@ -26,13 +26,6 @@ struct CreativeWorks {
 }
 
 // what we store
-struct Entity {
-    EntityTypes         entityType;
-    string              name;
-    string              email;
-    string              url;
-}
-
 struct Works {
     WorksTypes          workType;
     LicenseTypes        license;

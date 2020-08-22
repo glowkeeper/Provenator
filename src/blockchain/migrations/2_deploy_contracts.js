@@ -8,7 +8,7 @@ module.exports = async function(deployer) {
   await deployer.deploy(Artefacts, Entities.address)
 
   deployer.then( () => {
-    console.log(Entities.address);
-    console.log(Artefacts.address);
+    console.log("static entitiesAddress = \"", Entities.address, "\"");
+    console.log("static artefactsAddress = \"", Artefacts.address, "\"");
   });
 };

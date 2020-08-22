@@ -11,6 +11,7 @@ class Paths {
 
   // AppBar
   static readonly home = 'Home'
+  static readonly addUser = 'Set User'
   static readonly addFile = 'Hash File'
   static readonly blockchain = 'Blockchain'
   static readonly about = 'About'
@@ -77,6 +78,21 @@ class Contact {
   static readonly info = `steve at glowkeeper dot uk`
 }
 
+class User {
+
+    static readonly headingUser = "Set Your Author Details"
+
+    static readonly authorName = "Author Name"
+    static readonly authorEMail = "Author eMail"
+    static readonly authorURL = "Author URL"
+
+    static readonly validURL = "Please enter a valid URL"
+
+    static readonly submitTip = "Submit your author details to the Ethereum blockchain"
+
+    static readonly addUserButton = "Submit Info"
+}
+
 class File {
 
     static readonly headingFile = "Set the Provenance of a Digital Media File"
@@ -88,14 +104,14 @@ class File {
     static readonly description = 'Description'
 
     static readonly copyrightHolderName = "Copyright Holder Name"
-    static readonly copyrightHolderEMail = "Copyright Holder EMail"
+    static readonly copyrightHolderEMail = "Copyright Holder eMail"
     static readonly copyrightHolderURL = "Copyright Holder  URL"
     static readonly authorName = "Author Name"
-    static readonly authorEMail = "Author EMail"
+    static readonly authorEMail = "Author eMail"
     static readonly authorURL = "Author URL"
     static readonly license = "License"
     static readonly publisherName = "Publisher Name"
-    static readonly publisherEMail = "Publisher EMail"
+    static readonly publisherEMail = "Publisher eMail"
     static readonly publisherURL = "Publisher URL"
 
     static readonly fileTip = "Select a file to be hashed"
@@ -119,5 +135,6 @@ export { App,
          Help,
          Faq,
          Contact,
+         User,
          File
        }

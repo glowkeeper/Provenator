@@ -12,13 +12,14 @@ class Config {
 class Contracts {
 
     // rinkeby
-    static entitiesAddress = "0x9A08c375ecb50c8A52fB434D3cc3927dff056DF1"
-    static artefactsAddress = "0xAbd55D232D281Ce74a0BF2B3C7532156603878a1"
+    static entitiesAddress = "0xa435af28590d0fA707B17aa6b7E381FBa6DA4159"
+    static artefactsAddress = "0xaF1130Cc84e7e24C58959b706fd47d3E896b1ef0"
 
     static entitiesABI = [
         "function addEntity(tuple(bytes32 id, string name, string email, string url) _entity, uint8 _entityType)",
-        "function amendEntity(tuple(bytes32 id, string name, string email, string url) _entity)",
+        "function amendEntity(tuple(bytes32 id, string name, string email, string url) _entity, uint8 _entityType)",
         "function getEntity(bytes32 _id) view returns (tuple(bytes32 id, string name, string email, string url))",
+        "function getEntityType(bytes32 _id) view returns (uint8)",
         "function getEntityContract(bytes32 _id) view returns (address)",
         "function getNum() view returns (uint256)",
         "function getReference(uint256 _index) view returns (bytes32)"
