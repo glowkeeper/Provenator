@@ -21,27 +21,35 @@ export const Home = () => {
 
        <Grid container>
 
-            <Grid item container xs={6}>
+            <Grid item container xs={6} justify="center">
 
                 <NavLink to={Local.addUser} className={themeClasses.homeLink}>
                     <Grid item>
-                         <FaceTwoToneIcon color="primary"/>
+                        <Paper className={themeClasses.home} elevation={0}>
+                           <FaceTwoToneIcon color="primary"/>
+                        </Paper>
                     </Grid>
                     <Grid item>
-                        {Paths.addUser}
+                        <Paper className={themeClasses.home} elevation={0}>
+                            {Paths.addUser}
+                        </Paper>
                     </Grid>
                 </NavLink>
 
              </Grid>
 
-             <Grid item container xs={6}>
+             <Grid item container xs={6} justify="center">
 
                  <NavLink to={Local.addFile} className={themeClasses.homeLink}>
                      <Grid item>
+                        <Paper className={themeClasses.home} elevation={0}>
                           <AttachFileTwoToneIcon color="primary"/>
+                        </Paper>
                      </Grid>
                      <Grid item>
-                         {Paths.addFile}
+                        <Paper className={themeClasses.home} elevation={0}>
+                            {Paths.addFile}
+                        </Paper>
                      </Grid>
                  </NavLink>
 

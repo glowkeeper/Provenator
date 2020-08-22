@@ -138,7 +138,6 @@ const themeStyles = makeStyles({
     width: "100%"
   },
   grid: {
-    height: "100vh",
     width: "100%"
   },
   logo: {
@@ -187,6 +186,10 @@ const themeStyles = makeStyles({
     background: 'transparent linear-gradient(180deg, #8d8d8d 0%, #bdbdbd 100%) 0% 0% no-repeat padding-box',
     height: "10%",
     width: "100%"
+  },
+  home: {
+    background: 'linear-gradient(#FFFFFF, #FFFFFF)',
+    textAlign: 'center'
   },
   homeLink: {
     color: theme.palette.text.primary,
