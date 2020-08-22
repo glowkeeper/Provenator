@@ -23,9 +23,9 @@ export const Home = () => {
 
             <Grid item container xs={6}>
 
-                <NavLink to={Local.addUser}>
+                <NavLink to={Local.addUser} className={themeClasses.homeLink}>
                     <Grid item>
-                         <FaceTwoToneIcon />
+                         <FaceTwoToneIcon color="primary"/>
                     </Grid>
                     <Grid item>
                         {Paths.addUser}
@@ -36,9 +36,9 @@ export const Home = () => {
 
              <Grid item container xs={6}>
 
-                 <NavLink to={Local.addFile}>
+                 <NavLink to={Local.addFile} className={themeClasses.homeLink}>
                      <Grid item>
-                          <AttachFileTwoToneIcon />
+                          <AttachFileTwoToneIcon color="primary"/>
                      </Grid>
                      <Grid item>
                          {Paths.addFile}

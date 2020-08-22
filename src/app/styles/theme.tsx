@@ -188,6 +188,10 @@ const themeStyles = makeStyles({
     height: "10%",
     width: "100%"
   },
+  homeLink: {
+    color: theme.palette.text.primary,
+    textDecoration: 'none'
+  },
   button: {
     padding: theme.spacing(1),
     margin: theme.spacing(1),
