@@ -3,7 +3,7 @@
 TARGETDIR="/home/steve/gitrepos/Provenator/src/rest/provenator/internal/contracts"
 
 # Just change the names here, the rest will take care of itself
-ARTEFACTS="Works"
+ARTEFACTS="Artefacts"
 ENTITIES="Entities"
 
 # Need to stick each contract in its own directory, unfortunately, due to Strings library

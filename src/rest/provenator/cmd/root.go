@@ -14,9 +14,9 @@ import (
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "zeus",
-	Short: "zeus RESTful server",
-	Long: `zeus RESTful server`,
+	Use:   "provenator",
+	Short: "provenator RESTful server",
+	Long: `provenator RESTful server`,
 	Run: func(cmd *cobra.Command, args []string) {
 		server.Start()
 	},
@@ -33,7 +33,7 @@ func Execute() {
 func init() {
 
 	cobra.OnInitialize(server.Init)
-	rootCmd.PersistentFlags().StringVar(&server.CfgFile, "config", ".zeus.yaml", "file is ./.zeus.yaml")
+	rootCmd.PersistentFlags().StringVar(&server.CfgFile, "config", ".provenator.yaml", "file is ./.provenator.yaml")
 	rootCmd.PersistentFlags().StringVar(&server.OpenAPIFile, "api", "openapi.yaml", "file is ./openapi.yaml")
 	rootCmd.PersistentFlags().Bool("viper", true, "use Viper for configuration")
 	viper.BindPFlag("useViper", rootCmd.PersistentFlags().Lookup("viper"))

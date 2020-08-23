@@ -11,7 +11,7 @@ func postHandler(w http.ResponseWriter, r *http.Request) {
 
 func home(w http.ResponseWriter) {
 	w.WriteHeader(http.StatusOK)
-	w.Write([]byte(`{"text": "Zeus Ecosphere RESTful Server"}`))
+	w.Write([]byte(`{"text": "Provenator RESTful Server"}`))
 }
 
 func help(w http.ResponseWriter) {

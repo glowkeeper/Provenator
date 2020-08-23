@@ -10,53 +10,39 @@ import (
 	"github.com/spf13/viper"
 
 	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/types"
-	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/contracts/Jobs"
-	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/contracts/Spons"
-	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/contracts/Subbies"
+	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/contracts/Artefacts"
+	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/contracts/Entities"
 	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/text"
 
     pkgLog "github.com/glowkeeper/Provenator/src/rest/provenator/pkg/log"
 )
 
-// Contracts - zeus ethereum contracts
+// Contracts - provenator ethereum contracts
 var Contracts *types.Contracts
 // Conn - ethereum connection
 var Conn *ethclient.Client
 
-// SponsContract - get  contract
-func SponsContract () (*Spons.Spons) {
+// ActivitiesContract - get  contract
+func Artefacts () (*Spons.Spons) {
 
-	contract, err := Spons.NewSpons(common.HexToAddress(viper.GetString("address.sponsContract")), Conn)
+	contract, err := Spons.NewSpons(common.HexToAddress(viper.GetString("address.activitiesContract")), Conn)
 	if err != nil {
-		log.Fatalf("%s: %v", text.ErrorSponsContract, err)
+		log.Fatalf("%s: %v", text.ErrorEntitiesContract, err)
 		return nil
 	}
 	return contract
 }
 
-// JobsContract - get contract
-func JobsContract () (*Jobs.Jobs) {
+// EntitiesContract - get contract
+func EntitiesContract () (*Jobs.Jobs) {
 
-	contract, err := Jobs.NewJobs(common.HexToAddress(viper.GetString("address.jobsContract")), Conn)
+	contract, err := Jobs.NewJobs(common.HexToAddress(viper.GetString("address.entitiesContract")), Conn)
 	if err != nil {
-		log.Fatalf("%s: %v", text.ErrorJobsContract, err)
+		log.Fatalf("%s: %v", text.ErrorActivitiesContract, err)
 		return nil
 	}
 	return contract
 }
-
-// SubbiesContract - get contract
-func SubbiesContract () (*Subbies.Subbies) {
-
-	contract, err := Subbies.NewSubbies(common.HexToAddress(viper.GetString("address.subbiesContract")), Conn)
-	if err != nil {
-		log.Fatalf("%s: %v", text.ErrorJobsContract, err)
-		return nil
-	}
-	return contract
-}
-
-
 
 // InitContracts - setup the Ether' contracts
 func InitContracts () {

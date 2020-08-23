@@ -10,9 +10,9 @@ import (
 var versionCmd = &cobra.Command{
 	Use:   "version",
 	Short: "version 0.1.0",
-	Long: `zeus version 0.1.0`,
+	Long: `provenator version 0.1.0`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("zeus version 0.1.0 -- HEAD")
+		fmt.Println("provenator version 0.1.0 -- HEAD")
 	},
 }
 

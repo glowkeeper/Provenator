@@ -5,8 +5,8 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 
-	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/contracts/Jobs"
-	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/contracts/Spons"
+	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/contracts/Artefacts"
+	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/contracts/Entities"
 	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/contracts/Subbies"
 )
 
@@ -30,7 +30,7 @@ const (
 
 // Contracts - keeps pointers to all ethereum contracts
 type Contracts struct {
-	JobsContract    	*Jobs.Jobs
+	AContract    	*Jobs.Jobs
 	SponsContract    	*Spons.Spons
 	SubbiesContract    	*Subbies.Subbies
 }

@@ -2,7 +2,7 @@ package text
 
 const (
     // ErrorConfig - error
-    ErrorConfig = "No configuration yaml (.zeus.yaml)"
+    ErrorConfig = "No configuration yaml (.provenator.yaml)"
 
     // ErrorServer - error
     ErrorServer = "Server failed"
@@ -21,61 +21,36 @@ const (
     // ErrorZap - error init'ing zap
     ErrorZap = "Can't initialize zap logger"
 
-    // ErrorJobsContract - error
-    ErrorJobsContract = "Couldn't create Jobs contract instance"
+    // ErrorActivitiesContract - error
+    ErrorActivitiesContract = "Couldn't create activity contract instance"
 
-    // ErrorSponsContract - error
-    ErrorSponsContract = "Couldn't create Spons contract instance"
+    // ErrorEntitiesContract - error
+    ErrorEntitiesContract = "Couldn't create entity contract instance"
 
-    // ErrorWorksRef - error
-    ErrorWorksRef = "Error getting the work reference"
+    // ErrorActivitiesRef - error
+    ErrorActivitiesRef = "Error getting the activity reference"
 
-    // ErrorWorksList - error
-    ErrorWorksList = "Error getting Works List"
+    // ErrorActivitiesList - error
+    ErrorActivitiesList = "Error getting activities List"
 
-    // ErrorWorksAll - error
-    ErrorWorksAll = "Error getting all works"
+    // ErrorActivitiesAll - error
+    ErrorActivitiesAll = "Error getting all activities"
 
-    // ErrorWorksNum - Works error
-    ErrorWorksNum = "Can't get Works Total"
+    // ErrorActivitiesNum - Works error
+    ErrorActivitiesNum = "Can't get activities total"
 
-    // ErrorWorksType - error
-    ErrorWorksType = "Error getting the works type"
+    // ErrorEntitiesRef - error
+    ErrorEntitiesRef = "Error getting the entity reference"
 
-    // ErrorCostModel - error
-    ErrorCostModel = "Error getting Cost Model"
+    // ErrorEntitiesType - error
+    ErrorEntitiesType = "Error getting the entity type"
 
-    //ErrorFunctionalUnit - error
-    ErrorFunctionalUnit = "Error getting Functional Unit"
+    // ErrorEntitiesList - error
+    ErrorEntitiesList = "Error getting entities list"
 
-    //ErrorMeasuredWorks - error
-    ErrorMeasuredWorks = "Error getting Measured Works"
+    // ErrorEntitiesAll - error
+    ErrorEntitiesAll = "Error getting all entities"
 
-    //ErrorSM - error
-    ErrorSM = "Error getting SM"
-
-    // ErrorJobsRef - error
-    ErrorJobsRef = "Error getting the job reference"
-
-    // ErrorJobsList - error
-    ErrorJobsList = "Error getting jobs list"
-
-    // ErrorJobsAll - error
-    ErrorJobsAll = "Error getting all jobs"
-
-    // ErrorJobsNum - Jobs error
-    ErrorJobsNum = "Can't get jobs total"
-
-    // ErrorSubbiesNum - subbies error
-    ErrorSubbiesNum = "Error getting subbies total"
-
-    // ErrorSubbiesAddress - subbies error
-    ErrorSubbiesAddress = "Can't get subbies address"
-
-    // ErrorSubbiesList - subbies error
-    ErrorSubbiesList = "Can't get subbies list"
-
-    // ErrorSubbiesAll - error
-    ErrorSubbiesAll = "Error getting all subbies"
-
+    // ErrorEntitiesNum - Jobs error
+    ErrorEntitiesNum = "Can't get entities total"
 )
