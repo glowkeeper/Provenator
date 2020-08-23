@@ -22,8 +22,8 @@ var Contracts *types.Contracts
 // Conn - ethereum connection
 var Conn *ethclient.Client
 
-// ActivitiesContract - get  contract
-func Artefacts () (*Spons.Spons) {
+// ArtefactsContract - get  contract
+func ArtefactsContract () (*Spons.Spons) {
 
 	contract, err := Spons.NewSpons(common.HexToAddress(viper.GetString("address.activitiesContract")), Conn)
 	if err != nil {
@@ -55,7 +55,6 @@ func InitContracts () {
 
 	Conn = conn
 	Contracts = new(types.Contracts)
-    Contracts.JobsContract = JobsContract()
-	Contracts.SponsContract = SponsContract()
-	Contracts.SubbiesContract = SubbiesContract()
+    Contracts.ArtefactsContract = ArtefactsContract()
+	Contracts.EntitiesContract = EntitiesContract()
 }

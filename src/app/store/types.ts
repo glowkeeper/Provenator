@@ -85,33 +85,35 @@ export enum EntityTypes {
     Publisher
 }
 
-export interface Author {
-    id: string
-    name: string
-    email: string
-    url: string
-}
-
 export interface Entity {
     name: string
     email: string
     url: string
 }
 
-export interface CreativeWorks {
+export type Author = Entity & Id
+export type CopyrightHolder = Entity & Id
+export type Publisher = Entity & Id
+
+export interface Works {
     workType: number
     license: number
-    id: string
     dateCreated: string
     dateModified: string
     url: string
     name: string
     description: string
-    author: Entity
-    copyrightHolder: Entity
-    publisher: Entity
+    author: Author
+    copyrightHolder: CopyrightHolder
+    publisher: Publisher
 }
 
+// Reference stuff
+export interface Id {
+     id: string
+}
+
+export type CreativeWorks = Works & Id
 
 export interface CreativeWorksProps {
     fileInfo: Array<CreativeWorks>

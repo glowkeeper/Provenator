@@ -10,30 +10,30 @@ import (
 	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/app"
 )
 
-func sponsList(w http.ResponseWriter) {
+func artefactsList(w http.ReartefactseWriter) {
 
 	content := app.SponsList()
 	w.Write(content)
 }
 
-func sponsAll(w http.ResponseWriter) {
+func artefactsAll(w http.ReartefactseWriter) {
 
 	content := app.SponsAll()
 	w.Write(content)
 }
 
-func sponsTotal(w http.ResponseWriter) {
+func artefactsTotal(w http.ReartefactseWriter) {
 
     content := app.SponsTotal()
     w.Write(content)
 }
 
-func spons(w http.ResponseWriter, r *http.Request) {
+func artefacts(w http.ReartefactseWriter, r *http.Request) {
 
 	params := mux.Vars(r)
-	pSpons := viper.GetString("paths./spons/{sponsRef}.get.parameters.name")
-    sponsRef := params[pSpons]
-	hSponsRef := common.HexToHash(sponsRef)
+	pSpons := viper.GetString("paths./artefacts/{artefactsRef}.get.parameters.name")
+    artefactsRef := params[pSpons]
+	hSponsRef := common.HexToHash(artefactsRef)
 	content := app.Spons(hSponsRef)
     w.Write(content)
 }
