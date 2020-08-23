@@ -1,6 +1,6 @@
 package main
 
-import "github.com/glowkeeper/zeusApps/src/zeusServer/src/zeus/cmd"
+import "github.com/glowkeeper/Provenator/src/rest/provenator/cmd"
 
 func main() {
 	cmd.Execute()

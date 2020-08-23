@@ -5,9 +5,9 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 
-	"github.com/glowkeeper/zeusApps/src/zeusServer/src/zeus/internal/contracts/Jobs"
-	"github.com/glowkeeper/zeusApps/src/zeusServer/src/zeus/internal/contracts/Spons"
-	"github.com/glowkeeper/zeusApps/src/zeusServer/src/zeus/internal/contracts/Subbies"
+	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/contracts/Jobs"
+	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/contracts/Spons"
+	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/contracts/Subbies"
 )
 
 // Work Models

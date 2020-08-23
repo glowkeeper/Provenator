@@ -7,12 +7,12 @@ import (
 
     "github.com/ethereum/go-ethereum/accounts/abi/bind"
 
-    "github.com/glowkeeper/zeusApps/src/zeusServer/src/zeus/internal/types"
-	"github.com/glowkeeper/zeusApps/src/zeusServer/src/zeus/internal/text"
-    "github.com/glowkeeper/zeusApps/src/zeusServer/src/zeus/internal/contracts"
+    "github.com/glowkeeper/Provenator/src/rest/provenator/internal/types"
+	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/text"
+    "github.com/glowkeeper/Provenator/src/rest/provenator/internal/contracts"
 
     "go.uber.org/zap"
-    pkgLog "github.com/glowkeeper/zeusApps/src/zeusServer/src/zeus/pkg/log"
+    pkgLog "github.com/glowkeeper/Provenator/src/rest/provenator/pkg/log"
 )
 
 // CostModel - get Cost Model works

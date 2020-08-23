@@ -8,7 +8,7 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/ethereum/go-ethereum/common"
 
-	"github.com/glowkeeper/zeusApps/src/zeusServer/src/zeus/internal/app"
+	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/app"
 )
 
 func jobs (w http.ResponseWriter) {

@@ -9,13 +9,13 @@ import (
 	"go.uber.org/zap"
 	"github.com/spf13/viper"
 
-	"github.com/glowkeeper/zeusApps/src/zeusServer/src/zeus/internal/types"
-	"github.com/glowkeeper/zeusApps/src/zeusServer/src/zeus/internal/contracts/Jobs"
-	"github.com/glowkeeper/zeusApps/src/zeusServer/src/zeus/internal/contracts/Spons"
-	"github.com/glowkeeper/zeusApps/src/zeusServer/src/zeus/internal/contracts/Subbies"
-	"github.com/glowkeeper/zeusApps/src/zeusServer/src/zeus/internal/text"
+	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/types"
+	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/contracts/Jobs"
+	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/contracts/Spons"
+	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/contracts/Subbies"
+	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/text"
 
-    pkgLog "github.com/glowkeeper/zeusApps/src/zeusServer/src/zeus/pkg/log"
+    pkgLog "github.com/glowkeeper/Provenator/src/rest/provenator/pkg/log"
 )
 
 // Contracts - zeus ethereum contracts

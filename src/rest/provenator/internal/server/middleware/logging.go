@@ -6,8 +6,8 @@ import (
 
 	"github.com/gorilla/mux"
 
-	pkgLog "github.com/glowkeeper/zeusApps/src/zeusServer/src/zeus/pkg/log"
-	"github.com/glowkeeper/zeusApps/src/zeusServer/src/zeus/utils"
+	pkgLog "github.com/glowkeeper/Provenator/src/rest/provenator/pkg/log"
+	"github.com/glowkeeper/Provenator/src/rest/provenator/utils"
 )
 
 // LogRecord warps a http.ResponseWriter and records the status

@@ -6,8 +6,8 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	pkgLog "github.com/glowkeeper/zeusApps/src/zeusServer/src/zeus/pkg/log"
-	"github.com/glowkeeper/zeusApps/src/zeusServer/src/zeus/internal/server"
+	pkgLog "github.com/glowkeeper/Provenator/src/rest/provenator/pkg/log"
+	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/server"
 )
 
 

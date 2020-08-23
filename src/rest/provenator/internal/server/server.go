@@ -11,12 +11,12 @@ import (
     "go.uber.org/zap"
 	"github.com/spf13/viper"
 
-    "github.com/glowkeeper/zeusApps/src/zeusServer/src/zeus/internal/text"
-    "github.com/glowkeeper/zeusApps/src/zeusServer/src/zeus/internal/server/routes"
-    "github.com/glowkeeper/zeusApps/src/zeusServer/src/zeus/internal/contracts"
-	"github.com/glowkeeper/zeusApps/src/zeusServer/src/zeus/internal/server/middleware"
+    "github.com/glowkeeper/Provenator/src/rest/provenator/internal/text"
+    "github.com/glowkeeper/Provenator/src/rest/provenator/internal/server/routes"
+    "github.com/glowkeeper/Provenator/src/rest/provenator/internal/contracts"
+	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/server/middleware"
 
-    pkgLog "github.com/glowkeeper/zeusApps/src/zeusServer/src/zeus/pkg/log"
+    pkgLog "github.com/glowkeeper/Provenator/src/rest/provenator/pkg/log"
 )
 
 // CfgFile - server configuration

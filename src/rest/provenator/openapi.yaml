@@ -1,8 +1,8 @@
 openapi: "3.0.0"
 
 info:
-  title: "REST API for Zeus"
-  description: "Server configuration for the Zeus REST API"
+  title: "REST API for Provenator"
+  description: "Server configuration for the Provenator REST API"
   version: "0.1.0"
   contact:
     email: "steve@glowkeeper.uk"
@@ -18,7 +18,7 @@ paths:
     /:
         get:
             summary:  "/"
-            description: "Zeus homepage"
+            description: "Provenator homepage"
             responses:
                 '200':
                   description: "Success"
@@ -28,10 +28,10 @@ paths:
                         type: "array"
                         items:
                           type: "string"
-    /help:
+    /entities:
         get:
-            summary: "/help"
-            description: "Zeus REST API help"
+            summary: "/entities"
+            description: "Provenator REST API entity references"
             responses:
                 '200':
                   description: "Success"
@@ -41,23 +41,10 @@ paths:
                         type: "array"
                         items:
                           type: "string"
-    /spons:
-        get:
-            summary: "/spons"
-            description: "Zeus REST API spons references"
-            responses:
-                '200':
-                  description: "Success"
-                  content:
-                    application/json:
-                      schema:
-                        type: "array"
-                        items:
-                          type: "string"
-    /spons-all:
+    /entities-all:
         get:
             summary: "/spons-all"
-            description: "Zeus REST API spons information"
+            description: "Provenator REST API entities information"
             responses:
                 '200':
                   description: "Success"
@@ -67,10 +54,10 @@ paths:
                         type: "array"
                         items:
                           type: "string"
-    /spons-total:
+    /entities-total:
         get:
-            summary: "/spons-total"
-            description: "Zeus REST API spons total"
+            summary: "/entities-total"
+            description: "Provenator REST API entities total"
             responses:
                 '200':
                   description: "Success"
@@ -80,15 +67,15 @@ paths:
                         type: "array"
                         items:
                           type: "string"
-    /spons/{sponsRef}:
+    /entities/{entitiesRef}:
         get:
-            summary: "/spons/{sponsRef}"
-            description: "Zeus REST API spons information"
+            summary: "/entities/{entitiesRef}"
+            description: "Provenator REST API entities information"
             parameters:
-                name: "sponsRef"
+                name: "entitiesRef"
                 in: "path"
                 required: true
-                description: "The spons reference"
+                description: "The entities reference"
                 schema:
                     type : "string"
                     minimum: 1
@@ -101,54 +88,15 @@ paths:
                         type: "string"
                         items:
                           type: "string"
-    /jobs:
+    /entities-type/{entitiesRef}:
         get:
-            summary: "/jobs"
-            description: "Zeus REST API jobs references"
-            responses:
-                '200':
-                  description: "Success"
-                  content:
-                    application/json:
-                      schema:
-                        type: "array"
-                        items:
-                          type: "string"
-    /jobs-all:
-        get:
-            summary: "/jobs-all"
-            description: "Zeus REST API jobs information"
-            responses:
-                '200':
-                  description: "Success"
-                  content:
-                    application/json:
-                      schema:
-                        type: "array"
-                        items:
-                          type: "string"
-    /jobs-total:
-        get:
-            summary: "/jobs-total"
-            description: "Zeus REST API jobs total"
-            responses:
-                '200':
-                  description: "Success"
-                  content:
-                    application/json:
-                      schema:
-                        type: "array"
-                        items:
-                          type: "string"
-    /jobs-address/{address}:
-        get:
-            summary: "/jobs-address/{address}"
-            description: "Zeus REST API jobs for an address"
+            summary: "/entities-type/{entitiesRef}"
+            description: "Provenator REST API entity type information"
             parameters:
-                name: "address"
+                name: "entitiesRef"
                 in: "path"
                 required: true
-                description: "Jobs for a given address"
+                description: "The entities reference"
                 schema:
                     type : "string"
                     minimum: 1
@@ -161,81 +109,10 @@ paths:
                         type: "string"
                         items:
                           type: "string"
-    /jobs-address-status/{address}/{status}:
+    /artefacts:
         get:
-            summary: "/jobs-address-status/{address}/{status}"
-            description: "Zeus REST API jobs for an address and with a given status"
-            parameters:
-                name: "address"
-                in: "path"
-                required: true
-                description: "Jobs for a given address"
-                schema:
-                    type : "string"
-                    minimum: 1
-            otherParameters:
-                name: "status"
-                in: "path"
-                required: true
-                description: "Jobs for a given status"
-                schema:
-                    type : "string"
-                    minimum: 1
-            responses:
-                '200':
-                  description: "Success"
-                  content:
-                    application/json:
-                      schema:
-                        type: "string"
-                        items:
-                          type: "string"
-    /jobs-status/{status}:
-        get:
-            summary: "/jobs-status/{status}"
-            description: "Zeus REST API jobs with a given status"
-            parameters:
-                name: "status"
-                in: "path"
-                required: true
-                description: "Jobs with a given status"
-                schema:
-                    type : "string"
-                    minimum: 1
-            responses:
-                '200':
-                  description: "Success"
-                  content:
-                    application/json:
-                      schema:
-                        type: "string"
-                        items:
-                          type: "string"
-    /job/{jobRef}:
-        get:
-            summary: "/job/{jobRef}"
-            description: "Zeus REST API job information"
-            parameters:
-                name: "jobRef"
-                in: "path"
-                required: true
-                description: "The job reference"
-                schema:
-                    type : "string"
-                    minimum: 1
-            responses:
-                '200':
-                  description: "Success"
-                  content:
-                    application/json:
-                      schema:
-                        type: "string"
-                        items:
-                          type: "string"
-    /subbies:
-        get:
-            summary: "/subbies"
-            description: "Zeus REST API subbies addresses"
+            summary: "/artefacts"
+            description: "Provenator REST API artefacts references"
             responses:
                 '200':
                   description: "Success"
@@ -245,10 +122,10 @@ paths:
                         type: "array"
                         items:
                           type: "string"
-    /subbies-all:
+    /artefacts-all:
         get:
-            summary: "/subbies-all"
-            description: "Zeus REST API subbies information"
+            summary: "/activities-all"
+            description: "Provenator REST API artefacts information"
             responses:
                 '200':
                   description: "Success"
@@ -258,10 +135,10 @@ paths:
                         type: "array"
                         items:
                           type: "string"
-    /subbies-total:
+    /artefacts-total:
         get:
-            summary: "/subbies-total"
-            description: "Zeus REST API subbies total"
+            summary: "/artefacts-total"
+            description: "Provenator REST API artefacts total"
             responses:
                 '200':
                   description: "Success"
@@ -271,15 +148,15 @@ paths:
                         type: "array"
                         items:
                           type: "string"
-    /subbie/{subbieAddress}:
+    /artefacts/{artefactsRef}:
         get:
-            summary: "/subbie/{subbieAddress}"
-            description: "Zeus REST API subbie information"
+            summary: "/artefacts/{artefactsRef}"
+            description: "Provenator REST API specific artefacts"
             parameters:
-                name: "subbieAddress"
+                name: "artefactsRef"
                 in: "path"
                 required: true
-                description: "The subbie reference"
+                description: "artefacts for a given reference"
                 schema:
                     type : "string"
                     minimum: 1

@@ -3,7 +3,7 @@ package log
 import (
     "log"
     "go.uber.org/zap"
-    "github.com/glowkeeper/zeusApps/src/zeusServer/src/zeus/internal/text"
+    "github.com/glowkeeper/Provenator/src/rest/provenator/internal/text"
 )
 
 // SLogger - faster but slower
