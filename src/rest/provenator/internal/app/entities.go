@@ -11,7 +11,6 @@ import (
     "github.com/glowkeeper/Provenator/src/rest/provenator/internal/types"
 	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/text"
     "github.com/glowkeeper/Provenator/src/rest/provenator/internal/contracts"
-	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/contracts/Entities"
     "github.com/glowkeeper/Provenator/src/rest/provenator/utils"
 
     "go.uber.org/zap"
@@ -103,7 +102,7 @@ func EntitiesList () ([]byte) {
 	        return result
         }
         thisRef := fmt.Sprintf("%#x", ref)
-        entitiesRefs.Ref = append(entitiesRefs.Ref, thisRef)
+        entitiesRefs.ID = append(entitiesRefs.ID, thisRef)
     }
 
     tResult, err := json.MarshalIndent(entitiesRefs, "", "")

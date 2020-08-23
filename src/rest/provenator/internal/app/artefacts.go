@@ -10,7 +10,7 @@ import (
     "github.com/glowkeeper/Provenator/src/rest/provenator/internal/types"
 	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/text"
     "github.com/glowkeeper/Provenator/src/rest/provenator/internal/contracts"
-	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/contracts/Artefacts"
+    works "github.com/glowkeeper/Provenator/src/rest/provenator/internal/contracts/Artefacts"
     "github.com/glowkeeper/Provenator/src/rest/provenator/utils"
 
     "go.uber.org/zap"
@@ -33,7 +33,7 @@ func ArtefactsTotal () ([]byte) {
 
 	var result []byte
     num := artefactsTotal()
-    thisJSON := &types.ArtefactsTotal{Total: num}
+    thisJSON := &types.WorksTotal{Total: num}
 
     tResult, err := json.MarshalIndent(thisJSON, "", "\t")
     if err != nil {
@@ -45,59 +45,62 @@ func ArtefactsTotal () ([]byte) {
     return result
 }
 
-// Artefacts - get a single artefacts record
-func Artefacts (ref [32]byte) ([]byte) {
+// Artefact - get a single artefacts record
+func Artefact (ref [32]byte) ([]byte) {
 
 	var result []byte
-	//entities := &types.EntitiesAll{}
-	artefacts := types.Artefacts{}
-	artefactsAddress, err := contracts.Contracts.ArtefactsContract.GetArtefactsContract(&bind.CallOpts{}, ref)
+	artefact := types.Works{}
+	artefactsAddress, err := contracts.Contracts.ArtefactsContract.GetWorkContract(&bind.CallOpts{}, ref)
 	if err != nil {
 	    pkgLog.SLogger.Error(text.ErrorArtefactsAll, zap.Error(err))
 	    return result
 	}
 
-	artefactsContract, err := Entities.NewArtefactsNode(artefactsAddress, contracts.Conn)
+	artefactsContract, err := works.NewArtefactNode(artefactsAddress, contracts.Conn)
 	if err != nil {
 	    pkgLog.SLogger.Error(text.ErrorArtefactsAll, zap.Error(err))
 	    return result
 	}
 
 	aArtefacts, err := artefactsContract.Get(&bind.CallOpts{})
-	//sRef, aArtefacts, err := contracts.Contracts.EntitiesContract.GetArtefacts(&bind.CallOpts{}, ref)
-	//fmt.Sprintf("sRef %#x", sRef)
 	if (err != nil) {
 	    pkgLog.SLogger.Error(text.ErrorArtefactsAll, zap.Error(err))
 	    return result
 	}
 
-	artefacts = types.Artefacts {
+	author := types.Entity {
+	   ID: fmt.Sprintf("%#x", ref),
+	   Name: aArtefacts.Name,
+	   EMail: aArtefacts.Location,
+	   URL: aArtefacts.Description,
+	}
+
+	copyrightHolder := types.Entity {
+	   ID: fmt.Sprintf("%#x", ref),
+	   Name: aArtefacts.Name,
+	   EMail: aArtefacts.Location,
+	   URL: aArtefacts.Description,
+	}
+
+	publisher := types.Entity {
+	   ID: fmt.Sprintf("%#x", ref),
+	   Name: aArtefacts.Name,
+	   EMail: aArtefacts.Location,
+	   URL: aArtefacts.Description,
+	}
+
+	artefacts := types.Works {
 		WorkType: aArtefacts.WorkType,
 		License: aArtefacts.License,
 	    ID: fmt.Sprintf("%#x", ref),
-	    DateCreated: aArtefacts.DateCreated,
-	    DateModified: aArtefacts.DateModified,
-	    URL: aArtefacts.URL,
+	    DateCreated: utils.GetString(aArtefacts.DateCreated),
+	    DateModified: utils.GetString(aArtefacts.DateModified),
+	    URL: aArtefacts.Url,
 	    Name: aArtefacts.Name,
 	    Description: aArtefacts.Description,
-	    Author: {
-		   ID: fmt.Sprintf("%#x", ref),
-		   Name: aEntity.Name,
-		   EMail: aEntity.Location,
-		   URL: aEntity.Description
-	   },
-	    CopyrightHolder:  {
-		   ID: fmt.Sprintf("%#x", ref),
-		   Name: aEntity.Name,
-		   EMail: aEntity.Location,
-		   URL: aEntity.Description
-	   },
-	    Publisher:  {
-		   ID: fmt.Sprintf("%#x", ref),
-		   Name: aEntity.Name,
-		   EMail: aEntity.Location,
-		   URL: aEntity.Description
-	   }
+	    Author: author,
+		CopyrightHolder: copyrightHolder,
+	    Publisher: publisher,
 	}
 
 	tResult, err := json.MarshalIndent(&artefacts, "", "")
@@ -113,7 +116,7 @@ func Artefacts (ref [32]byte) ([]byte) {
 func ArtefactsList () ([]byte) {
 
 	var result []byte
-    worksRefs := &types.ArtefactsList{}
+    worksRefs := &types.WorksList{}
     num := artefactsTotal()
 
     var i int64
@@ -124,7 +127,7 @@ func ArtefactsList () ([]byte) {
 	        return []byte(`{}`)
         }
         thisRef := fmt.Sprintf("%#x", ref)
-        worksRefs.Ref = append(worksRefs.Ref, thisRef)
+        worksRefs.ID = append(worksRefs.ID, thisRef)
     }
 
     tResult, err := json.MarshalIndent(worksRefs, "", "")
@@ -141,11 +144,7 @@ func ArtefactsList () ([]byte) {
 func ArtefactsAll () ([]byte) {
 
 	var result []byte
-
-	costModelArtefacts := &types.CostModelAll{}
-	functionalUnitArtefacts := &types.FunctionalUnitAll{}
-	perSMArtefacts := &types.PerSMAll{}
-	measuredArtefactsArtefacts := &types.MeasuredArtefactsAll{}
+	artefacts := &types.WorksAll{}
 
     num := artefactsTotal()
     var i int64
@@ -157,74 +156,17 @@ func ArtefactsAll () ([]byte) {
 	        return result
         }
 
-		pType, err := contracts.Contracts.ArtefactsContract.GetType(&bind.CallOpts{}, ref);
-		if err != nil {
-			pkgLog.SLogger.Error(text.ErrorArtefactsType, zap.Error(err))
-	        return result
-        }
-
-		switch pType {
-		case types.COSTMODEL:
-
-			tCostModel := CostModel(ref)
-			costModelArtefacts.Artefacts = append(costModelArtefacts.Artefacts, tCostModel)
-
-		case types.FUNCTIONALUNIT:
-
-			tFunctionalUnit := FunctionalUnit(ref)
-			functionalUnitArtefacts.Artefacts = append(functionalUnitArtefacts.Artefacts, tFunctionalUnit)
-
-		case types.PERSM:
-
-			tSM := PerSM(ref)
-			perSMArtefacts.Artefacts = append(perSMArtefacts.Artefacts, tSM)
-
-		case types.MEASUREDWORKS:
-
-			tMeasuredArtefacts := MeasuredArtefacts(ref)
-			measuredArtefactsArtefacts.Artefacts = append(measuredArtefactsArtefacts.Artefacts, tMeasuredArtefacts)
-
-		default:
-
-			return result
-		}
-    }
-
-	if ( len(costModelArtefacts.Artefacts) != 0 ) {
-		tResult, err := json.MarshalIndent(&costModelArtefacts, "", "")
-		if err != nil {
-			pkgLog.SLogger.Error(text.ErrorCostModel + " - " + text.ErrorUnMarshall, zap.Error(err))
-	        return result
-	    }
-		result = append(result, tResult...)
+		thisArtefact := types.Works{}
+		artefact := Artefact(ref)
+		json.Unmarshal(artefact, &thisArtefact)
+		artefacts.Works = append(artefacts.Works, thisArtefact)
 	}
 
-	if ( len(functionalUnitArtefacts.Artefacts) != 0 ) {
-		tResult, err := json.MarshalIndent(&functionalUnitArtefacts, "", "")
-		if err != nil {
-			pkgLog.SLogger.Error(text.ErrorFunctionalUnit + " - " + text.ErrorUnMarshall, zap.Error(err))
-	        return result
-	    }
-		result = append(result, tResult...)
+	tResult, err := json.MarshalIndent(&artefacts, "", "")
+	if err != nil {
+		pkgLog.SLogger.Error(text.ErrorArtefactsRef + " - " + text.ErrorUnMarshall, zap.Error(err))
+		return result
 	}
-
-	if ( len(perSMArtefacts.Artefacts) != 0 ) {
-		tResult, err := json.MarshalIndent(&perSMArtefacts, "", "")
-		if err != nil {
-			pkgLog.SLogger.Error(text.ErrorSM + " - " + text.ErrorUnMarshall, zap.Error(err))
-	        return result
-	    }
-		result = append(result, tResult...)
-	}
-
-	if ( len(measuredArtefactsArtefacts.Artefacts) != 0 ) {
-		tResult, err := json.MarshalIndent(&measuredArtefactsArtefacts, "", "")
-		if err != nil {
-			pkgLog.SLogger.Error(text.ErrorMeasuredArtefacts + " - " + text.ErrorUnMarshall, zap.Error(err))
-	        return result
-	    }
-		result = append(result, tResult...)
-	}
-
+	result = append(result, tResult...)
     return result
 }

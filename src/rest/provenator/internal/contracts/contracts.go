@@ -23,22 +23,22 @@ var Contracts *types.Contracts
 var Conn *ethclient.Client
 
 // ArtefactsContract - get  contract
-func ArtefactsContract () (*Spons.Spons) {
+func ArtefactsContract () (*Artefacts.Artefacts) {
 
-	contract, err := Spons.NewSpons(common.HexToAddress(viper.GetString("address.activitiesContract")), Conn)
+	contract, err := Artefacts.NewArtefacts(common.HexToAddress(viper.GetString("address.activitiesContract")), Conn)
 	if err != nil {
-		log.Fatalf("%s: %v", text.ErrorEntitiesContract, err)
+		log.Fatalf("%s: %v", text.ErrorArtefactsContract, err)
 		return nil
 	}
 	return contract
 }
 
 // EntitiesContract - get contract
-func EntitiesContract () (*Jobs.Jobs) {
+func EntitiesContract () (*Entities.Entities) {
 
-	contract, err := Jobs.NewJobs(common.HexToAddress(viper.GetString("address.entitiesContract")), Conn)
+	contract, err := Entities.NewEntities(common.HexToAddress(viper.GetString("address.entitiesContract")), Conn)
 	if err != nil {
-		log.Fatalf("%s: %v", text.ErrorActivitiesContract, err)
+		log.Fatalf("%s: %v", text.ErrorEntitiesContract, err)
 		return nil
 	}
 	return contract

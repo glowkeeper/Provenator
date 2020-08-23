@@ -3,7 +3,7 @@ package types
 import (
 	//"time"
 
-	"github.com/ethereum/go-ethereum/common"
+	//"github.com/ethereum/go-ethereum/common"
 
 	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/contracts/Artefacts"
 	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/contracts/Entities"
@@ -35,11 +35,11 @@ type EntitiesTotal struct {
 
 // EntitiesList - a list if all entities
 type EntitiesList struct {
-	Ref	[]string `json:"ref"`
+	ID	[]string `json:"id"`
 }
 
-// Artefacts - creative works data
-type Artefacts struct {
+// Works - creative works data
+type Works struct {
     WorkType			uint8	`json:"workType"`
     License		        uint8	`json:"license"`
     ID					string	`json:"id"`
@@ -53,17 +53,17 @@ type Artefacts struct {
     Publisher			Entity	`json:"publisher"`
 }
 
-// ArtefactsAll - get all works
-type ArtefactsAll struct {
-	Works []Artefacts `json:"creativeWorks"`
+// WorksAll - get all works
+type WorksAll struct {
+	Works []Works `json:"creativeWorks"`
 }
 
-// ArtefactsTotal - get the total number of Cost Models
-type ArtefactsTotal struct {
+// WorksTotal - get the total number of Cost Models
+type WorksTotal struct {
 	Total	int64    `json:"total"`
 }
 
-// ArtefactsList - a list if all activities
-type ArtefactsList struct {
-	Ref	[]string `json:"ref"`
+// WorksList - a list if all activities
+type WorksList struct {
+	ID	[]string `json:"id"`
 }
