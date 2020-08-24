@@ -20,7 +20,7 @@ func RegisterRoutes(r *mux.Router) {
 	uEntitiesList := viper.GetString("paths./entities.get.summary")
 	uEntitiesAll := viper.GetString("paths./entities-all.get.summary")
 	uEntitiesTotal := viper.GetString("paths./entities-total.get.summary")
-	uEntity := viper.GetString("paths./job/{jobRef}.get.summary")
+	uEntity := viper.GetString("paths./entities/{entitiesRef}.get.summary")
 
 	r.PathPrefix("/").HandlerFunc(postHandler).Methods(http.MethodPost, http.MethodPut, http.MethodPatch, http.MethodDelete)
 
