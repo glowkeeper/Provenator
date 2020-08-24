@@ -29,12 +29,22 @@ func entitiesTotal(w http.ResponseWriter) {
     w.Write(content)
 }
 
+func entitiesType(w http.ResponseWriter, r *http.Request) {
+
+	params := mux.Vars(r)
+	pEntity := viper.GetString("paths./entities-type/{entitiesRef}.get.parameters.name")
+    entityRef := params[pEntity]
+	hEntityRef := common.HexToHash(entityRef)
+	content := app.EntityType(hEntityRef)
+    w.Write(content)
+}
+
 func entity(w http.ResponseWriter, r *http.Request) {
 
 	params := mux.Vars(r)
-	pJob := viper.GetString("paths./job/{jobRef}.get.parameters.name")
-    jobRef := params[pJob]
-	hJobRef := common.HexToHash(jobRef)
-	content := app.Entity(hJobRef)
+	pEntity := viper.GetString("paths./entities/{entitiesRef}.get.parameters.name")
+    entityRef := params[pEntity]
+	hEntityRef := common.HexToHash(entityRef)
+	content := app.Entity(hEntityRef)
     w.Write(content)
 }

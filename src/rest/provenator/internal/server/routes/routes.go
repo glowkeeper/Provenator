@@ -20,6 +20,7 @@ func RegisterRoutes(r *mux.Router) {
 	uEntitiesList := viper.GetString("paths./entities.get.summary")
 	uEntitiesAll := viper.GetString("paths./entities-all.get.summary")
 	uEntitiesTotal := viper.GetString("paths./entities-total.get.summary")
+	uEntitiesType := viper.GetString("paths./entities-type/{entitiesRef}.get.summary")
 	uEntity := viper.GetString("paths./entities/{entitiesRef}.get.summary")
 
 	r.PathPrefix("/").HandlerFunc(postHandler).Methods(http.MethodPost, http.MethodPut, http.MethodPatch, http.MethodDelete)
@@ -56,6 +57,10 @@ func RegisterRoutes(r *mux.Router) {
 
 	r.HandleFunc(uEntitiesTotal, func(w http.ResponseWriter, r *http.Request) {
 	    entitiesTotal(w)
+	}).Methods(http.MethodGet)
+
+	r.HandleFunc(uEntitiesType, func(w http.ResponseWriter, r *http.Request) {
+	    entitiesType(w, r)
 	}).Methods(http.MethodGet)
 
 	r.HandleFunc(uEntity, func(w http.ResponseWriter, r *http.Request) {

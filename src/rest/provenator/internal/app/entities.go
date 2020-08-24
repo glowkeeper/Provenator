@@ -46,6 +46,28 @@ func EntitiesTotal () ([]byte) {
     return result
 }
 
+// EntityType - get the typoe of entity
+func EntityType (ref [32]byte) ([]byte) {
+
+	var result []byte
+
+	eType, err := contracts.Contracts.EntitiesContract.GetEntityType(&bind.CallOpts{}, ref)
+	if err != nil {
+		pkgLog.SLogger.Error(text.ErrorEntitiesNum, zap.Error(err))
+		return result
+	}
+
+    thisJSON := &types.EntityType{Type: eType}
+    tResult, err := json.MarshalIndent(thisJSON, "", "\t")
+    if err != nil {
+        pkgLog.SLogger.Error(text.ErrorEntitiesType + " - " + text.ErrorUnMarshall, zap.Error(err))
+        return result
+    }
+	result = append(result, tResult...)
+
+    return result
+}
+
 // Entity - get a single entity
 func Entity (ref [32]byte) ([]byte) {
 
@@ -65,8 +87,6 @@ func Entity (ref [32]byte) ([]byte) {
 	}
 
 	aEntity, err := entityContract.Get(&bind.CallOpts{})
-	//sRef, aEntity, err := contracts.Contracts.EntitiesContract.GetEntity(&bind.CallOpts{}, ref)
-	//fmt.Sprintf("sRef %#x", sRef)
 	if (err != nil) {
 		pkgLog.SLogger.Error(text.ErrorEntitiesAll, zap.Error(err))
 		return result

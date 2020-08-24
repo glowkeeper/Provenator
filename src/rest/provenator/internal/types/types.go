@@ -30,7 +30,12 @@ type EntitiesAll struct {
 
 // EntitiesTotal - get the total number of entities
 type EntitiesTotal struct {
-	Total	int64    `json:"total"`
+	Total	int64   `json:"total"`
+}
+
+// EntityType - get the type of entities
+type EntityType struct {
+	Type	uint8	`json:"entityType"`
 }
 
 // EntitiesList - a list if all entities

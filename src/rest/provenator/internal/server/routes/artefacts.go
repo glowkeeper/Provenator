@@ -31,8 +31,8 @@ func artefactsTotal(w http.ResponseWriter) {
 func artefacts(w http.ResponseWriter, r *http.Request) {
 
 	params := mux.Vars(r)
-	pArtefacts := viper.GetString("paths./artefacts/{artefactsRef}.get.parameters.name")
-    artefactsRef := params[pArtefacts]
+	pArtefact := viper.GetString("paths./artefacts/{artefactsRef}.get.parameters.name")
+    artefactsRef := params[pArtefact]
 	hArtefactsRef := common.HexToHash(artefactsRef)
 	content := app.Artefact(hArtefactsRef)
     w.Write(content)
