@@ -2,7 +2,7 @@ import React from 'react'
 
 import Web3 from 'web3'
 import { ethers } from 'ethers'
-import { JsonRpcProvider } from 'ethers/providers/json-rpc-provider'
+//import { JsonRpcProvider } from 'ethers/providers/json-rpc-provider'
 
 import { Contracts, Config } from '../../../config/contracts'
 import { Entities } from '../../../config/typechain/Entities'
@@ -27,15 +27,15 @@ import { Transaction } from '../../../config'
 export const init = () => {
     return async (dispatch: AppDispatch) => {
 
-        let blockchainProvider: JsonRpcProvider
+        //let blockchainProvider: JsonRpcProvider
         let ethereum = (window as any).ethereum
-        let web3 = (window as any).web3
 
         if (ethereum) {
 
+          //let web3 = (window as any).web3
           await ethereum.enable()
-          web3 = new Web3(ethereum)
-          blockchainProvider = new ethers.providers.Web3Provider(web3.currentProvider)
+          let web3 = new Web3(ethereum)
+          let blockchainProvider = new ethers.providers.Web3Provider(web3.currentProvider as any)
           const signer = await blockchainProvider.getSigner()
           const account = await signer.getAddress()
           const chainObj = await blockchainProvider.getNetwork()
@@ -52,6 +52,8 @@ export const init = () => {
               Account: account
             }
           }
+
+         //console.log(infoData)
 
           await dispatch(write({data: infoData})(ChainInfoActionTypes.ADD_DATA))
 

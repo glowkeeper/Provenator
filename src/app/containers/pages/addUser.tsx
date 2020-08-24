@@ -24,7 +24,7 @@ import { Okay, OptionsStyles } from '../../styles'
 import { addAuthor } from '../../store/app/blockchain'
 import { initialise as txInitialise } from '../../store/app/tx/actions'
 
-import { history, getDictEntries } from '../../utils'
+import { history, getDictEntries, addressToBytes32, bytes32ToAddress } from '../../utils'
 
 import { NumberOptionType, FormHelpers, GeneralError, Transaction, Local, Misc, User as UserConfig } from '../../config'
 
@@ -102,8 +102,8 @@ export const getUser = (props: Props) => {
             setSubmit(true)
             props.initialise()
 
-            // 0x79b0e7De13a17a74AB23Fd2e6c69AA3Cf93F4E1c
-            const id = props.address + "000000000000000000000000"
+            const id = addressToBytes32(props.address)
+            //console.log(id, bytes32ToAddress(id))
 
             const userInfo: Author = {
                 id: id,

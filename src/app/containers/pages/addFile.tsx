@@ -208,16 +208,19 @@ export const getFile = (props: Props) => {
                 name: fileName,
                 description: values.description,
                 author: {
+                    id: "",
                     name: values.authorName,
                     email: values.authorEMail,
                     url:  values.authorURL
                 },
                 copyrightHolder: {
+                    id: "",
                     name: values.copyrightHolderName,
                     email: values.copyrightHolderEMail,
                     url:  values.copyrightHolderURL
                 },
                 publisher: {
+                    id: "",
                     name: values.publisherName,
                     email: values.publisherEMail,
                     url:  values.publisherURL
