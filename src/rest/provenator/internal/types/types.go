@@ -18,8 +18,8 @@ type Contracts struct {
 // Entity - creative entities
 type Entity struct {
 	ID				string	`json:"id"`
-    Name        	uint8  	`json:"name"`
-    EMail        	int64  	`json:"email"`
+    Name        	string  `json:"name"`
+    EMail        	string  `json:"email"`
     URL			 	string  `json:"url"`
 }
 

@@ -24,41 +24,41 @@ func RegisterRoutes(r *mux.Router) {
 
 	r.PathPrefix("/").HandlerFunc(postHandler).Methods(http.MethodPost, http.MethodPut, http.MethodPatch, http.MethodDelete)
 
-	r.HandleFunc(uHome, func(w http.ReartefactseWriter, r *http.Request) {
+	r.HandleFunc(uHome, func(w http.ResponseWriter, r *http.Request) {
     	home(w)
 	}).Methods(http.MethodGet)
 
 	// Artefacts
-	r.HandleFunc(uArtefactsList, func(w http.ReartefactseWriter, r *http.Request) {
+	r.HandleFunc(uArtefactsList, func(w http.ResponseWriter, r *http.Request) {
     	artefactsList(w)
 	}).Methods(http.MethodGet)
 
-	r.HandleFunc(uArtefactsAll, func(w http.ReartefactseWriter, r *http.Request) {
+	r.HandleFunc(uArtefactsAll, func(w http.ResponseWriter, r *http.Request) {
     	artefactsAll(w)
 	}).Methods(http.MethodGet)
 
-	r.HandleFunc(uArtefactsTotal, func(w http.ReartefactseWriter, r *http.Request) {
+	r.HandleFunc(uArtefactsTotal, func(w http.ResponseWriter, r *http.Request) {
     	artefactsTotal(w)
 	}).Methods(http.MethodGet)
 
-	r.HandleFunc(uArtefacts, func(w http.ReartefactseWriter, r *http.Request) {
+	r.HandleFunc(uArtefacts, func(w http.ResponseWriter, r *http.Request) {
     	artefacts(w, r)
 	}).Methods(http.MethodGet)
 
 	// Entities
-	r.HandleFunc(uEntities, func(w http.ReartefactseWriter, r *http.Request) {
+	r.HandleFunc(uEntitiesList, func(w http.ResponseWriter, r *http.Request) {
 	    entitiesList(w)
 	}).Methods(http.MethodGet)
 
-	r.HandleFunc(uEntitiesAll, func(w http.ReartefactseWriter, r *http.Request) {
+	r.HandleFunc(uEntitiesAll, func(w http.ResponseWriter, r *http.Request) {
 	    entitiesAll(w)
 	}).Methods(http.MethodGet)
 
-	r.HandleFunc(uEntitiesTotal, func(w http.ReartefactseWriter, r *http.Request) {
+	r.HandleFunc(uEntitiesTotal, func(w http.ResponseWriter, r *http.Request) {
 	    entitiesTotal(w)
 	}).Methods(http.MethodGet)
 
-	r.HandleFunc(uJob, func(w http.ReartefactseWriter, r *http.Request) {
+	r.HandleFunc(uEntity, func(w http.ResponseWriter, r *http.Request) {
 	    entity(w, r)
 	}).Methods(http.MethodGet)
 }

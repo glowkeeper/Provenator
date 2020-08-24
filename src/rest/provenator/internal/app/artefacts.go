@@ -49,7 +49,6 @@ func ArtefactsTotal () ([]byte) {
 func Artefact (ref [32]byte) ([]byte) {
 
 	var result []byte
-	artefact := types.Works{}
 	artefactsAddress, err := contracts.Contracts.ArtefactsContract.GetWorkContract(&bind.CallOpts{}, ref)
 	if err != nil {
 	    pkgLog.SLogger.Error(text.ErrorArtefactsAll, zap.Error(err))
@@ -69,27 +68,27 @@ func Artefact (ref [32]byte) ([]byte) {
 	}
 
 	author := types.Entity {
-	   ID: fmt.Sprintf("%#x", ref),
-	   Name: aArtefacts.Name,
-	   EMail: aArtefacts.Location,
-	   URL: aArtefacts.Description,
+	   ID: fmt.Sprintf("%#x", aArtefacts.Author.Id),
+	   Name: aArtefacts.Author.Name,
+	   EMail: aArtefacts.Author.Email,
+	   URL: aArtefacts.Author.Url,
 	}
 
 	copyrightHolder := types.Entity {
-	   ID: fmt.Sprintf("%#x", ref),
-	   Name: aArtefacts.Name,
-	   EMail: aArtefacts.Location,
-	   URL: aArtefacts.Description,
+	   ID: fmt.Sprintf("%#x", aArtefacts.CopyrightHolder.Id),
+ 	   Name: aArtefacts.CopyrightHolder.Name,
+ 	   EMail: aArtefacts.CopyrightHolder.Email,
+ 	   URL: aArtefacts.CopyrightHolder.Url,
 	}
 
 	publisher := types.Entity {
-	   ID: fmt.Sprintf("%#x", ref),
-	   Name: aArtefacts.Name,
-	   EMail: aArtefacts.Location,
-	   URL: aArtefacts.Description,
+	   ID: fmt.Sprintf("%#x", aArtefacts.Publisher.Id),
+ 	   Name: aArtefacts.Publisher.Name,
+ 	   EMail: aArtefacts.Publisher.Email,
+ 	   URL: aArtefacts.Publisher.Url,
 	}
 
-	artefacts := types.Works {
+	artefact := types.Works {
 		WorkType: aArtefacts.WorkType,
 		License: aArtefacts.License,
 	    ID: fmt.Sprintf("%#x", ref),
@@ -103,7 +102,7 @@ func Artefact (ref [32]byte) ([]byte) {
 	    Publisher: publisher,
 	}
 
-	tResult, err := json.MarshalIndent(&artefacts, "", "")
+	tResult, err := json.MarshalIndent(&artefact, "", "")
 	if err != nil {
 	    pkgLog.SLogger.Error(text.ErrorArtefactsAll + " - " + text.ErrorUnMarshall, zap.Error(err))
 	    return result

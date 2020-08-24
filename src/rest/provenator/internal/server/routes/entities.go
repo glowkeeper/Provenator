@@ -2,7 +2,7 @@ package routes
 
 import (
 	"net/http"
-	"strconv"
+	//"strconv"
 
 	"github.com/spf13/viper"
 	"github.com/gorilla/mux"
@@ -13,19 +13,19 @@ import (
 
 func entitiesList (w http.ResponseWriter) {
 
-	content := app.JobsList()
+	content := app.EntitiesList()
 	w.Write(content)
 }
 
 func entitiesAll(w http.ResponseWriter) {
 
-	content := app.JobsAll()
+	content := app.EntitiesAll()
 	w.Write(content)
 }
 
 func entitiesTotal(w http.ResponseWriter) {
 
-    content := app.JobsTotal()
+    content := app.EntitiesTotal()
     w.Write(content)
 }
 
@@ -35,6 +35,6 @@ func entity(w http.ResponseWriter, r *http.Request) {
 	pJob := viper.GetString("paths./job/{jobRef}.get.parameters.name")
     jobRef := params[pJob]
 	hJobRef := common.HexToHash(jobRef)
-	content := app.Job(hJobRef)
+	content := app.Entity(hJobRef)
     w.Write(content)
 }

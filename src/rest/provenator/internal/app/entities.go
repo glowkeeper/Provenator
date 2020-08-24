@@ -6,12 +6,13 @@ import (
   	"math/big"
 
     "github.com/ethereum/go-ethereum/accounts/abi/bind"
-	"github.com/ethereum/go-ethereum/common"
+	//"github.com/ethereum/go-ethereum/common"
 
     "github.com/glowkeeper/Provenator/src/rest/provenator/internal/types"
 	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/text"
     "github.com/glowkeeper/Provenator/src/rest/provenator/internal/contracts"
-    "github.com/glowkeeper/Provenator/src/rest/provenator/utils"
+    "github.com/glowkeeper/Provenator/src/rest/provenator/internal/contracts/Entities"
+    //"github.com/glowkeeper/Provenator/src/rest/provenator/utils"
 
     "go.uber.org/zap"
     pkgLog "github.com/glowkeeper/Provenator/src/rest/provenator/pkg/log"
@@ -74,8 +75,8 @@ func Entity (ref [32]byte) ([]byte) {
 	entity = types.Entity {
 		ID: fmt.Sprintf("%#x", ref),
 		Name: aEntity.Name,
-		EMail: aEntity.Location,
-		URL: aEntity.Description,
+		EMail: aEntity.Email,
+		URL: aEntity.Url,
 	}
 
 	tResult, err := json.MarshalIndent(&entity, "", "")

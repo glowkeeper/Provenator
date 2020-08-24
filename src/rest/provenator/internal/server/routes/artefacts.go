@@ -10,30 +10,30 @@ import (
 	"github.com/glowkeeper/Provenator/src/rest/provenator/internal/app"
 )
 
-func artefactsList(w http.ReartefactseWriter) {
+func artefactsList(w http.ResponseWriter) {
 
-	content := app.SponsList()
+	content := app.ArtefactsList()
 	w.Write(content)
 }
 
-func artefactsAll(w http.ReartefactseWriter) {
+func artefactsAll(w http.ResponseWriter) {
 
-	content := app.SponsAll()
+	content := app.ArtefactsAll()
 	w.Write(content)
 }
 
-func artefactsTotal(w http.ReartefactseWriter) {
+func artefactsTotal(w http.ResponseWriter) {
 
-    content := app.SponsTotal()
+    content := app.ArtefactsTotal()
     w.Write(content)
 }
 
-func artefacts(w http.ReartefactseWriter, r *http.Request) {
+func artefacts(w http.ResponseWriter, r *http.Request) {
 
 	params := mux.Vars(r)
-	pSpons := viper.GetString("paths./artefacts/{artefactsRef}.get.parameters.name")
-    artefactsRef := params[pSpons]
-	hSponsRef := common.HexToHash(artefactsRef)
-	content := app.Spons(hSponsRef)
+	pArtefacts := viper.GetString("paths./artefacts/{artefactsRef}.get.parameters.name")
+    artefactsRef := params[pArtefacts]
+	hArtefactsRef := common.HexToHash(artefactsRef)
+	content := app.Artefact(hArtefactsRef)
     w.Write(content)
 }
