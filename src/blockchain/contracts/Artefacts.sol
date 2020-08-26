@@ -24,6 +24,12 @@ contract ArtefactNode is IArtefact {
         set(_work);
     }
 
+    function amend(CreativeWorks memory _work) override virtual public {
+        require ( id == _work.id );
+
+        set(_work);
+    }
+
     function get() override virtual public view returns (CreativeWorks memory) {
 
         CreativeWorks memory works;
@@ -64,12 +70,6 @@ contract ArtefactNode is IArtefact {
         }
 
         return works;
-    }
-
-    function amend(CreativeWorks memory _work) override virtual public {
-        require ( id == _work.id );
-
-        set(_work);
     }
 
     function set(CreativeWorks memory _work) private {

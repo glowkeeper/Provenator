@@ -5,14 +5,16 @@ import "./Types.sol";
 
 abstract contract IArtefact {
 
-    function get() virtual public view returns (CreativeWorks memory);
     function amend(CreativeWorks memory _work) virtual public;
+
+    function get() virtual public view returns (CreativeWorks memory);
 }
 
 abstract contract IArtefactFactory {
 
     function addWork(CreativeWorks memory _work) virtual public;
     function amendWork(CreativeWorks memory _work) virtual public;
+
     function getWork(bytes32 _id) virtual public view returns (CreativeWorks memory);
     function getWorkContract(bytes32 _id) virtual public view returns (address);
 }

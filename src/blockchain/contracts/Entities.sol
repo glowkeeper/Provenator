@@ -29,29 +29,6 @@ contract EntityNode is IEntity, IFactory {
         entity = _entity;
     }
 
-    function get() override virtual public view returns (CreativeEntities memory) {
-
-        return entity;
-    }
-
-
-    function getTypes() override virtual public view returns (bool[] memory) {
-
-        return entityTypes;
-    }
-
-    function getNum() override virtual public view returns (uint256)
-    {
-        return relationStore.length;
-    }
-
-    function getReference(uint256 _index) override virtual public view returns (bytes32)
-    {
-        require (_index < relationStore.length);
-
-        return relationStore[_index];
-    }
-
     function amend(CreativeEntities memory _entity, EntityTypes _entityType) override virtual public {
 
         addType(_entityType);
@@ -77,6 +54,16 @@ contract EntityNode is IEntity, IFactory {
         }
     }
 
+    function get() override virtual public view returns (CreativeEntities memory) {
+
+        return entity;
+    }
+
+    function getTypes() override virtual public view returns (bool[] memory) {
+
+        return entityTypes;
+    }
+
     function isType(EntityTypes _type) override virtual public view returns (bool) {
         require (
             _type > EntityTypes.NONE &&
@@ -97,6 +84,19 @@ contract EntityNode is IEntity, IFactory {
            }
         }
         return found;
+    }
+
+
+    function getNum() override virtual public view returns (uint256)
+    {
+        return relationStore.length;
+    }
+
+    function getReference(uint256 _index) override virtual public view returns (bytes32)
+    {
+        require (_index < relationStore.length);
+
+        return relationStore[_index];
     }
 }
 
@@ -169,5 +169,19 @@ contract Entities is IEntitiesFactory, IFactory {
         require (_index < entityStore.size);
 
         return entityStore.keys[_index].key;
+    }
+
+    function isType(bytes32 _id, EntityTypes _type) override virtual public view returns (bool) {
+        require( entityStore.data[_id].value != address(0x0) );
+
+        EntityNode entity = EntityNode(entityStore.data[_id].value);
+        return entity.isType(_type);
+    }
+
+    function containsRelation(bytes32 _parentId, bytes32 _childId) override virtual public view returns (bool) {
+        require( entityStore.data[_parentId].value != address(0x0) );
+
+        EntityNode entity = EntityNode(entityStore.data[_parentId].value);
+        return entity.containsRelation(_childId);
     }
 }
