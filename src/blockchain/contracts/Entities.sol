@@ -8,19 +8,25 @@ import "./Storage.sol";
 import "./IFactory.sol";
 import "./IEntities.sol";
 
-contract EntityNode is IEntity {
+contract EntityNode is IEntity, IFactory {
 
-    EntityTypes         entityType;
-    CreativeEntities    entity;
+    uint8 constant typesSize = uint8(EntityTypes.MAX);
+    CreativeEntities               entity;
+    bool[]                         entityTypes;
+    bytes32[]                      relationStore;
 
     constructor (CreativeEntities memory _entity, EntityTypes _entityType) public {
         require (
+            _entity.id[0] != 0 &&
+            bytes(_entity.name).length > 0 &&
+            bytes(_entity.email).length > 0 &&
             _entityType > EntityTypes.NONE &&
             _entityType < EntityTypes.MAX
         );
 
-        entityType = _entityType;
-        set(_entity);
+        entityTypes = new bool[](typesSize);
+        entityTypes[uint8(_entityType)] = true;
+        entity = _entity;
     }
 
     function get() override virtual public view returns (CreativeEntities memory) {
@@ -28,33 +34,75 @@ contract EntityNode is IEntity {
         return entity;
     }
 
-    function getType() override virtual public view returns (EntityTypes) {
 
-        return entityType;
+    function getTypes() override virtual public view returns (bool[] memory) {
+
+        return entityTypes;
+    }
+
+    function getNum() override virtual public view returns (uint256)
+    {
+        return relationStore.length;
+    }
+
+    function getReference(uint256 _index) override virtual public view returns (bytes32)
+    {
+        require (_index < relationStore.length);
+
+        return relationStore[_index];
     }
 
     function amend(CreativeEntities memory _entity, EntityTypes _entityType) override virtual public {
-        require ( entityType == _entityType);
-        
-        set(_entity);
+
+        addType(_entityType);
+        entity = _entity;
     }
 
-    function set(CreativeEntities memory _entity) private {
+    function addType(EntityTypes _type) override virtual public {
         require (
-            _entity.id[0] != 0 &&
-             bytes(_entity.name).length > 0 &&
-             bytes(_entity.email).length > 0
+            _type > EntityTypes.NONE &&
+            _type < EntityTypes.MAX
         );
 
-        entity.id = _entity.id;
-        entity.name = _entity.name;
-        entity.email = _entity.email;
-        entity.url = _entity.url;
+        if ( !isType(_type) ) {
+            entityTypes[uint8(_type)] = true;
+        }
+    }
+
+    function addRelation(bytes32 _id) override virtual public {
+        require ( _id[0] != 0 );
+
+        if( (entity.id != _id ) && (!containsRelation(_id)) ) {
+            relationStore.push(_id);
+        }
+    }
+
+    function isType(EntityTypes _type) override virtual public view returns (bool) {
+        require (
+            _type > EntityTypes.NONE &&
+            _type < EntityTypes.MAX
+        );
+
+        return entityTypes[uint8(_type)];
+    }
+
+    function containsRelation(bytes32 _id) override virtual public view returns (bool) {
+        require ( _id[0] != 0 );
+
+        bool found = false;
+        for (uint i = 0; i < relationStore.length; i++) {
+           if ( relationStore[i] == _id ) {
+               found = true;
+               break;
+           }
+        }
+        return found;
     }
 }
 
 contract Entities is IEntitiesFactory, IFactory {
 
+    uint8 constant maxEntityTypes = uint8(EntityTypes.MAX);
     Data entityStore;
     using IterableData for Data;
 
@@ -83,6 +131,14 @@ contract Entities is IEntitiesFactory, IFactory {
         entity.amend(_entity, _type);
     }
 
+
+    function addEntityRelation(bytes32 _parentId, bytes32 _childId) override virtual public {
+        require ( entityStore.data[_parentId].value != address(0x0) );
+
+        EntityNode entity = EntityNode(entityStore.data[_parentId].value);
+        entity.addRelation(_childId);
+    }
+
     function getEntity(bytes32 _id) override virtual public view returns (CreativeEntities memory) {
         require ( entityStore.data[_id].value != address(0x0) );
 
@@ -90,11 +146,11 @@ contract Entities is IEntitiesFactory, IFactory {
         return entity.get();
     }
 
-    function getEntityType(bytes32 _id) override virtual public view returns (EntityTypes) {
+    function getEntityTypes(bytes32 _id) override virtual public view returns (bool[] memory) {
         require ( entityStore.data[_id].value != address(0x0) );
 
         EntityNode entity = EntityNode(entityStore.data[_id].value);
-        return entity.getType();
+        return entity.getTypes();
     }
 
     function getEntityContract(bytes32 _id) override virtual public view returns (address) {

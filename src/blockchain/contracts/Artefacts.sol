@@ -38,12 +38,12 @@ contract ArtefactNode is IArtefact {
         works.description = work.description;
 
         EntityNode entity = EntityNode(entities.getEntityContract(work.author));
-        require ( entity.getType() == EntityTypes.AUTHOR );
+        require ( entity.isType(EntityTypes.AUTHOR) );
         works.author = entity.get();
 
         if ( work.copyrightHolder[0] != 0 ) {
             entity = EntityNode(entities.getEntityContract(work.copyrightHolder));
-            require ( entity.getType() == EntityTypes.COPYRIGHTHOLDER );
+            require ( entity.isType(EntityTypes.COPYRIGHTHOLDER) );
             works.copyrightHolder = entity.get();
         } else {
             works.copyrightHolder.id = bytes32(0);
@@ -54,7 +54,7 @@ contract ArtefactNode is IArtefact {
 
         if ( work.publisher[0] != 0 ) {
             entity = EntityNode(entities.getEntityContract(work.publisher));
-            require ( entity.getType() == EntityTypes.PUBLISHER );
+            require ( entity.isType(EntityTypes.PUBLISHER) );
             works.publisher = entity.get();
         } else {
             works.publisher.id = bytes32(0);
@@ -99,10 +99,14 @@ contract ArtefactNode is IArtefact {
 
         if ( work.copyrightHolder[0] != 0 ) {
             entities.addEntity(_work.copyrightHolder, EntityTypes.COPYRIGHTHOLDER);
+            entities.addEntityRelation(work.author, work.copyrightHolder);
+            entities.addEntityRelation(work.copyrightHolder, work.author);
         }
 
         if ( work.publisher[0] != 0 ) {
             entities.addEntity(_work.publisher, EntityTypes.PUBLISHER);
+            entities.addEntityRelation(work.author, work.publisher);
+            entities.addEntityRelation(work.publisher, work.author);
         }
     }
 }
