@@ -71,6 +71,7 @@ func Start() {
 
     cors := handlers.CORS(
         handlers.AllowedHeaders([]string{"content-type"}),
+        handlers.AllowedMethods([]string{"GET"}),
         handlers.AllowedOrigins([]string{"*"}),
         handlers.AllowCredentials(),
     )

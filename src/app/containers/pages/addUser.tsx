@@ -21,18 +21,20 @@ import Grid from '@material-ui/core/Grid'
 import RightCircleOutlined from '@ant-design/icons/lib/icons/RightCircleOutlined'
 import { Okay, OptionsStyles } from '../../styles'
 
+import { initialise, getData } from '../../store/app/get/actions'
 import { addAuthor } from '../../store/app/blockchain'
 import { initialise as txInitialise } from '../../store/app/tx/actions'
 
 import { history, getDictEntries, addressToBytes32, bytes32ToAddress } from '../../utils'
 
-import { NumberOptionType, FormHelpers, GeneralError, Transaction, Local, Misc, User as UserConfig } from '../../config'
+import { NumberOptionType, FormHelpers, GeneralError, Transaction, Remote, Local, Misc, User as UserConfig } from '../../config'
 
 import {
     ApplicationState,
     AppDispatch,
     Author,
     PayloadProps,
+    GetProps,
     TxData } from '../../store/types'
 
 import { themeStyles } from '../../styles'
@@ -49,11 +51,13 @@ const addUserSchema = Yup.object().shape({
 
 interface UserStateProps {
   info: PayloadProps
+  user: GetProps,
   address: string
 }
 
 interface UserDispatchProps {
   initialise: () => void
+  getData: (url: string) => void
   handleSubmit: (values: Author) => void
 }
 
@@ -64,6 +68,7 @@ export const getUser = (props: Props) => {
     let isFirstRun = useRef(true)
     const [isLoading, setIsLoading] = useState(false)
     const [isSubmitting, setSubmit] = useState(false)
+    const [user, setUser] = useState("")
     const [info, setInfo] = useState("")
 
     const themeClasses = themeStyles()
@@ -73,6 +78,14 @@ export const getUser = (props: Props) => {
         if ( isFirstRun.current ) {
 
             isFirstRun.current = false
+            props.initialise()
+            props.getData(`${Remote.insecure}${Remote.server}:${Remote.port}${Remote.entities}/${props.address}`)
+
+        } else if ( ( props.user.data.length > 0 ) && ( user == "" ) ) {
+
+            console.log(props.user.data)
+
+            setUser("blah")
 
         } else {
 
@@ -85,9 +98,10 @@ export const getUser = (props: Props) => {
                     history.push(`${Local.home}`)
                 }, Misc.delay)
             }
+
         }
 
-    }, [props.info])
+    }, [props.info, props.user])
 
     return (
       <>
@@ -157,6 +171,7 @@ export const getUser = (props: Props) => {
 const mapStateToProps = (state: ApplicationState): UserStateProps => {
   return {
     info: state.tx as PayloadProps,
+    user: state.data as GetProps,
     address: state.chainInfo.data.Account
   }
 }
@@ -164,6 +179,7 @@ const mapStateToProps = (state: ApplicationState): UserStateProps => {
 const mapDispatchToProps = (dispatch: AppDispatch): UserDispatchProps => {
   return {
     initialise: () => dispatch(txInitialise()),
+    getData: (url: string) => dispatch(getData(url)),
     handleSubmit: (values: Author) => dispatch(addAuthor(values))
   }
 }

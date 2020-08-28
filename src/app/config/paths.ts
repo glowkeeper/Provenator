@@ -20,6 +20,8 @@ class Remote {
 
     static readonly server = 'localhost'
     static readonly port = '21000'
+
+    static readonly entities = "/entities"
 }
 
 export { Local, Remote }

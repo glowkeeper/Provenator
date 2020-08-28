@@ -8,6 +8,7 @@ export interface ApplicationState {
   chainContracts: ContractProps
   info: InfoPageProps
   tx: TransactionProps
+  data: GetProps
 }
 
 export interface PayloadProps {
@@ -67,6 +68,13 @@ export interface InfoData {
   contact: InfoProps
 }
 
+// Get stuff
+export type DataProps = Entities
+
+export interface GetProps extends PayloadProps {
+    data: Array<DataProps>
+}
+
 //Tx stuff
 export interface TxData {
   key: string
@@ -79,6 +87,8 @@ export interface TransactionProps extends PayloadProps {
 }
 
 // Creative Works stuff
+
+//Creators
 export enum EntityTypes {
     Author = 1,
     CopyrightHolder,
@@ -94,7 +104,13 @@ export interface Entity {
 export type Author = Entity & Id
 export type CopyrightHolder = Entity & Id
 export type Publisher = Entity & Id
+export type Entities = Author | CopyrightHolder  | Publisher
 
+export interface EntityProps {
+    entities: Array<Entities>
+}
+
+// the works they create
 export interface Works {
     workType: number
     license: number
@@ -108,18 +124,27 @@ export interface Works {
     publisher: Publisher
 }
 
-// Reference stuff
-export interface Id {
-     id: string
-}
-
 export type CreativeWorks = Works & Id
 
 export interface CreativeWorksProps {
     fileInfo: Array<CreativeWorks>
 }
 
+// Reference stuff - unique Ids
+export interface Id {
+     id: string
+}
+
 // Action types
+
+// Get action InfoTypes// Actiontypes stuff
+export const enum GetActionTypes {
+  GET_INIT = '@@GetActionTypes/GET_INIT',
+  GET_SUCCESS = '@@GetActionTypes/GET_SUCCESS',
+  GET_FAILURE = '@@GetActionTypes/GET_FAILURE'
+}
+
+// put action types
 export const enum TransactionActionTypes {
   TRANSACTION_INIT = '@@TransactionActionTypes/TRANSACTION_INIT',
   TRANSACTION_PENDING = '@@TransactionActionTypes/TRANSACTION_PENDING',
@@ -127,11 +152,12 @@ export const enum TransactionActionTypes {
   TRANSACTION_FAILURE = '@@TransactionActionTypes/TRANSACTION_FAILURE'
 }
 
-
+// blockchain contracts
 export const enum ChainContractActionTypes {
   ADD_CONTRACTS = '@@ChainContractAction/ADD_CONTRACTS'
 }
 
+// blockchain info
 export const enum ChainInfoActionTypes {
   ADD_DATA = '@@ChainInfoAction/ADD_DATA'
 }
