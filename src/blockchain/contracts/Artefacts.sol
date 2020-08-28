@@ -171,4 +171,13 @@ contract Artefacts is IArtefactFactory, IFactory {
 
         return workStore.keys[_index].key;
     }
+
+    function getReferences() override virtual public view returns (bytes32[] memory) {
+
+        bytes32[] memory refs = new bytes32[](workStore.size);
+        for (uint i = 0; i < workStore.size; i++) {
+            refs[i] = workStore.keys[i].key;
+        }
+        return refs;
+    }
 }

@@ -86,17 +86,19 @@ contract EntityNode is IEntity, IFactory {
         return found;
     }
 
-
-    function getNum() override virtual public view returns (uint256)
-    {
+    function getNum() override virtual public view returns (uint256) {
         return relationStore.length;
     }
 
-    function getReference(uint256 _index) override virtual public view returns (bytes32)
-    {
+    function getReference(uint256 _index) override virtual public view returns (bytes32) {
         require (_index < relationStore.length);
 
         return relationStore[_index];
+    }
+
+    function getReferences() override virtual public view returns (bytes32[] memory) {
+
+        return relationStore;
     }
 }
 
@@ -159,16 +161,23 @@ contract Entities is IEntitiesFactory, IFactory {
         return entityStore.data[_id].value;
     }
 
-    function getNum() override virtual public view returns (uint256)
-    {
+    function getNum() override virtual public view returns (uint256) {
         return entityStore.size;
     }
 
-    function getReference(uint256 _index) override virtual public view returns (bytes32)
-    {
+    function getReference(uint256 _index) override virtual public view returns (bytes32) {
         require (_index < entityStore.size);
 
         return entityStore.keys[_index].key;
+    }
+
+    function getReferences() override virtual public view returns (bytes32[] memory) {
+
+        bytes32[] memory refs = new bytes32[](entityStore.size);
+        for (uint i = 0; i < entityStore.size; i++) {
+            refs[i] = entityStore.keys[i].key;
+        }
+        return refs;
     }
 
     function isType(bytes32 _id, EntityTypes _type) override virtual public view returns (bool) {
@@ -184,4 +193,27 @@ contract Entities is IEntitiesFactory, IFactory {
         EntityNode entity = EntityNode(entityStore.data[_parentId].value);
         return entity.containsRelation(_childId);
     }
+
+    function getRelationsNum(bytes32 _id) override virtual public view returns (uint256) {
+        require( entityStore.data[_id].value != address(0x0) );
+
+        EntityNode entity = EntityNode(entityStore.data[_id].value);
+        return entity.getNum();
+    }
+
+    function getRelationsReference(bytes32 _id, uint256 _index) override virtual public view returns (bytes32) {
+        require( entityStore.data[_id].value != address(0x0) );
+
+        EntityNode entity = EntityNode(entityStore.data[_id].value);
+        return entity.getReference(_index);
+    }
+
+    function getRelations(bytes32 _id) override virtual public view returns (bytes32[] memory) {
+        require( entityStore.data[_id].value != address(0x0) );
+
+        EntityNode entity = EntityNode(entityStore.data[_id].value);
+        return entity.getReferences();
+    }
+
+
 }

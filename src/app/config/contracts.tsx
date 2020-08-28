@@ -12,17 +12,24 @@ class Config {
 class Contracts {
 
     // rinkeby
-    static entitiesAddress = "0xa435af28590d0fA707B17aa6b7E381FBa6DA4159"
-    static artefactsAddress = "0xaF1130Cc84e7e24C58959b706fd47d3E896b1ef0"
+    static entitiesAddress = "0x04A6803c8c80EE49D5CB050a7D8fD6461216a13D"
+    static artefactsAddress = "0x6a5Aa3F1FED99229a69D9a17BEbCB6a13edCA868"
 
     static entitiesABI = [
         "function addEntity(tuple(bytes32 id, string name, string email, string url) _entity, uint8 _entityType)",
         "function amendEntity(tuple(bytes32 id, string name, string email, string url) _entity, uint8 _entityType)",
+        "function addEntityRelation(bytes32 _parentId, bytes32 _childId)",
         "function getEntity(bytes32 _id) view returns (tuple(bytes32 id, string name, string email, string url))",
-        "function getEntityType(bytes32 _id) view returns (uint8)",
+        "function getEntityTypes(bytes32 _id) view returns (bool[])",
         "function getEntityContract(bytes32 _id) view returns (address)",
         "function getNum() view returns (uint256)",
-        "function getReference(uint256 _index) view returns (bytes32)"
+        "function getReference(uint256 _index) view returns (bytes32)",
+        "function getReferences() view returns (bytes32[])",
+        "function isType(bytes32 _id, uint8 _type) view returns (bool)",
+        "function containsRelation(bytes32 _parentId, bytes32 _childId) view returns (bool)",
+        "function getRelationsNum(bytes32 _id) view returns (uint256)",
+        "function getRelationsReference(bytes32 _id, uint256 _index) view returns (bytes32)",
+        "function getRelations(bytes32 _id) view returns (bytes32[])"
     ]
 
     static artefactsABI = [
@@ -31,9 +38,9 @@ class Contracts {
         "function getWork(bytes32 _id) view returns (tuple(uint8 workType, uint8 license, bytes32 id, bytes32 dateCreated, bytes32 dateModified, string url, string name, string description, tuple(bytes32 id, string name, string email, string url) author, tuple(bytes32 id, string name, string email, string url) copyrightHolder, tuple(bytes32 id, string name, string email, string url) publisher) _work)",
         "function getWorkContract(bytes32 _id) view returns (address)",
         "function getNum() view returns (uint256)",
-        "function getReference(uint256 _index) view returns (bytes32)"
+        "function getReference(uint256 _index) view returns (bytes32)",
+        "function getReferences() view returns (bytes32[])"
     ]
-
 }
 
 export { Config, Contracts }

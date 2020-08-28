@@ -7,5 +7,5 @@ timeout:
 
 address:
     ethereum: "https://rinkeby.infura.io/v3/f4851ba4a9e546e7a1f16bf8e14f0a92"
-    entitiesContract: "0xa435af28590d0fA707B17aa6b7E381FBa6DA4159"
-    artefactsContract: "0xaF1130Cc84e7e24C58959b706fd47d3E896b1ef0"
+    entitiesContract: "0x04A6803c8c80EE49D5CB050a7D8fD6461216a13D"
+    artefactsContract: "0x6a5Aa3F1FED99229a69D9a17BEbCB6a13edCA868"
