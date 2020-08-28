@@ -46,19 +46,27 @@ func EntitiesTotal () ([]byte) {
     return result
 }
 
-// EntityType - get the typoe of entity
-func EntityType (ref [32]byte) ([]byte) {
+// EntityTypes - get the type of entity
+func EntityTypes (ref [32]byte) ([]byte) {
 
 	var result []byte
+    entityTypes := &types.EntityTypes{}
 
-	eType, err := contracts.Contracts.EntitiesContract.GetEntityType(&bind.CallOpts{}, ref)
+	eTypes, err := contracts.Contracts.EntitiesContract.GetEntityTypes(&bind.CallOpts{}, ref)
 	if err != nil {
 		pkgLog.SLogger.Error(text.ErrorEntitiesNum, zap.Error(err))
 		return result
 	}
 
-    thisJSON := &types.EntityType{Type: eType}
-    tResult, err := json.MarshalIndent(thisJSON, "", "\t")
+	var i uint8
+	for  ; i < uint8(len(eTypes)); i++ {
+		if (eTypes[i]) {
+			thisJSON := types.EntityType{Type: i}
+			entityTypes.Types = append(entityTypes.Types, thisJSON)
+		}
+	}
+
+    tResult, err := json.MarshalIndent(entityTypes, "", "\t")
     if err != nil {
         pkgLog.SLogger.Error(text.ErrorEntitiesType + " - " + text.ErrorUnMarshall, zap.Error(err))
         return result

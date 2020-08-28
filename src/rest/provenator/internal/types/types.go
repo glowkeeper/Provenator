@@ -35,7 +35,12 @@ type EntitiesTotal struct {
 
 // EntityType - get the type of entities
 type EntityType struct {
-	Type	uint8	`json:"entityType"`
+	Type	uint8			`json:"entityType"`
+}
+
+// EntityTypes - entity types
+type EntityTypes struct {
+	Types	[]EntityType 	`json:"entityTypes"`
 }
 
 // EntitiesList - a list if all entities

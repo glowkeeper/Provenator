@@ -88,9 +88,9 @@ paths:
                         type: "string"
                         items:
                           type: "string"
-    /entities-type/{entitiesRef}:
+    /entities-types/{entitiesRef}:
         get:
-            summary: "/entities-type/{entitiesRef}"
+            summary: "/entities-types/{entitiesRef}"
             description: "Provenator REST API entity type information"
             parameters:
                 name: "entitiesRef"
