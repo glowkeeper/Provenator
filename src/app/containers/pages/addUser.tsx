@@ -68,7 +68,7 @@ export const getUser = (props: Props) => {
     let isFirstRun = useRef(true)
     const [isLoading, setIsLoading] = useState(false)
     const [isSubmitting, setSubmit] = useState(false)
-    const [user, setUser] = useState("")
+    const [user, setUser] = useState({name: "", email: "", url: ""})
     const [info, setInfo] = useState("")
 
     const themeClasses = themeStyles()
@@ -79,13 +79,14 @@ export const getUser = (props: Props) => {
 
             isFirstRun.current = false
             props.initialise()
-            props.getData(`${Remote.insecure}${Remote.server}:${Remote.port}${Remote.entities}/${props.address}`)
 
-        } else if ( ( props.user.data.length > 0 ) && ( user == "" ) ) {
+            const id = addressToBytes32(props.address)
+            props.getData(`${Remote.insecure}${Remote.server}:${Remote.port}${Remote.entities}/${id}`)
+
+        } else if ( ( props.user.data.length > 0 ) && ( user.name == "" ) ) {
 
             console.log(props.user.data)
-
-            setUser("blah")
+            setUser(props.user.data[0])
 
         } else {
 
@@ -108,7 +109,7 @@ export const getUser = (props: Props) => {
         <h2>{UserConfig.headingUser}</h2>
         <hr />
         <Formik
-          initialValues={ {} }
+          initialValues={ {authorName: user.name, authorEMail: user.email, authorURL: user.url} }
           enableReinitialize={true}
           validationSchema={addUserSchema}
           onSubmit={(values: any) => {
