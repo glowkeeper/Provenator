@@ -11,6 +11,10 @@ abstract contract IArtefact {
     function addCopyrightHolder(CreativeEntities memory _copyrightHolder) virtual public;
     function addPublisher(CreativeEntities memory _publisher) virtual public;
 
+    function removeAuthor(bytes32 _id) virtual public;
+    function removeCopyrightHolder(bytes32 _id) virtual public;
+    function removePublisher(bytes32 _id) virtual public;
+
     function get() virtual public view returns (Works memory);
     function getAuthors() virtual public view returns (bytes32[] memory);
     function getCopyrightHolders() virtual public view returns (bytes32[] memory);
@@ -29,6 +33,10 @@ abstract contract IArtefactFactory {
     function addWorkAuthor(bytes32 _workId, CreativeEntities memory _author) virtual public;
     function addWorkCopyrightHolder(bytes32 _workId, CreativeEntities memory _copyrightHolder) virtual public;
     function addWorkPublisher(bytes32 _workId, CreativeEntities memory _publisher) virtual public;
+
+    function removeWorkAuthor(bytes32 _workId, bytes32 _authorId) virtual public;
+    function removeWorkCopyrightHolder(bytes32 _workId, bytes32 _copyrightHolderId) virtual public;
+    function removeWorkPublisher(bytes32 _workId, bytes32 _publisherId) virtual public;
 
     function getWork(bytes32 _id) virtual public view returns (Works memory);
     function getWorkAuthors(bytes32 _id) virtual public view returns (bytes32[] memory);

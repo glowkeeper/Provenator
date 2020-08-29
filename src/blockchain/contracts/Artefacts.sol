@@ -64,6 +64,54 @@ contract ArtefactNode is IArtefact {
       }
     }
 
+    function removeAuthor(bytes32 _id) override virtual public {
+        require ( _id[0] != 0 );
+
+        for (uint i = 0; i < authors.length; i++) {
+          if ( authors[i] == _id ) {
+            if ( i < authors.length -1 ) {
+              for (uint j = i; j < authors.length - 1; j++) {
+                authors[j] = authors[j+1];
+              }
+            }
+            authors.pop();
+            break;
+          }
+        }
+    }
+
+    function removeCopyrightHolder(bytes32 _id) override virtual public {
+        require ( _id[0] != 0 );
+
+        for (uint i = 0; i < copyrightHolders.length; i++) {
+          if ( copyrightHolders[i] == _id ) {
+            if ( i < copyrightHolders.length -1 ) {
+              for (uint j = i; j < copyrightHolders.length - 1; j++) {
+                copyrightHolders[j] = copyrightHolders[j+1];
+              }
+            }
+            copyrightHolders.pop();
+            break;
+          }
+        }
+    }
+
+    function removePublisher(bytes32 _id) override virtual public  {
+        require ( _id[0] != 0 );
+
+        for (uint i = 0; i < publishers.length; i++) {
+          if ( publishers[i] == _id ) {
+            if ( i < publishers.length -1 ) {
+              for (uint j = i; j < publishers.length - 1; j++) {
+                publishers[j] = publishers[j+1];
+              }
+            }
+            publishers.pop();
+            break;
+          }
+        }
+    }
+
     function get() override virtual public view returns (Works memory) {
 
         return work;
@@ -204,6 +252,27 @@ contract Artefacts is IArtefactFactory, IFactory {
 
       ArtefactNode work = ArtefactNode(workStore.data[_workId].value);
       work.addPublisher(_publisher);
+    }
+
+    function removeWorkAuthor(bytes32 _workId, bytes32 _authorId) override virtual public {
+      require( workStore.data[_workId].value != address(0x0) );
+
+      ArtefactNode work = ArtefactNode(workStore.data[_workId].value);
+      work.removeAuthor(_authorId);
+    }
+
+    function removeWorkCopyrightHolder(bytes32 _workId, bytes32 _copyrightHolderId) override virtual public {
+      require( workStore.data[_workId].value != address(0x0) );
+
+      ArtefactNode work = ArtefactNode(workStore.data[_workId].value);
+      work.removeCopyrightHolder(_copyrightHolderId);
+    }
+
+    function removeWorkPublisher(bytes32 _workId, bytes32 _publisherId) override virtual public {
+      require( workStore.data[_workId].value != address(0x0) );
+
+      ArtefactNode work = ArtefactNode(workStore.data[_workId].value);
+      work.removeCopyrightHolder(_publisherId);
     }
 
     function getWork(bytes32 _id) override virtual public view returns (Works memory) {
