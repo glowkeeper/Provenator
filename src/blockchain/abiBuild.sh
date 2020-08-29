@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TARGETDIR="/home/steve/gitrepos/Provenator/src/rest/provenator/internal/contracts"
+TARGETDIR="~/steve/gitrepos/Provenator/src/rest/provenator/internal/contracts"
 
 # Just change the names here, the rest will take care of itself
 ARTEFACTS="Artefacts"
@@ -16,7 +16,7 @@ CONTRACTSDIR=(${ARTEFACTSDIR} ${ENTITIESDIR})
 for DIR in "${CONTRACTSDIR[@]}"
 do
     rm -rf $DIR 2>/dev/null
-    mkdir $DIR
+    mkdir -p $DIR
 done
 
 abigen --sol="./contracts/${ARTEFACTS}.sol" --pkg="${ARTEFACTS}" --out="${ARTEFACTSDIR}/${ARTEFACTS}.go"
