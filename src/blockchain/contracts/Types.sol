@@ -11,6 +11,7 @@ struct CreativeEntities {
     string              url;
 }
 
+// What we receive
 struct CreativeWorks {
     WorksTypes          workType;
     LicenseTypes        license;
@@ -21,19 +22,14 @@ struct CreativeWorks {
     string              name;
     string              description;
     CreativeEntities    author;
-    CreativeEntities    copyrightHolder;
-    CreativeEntities    publisher;
 }
 
-// what we store
+// what we store and output
 struct Works {
     WorksTypes          workType;
     LicenseTypes        license;
     bytes32             dateCreated;
     bytes32             dateModified;
-    bytes32             author;
-    bytes32             copyrightHolder;
-    bytes32             publisher;
     string              url;
     string              name;
     string              description;

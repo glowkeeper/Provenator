@@ -180,14 +180,14 @@ contract Entities is IEntitiesFactory, IFactory {
         return refs;
     }
 
-    function isType(bytes32 _id, EntityTypes _type) override virtual public view returns (bool) {
+    function isEntityType(bytes32 _id, EntityTypes _type) override virtual public view returns (bool) {
         require( entityStore.data[_id].value != address(0x0) );
 
         EntityNode entity = EntityNode(entityStore.data[_id].value);
         return entity.isType(_type);
     }
 
-    function containsRelation(bytes32 _parentId, bytes32 _childId) override virtual public view returns (bool) {
+    function containsEntityRelation(bytes32 _parentId, bytes32 _childId) override virtual public view returns (bool) {
         require( entityStore.data[_parentId].value != address(0x0) );
 
         EntityNode entity = EntityNode(entityStore.data[_parentId].value);
