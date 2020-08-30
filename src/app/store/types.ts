@@ -120,8 +120,6 @@ export interface Works {
     name: string
     description: string
     author: Author
-    copyrightHolder: CopyrightHolder
-    publisher: Publisher
 }
 
 export type CreativeWorks = Works & Id

@@ -1,6 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
+import { ethers } from 'ethers'
+
 import Markdown from 'react-markdown'
 
 import SparkMD5 from 'spark-md5'
@@ -19,21 +21,108 @@ import Grid from '@material-ui/core/Grid'
 import RightCircleOutlined from '@ant-design/icons/lib/icons/RightCircleOutlined'
 import { Okay, OptionsStyles } from '../../styles'
 
+import { initialise, getData } from '../../store/app/get/actions'
 import { addFile } from '../../store/app/blockchain'
 import { initialise as txInitialise } from '../../store/app/tx/actions'
 
-import { history, getDictEntries } from '../../utils'
+import { history, getDictEntries, addressToBytes32, bytes32ToAddress } from '../../utils'
 
-import { NumberOptionType, FormHelpers, GeneralError, Transaction, Local, Misc, File as FileConfig } from '../../config'
+import { NumberOptionType, FormHelpers, GeneralError, Transaction, Remote, Local, Misc, File as FileConfig } from '../../config'
 
 import {
     ApplicationState,
     AppDispatch,
+    Author,
     CreativeWorks,
     PayloadProps,
+    GetProps,
     TxData } from '../../store/types'
 
 import { themeStyles } from '../../styles'
+
+/*
+copyrightHolderName: Yup.string()
+  .ensure(),
+copyrightHolderEMail: Yup.string()
+  .email(),
+copyrightHolderURL: Yup.string()
+  .url(`${FileConfig.validURL}`),
+publisherName: Yup.string()
+  .ensure(),
+publisherEMail: Yup.string()
+  .email(),
+publisherURL: Yup.string()
+  .url(`${FileConfig.validURL}`),
+
+  {
+      id: "",
+      name: values.authorName,
+      email: values.authorEMail,
+      url:  values.authorURL
+  },
+  copyrightHolder: {
+      id: "",
+      name: values.copyrightHolderName,
+      email: values.copyrightHolderEMail,
+      url:  values.copyrightHolderURL
+  },
+  publisher: {
+      id: "",
+      name: values.publisherName,
+      email: values.publisherEMail,
+      url:  values.publisherURL
+  }
+
+
+  <Field
+    name='authorName'
+    label={FileConfig.authorName}
+    component={TextField}
+  />
+  <Field
+    name='authorEMail'
+    label={FileConfig.authorEMail}
+    component={TextField}
+  />
+  <Field
+    name='authorURL'
+    label={FileConfig.authorURL}
+    component={TextField}
+  />
+
+
+  <Field
+    name='copyrightHolderName'
+    label={FileConfig.copyrightHolderName}
+    component={TextField}
+  />
+  <Field
+    name='copyrightHolderEMail'
+    label={FileConfig.copyrightHolderEMail}
+    component={TextField}
+  />
+  <Field
+    name='copyrightHolderURL'
+    label={FileConfig.copyrightHolderURL}
+    component={TextField}
+  />
+  <Field
+    name='publisherName'
+    label={FileConfig.publisherName}
+    component={TextField}
+  />
+  <Field
+    name='publisherEMail'
+    label={FileConfig.publisherEMail}
+    component={TextField}
+  />
+  <Field
+    name='publisherURL'
+    label={FileConfig.publisherURL}
+    component={TextField}
+  />
+
+  */
 
 const addFileSchema = Yup.object().shape({
   hash: Yup.string()
@@ -46,37 +135,21 @@ const addFileSchema = Yup.object().shape({
     .url(`${FileConfig.validURL}`),
   description: Yup.string()
     .required(`${GeneralError.required}`),
-  authorName: Yup.string()
-    .required(`${GeneralError.required}`),
-  authorEMail: Yup.string()
-    .email()
-    .required(`${GeneralError.required}`),
-  authorURL: Yup.string()
-    .url(`${FileConfig.validURL}`),
   license: Yup.object({
     value: Yup.number()
       .min(0, `${FileConfig.validLicense}`),
   }),
-  copyrightHolderName: Yup.string()
-    .ensure(),
-  copyrightHolderEMail: Yup.string()
-    .email(),
-  copyrightHolderURL: Yup.string()
-    .url(`${FileConfig.validURL}`),
-  publisherName: Yup.string()
-    .ensure(),
-  publisherEMail: Yup.string()
-    .email(),
-  publisherURL: Yup.string()
-    .url(`${FileConfig.validURL}`),
 })
 
 interface FileStateProps {
   info: PayloadProps
+  user: GetProps
+  address: string
 }
 
 interface FileDispatchProps {
   initialise: () => void
+  getData: (url: string) => void
   handleSubmit: (values: CreativeWorks) => void
 }
 
@@ -92,16 +165,25 @@ export const getFile = (props: Props) => {
     const [license, setLicense] = useState({ label: FileConfig.license, value: -1} as NumberOptionType)
     const [summary, setSummary] = useState("")
     const [isSubmitting, setSubmit] = useState(false)
+    const [user, setUser] = useState({id: "", name: "", email: "", url: ""})
     const [info, setInfo] = useState("")
 
     const themeClasses = themeStyles()
 
     useEffect(() => {
 
-        // Stop "Key, summary, time" (info) rendering on first run
         if ( isFirstRun.current ) {
 
             isFirstRun.current = false
+            props.initialise()
+
+            const id = addressToBytes32(props.address)
+            props.getData(`${Remote.insecure}${Remote.server}:${Remote.port}${Remote.entities}/${id}`)
+
+        } else if ( ( props.user.data.length > 0 ) && ( user.name == "" ) ) {
+
+            //console.log(props.user.data)
+            setUser(props.user.data[0])
 
         } else {
 
@@ -110,13 +192,13 @@ export const getFile = (props: Props) => {
             setInfo( infoData )
             if( txData.summary == Transaction.success || txData.summary == Transaction.failure ) {
                 setSubmit(false)
-                /*setTimeout(() => {
+                setTimeout(() => {
                     history.push(`${Local.home}`)
-                }, Misc.delay)*/
+                }, Misc.delay)
             }
         }
 
-    }, [props.info])
+    }, [props.info, props.user])
 
     const getFile = (e: any, results: any) => {
 
@@ -157,7 +239,6 @@ export const getFile = (props: Props) => {
         }
 
         loadNext()
-      //})
     }
 
     const setLoading = () => {
@@ -193,6 +274,13 @@ export const getFile = (props: Props) => {
             setSubmit(true)
             props.initialise()
 
+            const userInfo: Author = {
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                url:  user.url
+            }
+
             const thisWorkType = (workType as NumberOptionType).value
             const thisLicense = (license as NumberOptionType).value
 
@@ -201,30 +289,13 @@ export const getFile = (props: Props) => {
             const fileInfo: CreativeWorks = {
                 workType: thisWorkType,
                 license: thisLicense,
-                id: hash,
-                dateCreated: d.toString(),
-                dateModified: d.toString(),
+                id: ethers.utils.formatBytes32String(hash),
+                dateCreated: ethers.utils.formatBytes32String(d.toISOString()),
+                dateModified: ethers.utils.formatBytes32String(d.toISOString()),
                 url: values.url,
                 name: fileName,
                 description: values.description,
-                author: {
-                    id: "",
-                    name: values.authorName,
-                    email: values.authorEMail,
-                    url:  values.authorURL
-                },
-                copyrightHolder: {
-                    id: "",
-                    name: values.copyrightHolderName,
-                    email: values.copyrightHolderEMail,
-                    url:  values.copyrightHolderURL
-                },
-                publisher: {
-                    id: "",
-                    name: values.publisherName,
-                    email: values.publisherEMail,
-                    url:  values.publisherURL
-                }
+                author: userInfo
             }
             props.handleSubmit(fileInfo)
           }}
@@ -259,22 +330,6 @@ export const getFile = (props: Props) => {
                     label={FileConfig.description}
                     component={TextField}
                   />
-                  <Field
-                    name='authorName'
-                    label={FileConfig.authorName}
-                    component={TextField}
-                  />
-                  <Field
-                    name='authorEMail'
-                    label={FileConfig.authorEMail}
-                    component={TextField}
-                  />
-                  <Field
-                    name='authorURL'
-                    label={FileConfig.authorURL}
-                    component={TextField}
-                  />
-
                   <Select
                     name='license'
                     value={license}
@@ -286,37 +341,7 @@ export const getFile = (props: Props) => {
                     styles={OptionsStyles}
                     options={FormHelpers.licensesSelect}
                   />
-                  <ErrorMessage name="workType.value" component="div" className={themeClasses.error}/>
-                  <Field
-                    name='copyrightHolderName'
-                    label={FileConfig.copyrightHolderName}
-                    component={TextField}
-                  />
-                  <Field
-                    name='copyrightHolderEMail'
-                    label={FileConfig.copyrightHolderEMail}
-                    component={TextField}
-                  />
-                  <Field
-                    name='copyrightHolderURL'
-                    label={FileConfig.copyrightHolderURL}
-                    component={TextField}
-                  />
-                  <Field
-                    name='publisherName'
-                    label={FileConfig.publisherName}
-                    component={TextField}
-                  />
-                  <Field
-                    name='publisherEMail'
-                    label={FileConfig.publisherEMail}
-                    component={TextField}
-                  />
-                  <Field
-                    name='publisherURL'
-                    label={FileConfig.publisherURL}
-                    component={TextField}
-                  />
+                  <ErrorMessage name="license.value" component="div" className={themeClasses.error}/>
                   <Grid container>
                       <Grid item xs={12} sm={3}>
                         <Tooltip title={FileConfig.submitTip}>
@@ -344,12 +369,15 @@ const mapStateToProps = (state: ApplicationState): FileStateProps => {
   //console.log(state.orgReader)
   return {
     info: state.tx as PayloadProps,
+    user: state.data as GetProps,
+    address: state.chainInfo.data.Account
   }
 }
 
 const mapDispatchToProps = (dispatch: AppDispatch): FileDispatchProps => {
   return {
     initialise: () => dispatch(txInitialise()),
+    getData: (url: string) => dispatch(getData(url)),
     handleSubmit: (values: CreativeWorks) => dispatch(addFile(values))
   }
 }

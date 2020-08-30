@@ -67,7 +67,42 @@ func Artefact (ref [32]byte) ([]byte) {
 	    return result
 	}
 
-	author := types.Entity {
+	artefact := types.Works {
+		ID: fmt.Sprintf("%#x", ref),
+		WorkType: aArtefacts.WorkType,
+		License: aArtefacts.License,
+	    DateCreated: utils.GetString(aArtefacts.DateCreated),
+	    DateModified: utils.GetString(aArtefacts.DateModified),
+	    URL: aArtefacts.Url,
+	    Name: aArtefacts.Name,
+	    Description: aArtefacts.Description,
+	}
+
+	authorIds, err := contracts.Contracts.ArtefactsContract.GetWorkAuthors(&bind.CallOpts{}, ref)
+	if (err != nil) {
+	    pkgLog.SLogger.Error(text.ErrorArtefactsAll, zap.Error(err))
+	    return result
+	}
+
+    for i := 0; i < len(authorIds); i++ {
+
+		author, err := contracts.Contracts.EntitiesContract.GetEntity(&bind.CallOpts{}, authorIds[i])
+		if (err != nil) {
+		    pkgLog.SLogger.Error(text.ErrorArtefactsAll, zap.Error(err))
+		    return result
+		}
+		
+		thisAuthor := types.Entity {
+		   ID: fmt.Sprintf("%#x", authorIds[i]),
+		   Name: author.Name,
+		   EMail: author.Email,
+		   URL: author.Url,
+		}
+
+		artefact.Authors = append(artefact.Authors, thisAuthor)
+	}
+
+	/*author := types.Entity {
 	   ID: fmt.Sprintf("%#x", aArtefacts.Author.Id),
 	   Name: aArtefacts.Author.Name,
 	   EMail: aArtefacts.Author.Email,
@@ -86,21 +121,7 @@ func Artefact (ref [32]byte) ([]byte) {
  	   Name: aArtefacts.Publisher.Name,
  	   EMail: aArtefacts.Publisher.Email,
  	   URL: aArtefacts.Publisher.Url,
-	}
-
-	artefact := types.Works {
-		WorkType: aArtefacts.WorkType,
-		License: aArtefacts.License,
-	    ID: fmt.Sprintf("%#x", ref),
-	    DateCreated: utils.GetString(aArtefacts.DateCreated),
-	    DateModified: utils.GetString(aArtefacts.DateModified),
-	    URL: aArtefacts.Url,
-	    Name: aArtefacts.Name,
-	    Description: aArtefacts.Description,
-	    Author: author,
-		CopyrightHolder: copyrightHolder,
-	    Publisher: publisher,
-	}
+	}*/
 
 	tResult, err := json.MarshalIndent(&artefact, "", "")
 	if err != nil {

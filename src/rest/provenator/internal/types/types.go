@@ -50,17 +50,17 @@ type EntitiesList struct {
 
 // Works - creative works data
 type Works struct {
-    WorkType			uint8	`json:"workType"`
-    License		        uint8	`json:"license"`
-    ID					string	`json:"id"`
-    DateCreated			string	`json:"dateCreated"`
-    DateModified		string	`json:"dateModified"`
-    URL					string	`json:"url"`
-    Name				string	`json:"name"`
-    Description			string	`json:"description"`
-    Author				Entity	`json:"author"`
-    CopyrightHolder		Entity	`json:"copyrightHolder"`
-    Publisher			Entity	`json:"publisher"`
+	ID					string		`json:"id"`
+    WorkType			uint8		`json:"workType"`
+    License		        uint8		`json:"license"`
+    DateCreated			string		`json:"dateCreated"`
+    DateModified		string		`json:"dateModified"`
+    URL					string		`json:"url"`
+    Name				string		`json:"name"`
+    Description			string		`json:"description"`
+    Authors				[]Entity	`json:"author"`
+    CopyrightHolders	[]Entity	`json:"copyrightHolder"`
+    Publishers			[]Entity	`json:"publisher"`
 }
 
 // WorksAll - get all works

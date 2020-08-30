@@ -51,7 +51,7 @@ const addUserSchema = Yup.object().shape({
 
 interface UserStateProps {
   info: PayloadProps
-  user: GetProps,
+  user: GetProps
   address: string
 }
 
@@ -85,7 +85,7 @@ export const getUser = (props: Props) => {
 
         } else if ( ( props.user.data.length > 0 ) && ( user.name == "" ) ) {
 
-            console.log(props.user.data)
+            //console.log(props.user.data)
             setUser(props.user.data[0])
 
         } else {
