@@ -286,10 +286,12 @@ export const getFile = (props: Props) => {
 
             let d = new Date(Date.now())
 
+            //ethers.utils.hexlify(hash)
+
             const fileInfo: CreativeWorks = {
                 workType: thisWorkType,
                 license: thisLicense,
-                id: ethers.utils.hexlify(hash),
+                id: user.id,
                 dateCreated: ethers.utils.formatBytes32String(d.toISOString()),
                 dateModified: ethers.utils.formatBytes32String(d.toISOString()),
                 url: values.url,

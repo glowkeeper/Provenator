@@ -103,7 +103,7 @@ export const addAuthor = (props: Author) => {
         }
         dispatch(write({data: txData})(TransactionActionTypes.TRANSACTION_PENDING))
 
-        const receipt = await provider.waitForTransaction(tx.hash)
+        await provider.waitForTransaction(tx.hash)
         d = new Date(Date.now())
         txData = {
             key:  tx.hash,
@@ -145,6 +145,8 @@ export const addFile = (props: CreativeWorks) => {
       try {
 
           console.log("here!")
+
+          console.log(props)
 
          const tx = await artefactsContract.addWork(props)
          txData = {
