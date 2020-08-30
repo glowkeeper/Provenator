@@ -11,6 +11,7 @@ struct CreativeEntities {
     string              url;
 }
 
+
 // What we receive
 struct CreativeWorks {
     WorksTypes          workType;
