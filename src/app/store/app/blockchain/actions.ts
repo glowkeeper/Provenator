@@ -129,8 +129,6 @@ export const addAuthor = (props: Author) => {
 export const addFile = (props: CreativeWorks) => {
   return async (dispatch: AppDispatch, getState: Function) => {
 
-      console.log(props)
-
       const state = getState()
       const artefactsContract = state.chainContracts.data.contracts.artefacts
       const provider = state.chainInfo.data.provider
@@ -144,10 +142,6 @@ export const addFile = (props: CreativeWorks) => {
 
       try {
 
-          console.log("here!")
-
-          console.log(props)
-
          const tx = await artefactsContract.addWork(props)
          txData = {
              key:  tx.hash,
@@ -156,9 +150,7 @@ export const addFile = (props: CreativeWorks) => {
          }
          dispatch(write({data: txData})(TransactionActionTypes.TRANSACTION_PENDING))
 
-         console.log("but here?")
-
-         const receipt = await provider.waitForTransaction(tx.hash)
+         await provider.waitForTransaction(tx.hash)
          d = new Date(Date.now())
          txData = {
              key:  tx.hash,

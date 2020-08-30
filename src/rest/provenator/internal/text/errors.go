@@ -22,19 +22,19 @@ const (
     ErrorZap = "Can't initialize zap logger"
 
     // ErrorArtefactsContract - error
-    ErrorArtefactsContract = "Couldn't create artefacts contract instance"
+    ErrorArtefactsContract = "Couldn't get artefacts contract instance"
 
     // ErrorArtefactsRef - error
-    ErrorArtefactsRef = "Error getting the activity reference"
+    ErrorArtefactsRef = "Error getting the artefact reference"
 
     // ErrorArtefactsList - error
-    ErrorArtefactsList = "Error getting activities List"
+    ErrorArtefactsList = "Error getting artefacts List"
 
     // ErrorArtefactsAll - error
-    ErrorArtefactsAll = "Error getting all activities"
+    ErrorArtefactsAll = "Error getting all artefacts"
 
     // ErrorArtefactsNum - Works error
-    ErrorArtefactsNum = "Can't get activities total"
+    ErrorArtefactsNum = "Can't get artefacts total"
     
     // ErrorEntitiesContract - error
     ErrorEntitiesContract = "Couldn't create entity contract instance"
