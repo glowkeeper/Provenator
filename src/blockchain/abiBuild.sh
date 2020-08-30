@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TARGETDIR="~/steve/gitrepos/Provenator/src/rest/provenator/internal/contracts"
+TARGETDIR="/home/steve/gitrepos/Provenator/src/rest/provenator/internal/contracts"
 
 # Just change the names here, the rest will take care of itself
 ARTEFACTS="Artefacts"
