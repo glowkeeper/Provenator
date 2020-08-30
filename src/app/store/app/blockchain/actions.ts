@@ -86,8 +86,6 @@ export const addAuthor = (props: Author) => {
      const entitiesContract = state.chainContracts.data.contracts.entities
      const provider = state.chainInfo.data.Provider
 
-     const entityType = EntityTypes.Author
-
      let d = new Date(Date.now())
      let txData: TxData  = {
         key: "",
@@ -97,7 +95,7 @@ export const addAuthor = (props: Author) => {
 
      try {
 
-        const tx = await entitiesContract.addEntity(props, entityType)
+        const tx = await entitiesContract.addEntity(props, EntityTypes.Author)
         txData = {
             key:  tx.hash,
             summary: `${Transaction.pending}`,
@@ -157,7 +155,6 @@ export const addFile = (props: CreativeWorks) => {
          dispatch(write({data: txData})(TransactionActionTypes.TRANSACTION_PENDING))
 
          console.log("but here?")
-
 
          const receipt = await provider.waitForTransaction(tx.hash)
          d = new Date(Date.now())

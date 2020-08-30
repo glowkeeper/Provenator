@@ -289,7 +289,7 @@ export const getFile = (props: Props) => {
             const fileInfo: CreativeWorks = {
                 workType: thisWorkType,
                 license: thisLicense,
-                id: ethers.utils.formatBytes32String(hash),
+                id: ethers.utils.hexlify(hash),
                 dateCreated: ethers.utils.formatBytes32String(d.toISOString()),
                 dateModified: ethers.utils.formatBytes32String(d.toISOString()),
                 url: values.url,

@@ -111,9 +111,10 @@ export interface EntityProps {
 }
 
 // the works they create
-export interface Works {
+export interface CreativeWorks {
     workType: number
     license: number
+    id: string
     dateCreated: string
     dateModified: string
     url: string
@@ -122,7 +123,7 @@ export interface Works {
     author: Author
 }
 
-export type CreativeWorks = Works & Id
+//export type CreativeWorks = Works & Id
 
 export interface CreativeWorksProps {
     fileInfo: Array<CreativeWorks>
