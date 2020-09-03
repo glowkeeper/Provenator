@@ -142,6 +142,8 @@ export const addFile = (props: CreativeWorks) => {
 
       try {
 
+         //console.log(props)
+
          const tx = await artefactsContract.addWork(props)
          txData = {
              key:  tx.hash,
@@ -149,6 +151,8 @@ export const addFile = (props: CreativeWorks) => {
              time: d.toString()
          }
          dispatch(write({data: txData})(TransactionActionTypes.TRANSACTION_PENDING))
+
+         console.log("here!")
 
          await provider.waitForTransaction(tx.hash)
          d = new Date(Date.now())

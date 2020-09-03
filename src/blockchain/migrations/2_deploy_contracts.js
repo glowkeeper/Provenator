@@ -5,7 +5,7 @@ const Artefacts = artifacts.require("./Artefacts.sol");
 module.exports = async function(deployer) {
 
   await deployer.deploy(Entities)
-  await deployer.deploy(Artefacts, Entities.address)
+  await deployer.deploy(Artefacts)
 
   deployer.then( () => {
     console.log("static entitiesAddress = \"", Entities.address, "\"");

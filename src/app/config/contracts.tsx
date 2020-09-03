@@ -12,13 +12,12 @@ class Config {
 class Contracts {
 
     // rinkeby
-    static entitiesAddress = "0x56A1D5F65B536755D8fe20E23FD8e1E7c57773DF"
-    static artefactsAddress = "0x0eE2269802E818a0Aa864b0cCBFd6E914111E436"
+    static entitiesAddress = "0x2cAb3f679A12cb03daD25A97Bd516c7F9b5f2ea0"
+    static artefactsAddress = "0x1a4704B6F23B811C326b08571003a50c657b72Aa"
 
     static entitiesABI = [
         "function addEntity(tuple(bytes32 id, string name, string email, string url) _entity, uint8 _entityType)",
         "function amendEntity(tuple(bytes32 id, string name, string email, string url) _entity, uint8 _entityType)",
-        "function addEntityRelation(bytes32 _parentId, bytes32 _childId)",
         "function getEntity(bytes32 _id) view returns (tuple(bytes32 id, string name, string email, string url))",
         "function getEntityTypes(bytes32 _id) view returns (bool[])",
         "function getEntityContract(bytes32 _id) view returns (address)",
@@ -26,22 +25,18 @@ class Contracts {
         "function getReference(uint256 _index) view returns (bytes32)",
         "function getReferences() view returns (bytes32[])",
         "function isEntityType(bytes32 _id, uint8 _type) view returns (bool)",
-        "function containsEntityRelation(bytes32 _parentId, bytes32 _childId) view returns (bool)",
-        "function getRelationsNum(bytes32 _id) view returns (uint256)",
-        "function getRelationsReference(bytes32 _id, uint256 _index) view returns (bytes32)",
-        "function getRelations(bytes32 _id) view returns (bytes32[])"
     ]
 
     static artefactsABI = [
-        "function addWork(tuple(uint8 workType, uint8 license, bytes32 id, bytes32 dateCreated, bytes32 dateModified, string url, string name, string description, tuple(bytes32 id, string name, string email, string url) author) _work)",
-        "function amendWork(tuple(uint8 workType, uint8 license, bytes32 id, bytes32 dateCreated, bytes32 dateModified, string url, string name, string description, tuple(bytes32 id, string name, string email, string url) author) _work)",
-        "function addWorkAuthor(bytes32 _workId, tuple(bytes32 id, string name, string email, string url) _author)",
-        "function addWorkCopyrightHolder(bytes32 _workId, tuple(bytes32 id, string name, string email, string url) _copyrightHolder)",
-        "function addWorkPublisher(bytes32 _workId, tuple(bytes32 id, string name, string email, string url) _publisher)",
+        "function addWork(tuple(uint8 workType, uint8 license, bytes32 id, bytes32 authorId, bytes32 dateCreated, bytes32 dateModified, string url, string name, string description) _work)",
+        "function amendWork(tuple(uint8 workType, uint8 license, bytes32 id, bytes32 authorId, bytes32 dateCreated, bytes32 dateModified, string url, string name, string description) _work)",
+        "function addWorkAuthor(bytes32 _workId, bytes32 _authorId)",
+        "function addWorkCopyrightHolder(bytes32 _workId, bytes32 _copyrightHolderId)",
+        "function addWorkPublisher(bytes32 _workId, bytes32 _copyrightHolderId)",
         "function removeWorkAuthor(bytes32 _workId, bytes32 _authorId)",
-        "function removeWorkCopyrightHolder(bytes32 _workId, bytes32 _copyrightHolderId)",
+        "function removeWorkCopyrightHolder(bytes32 _workId, bytes32 _publisherId)",
         "function removeWorkPublisher(bytes32 _workId, bytes32 _publisherId)",
-        "function getWork(bytes32 _id) view returns (tuple(uint8 workType, uint8 license, bytes32 dateCreated, bytes32 dateModified, string url, string name, string description))",
+        "function getWork(bytes32 _id) view returns (tuple(uint8 workType, uint8 license, bytes32 id, bytes32 authorId, bytes32 dateCreated, bytes32 dateModified, string url, string name, string description))",
         "function getWorkAuthors(bytes32 _id) view returns (bytes32[])",
         "function getWorkCopyrightHolders(bytes32 _id) view returns (bytes32[])",
         "function getWorkPublishers(bytes32 _id) view returns (bytes32[])",

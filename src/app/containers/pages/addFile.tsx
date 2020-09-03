@@ -274,13 +274,6 @@ export const getFile = (props: Props) => {
             setSubmit(true)
             props.initialise()
 
-            const userInfo: Author = {
-                id: user.id,
-                name: user.name,
-                email: user.email,
-                url:  user.url
-            }
-
             const thisWorkType = (workType as NumberOptionType).value
             const thisLicense = (license as NumberOptionType).value
 
@@ -292,12 +285,12 @@ export const getFile = (props: Props) => {
                 workType: thisWorkType,
                 license: thisLicense,
                 id: user.id,
+                authorId: user.id,
                 dateCreated: ethers.utils.formatBytes32String(d.toISOString()),
                 dateModified: ethers.utils.formatBytes32String(d.toISOString()),
                 url: values.url,
                 name: fileName,
-                description: values.description,
-                author: userInfo
+                description: values.description
             }
             props.handleSubmit(fileInfo)
           }}

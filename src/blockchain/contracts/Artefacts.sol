@@ -12,55 +12,61 @@ import "./Entities.sol";
 
 contract ArtefactNode is IArtefact {
 
-    IEntitiesFactory    entities;
-    bytes32             id;
-    Works               work;
+    CreativeWorks       work;
     bytes32[]           authors;
     bytes32[]           copyrightHolders;
     bytes32[]           publishers;
 
-    constructor (CreativeWorks memory _work, address _entityFactory) public {
-        require ( _work.id[0] != 0 );
+    constructor (CreativeWorks memory _work) public {
+        require (
+            _work.id[0] != 0 &&
+            _work.authorId[0] != 0 &&
+            _work.workType > WorksTypes.NONE &&
+            _work.workType < WorksTypes.MAX &&
+            _work.license > LicenseTypes.NONE &&
+            _work.license < LicenseTypes.MAX &&
+            _work.dateCreated[0] != 0 &&
+             bytes(_work.name).length > 0 &&
+             bytes(_work.description).length > 0
+        );
 
-        entities = IEntitiesFactory(_entityFactory);
-        id = _work.id;
-        set(_work);
+        work = _work;
     }
 
     function amend(CreativeWorks memory _work) override virtual public {
-        require ( id == _work.id );
+        require (
+            work.id == _work.id &&
+            _work.authorId[0] != 0 &&
+            _work.workType > WorksTypes.NONE &&
+            _work.workType < WorksTypes.MAX &&
+            _work.license > LicenseTypes.NONE &&
+            _work.license < LicenseTypes.MAX &&
+            _work.dateCreated[0] != 0 &&
+             bytes(_work.name).length > 0 &&
+             bytes(_work.description).length > 0
+        );
 
-        set(_work);
+        work = _work;
     }
 
-    function addAuthor(CreativeEntities memory _author) override virtual public {
+    function addAuthor(bytes32 _authorId) override virtual public {
 
-      entities.addEntity(_author, EntityTypes.AUTHOR);
-
-      if ( !isAuthor(_author.id) ) {
-        authors.push(_author.id);
+      if ( !isAuthor(_authorId) ) {
+        authors.push(_authorId);
       }
     }
 
-    function addCopyrightHolder(CreativeEntities memory _copyrightHolder) override virtual public {
+    function addCopyrightHolder(bytes32 _copyrightHolderId) override virtual public {
 
-      entities.addEntity(_copyrightHolder, EntityTypes.COPYRIGHTHOLDER);
-      entities.addEntityRelation(id, _copyrightHolder.id);
-      entities.addEntityRelation(_copyrightHolder.id, id);
-
-      if ( !isCopyrightHolder(_copyrightHolder.id) ) {
-        copyrightHolders.push(_copyrightHolder.id);
+      if ( !isCopyrightHolder(_copyrightHolderId) ) {
+        copyrightHolders.push(_copyrightHolderId);
       }
     }
 
-    function addPublisher(CreativeEntities memory _publisher) override virtual public {
+    function addPublisher(bytes32 _publisherId) override virtual public {
 
-      entities.addEntity(_publisher, EntityTypes.PUBLISHER);
-      entities.addEntityRelation(id, _publisher.id);
-      entities.addEntityRelation(_publisher.id, id);
-
-      if ( !isPublisher(_publisher.id) ) {
-        publishers.push(_publisher.id);
+      if ( !isPublisher(_publisherId) ) {
+        publishers.push(_publisherId);
       }
     }
 
@@ -112,7 +118,7 @@ contract ArtefactNode is IArtefact {
         }
     }
 
-    function get() override virtual public view returns (Works memory) {
+    function get() override virtual public view returns (CreativeWorks memory) {
 
         return work;
     }
@@ -173,43 +179,15 @@ contract ArtefactNode is IArtefact {
 
         return found;
     }
-
-    function set(CreativeWorks memory _work) private {
-        require (
-            _work.workType > WorksTypes.NONE &&
-            _work.workType < WorksTypes.MAX &&
-            _work.license > LicenseTypes.NONE &&
-            _work.license < LicenseTypes.MAX &&
-            _work.dateCreated[0] != 0 &&
-             bytes(_work.name).length > 0 &&
-             bytes(_work.description).length > 0 &&
-             _work.author.id[0] != 0
-        );
-
-        work.workType = _work.workType;
-        work.license = _work.license;
-        work.dateCreated = _work.dateCreated;
-        work.dateModified = _work.dateModified;
-        work.url = _work.url;
-        work.name = _work.name;
-        work.description = _work.description;
-
-        addAuthor(_work.author);
-    }
 }
 
 contract Artefacts is IArtefactFactory, IFactory {
 
-    IEntitiesFactory entities;
-    Data workStore;
+    Data    workStore;
     using IterableData for Data;
 
-    constructor(address _entityFactory) public {
-        require (
-            _entityFactory != address(0x0)
-        );
+    constructor() public {
 
-        entities = IEntitiesFactory(_entityFactory);
         workStore.size = 0;
     }
 
@@ -221,7 +199,7 @@ contract Artefacts is IArtefactFactory, IFactory {
 
         } else {
 
-            ArtefactNode work = new ArtefactNode(_work, address(entities));
+            ArtefactNode work = new ArtefactNode(_work);
             workStore.insert(_work.id, address(work));
         }
     }
@@ -233,25 +211,25 @@ contract Artefacts is IArtefactFactory, IFactory {
         work.amend(_work);
     }
 
-    function addWorkAuthor(bytes32 _workId, CreativeEntities memory _author) override virtual public {
+    function addWorkAuthor(bytes32 _workId, bytes32 _authorId) override virtual public {
       require( workStore.data[_workId].value != address(0x0) );
 
       ArtefactNode work = ArtefactNode(workStore.data[_workId].value);
-      work.addAuthor(_author);
+      work.addAuthor(_authorId);
     }
 
-    function addWorkCopyrightHolder(bytes32 _workId, CreativeEntities memory _copyrightHolder) override virtual public {
+    function addWorkCopyrightHolder(bytes32 _workId, bytes32 _copyrightHolderId) override virtual public {
       require( workStore.data[_workId].value != address(0x0) );
 
       ArtefactNode work = ArtefactNode(workStore.data[_workId].value);
-      work.addCopyrightHolder(_copyrightHolder);
+      work.addCopyrightHolder(_copyrightHolderId);
     }
 
-    function addWorkPublisher(bytes32 _workId, CreativeEntities memory _publisher) override virtual public {
+    function addWorkPublisher(bytes32 _workId, bytes32 _publisherId) override virtual public {
       require( workStore.data[_workId].value != address(0x0) );
 
       ArtefactNode work = ArtefactNode(workStore.data[_workId].value);
-      work.addPublisher(_publisher);
+      work.addPublisher(_publisherId);
     }
 
     function removeWorkAuthor(bytes32 _workId, bytes32 _authorId) override virtual public {
@@ -275,7 +253,7 @@ contract Artefacts is IArtefactFactory, IFactory {
       work.removeCopyrightHolder(_publisherId);
     }
 
-    function getWork(bytes32 _id) override virtual public view returns (Works memory) {
+    function getWork(bytes32 _id) override virtual public view returns (CreativeWorks memory) {
         require ( workStore.data[_id].value != address(0x0) );
 
         ArtefactNode work = ArtefactNode(workStore.data[_id].value);

@@ -115,12 +115,12 @@ export interface CreativeWorks {
     workType: number
     license: number
     id: string
+    authorId: string
     dateCreated: string
     dateModified: string
     url: string
     name: string
     description: string
-    author: Author
 }
 
 //export type CreativeWorks = Works & Id
