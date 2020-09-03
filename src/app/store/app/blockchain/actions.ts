@@ -152,7 +152,7 @@ export const addFile = (props: CreativeWorks) => {
          }
          dispatch(write({data: txData})(TransactionActionTypes.TRANSACTION_PENDING))
 
-         console.log("here!")
+         //console.log("here!")
 
          await provider.waitForTransaction(tx.hash)
          d = new Date(Date.now())
