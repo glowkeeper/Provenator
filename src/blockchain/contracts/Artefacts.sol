@@ -23,7 +23,6 @@ contract ArtefactNode is IArtefact {
             _work.authorId[0] != 0 &&
             _work.workType > WorksTypes.NONE &&
             _work.workType < WorksTypes.MAX &&
-            _work.license > LicenseTypes.NONE &&
             _work.license < LicenseTypes.MAX &&
             _work.dateCreated[0] != 0 &&
              bytes(_work.name).length > 0 &&
@@ -39,7 +38,6 @@ contract ArtefactNode is IArtefact {
             _work.authorId[0] != 0 &&
             _work.workType > WorksTypes.NONE &&
             _work.workType < WorksTypes.MAX &&
-            _work.license > LicenseTypes.NONE &&
             _work.license < LicenseTypes.MAX &&
             _work.dateCreated[0] != 0 &&
              bytes(_work.name).length > 0 &&
