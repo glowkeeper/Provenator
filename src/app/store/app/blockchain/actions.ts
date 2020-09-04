@@ -24,6 +24,31 @@ import {
 
 import { Transaction } from '../../../config'
 
+const txDispatch = (tx: any) => {
+    return async (dispatch: AppDispatch, getState: Function) => {
+
+        const state = getState()
+        const provider = state.chainInfo.data.Provider
+
+        let d = new Date(Date.now())
+        let txData: TxData = {
+            key:  tx.hash,
+            summary: `${Transaction.pending}`,
+            time: d.toString()
+        }
+        dispatch(write({data: txData})(TransactionActionTypes.TRANSACTION_PENDING))
+
+        await provider.waitForTransaction(tx.hash)
+        d = new Date(Date.now())
+        txData = {
+            key:  tx.hash,
+            summary: `${Transaction.success}`,
+            time: d.toString()
+        }
+        dispatch(write({data: txData})(TransactionActionTypes.TRANSACTION_SUCCESS))
+    }
+}
+
 export const init = () => {
     return async (dispatch: AppDispatch) => {
 
@@ -84,38 +109,16 @@ export const addAuthor = (props: Author) => {
 
      const state = getState()
      const entitiesContract = state.chainContracts.data.contracts.entities
-     const provider = state.chainInfo.data.Provider
-
-     let d = new Date(Date.now())
-     let txData: TxData  = {
-        key: "",
-        summary: "",
-        time:  ""
-      }
 
      try {
 
         const tx = await entitiesContract.addEntity(props, EntityTypes.Author)
-        txData = {
-            key:  tx.hash,
-            summary: `${Transaction.pending}`,
-            time: d.toString()
-        }
-        dispatch(write({data: txData})(TransactionActionTypes.TRANSACTION_PENDING))
-
-        await provider.waitForTransaction(tx.hash)
-        d = new Date(Date.now())
-        txData = {
-            key:  tx.hash,
-            summary: `${Transaction.success}`,
-            time: d.toString()
-        }
-        dispatch(write({data: txData})(TransactionActionTypes.TRANSACTION_SUCCESS))
+        dispatch(txDispatch(tx))
 
       } catch (error) {
 
-        d = new Date(Date.now())
-        txData = {
+        const d = new Date(Date.now())
+        let txData: TxData  = {
             key:  "-1",
             summary: `${Transaction.failure}`,
             time: d.toString()
@@ -131,38 +134,18 @@ export const addFile = (props: CreativeWorks) => {
 
       const state = getState()
       const artefactsContract = state.chainContracts.data.contracts.artefacts
-      const provider = state.chainInfo.data.Provider
-
-      let d = new Date(Date.now())
-      let txData: TxData  = {
-         key: "",
-         summary: "",
-         time:  ""
-       }
 
       try {
 
-         const tx = await artefactsContract.addWork(props)
-         txData = {
-             key:  tx.hash,
-             summary: `${Transaction.pending}`,
-             time: d.toString()
-         }
-         dispatch(write({data: txData})(TransactionActionTypes.TRANSACTION_PENDING))
+          console.log(props)
 
-         await provider.waitForTransaction(tx.hash)
-         d = new Date(Date.now())
-         txData = {
-             key:  tx.hash,
-             summary: `${Transaction.success}`,
-             time: d.toString()
-         }
-         dispatch(write({data: txData})(TransactionActionTypes.TRANSACTION_SUCCESS))
+         const tx = await artefactsContract.addWork(props)
+         dispatch(txDispatch(tx))
 
        } catch (error) {
 
-         d = new Date(Date.now())
-         txData = {
+         const d = new Date(Date.now())
+         let txData: TxData  = {
              key:  "-1",
              summary: `${Transaction.failure}`,
              time: d.toString()

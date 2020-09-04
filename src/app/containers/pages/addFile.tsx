@@ -25,7 +25,7 @@ import { initialise, getData } from '../../store/app/get/actions'
 import { addFile } from '../../store/app/blockchain'
 import { initialise as txInitialise } from '../../store/app/tx/actions'
 
-import { history, getDictEntries, addressToBytes32, bytes32ToAddress } from '../../utils'
+import { history, getDictEntries, md5ToBytes32, bytes32ToMd5, addressToBytes32, bytes32ToAddress } from '../../utils'
 
 import { NumberOptionType, FormHelpers, GeneralError, Transaction, Remote, Local, Misc, File as FileConfig } from '../../config'
 
@@ -274,17 +274,16 @@ export const getFile = (props: Props) => {
             setSubmit(true)
             props.initialise()
 
+            const thisHash = md5ToBytes32(hash)
             const thisWorkType = (workType as NumberOptionType).value
             const thisLicense = (license as NumberOptionType).value
 
             let d = new Date(Date.now())
 
-            //ethers.utils.hexlify(hash)
-
             const fileInfo: CreativeWorks = {
                 workType: thisWorkType,
                 license: thisLicense,
-                id: ethers.utils.formatBytes32String(d.toISOString()),
+                id: thisHash,
                 authorId: user.id,
                 dateCreated: ethers.utils.formatBytes32String(d.toISOString()),
                 dateModified: ethers.utils.formatBytes32String(d.toISOString()),
