@@ -135,9 +135,9 @@ export const addFile = (props: CreativeWorks) => {
       const state = getState()
       const artefactsContract = state.chainContracts.data.contracts.artefacts
 
-      try {
+      //console.log("file props: ", props)
 
-          console.log(props)
+      try {
 
          const tx = await artefactsContract.addWork(props)
          dispatch(txDispatch(tx))

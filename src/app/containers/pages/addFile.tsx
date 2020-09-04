@@ -277,8 +277,12 @@ export const getFile = (props: Props) => {
             const thisHash = md5ToBytes32(hash)
             const thisWorkType = (workType as NumberOptionType).value
             const thisLicense = (license as NumberOptionType).value
-
             let d = new Date(Date.now())
+
+            let url = values.url
+            if ( !values.url ) {
+                url = ""
+            }
 
             const fileInfo: CreativeWorks = {
                 workType: thisWorkType,
@@ -287,7 +291,7 @@ export const getFile = (props: Props) => {
                 authorId: user.id,
                 dateCreated: ethers.utils.formatBytes32String(d.toISOString()),
                 dateModified: ethers.utils.formatBytes32String(d.toISOString()),
-                url: values.url,
+                url: url,
                 name: fileName,
                 description: values.description
             }
