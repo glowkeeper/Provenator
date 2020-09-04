@@ -84,6 +84,8 @@ func Artefact (ref [32]byte) ([]byte) {
 	    return result
 	}
 
+	fmt.Println("Author: ", authorIds)
+
     for i := 0; i < len(authorIds); i++ {
 
 		author, err := contracts.Contracts.EntitiesContract.GetEntity(&bind.CallOpts{}, authorIds[i])

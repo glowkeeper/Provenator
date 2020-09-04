@@ -30,6 +30,7 @@ contract ArtefactNode is IArtefact {
         );
 
         work = _work;
+        addAuthor(_work.authorId);
     }
 
     function amend(CreativeWorks memory _work) override virtual public {
@@ -45,6 +46,7 @@ contract ArtefactNode is IArtefact {
         );
 
         work = _work;
+        addAuthor(_work.authorId);
     }
 
     function addAuthor(bytes32 _authorId) override virtual public {

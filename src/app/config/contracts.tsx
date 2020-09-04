@@ -12,8 +12,8 @@ class Config {
 class Contracts {
 
     // rinkeby
-    static entitiesAddress = "0x2cAb3f679A12cb03daD25A97Bd516c7F9b5f2ea0"
-    static artefactsAddress = "0x1a4704B6F23B811C326b08571003a50c657b72Aa"
+    static entitiesAddress = "0x96EeEef50A384bB05a27BC5251b8d9DEd252A89a"
+    static artefactsAddress = "0x30030A94e6f1531F7b28108a92d1D2E9D9C6D03a"
 
     static entitiesABI = [
         "function addEntity(tuple(bytes32 id, string name, string email, string url) _entity, uint8 _entityType)",

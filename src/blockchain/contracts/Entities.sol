@@ -24,14 +24,14 @@ contract EntityNode is IEntity {
         );
 
         entityTypes = new bool[](typesSize);
-        entityTypes[uint8(_entityType)] = true;
         entity = _entity;
+        addType(_entityType);
     }
 
     function amend(CreativeEntities memory _entity, EntityTypes _entityType) override virtual public {
 
-        addType(_entityType);
         entity = _entity;
+        addType(_entityType);
     }
 
     function addType(EntityTypes _type) override virtual public {

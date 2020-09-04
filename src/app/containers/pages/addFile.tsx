@@ -284,7 +284,7 @@ export const getFile = (props: Props) => {
             const fileInfo: CreativeWorks = {
                 workType: thisWorkType,
                 license: thisLicense,
-                id: user.id,
+                id: ethers.utils.formatBytes32String(d.toISOString()),
                 authorId: user.id,
                 dateCreated: ethers.utils.formatBytes32String(d.toISOString()),
                 dateModified: ethers.utils.formatBytes32String(d.toISOString()),
