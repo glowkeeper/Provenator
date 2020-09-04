@@ -25,7 +25,7 @@ var Conn *ethclient.Client
 // ArtefactsContract - get  contract
 func ArtefactsContract () (*Artefacts.Artefacts) {
 
-	contract, err := Artefacts.NewArtefacts(common.HexToAddress(viper.GetString("address.activitiesContract")), Conn)
+	contract, err := Artefacts.NewArtefacts(common.HexToAddress(viper.GetString("address.artefactsContract")), Conn)
 	if err != nil {
 		log.Fatalf("%s: %v", text.ErrorArtefactsContract, err)
 		return nil

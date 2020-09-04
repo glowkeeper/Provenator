@@ -91,7 +91,7 @@ func Artefact (ref [32]byte) ([]byte) {
 		    pkgLog.SLogger.Error(text.ErrorArtefactsAll, zap.Error(err))
 		    return result
 		}
-		
+
 		thisAuthor := types.Entity {
 		   ID: fmt.Sprintf("%#x", authorIds[i]),
 		   Name: author.Name,
