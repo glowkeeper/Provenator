@@ -30,7 +30,7 @@ type EntitiesAll struct {
 
 // EntitiesTotal - get the total number of entities
 type EntitiesTotal struct {
-	Total	int64   `json:"total"`
+	Total	int64   `json:"entitiesTotal"`
 }
 
 // EntityType - get the type of entities
@@ -45,7 +45,7 @@ type EntityTypes struct {
 
 // EntitiesList - a list if all entities
 type EntitiesList struct {
-	ID	[]string `json:"id"`
+	ID	[]string `json:"entitityId"`
 }
 
 // Works - creative works data

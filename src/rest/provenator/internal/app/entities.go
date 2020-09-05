@@ -80,6 +80,8 @@ func EntityTypes (ref [32]byte) ([]byte) {
 func Entity (ref [32]byte) ([]byte) {
 
 	var result []byte
+	entities := &types.EntitiesAll{}
+
 	//entities := &types.EntitiesAll{}
 	entity := types.Entity{}
 	entityAddress, err := contracts.Contracts.EntitiesContract.GetEntityContract(&bind.CallOpts{}, ref)
@@ -107,7 +109,9 @@ func Entity (ref [32]byte) ([]byte) {
 		URL: aEntity.Url,
 	}
 
-	tResult, err := json.MarshalIndent(&entity, "", "")
+	entities.Entities = append(entities.Entities, entity)
+
+	tResult, err := json.MarshalIndent(&entities, "", "")
 	if err != nil {
 		pkgLog.SLogger.Error(text.ErrorEntitiesAll + " - " + text.ErrorUnMarshall, zap.Error(err))
 		return result

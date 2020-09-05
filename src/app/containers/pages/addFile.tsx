@@ -36,6 +36,7 @@ import {
     CreativeWorks,
     PayloadProps,
     GetProps,
+    EntityProps,
     TxData } from '../../store/types'
 
 import { themeStyles } from '../../styles'
@@ -180,16 +181,23 @@ export const getFile = (props: Props) => {
             const id = addressToBytes32(props.address)
             props.getData(`${Remote.insecure}${Remote.server}:${Remote.port}${Remote.entities}/${id}`)
 
-        } else if ( ( props.user.data.length > 0 ) && ( user.name == "" ) ) {
-
-            //console.log(props.user.data)
-            setUser(props.user.data[0])
-
         } else {
+
+            if ( props.user.data.length > 0 ) {
+
+                const userData = props.user.data[0] as EntityProps
+                const author: Author = userData.entities[0] as Author
+
+                if ( ( author.name != user.name ) || (author.email != user.email) || ( author.url != user.url ) ) {
+
+                    setUser(author)
+                }
+            }
 
             const txData: TxData = props.info.data as TxData
             const infoData = getDictEntries(props.info)
             setInfo( infoData )
+
             if( txData.summary == Transaction.success || txData.summary == Transaction.failure ) {
                 setSubmit(false)
                 setTimeout(() => {
