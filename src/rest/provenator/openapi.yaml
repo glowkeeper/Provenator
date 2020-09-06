@@ -169,3 +169,24 @@ paths:
                         type: "string"
                         items:
                           type: "string"
+    /artefacts-entity/{entitiesRef}:
+        get:
+            summary: "/artefacts-entity/{entitiesRef}"
+            description: "Provenator REST API artefacts for a given entity"
+            parameters:
+                name: "entitiesRef"
+                in: "path"
+                required: true
+                description: "artefacts for a given entity"
+                schema:
+                    type : "string"
+                    minimum: 1
+            responses:
+                '200':
+                  description: "Success"
+                  content:
+                    application/json:
+                      schema:
+                        type: "string"
+                        items:
+                          type: "string"

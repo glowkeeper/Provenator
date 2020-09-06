@@ -11,6 +11,8 @@ class Local {
   static readonly contact = '/contact'
 
   static readonly file = '/file'
+
+  static readonly listMyArtefacts = '/my-artefacts'
 }
 
 class Remote {
@@ -22,6 +24,8 @@ class Remote {
     static readonly port = '10000'
 
     static readonly entities = "/entities"
+    static readonly artefacts = "/artefacts"
+    static readonly artefactsEntity = "/artefacts-entity"
 }
 
 export { Local, Remote }

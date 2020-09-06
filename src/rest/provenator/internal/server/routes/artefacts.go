@@ -37,3 +37,13 @@ func artefacts(w http.ResponseWriter, r *http.Request) {
 	content := app.Artefact(hArtefactsRef)
     w.Write(content)
 }
+
+func artefactsEntity(w http.ResponseWriter, r *http.Request) {
+
+	params := mux.Vars(r)
+	pEntity := viper.GetString("paths./artefacts-entity/{entitiesRef}.get.parameters.name")
+    entityRef := params[pEntity]
+	hEntityRef := common.HexToHash(entityRef)
+	content := app.ArtefactEntity(hEntityRef)
+    w.Write(content)
+}

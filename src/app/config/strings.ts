@@ -20,6 +20,7 @@ class Paths {
   static readonly contact = 'Contact'
 
   static readonly file = 'File'
+  static readonly listMyArtefacts = 'My Files'
 }
 
 
@@ -102,14 +103,16 @@ class File {
     static readonly fileUrl = "File URL"
     static readonly workType = "Works Type"
     static readonly description = 'Description'
+    static readonly license = "License"
+
+    static readonly authorName = "Author Name"
+    static readonly authorEMail = "Author eMail"
+    static readonly authorURL = "Author URL"
 
     static readonly copyrightHolderName = "Copyright Holder Name"
     static readonly copyrightHolderEMail = "Copyright Holder eMail"
     static readonly copyrightHolderURL = "Copyright Holder  URL"
-    static readonly authorName = "Author Name"
-    static readonly authorEMail = "Author eMail"
-    static readonly authorURL = "Author URL"
-    static readonly license = "License"
+
     static readonly publisherName = "Publisher Name"
     static readonly publisherEMail = "Publisher eMail"
     static readonly publisherURL = "Publisher URL"
@@ -125,6 +128,26 @@ class File {
     static readonly addFileButton = "Submit Info"
 }
 
+class Artefacts {
+
+    static readonly headingFileList = "My Digital Media"
+
+    static readonly workType = "Work Type"
+    static readonly license = "License"
+    static readonly dateCreated = "Date Created"
+    static readonly dateModified = "Date Modified"
+    static readonly url = "URL"
+    static readonly artefactName = "Name"
+    static readonly description = "Description"
+
+    static readonly id = "Works ID"
+
+    static readonly authorId = "Author ID"
+    static readonly copyrightHolderId = "Copyright Holder ID"
+    static readonly publisherId = "Publisher ID"
+}
+
+
 export { App,
          Paths,
          Blockchain,
@@ -136,5 +159,6 @@ export { App,
          Faq,
          Contact,
          User,
-         File
+         File,
+         Artefacts
        }

@@ -2,20 +2,23 @@ import React, { useRef, useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import Spinner from 'react-spinner-material'
-import { SimpleArrayRenderer } from '../simpleRenderers'
+import { SimpleArrayRenderer } from '../simpleRenderer'
 
 import { getArtefactsHTML } from '../../utils/artefacts'
 
-import { initialise, getAllData } from '../../store/app/get/actions'
+import { addressToBytes32 } from '../../utils'
+
+import { initialise, getData } from '../../store/app/get/actions'
 
 import {
     ApplicationState,
     AppDispatch,
     PayloadProps,
     GetProps,
-    ArtefactsProps as DataProps } from '../../store/types'
+    CreativeWorksProps
+} from '../../store/types'
 
-import { FormHelpers, Artefacts, Works, ExtraInfo, GeneralError, Remote } from '../../config'
+import { FormHelpers, Artefacts, GeneralError, Remote } from '../../config'
 
 import { themeStyles } from '../../styles'
 
@@ -45,12 +48,14 @@ const artefactsReader = (props: Props) => {
 
             isFirstRun.current = false
             props.initialise()
-            props.getData(`${Remote.insecure}${Remote.server}:${Remote.port}${Remote.artefactsAddress}/${props.address}`)
+
+            const id = addressToBytes32(props.address)
+            props.getData(`${Remote.insecure}${Remote.server}:${Remote.port}${Remote.artefactsEntity}/${id}`)
 
         } else if (typeof props.artefacts.data !== 'undefined') {
             if ( props.artefacts.data.length > 0 ) {
 
-                const artefactsInfo = getArtefactsHTML(props.artefacts.data[0] as DataProps)
+                const artefactsInfo = getArtefactsHTML(props.artefacts.data[0] as CreativeWorksProps)
                 setArtefactsInfo(artefactsInfo)
                 setLoading(false)
             }
@@ -60,7 +65,7 @@ const artefactsReader = (props: Props) => {
 
     return (
       <div>
-        <h2>{Artefacts.headingMyArtefactsReader}</h2>
+        <h2>{Artefacts.headingFileList}</h2>
         <hr />
         <div>
             {isLoading ? <div className={themeClasses.spinner}><Spinner radius={40} color={"#38348B"} stroke={5} visible={isLoading} /></div> : <SimpleArrayRenderer data={artefactsInfo} /> }
@@ -73,14 +78,14 @@ const mapStateToProps = (state: ApplicationState): ArtefactsProps => {
   //console.log(state.orgReader)
   return {
     artefacts: state.data as GetProps,
-    address: state.chainInfo.data.account
+    address: state.chainInfo.data.Account
   }
 }
 
 const mapDispatchToProps = (dispatch: AppDispatch): ArtefactsDispatchProps => {
   return {
     initialise: () => dispatch(initialise()),
-    getData: (url: string) => dispatch(getAllData(url))
+    getData: (url: string) => dispatch(getData(url))
   }
 }
 

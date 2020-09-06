@@ -104,10 +104,22 @@ export interface Entity {
 export type Author = Entity & Id
 export type CopyrightHolder = Entity & Id
 export type Publisher = Entity & Id
-export type Entities = Author | CopyrightHolder  | Publisher
+export type Entities = Author | CopyrightHolder | Publisher
 
 export interface EntityProps {
     entities: Array<Entities>
+}
+
+export interface AuthorProps {
+    author: Array<Author>
+}
+
+export interface CopyrightHolderProps {
+    copyrightHolder: Array<CopyrightHolder>
+}
+
+export interface PublisherProps {
+    publisher: Array<Publisher>
 }
 
 // the works they create
@@ -123,10 +135,10 @@ export interface CreativeWorks {
     description: string
 }
 
-//export type CreativeWorks = Works & Id
+export type Works = CreativeWorks & AuthorProps & CopyrightHolderProps & PublisherProps
 
 export interface CreativeWorksProps {
-    fileInfo: Array<CreativeWorks>
+    creativeWorks: Array<Works>
 }
 
 // Reference stuff - unique Ids

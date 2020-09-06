@@ -192,3 +192,41 @@ func ArtefactsAll () ([]byte) {
 	result = append(result, tResult...)
     return result
 }
+
+// ArtefactEntity - Artefacts for a given entity
+func ArtefactEntity (ref [32]byte) ([]byte) {
+
+	var result []byte
+	artefacts := &types.WorksAll{}
+	sRef := fmt.Sprintf("%#x", ref)
+	fmt.Println(sRef)
+
+    num := artefactsTotal()
+    var i int64
+    for ; i < num; i++ {
+
+		thisRef, err := contracts.Contracts.ArtefactsContract.GetReference(&bind.CallOpts{}, big.NewInt(i))
+        if err != nil {
+			pkgLog.SLogger.Error(text.ErrorArtefactsRef, zap.Error(err))
+	        return result
+        }
+
+		thisArtefact := types.Works{}
+		artefact := Artefact(thisRef)
+		json.Unmarshal(artefact, &thisArtefact)
+		for i := 0; i < len(thisArtefact.Authors); i++ {
+
+			if ( thisArtefact.Authors[i].ID == sRef ) {
+				artefacts.Works = append(artefacts.Works, thisArtefact)
+			}
+		}
+	}
+
+	tResult, err := json.MarshalIndent(&artefacts, "", "")
+	if err != nil {
+		pkgLog.SLogger.Error(text.ErrorArtefactsRef + " - " + text.ErrorUnMarshall, zap.Error(err))
+		return result
+	}
+	result = append(result, tResult...)
+    return result
+}

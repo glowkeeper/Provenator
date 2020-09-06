@@ -16,6 +16,7 @@ func RegisterRoutes(r *mux.Router) {
 	uArtefactsAll := viper.GetString("paths./artefacts-all.get.summary")
 	uArtefactsTotal := viper.GetString("paths./artefacts-total.get.summary")
 	uArtefacts := viper.GetString("paths./artefacts/{artefactsRef}.get.summary")
+	uArtefactsEntity := viper.GetString("paths./artefacts-entity/{entitiesRef}.get.summary")
 
 	uEntitiesList := viper.GetString("paths./entities.get.summary")
 	uEntitiesAll := viper.GetString("paths./entities-all.get.summary")
@@ -45,6 +46,12 @@ func RegisterRoutes(r *mux.Router) {
 	r.HandleFunc(uArtefacts, func(w http.ResponseWriter, r *http.Request) {
     	artefacts(w, r)
 	}).Methods(http.MethodGet)
+
+	r.HandleFunc(uArtefactsEntity, func(w http.ResponseWriter, r *http.Request) {
+    	artefactsEntity(w, r)
+	}).Methods(http.MethodGet)
+
+
 
 	// Entities
 	r.HandleFunc(uEntitiesList, func(w http.ResponseWriter, r *http.Request) {

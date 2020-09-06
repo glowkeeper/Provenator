@@ -3,6 +3,13 @@ type StringOptionType = { label: string; value: string }
 
 class FormHelpers {
 
+    static readonly EntityTypes = [
+        "NONE",
+        "Author",
+        "Copyright Holder",
+        "Publisher"
+    ]
+
     static readonly works = [
         "NONE",
         "Article",
@@ -93,7 +100,7 @@ class FormHelpers {
         {value: 15, label: `${FormHelpers.licenses[15]}`},
         {value: 16, label: `${FormHelpers.licenses[16]}`},
         {value: 17, label: `${FormHelpers.licenses[17]}`},
-        {value: 18, label: `${FormHelpers.licenses[18]}`},        
+        {value: 18, label: `${FormHelpers.licenses[18]}`},
         {value: 19, label: `${FormHelpers.licenses[19]}`}
     ]
 }
