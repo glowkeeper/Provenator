@@ -16,7 +16,7 @@ export const getArtefactsHTML = (data: CreativeWorksProps): any[] => {
 
     let artefactsInfo = []
 
-    console.log(data)
+    //console.log(data)
 
     if( typeof data.creativeWorks !== 'undefined' ) {
         for ( var i = 0; i < data.creativeWorks.length; i++) {

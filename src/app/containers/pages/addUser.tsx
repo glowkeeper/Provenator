@@ -89,12 +89,16 @@ export const getUser = (props: Props) => {
             if ( props.user.data.length > 0 ) {
 
                 const userData = props.user.data[0] as EntityProps
-                const author: Author = userData.entities[0] as Author
+                //console.log(userData)
+                if ( userData.entities ) {
+                    if ( userData.entities.length > 0 ) {
+                        const author: Author = userData.entities[0] as Author
+                        if ( ( author.name != user.name ) || (author.email != user.email) || ( author.url != user.url ) ) {
 
-                if ( ( author.name != user.name ) || (author.email != user.email) || ( author.url != user.url ) ) {
-
-                    //console.log("now here: ", props.user)
-                    setUser(author)
+                            //console.log("now here: ", props.user)
+                            setUser(author)
+                        }
+                    }
                 }
             }
 
