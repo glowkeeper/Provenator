@@ -22,7 +22,7 @@ export const Home = () => {
 
        <Grid container>
 
-            <Grid item container xs={4} justify="center">
+            <Grid item container xs={3} justify="center">
 
                 <NavLink to={Local.addUser} className={themeClasses.homeLink}>
                     <Grid item>
@@ -39,7 +39,7 @@ export const Home = () => {
 
              </Grid>
 
-             <Grid item container xs={4} justify="center">
+             <Grid item container xs={3} justify="center">
 
                  <NavLink to={Local.addFile} className={themeClasses.homeLink}>
                      <Grid item>
@@ -56,7 +56,7 @@ export const Home = () => {
 
               </Grid>
 
-              <Grid item container xs={4} justify="center">
+              <Grid item container xs={3} justify="center">
 
                   <NavLink to={Local.listMyArtefacts} className={themeClasses.homeLink}>
                       <Grid item>
@@ -72,6 +72,23 @@ export const Home = () => {
                   </NavLink>
 
                </Grid>
+
+               <Grid item container xs={3} justify="center">
+
+                   <NavLink to={Local.addToArtefacts} className={themeClasses.homeLink}>
+                       <Grid item>
+                          <Paper className={themeClasses.home} elevation={0}>
+                            <TocTwoToneIcon color="primary"/>
+                          </Paper>
+                       </Grid>
+                       <Grid item>
+                          <Paper className={themeClasses.home} elevation={0}>
+                              {Paths.addToArtefacts}
+                          </Paper>
+                       </Grid>
+                   </NavLink>
+
+                </Grid>
 
        </Grid>
 

@@ -9,7 +9,6 @@ class App {
 
 class Paths {
 
-  // AppBar
   static readonly home = 'Home'
   static readonly addUser = 'Set User'
   static readonly addFile = 'Hash File'
@@ -21,6 +20,11 @@ class Paths {
 
   static readonly file = 'File'
   static readonly listMyArtefacts = 'My Files'
+  static readonly addToArtefacts = 'Add Info to Files'
+
+  static readonly addAuthorToArtefact = 'Add Author'
+  static readonly addCopyrightHolderToArtefact = 'Add Copyright Holder'
+  static readonly addPublisherToArtefact = 'Add Publisher'
 }
 
 
@@ -131,6 +135,7 @@ class File {
 class Artefacts {
 
     static readonly headingFileList = "My Digital Media"
+    static readonly headingAddToArtefact = "Add Info to Files"
 
     static readonly workType = "Work Type"
     static readonly license = "License"
@@ -145,6 +150,10 @@ class Artefacts {
     static readonly authorId = "Author ID"
     static readonly copyrightHolderId = "Copyright Holder ID"
     static readonly publisherId = "Publisher ID"
+
+    static readonly addAuthorButton = "Add Author"
+    static readonly addCopyrightHolderButton = "Add Copyright Holder"
+    static readonly addPublisherButton = "Add Publisher"
 }
 
 

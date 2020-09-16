@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 
 import { InfoTypes } from '../store/types'
 
-import { BlockchainInfo, Info, Home, ListMyArtefacts } from '../components/pages'
+import { BlockchainInfo, Info, Home, ListMyArtefacts, AddToArtefacts } from '../components/pages'
 import { AddFile, AddUser } from '../containers/pages/'
 
 import { Paths, Local } from '../config'
@@ -24,9 +24,9 @@ export const Content = () => {
         <Route name={Paths.addUser} exact path={Local.addUser} render= {() => <AddUser />} />
         <Route name={Paths.addFile} exact path={Local.addFile} render= {() => <AddFile />} />
 
+        <Route name={Paths.addToArtefacts} path={Local.addToArtefacts} render={() => <AddToArtefacts />} />
+
         <Route name={Paths.home} path={Local.home} render= {() => <Home />} />
-
-
 
       </Switch>
     )

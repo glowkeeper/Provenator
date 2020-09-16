@@ -13,7 +13,6 @@ import { initialise, getData } from '../../store/app/get/actions'
 import {
     ApplicationState,
     AppDispatch,
-    PayloadProps,
     GetProps,
     CreativeWorksProps
 } from '../../store/types'

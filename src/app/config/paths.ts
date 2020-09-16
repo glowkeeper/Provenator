@@ -1,8 +1,8 @@
 class Local {
 
   static readonly home = '/'
-  static readonly addUser = '/set-user'
-  static readonly addFile = '/add-file'
+  static readonly addUser = '/setUser'
+  static readonly addFile = '/addFile'
   static readonly blockchain = '/blockchain'
   static readonly about = '/about'
   static readonly help = '/help'
@@ -12,7 +12,17 @@ class Local {
 
   static readonly file = '/file'
 
-  static readonly listMyArtefacts = '/my-artefacts'
+  static readonly listMyArtefacts = '/myArtefacts'
+  static readonly addToArtefacts = '/addToArtefacts'
+  
+  static readonly addAuthorToArtefact = '/addAuthor'
+  static readonly addAuthorToArtefactId = `${Local.addAuthorToArtefact}/:Id`
+  static readonly addCopyrightHolderToArtefact = '/addCopyrightHolder'
+  static readonly addCopyrightHolderToArtefactId = `${Local.addCopyrightHolderToArtefact}/:Id`
+  static readonly addPublisherToArtefact = '/addPublisher'
+  static readonly addCPublisherToArtefactId = `${Local.addPublisherToArtefact}/:Id`
+
+
 }
 
 class Remote {
