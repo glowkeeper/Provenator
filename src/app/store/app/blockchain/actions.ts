@@ -18,6 +18,8 @@ import {
     TransactionActionTypes,
     TxData,
     Author,
+    CopyrightHolder,
+    Publisher,
     EntityTypes,
     CreativeWorks
 } from '../../types'
@@ -104,7 +106,7 @@ export const init = () => {
   }
 }
 
-export const addAuthor = (props: Author) => {
+export const addAuthor = (authorProps: Author) => {
   return async (dispatch: AppDispatch, getState: Function) => {
 
      const state = getState()
@@ -112,7 +114,57 @@ export const addAuthor = (props: Author) => {
 
      try {
 
-        const tx = await entitiesContract.addEntity(props, EntityTypes.Author)
+        const tx = await entitiesContract.addEntity(authorProps, EntityTypes.Author)
+        dispatch(txDispatch(tx))
+
+      } catch (error) {
+
+        const d = new Date(Date.now())
+        let txData: TxData  = {
+            key:  "-1",
+            summary: `${Transaction.failure}`,
+            time: d.toString()
+        }
+        dispatch(write({data: txData})(TransactionActionTypes.TRANSACTION_FAILURE))
+    }
+
+  }
+}
+
+export const addCopyrightHolder = (copyrightProps: CopyrightHolder) => {
+  return async (dispatch: AppDispatch, getState: Function) => {
+
+     const state = getState()
+     const entitiesContract = state.chainContracts.data.contracts.entities
+
+     try {
+
+        const tx = await entitiesContract.addEntity(copyrightProps, EntityTypes.CopyrightHolder)
+        dispatch(txDispatch(tx))
+
+      } catch (error) {
+
+        const d = new Date(Date.now())
+        let txData: TxData  = {
+            key:  "-1",
+            summary: `${Transaction.failure}`,
+            time: d.toString()
+        }
+        dispatch(write({data: txData})(TransactionActionTypes.TRANSACTION_FAILURE))
+    }
+
+  }
+}
+
+export const addPublisher = (publisherProps: Publisher) => {
+  return async (dispatch: AppDispatch, getState: Function) => {
+
+     const state = getState()
+     const entitiesContract = state.chainContracts.data.contracts.entities
+
+     try {
+
+        const tx = await entitiesContract.addEntity(publisherProps, EntityTypes.Publisher)
         dispatch(txDispatch(tx))
 
       } catch (error) {

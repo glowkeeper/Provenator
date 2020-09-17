@@ -98,6 +98,38 @@ class User {
     static readonly addUserButton = "Submit Info"
 }
 
+class CopyrightHolder {
+
+    static readonly heading = "Set Copyright Holder Details"
+
+    static readonly copyrightName = "Copyright Holder Name"
+    static readonly copyrightEMail = "Copyright Holder eMail"
+    static readonly copyrightURL = "Copyright Holder URL"
+
+    static readonly holderId = "Copyright Holder ID"
+
+    static readonly validURL = "Please enter a valid URL"
+
+    static readonly submitTip = "Submit copyright holder details to the Ethereum blockchain"
+
+    static readonly addCopyrightHolderButton = "Submit Info"
+}
+
+class Publisher {
+
+    static readonly heading = "Set Publisher Details"
+
+    static readonly publisherName = "Publisher Name"
+    static readonly publisherEMail = "Publisher eMail"
+    static readonly publisherURL = "Publisher URL"
+
+    static readonly validURL = "Please enter a valid URL"
+
+    static readonly submitTip = "Submit publisher details to the Ethereum blockchain"
+
+    static readonly addPublisherButton = "Submit Info"
+}
+
 class File {
 
     static readonly headingFile = "Set the Provenance of a Digital Media File"
@@ -168,6 +200,8 @@ export { App,
          Faq,
          Contact,
          User,
+         CopyrightHolder,
+         Publisher,
          File,
          Artefacts
        }

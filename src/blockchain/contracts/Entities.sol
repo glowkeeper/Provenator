@@ -12,6 +12,7 @@ contract EntityNode is IEntity {
 
     uint8 constant typesSize = uint8(EntityTypes.MAX);
     CreativeEntities               entity;
+    bytes32[]                      relations;
     bool[]                         entityTypes;
 
     constructor (CreativeEntities memory _entity, EntityTypes _entityType) public {
@@ -34,6 +35,17 @@ contract EntityNode is IEntity {
         addType(_entityType);
     }
 
+    function addRelation(bytes32 _relatedId) override virtual public {
+        require (
+            isType(EntityTypes.AUTHOR) &&
+            _relatedId[0] != 0
+        );
+
+        if ( !isRelation(_relatedId) ) {
+            relations.push(_relatedId);
+        }
+    }
+
     function addType(EntityTypes _type) override virtual public {
         require (
             _type > EntityTypes.NONE &&
@@ -50,9 +62,30 @@ contract EntityNode is IEntity {
         return entity;
     }
 
+    function getRelations() override virtual public view returns (bytes32[] memory) {
+
+        return relations;
+    }
+
     function getTypes() override virtual public view returns (bool[] memory) {
 
         return entityTypes;
+    }
+
+    function isRelation(bytes32 _relatedEntityId) override virtual public view returns (bool) {
+        require (
+            _relatedEntityId[0] != 0
+        );
+
+        bool found = false;
+        for (uint i = 0; i < relations.length; i++) {
+           if ( relations[i] == _relatedEntityId ) {
+               found = true;
+               break;
+           }
+        }
+
+        return found;
     }
 
     function isType(EntityTypes _type) override virtual public view returns (bool) {
@@ -89,6 +122,16 @@ contract Entities is IEntitiesFactory, IFactory {
         }
     }
 
+    function addEntityRelation(bytes32 _parentId, bytes32 _relatedId) override virtual public {
+        require (
+            entityStore.data[_parentId].value != address(0x0) &&
+            entityStore.data[_relatedId].value != address(0x0)
+        );
+
+        EntityNode entity = EntityNode(entityStore.data[_parentId].value);
+        entity.addRelation(_relatedId);
+    }
+
     function amendEntity(CreativeEntities memory _entity, EntityTypes _type) override virtual public {
         require ( entityStore.data[_entity.id].value != address(0x0) );
 
@@ -101,6 +144,15 @@ contract Entities is IEntitiesFactory, IFactory {
 
         EntityNode entity = EntityNode(entityStore.data[_id].value);
         return entity.get();
+    }
+
+    function getEntityRelations(bytes32 _id) override virtual public view returns (bytes32[] memory) {
+        require (
+            entityStore.data[_id].value != address(0x0)
+        );
+
+        EntityNode entity = EntityNode(entityStore.data[_id].value);
+        return entity.getRelations();
     }
 
     function getEntityTypes(bytes32 _id) override virtual public view returns (bool[] memory) {
@@ -133,6 +185,15 @@ contract Entities is IEntitiesFactory, IFactory {
             refs[i] = entityStore.keys[i].key;
         }
         return refs;
+    }
+
+    function isEntityRelation(bytes32 _id, bytes32 _relatedEntityId) override virtual public view returns (bool) {
+        require(
+            entityStore.data[_id].value != address(0x0)
+        );
+
+        EntityNode entity = EntityNode(entityStore.data[_id].value);
+        return entity.isRelation(_relatedEntityId);
     }
 
     function isEntityType(bytes32 _id, EntityTypes _type) override virtual public view returns (bool) {

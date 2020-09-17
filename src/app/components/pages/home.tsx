@@ -7,6 +7,7 @@ import Paper from '@material-ui/core/Paper'
 import FaceTwoToneIcon from '@material-ui/icons/FaceTwoTone';
 import AttachFileTwoToneIcon from '@material-ui/icons/AttachFileTwoTone'
 import TocTwoToneIcon from '@material-ui/icons/TocTwoTone'
+import AddTwoToneIcon from '@material-ui/icons/AddTwoTone';
 
 import { themeStyles } from '../../styles'
 
@@ -78,7 +79,7 @@ export const Home = () => {
                    <NavLink to={Local.addToArtefacts} className={themeClasses.homeLink}>
                        <Grid item>
                           <Paper className={themeClasses.home} elevation={0}>
-                            <TocTwoToneIcon color="primary"/>
+                            <AddTwoToneIcon color="primary"/>
                           </Paper>
                        </Grid>
                        <Grid item>

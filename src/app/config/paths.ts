@@ -12,14 +12,14 @@ class Local {
 
   static readonly file = '/file'
 
-  static readonly listMyArtefacts = '/myArtefacts'
-  static readonly addToArtefacts = '/addToArtefacts'
-  
-  static readonly addAuthorToArtefact = '/addAuthor'
+  static readonly listMyArtefacts = '/my-files'
+  static readonly addToArtefacts = '/add-to-files'
+
+  static readonly addAuthorToArtefact = '/add-author'
   static readonly addAuthorToArtefactId = `${Local.addAuthorToArtefact}/:Id`
-  static readonly addCopyrightHolderToArtefact = '/addCopyrightHolder'
+  static readonly addCopyrightHolderToArtefact = '/add-copyright-holder'
   static readonly addCopyrightHolderToArtefactId = `${Local.addCopyrightHolderToArtefact}/:Id`
-  static readonly addPublisherToArtefact = '/addPublisher'
+  static readonly addPublisherToArtefact = '/add-publisher'
   static readonly addCPublisherToArtefactId = `${Local.addPublisherToArtefact}/:Id`
 
 
@@ -34,6 +34,7 @@ class Remote {
     static readonly port = '10000'
 
     static readonly entities = "/entities"
+    static readonly entityRelations = "/entity-relations"
     static readonly artefacts = "/artefacts"
     static readonly artefactsEntity = "/artefacts-entity"
 }
