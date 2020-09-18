@@ -17,6 +17,9 @@ func RegisterRoutes(r *mux.Router) {
 	uArtefactsTotal := viper.GetString("paths./artefacts-total.get.summary")
 	uArtefacts := viper.GetString("paths./artefacts/{artefactsRef}.get.summary")
 	uArtefactsEntity := viper.GetString("paths./artefacts-entity/{entitiesRef}.get.summary")
+	uArtefactsAuthors := viper.GetString("paths./artefacts-authors/{artefactsRef}.get.summary")
+	uArtefactsCopyrightHolders := viper.GetString("paths./artefacts-copyright-holders/{artefactsRef}.get.summary")
+	uArtefactsPublishers := viper.GetString("paths./artefacts-publishers/{artefactsRef}.get.summary")
 
 	uEntitiesList := viper.GetString("paths./entities.get.summary")
 	uEntitiesAll := viper.GetString("paths./entities-all.get.summary")
@@ -51,7 +54,17 @@ func RegisterRoutes(r *mux.Router) {
     	artefactsEntity(w, r)
 	}).Methods(http.MethodGet)
 
+	r.HandleFunc(uArtefactsAuthors, func(w http.ResponseWriter, r *http.Request) {
+    	artefactsAuthors(w, r)
+	}).Methods(http.MethodGet)
 
+	r.HandleFunc(uArtefactsCopyrightHolders, func(w http.ResponseWriter, r *http.Request) {
+    	artefactsCopyrightHolders(w, r)
+	}).Methods(http.MethodGet)
+
+	r.HandleFunc(uArtefactsPublishers, func(w http.ResponseWriter, r *http.Request) {
+    	artefactsPublishers(w, r)
+	}).Methods(http.MethodGet)
 
 	// Entities
 	r.HandleFunc(uEntitiesList, func(w http.ResponseWriter, r *http.Request) {

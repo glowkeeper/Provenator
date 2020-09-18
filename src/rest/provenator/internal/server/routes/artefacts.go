@@ -47,3 +47,33 @@ func artefactsEntity(w http.ResponseWriter, r *http.Request) {
 	content := app.ArtefactEntity(hEntityRef)
     w.Write(content)
 }
+
+func artefactsAuthors(w http.ResponseWriter, r *http.Request) {
+
+	params := mux.Vars(r)
+	pArtefact := viper.GetString("paths./artefacts-authors/{artefactsRef}.get.parameters.name")
+    artefactsRef := params[pArtefact]
+	hArtefactsRef := common.HexToHash(artefactsRef)
+	content := app.ArtefactAuthors(hArtefactsRef)
+    w.Write(content)
+}
+
+func artefactsCopyrightHolders(w http.ResponseWriter, r *http.Request) {
+
+	params := mux.Vars(r)
+	pArtefact := viper.GetString("paths./artefacts-copyright-holders/{artefactsRef}.get.parameters.name")
+    artefactsRef := params[pArtefact]
+	hArtefactsRef := common.HexToHash(artefactsRef)
+	content := app.ArtefactCopyrightHolders(hArtefactsRef)
+    w.Write(content)
+}
+
+func artefactsPublishers(w http.ResponseWriter, r *http.Request) {
+
+	params := mux.Vars(r)
+	pArtefact := viper.GetString("paths./artefacts-publishers/{artefactsRef}.get.parameters.name")
+    artefactsRef := params[pArtefact]
+	hArtefactsRef := common.HexToHash(artefactsRef)
+	content := app.ArtefactPublishers(hArtefactsRef)
+    w.Write(content)
+}

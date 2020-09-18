@@ -77,3 +77,18 @@ type WorksTotal struct {
 type WorksList struct {
 	ID	[]string `json:"id"`
 }
+
+// WorksAuthors - all authors for a work
+type WorksAuthors struct {
+	Authors []Entity `json:"authors"`
+}
+
+// WorksCopyrightHolders - all authors for a work
+type WorksCopyrightHolders struct {
+	CopyrightHolders []Entity `json:"copyrightHolders"`
+}
+
+// WorksPublishers - all authors for a work
+type WorksPublishers struct {
+	Publishers []Entity `json:"publishers"`
+}

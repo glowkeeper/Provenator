@@ -84,8 +84,6 @@ func Artefact (ref [32]byte) ([]byte) {
 	    return result
 	}
 
-	//fmt.Println("Author: ", authorIds)
-
     for i := 0; i < len(authorIds); i++ {
 
 		author, err := contracts.Contracts.EntitiesContract.GetEntity(&bind.CallOpts{}, authorIds[i])
@@ -104,26 +102,53 @@ func Artefact (ref [32]byte) ([]byte) {
 		artefact.Authors = append(artefact.Authors, thisAuthor)
 	}
 
-	/*author := types.Entity {
-	   ID: fmt.Sprintf("%#x", aArtefacts.Author.Id),
-	   Name: aArtefacts.Author.Name,
-	   EMail: aArtefacts.Author.Email,
-	   URL: aArtefacts.Author.Url,
+	copyrightHolderIds, err := contracts.Contracts.ArtefactsContract.GetWorkAuthors(&bind.CallOpts{}, ref)
+	if (err != nil) {
+	    pkgLog.SLogger.Error(text.ErrorArtefactsAll, zap.Error(err))
+	    return result
 	}
 
-	copyrightHolder := types.Entity {
-	   ID: fmt.Sprintf("%#x", aArtefacts.CopyrightHolder.Id),
- 	   Name: aArtefacts.CopyrightHolder.Name,
- 	   EMail: aArtefacts.CopyrightHolder.Email,
- 	   URL: aArtefacts.CopyrightHolder.Url,
+    for i := 0; i < len(copyrightHolderIds); i++ {
+
+		copyrightHolder, err := contracts.Contracts.EntitiesContract.GetEntity(&bind.CallOpts{}, copyrightHolderIds[i])
+		if (err != nil) {
+		    pkgLog.SLogger.Error(text.ErrorArtefactsAll, zap.Error(err))
+		    return result
+		}
+
+		thisCopyrightHolder := types.Entity {
+		   ID: fmt.Sprintf("%#x", copyrightHolderIds[i]),
+		   Name: copyrightHolder.Name,
+		   EMail: copyrightHolder.Email,
+		   URL: copyrightHolder.Url,
+		}
+
+		artefact.CopyrightHolders = append(artefact.CopyrightHolders, thisCopyrightHolder)
 	}
 
-	publisher := types.Entity {
-	   ID: fmt.Sprintf("%#x", aArtefacts.Publisher.Id),
- 	   Name: aArtefacts.Publisher.Name,
- 	   EMail: aArtefacts.Publisher.Email,
- 	   URL: aArtefacts.Publisher.Url,
-	}*/
+	publisherIds, err := contracts.Contracts.ArtefactsContract.GetWorkPublishers(&bind.CallOpts{}, ref)
+	if (err != nil) {
+	    pkgLog.SLogger.Error(text.ErrorArtefactsAll, zap.Error(err))
+	    return result
+	}
+
+    for i := 0; i < len(publisherIds); i++ {
+
+		publisher, err := contracts.Contracts.EntitiesContract.GetEntity(&bind.CallOpts{}, publisherIds[i])
+		if (err != nil) {
+		    pkgLog.SLogger.Error(text.ErrorArtefactsAll, zap.Error(err))
+		    return result
+		}
+
+		thisPublisher := types.Entity {
+		   ID: fmt.Sprintf("%#x", publisherIds[i]),
+		   Name: publisher.Name,
+		   EMail: publisher.Email,
+		   URL: publisher.Url,
+		}
+
+		artefact.Publishers = append(artefact.Publishers, thisPublisher)
+	}
 
 	tResult, err := json.MarshalIndent(&artefact, "", "")
 	if err != nil {
@@ -199,7 +224,7 @@ func ArtefactEntity (ref [32]byte) ([]byte) {
 	var result []byte
 	artefacts := &types.WorksAll{}
 	sRef := fmt.Sprintf("%#x", ref)
-	fmt.Println(sRef)
+	//fmt.Println(sRef)
 
     num := artefactsTotal()
     var i int64
@@ -223,6 +248,125 @@ func ArtefactEntity (ref [32]byte) ([]byte) {
 	}
 
 	tResult, err := json.MarshalIndent(&artefacts, "", "")
+	if err != nil {
+		pkgLog.SLogger.Error(text.ErrorArtefactsRef + " - " + text.ErrorUnMarshall, zap.Error(err))
+		return result
+	}
+	result = append(result, tResult...)
+    return result
+}
+
+// ArtefactAuthors - authors for a given artefact
+func ArtefactAuthors (ref [32]byte) ([]byte) {
+
+	var result []byte
+	authors := &types.WorksAuthors{}
+	//sRef := fmt.Sprintf("%#x", ref)
+	//fmt.Println(sRef)
+
+	authorIds, err := contracts.Contracts.ArtefactsContract.GetWorkAuthors(&bind.CallOpts{}, ref)
+	if (err != nil) {
+	    pkgLog.SLogger.Error(text.ErrorArtefactsAll, zap.Error(err))
+	    return result
+	}
+
+    for i := 0; i < len(authorIds); i++ {
+
+		author, err := contracts.Contracts.EntitiesContract.GetEntity(&bind.CallOpts{}, authorIds[i])
+		if (err != nil) {
+		    pkgLog.SLogger.Error(text.ErrorArtefactsAll, zap.Error(err))
+		    return result
+		}
+
+		thisAuthor := types.Entity {
+		   ID: fmt.Sprintf("%#x", authorIds[i]),
+		   Name: author.Name,
+		   EMail: author.Email,
+		   URL: author.Url,
+		}
+
+		authors.Authors = append(authors.Authors, thisAuthor)
+	}
+
+	tResult, err := json.MarshalIndent(&authors, "", "")
+	if err != nil {
+		pkgLog.SLogger.Error(text.ErrorArtefactsRef + " - " + text.ErrorUnMarshall, zap.Error(err))
+		return result
+	}
+	result = append(result, tResult...)
+    return result
+}
+
+// ArtefactCopyrightHolders - copyright holders for a given artefact
+func ArtefactCopyrightHolders (ref [32]byte) ([]byte) {
+
+	var result []byte
+	copyrightHolders := &types.WorksCopyrightHolders{}
+
+	copyrightHolderIds, err := contracts.Contracts.ArtefactsContract.GetWorkAuthors(&bind.CallOpts{}, ref)
+	if (err != nil) {
+	    pkgLog.SLogger.Error(text.ErrorArtefactsAll, zap.Error(err))
+	    return result
+	}
+
+    for i := 0; i < len(copyrightHolderIds); i++ {
+
+		copyrightHolder, err := contracts.Contracts.EntitiesContract.GetEntity(&bind.CallOpts{}, copyrightHolderIds[i])
+		if (err != nil) {
+		    pkgLog.SLogger.Error(text.ErrorArtefactsAll, zap.Error(err))
+		    return result
+		}
+
+		thisCopyrightHolder := types.Entity {
+		   ID: fmt.Sprintf("%#x", copyrightHolderIds[i]),
+		   Name: copyrightHolder.Name,
+		   EMail: copyrightHolder.Email,
+		   URL: copyrightHolder.Url,
+		}
+
+		copyrightHolders.CopyrightHolders = append(copyrightHolders.CopyrightHolders, thisCopyrightHolder)
+	}
+
+	tResult, err := json.MarshalIndent(&copyrightHolders, "", "")
+	if err != nil {
+		pkgLog.SLogger.Error(text.ErrorArtefactsRef + " - " + text.ErrorUnMarshall, zap.Error(err))
+		return result
+	}
+	result = append(result, tResult...)
+    return result
+}
+
+// ArtefactPublishers - publishers for a given artefact
+func ArtefactPublishers (ref [32]byte) ([]byte) {
+
+	var result []byte
+	publishers := &types.WorksPublishers{}
+
+	publisherIds, err := contracts.Contracts.ArtefactsContract.GetWorkPublishers(&bind.CallOpts{}, ref)
+	if (err != nil) {
+	    pkgLog.SLogger.Error(text.ErrorArtefactsAll, zap.Error(err))
+	    return result
+	}
+
+    for i := 0; i < len(publisherIds); i++ {
+
+		publisher, err := contracts.Contracts.EntitiesContract.GetEntity(&bind.CallOpts{}, publisherIds[i])
+		if (err != nil) {
+		    pkgLog.SLogger.Error(text.ErrorArtefactsAll, zap.Error(err))
+		    return result
+		}
+
+		thisPublisher := types.Entity {
+		   ID: fmt.Sprintf("%#x", publisherIds[i]),
+		   Name: publisher.Name,
+		   EMail: publisher.Email,
+		   URL: publisher.Url,
+		}
+
+		publishers.Publishers = append(publishers.Publishers, thisPublisher)
+	}
+
+	tResult, err := json.MarshalIndent(&publishers, "", "")
 	if err != nil {
 		pkgLog.SLogger.Error(text.ErrorArtefactsRef + " - " + text.ErrorUnMarshall, zap.Error(err))
 		return result

@@ -190,3 +190,66 @@ paths:
                         type: "string"
                         items:
                           type: "string"
+    /artefacts-authors/{artefactsRef}:
+        get:
+            summary: "/artefacts-authors/{artefactsRef}"
+            description: "Provenator REST API authors for a given artefact"
+            parameters:
+                name: "artefactsRef"
+                in: "path"
+                required: true
+                description: "authors for the given artefact"
+                schema:
+                    type : "string"
+                    minimum: 1
+            responses:
+                '200':
+                  description: "Success"
+                  content:
+                    application/json:
+                      schema:
+                        type: "string"
+                        items:
+                          type: "string"
+    /artefacts-copyright-holders/{artefactsRef}:
+        get:
+            summary: "/artefacts-copyright-holders/{artefactsRef}"
+            description: "Provenator REST API copyright holders for a given artefact"
+            parameters:
+                name: "artefactsRef"
+                in: "path"
+                required: true
+                description: "copyright holders for the given artefact"
+                schema:
+                    type : "string"
+                    minimum: 1
+            responses:
+                '200':
+                  description: "Success"
+                  content:
+                    application/json:
+                      schema:
+                        type: "string"
+                        items:
+                          type: "string"
+    /artefacts-publishers/{artefactsRef}:
+        get:
+            summary: "/artefacts-publishers/{artefactsRef}"
+            description: "Provenator REST API authors for a given artefact"
+            parameters:
+                name: "artefactsRef"
+                in: "path"
+                required: true
+                description: "publishers for the given artefact"
+                schema:
+                    type : "string"
+                    minimum: 1
+            responses:
+                '200':
+                  description: "Success"
+                  content:
+                    application/json:
+                      schema:
+                        type: "string"
+                        items:
+                          type: "string"
