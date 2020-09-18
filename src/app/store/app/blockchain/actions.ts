@@ -207,3 +207,84 @@ export const addFile = (props: CreativeWorks) => {
 
   }
 }
+
+export const addFileAuthor = (fileId: string, authorId: string) => {
+  return async (dispatch: AppDispatch, getState: Function) => {
+
+      const state = getState()
+      const artefactsContract = state.chainContracts.data.contracts.artefacts
+
+      //console.log("file props: ", props)
+
+      try {
+
+         const tx = await artefactsContract.addWorkAuthor(fileId, authorId)
+         dispatch(txDispatch(tx))
+
+       } catch (error) {
+
+         const d = new Date(Date.now())
+         let txData: TxData  = {
+             key:  "-1",
+             summary: `${Transaction.failure}`,
+             time: d.toString()
+         }
+         dispatch(write({data: txData})(TransactionActionTypes.TRANSACTION_FAILURE))
+     }
+
+  }
+}
+
+export const addFileCopyrightHolder = (fileId: string, copyrightHolderId: string) => {
+  return async (dispatch: AppDispatch, getState: Function) => {
+
+      const state = getState()
+      const artefactsContract = state.chainContracts.data.contracts.artefacts
+
+      //console.log("file props: ", props)
+
+      try {
+
+         const tx = await artefactsContract.addWorkCopyrightHolder(fileId, copyrightHolderId)
+         dispatch(txDispatch(tx))
+
+       } catch (error) {
+
+         const d = new Date(Date.now())
+         let txData: TxData  = {
+             key:  "-1",
+             summary: `${Transaction.failure}`,
+             time: d.toString()
+         }
+         dispatch(write({data: txData})(TransactionActionTypes.TRANSACTION_FAILURE))
+     }
+
+  }
+}
+
+export const addFilePublisher = (fileId: string, publisherId: string) => {
+  return async (dispatch: AppDispatch, getState: Function) => {
+
+      const state = getState()
+      const artefactsContract = state.chainContracts.data.contracts.artefacts
+
+      //console.log("file props: ", props)
+
+      try {
+
+         const tx = await artefactsContract.addWorkPublisher(fileId, publisherId)
+         dispatch(txDispatch(tx))
+
+       } catch (error) {
+
+         const d = new Date(Date.now())
+         let txData: TxData  = {
+             key:  "-1",
+             summary: `${Transaction.failure}`,
+             time: d.toString()
+         }
+         dispatch(write({data: txData})(TransactionActionTypes.TRANSACTION_FAILURE))
+     }
+
+  }
+}

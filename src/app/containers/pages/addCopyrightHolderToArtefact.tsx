@@ -21,7 +21,7 @@ import RightCircleOutlined from '@ant-design/icons/lib/icons/RightCircleOutlined
 import { Okay, OptionsStyles } from '../../styles'
 
 import { initialise, getData } from '../../store/app/get/actions'
-import { addCopyrightHolder } from '../../store/app/blockchain'
+import { addFileCopyrightHolder } from '../../store/app/blockchain'
 import { initialise as txInitialise } from '../../store/app/tx/actions'
 
 import { history, getArtefactHTML, addressToBytes32, getDictEntries } from '../../utils'
@@ -56,7 +56,7 @@ interface CopyrightHolderStateProps {
 interface CopyrightHolderDispatchProps {
   initialise: () => void
   getData: (url: string) => void
-  handleSubmit: (values: Author) => void
+  handleSubmit: (fileId: string, copyrightHolderId: string) => void
 }
 
 type Props =  CopyrightHolderDispatchProps & CopyrightHolderStateProps
@@ -120,14 +120,7 @@ export const getCopyrightHolder = (props: Props) => {
 
             setSubmit(true)
             props.initialise()
-
-            const copyrightHolderInfo: Author = {
-                id: id,
-                name: values.copyrightHolderName,
-                email: values.copyrightHolderEMail,
-                url:  values.copyrightHolderURL
-            }
-            props.handleSubmit(copyrightHolderInfo)
+            props.handleSubmit(id, values.copyrightHolder)
           }}
         >
           {(formProps: FormikProps<any>) => (
@@ -179,7 +172,7 @@ const mapDispatchToProps = (dispatch: AppDispatch): CopyrightHolderDispatchProps
   return {
     initialise: () => dispatch(txInitialise()),
     getData: (url: string) => dispatch(getData(url)),
-    handleSubmit: (values: Author) => dispatch(addAuthor(values))
+    handleSubmit: (fileId: string, copyrightHolderId: string) => dispatch(addFileCopyrightHolder(fileId, copyrightHolderId))
   }
 }
 
