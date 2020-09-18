@@ -10,7 +10,9 @@ class App {
 class Paths {
 
   static readonly home = 'Home'
-  static readonly addUser = 'Set User'
+  static readonly addUser = 'Add User'
+  static readonly addCopyrightHolder = 'Add Copyright Holder'
+  static readonly addPublisher = 'Add Publisher'
   static readonly addFile = 'Hash File'
   static readonly blockchain = 'Blockchain'
   static readonly about = 'About'
@@ -22,9 +24,9 @@ class Paths {
   static readonly listMyArtefacts = 'My Files'
   static readonly addToArtefacts = 'Add Info to Files'
 
-  static readonly addAuthorToArtefact = 'Add Author'
-  static readonly addCopyrightHolderToArtefact = 'Add Copyright Holder'
-  static readonly addPublisherToArtefact = 'Add Publisher'
+  static readonly addAuthorToArtefact = 'Add an Author to a File'
+  static readonly addCopyrightHolderToArtefact = 'Add a Copyright Holder to a File'
+  static readonly addPublisherToArtefact = 'Add a Publisherto a File'
 }
 
 
@@ -102,9 +104,9 @@ class CopyrightHolder {
 
     static readonly heading = "Set Copyright Holder Details"
 
-    static readonly copyrightName = "Copyright Holder Name"
-    static readonly copyrightEMail = "Copyright Holder eMail"
-    static readonly copyrightURL = "Copyright Holder URL"
+    static readonly copyrightHolderName = "Copyright Holder Name"
+    static readonly copyrightHolderEMail = "Copyright Holder eMail"
+    static readonly copyrightHolderURL = "Copyright Holder URL"
 
     static readonly holderId = "Copyright Holder ID"
 

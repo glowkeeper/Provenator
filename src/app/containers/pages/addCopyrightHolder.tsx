@@ -15,24 +15,24 @@ import { FormControl } from '@material-ui/core'
 import { TextField } from "material-ui-formik-components"
 
 import Tooltip from '@material-ui/core/Tooltip'
-import UserReaderInput from 'react-file-reader-input'
+import CopyrightHolderReaderInput from 'react-file-reader-input'
 
 import Grid from '@material-ui/core/Grid'
 import RightCircleOutlined from '@ant-design/icons/lib/icons/RightCircleOutlined'
 import { Okay, OptionsStyles } from '../../styles'
 
 import { initialise, getData } from '../../store/app/get/actions'
-import { addAuthor } from '../../store/app/blockchain'
+import { addCopyrightHolder } from '../../store/app/blockchain'
 import { initialise as txInitialise } from '../../store/app/tx/actions'
 
 import { history, getDictEntries, addressToBytes32, bytes32ToAddress } from '../../utils'
 
-import { NumberOptionType, FormHelpers, GeneralError, Transaction, Remote, Local, Misc, User as UserConfig } from '../../config'
+import { NumberOptionType, FormHelpers, GeneralError, Transaction, Remote, Local, Misc, CopyrightHolder as CopyrightHolderConfig } from '../../config'
 
 import {
     ApplicationState,
     AppDispatch,
-    Author,
+    CopyrightHolder,
     PayloadProps,
     GetProps,
     EntityProps,
@@ -40,36 +40,36 @@ import {
 
 import { themeStyles } from '../../styles'
 
-const addUserSchema = Yup.object().shape({
-  authorName: Yup.string()
+const addCopyrightHolderSchema = Yup.object().shape({
+  copyrightHolderName: Yup.string()
     .required(`${GeneralError.required}`),
-  authorEMail: Yup.string()
+  copyrightHolderEMail: Yup.string()
     .email()
     .required(`${GeneralError.required}`),
-  authorURL: Yup.string()
-    .url(`${UserConfig.validURL}`),
+  copyrightHolderURL: Yup.string()
+    .url(`${CopyrightHolderConfig.validURL}`),
 })
 
-interface UserStateProps {
+interface CopyrightHolderStateProps {
   info: PayloadProps
-  user: GetProps
+  data: GetProps
   address: string
 }
 
-interface UserDispatchProps {
+interface CopyrightHolderDispatchProps {
   initialise: () => void
   getData: (url: string) => void
-  handleSubmit: (values: Author) => void
+  handleSubmit: (values: CopyrightHolder) => void
 }
 
-type Props =  UserDispatchProps & UserStateProps
+type Props =  CopyrightHolderDispatchProps & CopyrightHolderStateProps
 
-export const getUser = (props: Props) => {
+export const getCopyrightHolder = (props: Props) => {
 
     let isFirstRun = useRef(true)
     const [isLoading, setIsLoading] = useState(false)
     const [isSubmitting, setSubmit] = useState(false)
-    const [user, setUser] = useState({name: "", email: "", url: ""})
+    const [copyrightHolder, setCopyrightHolder] = useState({name: "", email: "", url: ""})
     const [info, setInfo] = useState("")
 
     const themeClasses = themeStyles()
@@ -86,15 +86,15 @@ export const getUser = (props: Props) => {
 
         } else {
 
-            if ( props.user.data.length > 0 ) {
+            if ( props.data.data.length > 0 ) {
 
-                const userData = props.user.data[0] as EntityProps
-                //console.log(userData)
-                if ( userData.entities ) {
-                    if ( userData.entities.length > 0 ) {
-                        const author: Author = userData.entities[0] as Author
-                        if ( ( author.name != user.name ) || (author.email != user.email) || ( author.url != user.url ) ) {
-                            setUser(author)
+                const copyrightHolderData = props.data.data[0] as EntityProps
+                //console.log(copyrightHolderData)
+                if ( copyrightHolderData.entities ) {
+                    if ( copyrightHolderData.entities.length > 0 ) {
+                        const copyrightHolder: CopyrightHolder = copyrightHolderData.entities[0] as CopyrightHolder
+                        if ( ( copyrightHolder.name != copyrightHolder.name ) || (copyrightHolder.email != copyrightHolder.email) || ( copyrightHolder.url != copyrightHolder.url ) ) {
+                            setCopyrightHolder(copyrightHolder)
                         }
                     }
                 }
@@ -112,16 +112,16 @@ export const getUser = (props: Props) => {
             }
         }
 
-    }, [props.info, props.user])
+    }, [props.info, props.data])
 
     return (
       <>
-        <h2>{UserConfig.headingUser}</h2>
+        <h2>{CopyrightHolderConfig.heading}</h2>
         <hr />
         <Formik
-          initialValues={ {authorName: user.name, authorEMail: user.email, authorURL: user.url} }
+          initialValues={ {copyrightHolderName: copyrightHolder.name, copyrightHolderEMail: copyrightHolder.email, copyrightHolderURL: copyrightHolder.url} }
           enableReinitialize={true}
-          validationSchema={addUserSchema}
+          validationSchema={addCopyrightHolderSchema}
           onSubmit={(values: any) => {
 
             setSubmit(true)
@@ -130,38 +130,38 @@ export const getUser = (props: Props) => {
             const id = addressToBytes32(props.address)
             //console.log(id, bytes32ToAddress(id))
 
-            const userInfo: Author = {
+            const copyrightHolderInfo: CopyrightHolder = {
                 id: id,
-                name: values.authorName,
-                email: values.authorEMail,
-                url:  values.authorURL
+                name: values.copyrightHolderName,
+                email: values.copyrightHolderEMail,
+                url:  values.copyrightHolderURL
             }
-            props.handleSubmit(userInfo)
+            props.handleSubmit(copyrightHolderInfo)
           }}
         >
           {(formProps: FormikProps<any>) => (
             <Form>
               <FormControl fullWidth={true}>
                   <Field
-                    name='authorName'
-                    label={UserConfig.authorName}
+                    name='copyrightHolderName'
+                    label={CopyrightHolderConfig.copyrightHolderName}
                     component={TextField}
                   />
                   <Field
-                    name='authorEMail'
-                    label={UserConfig.authorEMail}
+                    name='copyrightHolderEMail'
+                    label={CopyrightHolderConfig.copyrightHolderEMail}
                     component={TextField}
                   />
                   <Field
-                    name='authorURL'
-                    label={UserConfig.authorURL}
+                    name='copyrightHolderURL'
+                    label={CopyrightHolderConfig.copyrightHolderURL}
                     component={TextField}
                   />
                   <Grid container>
                       <Grid item xs={12} sm={3}>
-                        <Tooltip title={UserConfig.submitTip}>
+                        <Tooltip title={CopyrightHolderConfig.submitTip}>
                           <Okay type='submit' variant="contained" color="primary" disabled={isSubmitting} endIcon={<RightCircleOutlined spin={isSubmitting}/>}>
-                            {UserConfig.addUserButton}
+                            {CopyrightHolderConfig.addCopyrightHolderButton}
                           </Okay>
                         </Tooltip>
                       </Grid>
@@ -179,23 +179,23 @@ export const getUser = (props: Props) => {
     )
 }
 
-const mapStateToProps = (state: ApplicationState): UserStateProps => {
+const mapStateToProps = (state: ApplicationState): CopyrightHolderStateProps => {
   return {
     info: state.tx as PayloadProps,
-    user: state.data as GetProps,
+    data: state.data as GetProps,
     address: state.chainInfo.data.Account
   }
 }
 
-const mapDispatchToProps = (dispatch: AppDispatch): UserDispatchProps => {
+const mapDispatchToProps = (dispatch: AppDispatch): CopyrightHolderDispatchProps => {
   return {
     initialise: () => dispatch(txInitialise()),
     getData: (url: string) => dispatch(getData(url)),
-    handleSubmit: (values: Author) => dispatch(addAuthor(values))
+    handleSubmit: (values: CopyrightHolder) => dispatch(addCopyrightHolder(values))
   }
 }
 
-export const AddUser = connect<UserStateProps, UserDispatchProps, {}, ApplicationState>(
+export const AddCopyrightHolder = connect<CopyrightHolderStateProps, CopyrightHolderDispatchProps, {}, ApplicationState>(
   mapStateToProps,
   mapDispatchToProps
-)(getUser)
+)(getCopyrightHolder)

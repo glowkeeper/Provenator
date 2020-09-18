@@ -23,72 +23,113 @@ export const Home = () => {
 
        <Grid container>
 
-            <Grid item container xs={3} justify="center">
+            <Grid container>
 
-                <NavLink to={Local.addUser} className={themeClasses.homeLink}>
-                    <Grid item>
-                        <Paper className={themeClasses.home} elevation={0}>
-                           <FaceTwoToneIcon color="primary"/>
-                        </Paper>
-                    </Grid>
-                    <Grid item>
-                        <Paper className={themeClasses.home} elevation={0}>
-                            {Paths.addUser}
-                        </Paper>
-                    </Grid>
-                </NavLink>
+                <Grid item container xs={4} justify="center">
+
+                    <NavLink to={Local.addUser} className={themeClasses.homeLink}>
+                        <Grid item>
+                            <Paper className={themeClasses.home} elevation={0}>
+                               <FaceTwoToneIcon color="primary"/>
+                            </Paper>
+                        </Grid>
+                        <Grid item>
+                            <Paper className={themeClasses.home} elevation={0}>
+                                {Paths.addUser}
+                            </Paper>
+                        </Grid>
+                    </NavLink>
+
+                 </Grid>
+
+                 <Grid item container xs={4} justify="center">
+
+                     <NavLink to={Local.addCopyrightHolder} className={themeClasses.homeLink}>
+                         <Grid item>
+                             <Paper className={themeClasses.home} elevation={0}>
+                                <FaceTwoToneIcon color="primary"/>
+                             </Paper>
+                         </Grid>
+                         <Grid item>
+                             <Paper className={themeClasses.home} elevation={0}>
+                                 {Paths.addCopyrightHolder}
+                             </Paper>
+                         </Grid>
+                     </NavLink>
+
+                  </Grid>
+
+                  <Grid item container xs={4} justify="center">
+
+                      <NavLink to={Local.addPublisher} className={themeClasses.homeLink}>
+                          <Grid item>
+                              <Paper className={themeClasses.home} elevation={0}>
+                                 <FaceTwoToneIcon color="primary"/>
+                              </Paper>
+                          </Grid>
+                          <Grid item>
+                              <Paper className={themeClasses.home} elevation={0}>
+                                  {Paths.addPublisher}
+                              </Paper>
+                          </Grid>
+                      </NavLink>
+
+                   </Grid>
 
              </Grid>
 
-             <Grid item container xs={3} justify="center">
+             <Grid container justify="center">
 
-                 <NavLink to={Local.addFile} className={themeClasses.homeLink}>
-                     <Grid item>
-                        <Paper className={themeClasses.home} elevation={0}>
-                          <AttachFileTwoToneIcon color="primary"/>
-                        </Paper>
-                     </Grid>
-                     <Grid item>
-                        <Paper className={themeClasses.home} elevation={0}>
-                            {Paths.addFile}
-                        </Paper>
-                     </Grid>
-                 </NavLink>
+                 <Grid item container xs={3} justify="center">
 
-              </Grid>
+                     <NavLink to={Local.addFile} className={themeClasses.homeLink}>
+                         <Grid item>
+                            <Paper className={themeClasses.home} elevation={0}>
+                              <AttachFileTwoToneIcon color="primary"/>
+                            </Paper>
+                         </Grid>
+                         <Grid item>
+                            <Paper className={themeClasses.home} elevation={0}>
+                                {Paths.addFile}
+                            </Paper>
+                         </Grid>
+                     </NavLink>
 
-              <Grid item container xs={3} justify="center">
+                  </Grid>
 
-                  <NavLink to={Local.listMyArtefacts} className={themeClasses.homeLink}>
-                      <Grid item>
-                         <Paper className={themeClasses.home} elevation={0}>
-                           <TocTwoToneIcon color="primary"/>
-                         </Paper>
-                      </Grid>
-                      <Grid item>
-                         <Paper className={themeClasses.home} elevation={0}>
-                             {Paths.listMyArtefacts}
-                         </Paper>
-                      </Grid>
-                  </NavLink>
+                  <Grid item container xs={3} justify="center">
 
-               </Grid>
+                      <NavLink to={Local.listMyArtefacts} className={themeClasses.homeLink}>
+                          <Grid item>
+                             <Paper className={themeClasses.home} elevation={0}>
+                               <TocTwoToneIcon color="primary"/>
+                             </Paper>
+                          </Grid>
+                          <Grid item>
+                             <Paper className={themeClasses.home} elevation={0}>
+                                 {Paths.listMyArtefacts}
+                             </Paper>
+                          </Grid>
+                      </NavLink>
 
-               <Grid item container xs={3} justify="center">
+                   </Grid>
 
-                   <NavLink to={Local.addToArtefacts} className={themeClasses.homeLink}>
-                       <Grid item>
-                          <Paper className={themeClasses.home} elevation={0}>
-                            <AddTwoToneIcon color="primary"/>
-                          </Paper>
-                       </Grid>
-                       <Grid item>
-                          <Paper className={themeClasses.home} elevation={0}>
-                              {Paths.addToArtefacts}
-                          </Paper>
-                       </Grid>
-                   </NavLink>
+                   <Grid item container xs={3} justify="center">
 
+                       <NavLink to={Local.addToArtefacts} className={themeClasses.homeLink}>
+                           <Grid item>
+                              <Paper className={themeClasses.home} elevation={0}>
+                                <AddTwoToneIcon color="primary"/>
+                              </Paper>
+                           </Grid>
+                           <Grid item>
+                              <Paper className={themeClasses.home} elevation={0}>
+                                  {Paths.addToArtefacts}
+                              </Paper>
+                           </Grid>
+                       </NavLink>
+
+                    </Grid>
                 </Grid>
 
        </Grid>
