@@ -18,7 +18,7 @@ export const getArtefactsHTML = (data: CreativeWorksProps): any[] => {
 
     //console.log(data)
 
-    if( typeof data.creativeWorks !== 'undefined' ) {
+    if ( data.creativeWorks ) {
         for ( var i = 0; i < data.creativeWorks.length; i++) {
 
             const renderArtefactsHTML = (
@@ -37,50 +37,43 @@ export const getArtefactsHTML = (data: CreativeWorksProps): any[] => {
             )
             artefactsInfo.push(renderArtefactsHTML)
 
-            if( data.creativeWorks[i].author !== null ) {
-                if( typeof data.creativeWorks[i].author !== 'undefined' ) {
-                    //console.log(data.creativeWorks[i].works)
+            if( data.creativeWorks[i].author ) {
 
-                    for ( var j = 0; j < data.creativeWorks[i].author.length; j++) {
+                for ( var j = 0; j < data.creativeWorks[i].author.length; j++) {
 
-                        const renderAuthorHTML = (
-                            <React.Fragment key={data.creativeWorks[i].author[j].id}>
-                            <p>
-                                {Artefacts.authorId}: {data.creativeWorks[i].author[j].id}<br/>
-                                {File.authorName}: {data.creativeWorks[i].author[j].name}<br/>
-                                {File.authorEMail}: {data.creativeWorks[i].author[j].email}<br/>
-                                {File.authorURL}: {data.creativeWorks[i].author[j].url}<br/>
-                            </p>
-                            </React.Fragment>
-                        )
-                        artefactsInfo.push(renderAuthorHTML)
-                    }
-                 }
+                    const renderAuthorHTML = (
+                        <React.Fragment key={data.creativeWorks[i].author[j].id}>
+                        <p>
+                            {Artefacts.authorId}: {data.creativeWorks[i].author[j].id}<br/>
+                            {File.authorName}: {data.creativeWorks[i].author[j].name}<br/>
+                            {File.authorEMail}: {data.creativeWorks[i].author[j].email}<br/>
+                            {File.authorURL}: {data.creativeWorks[i].author[j].url}<br/>
+                        </p>
+                        </React.Fragment>
+                    )
+                    artefactsInfo.push(renderAuthorHTML)
+                }
              }
 
-              if( data.creativeWorks[i].copyrightHolder !== null ) {
-                  if( typeof data.creativeWorks[i].copyrightHolder !== 'undefined' ) {
-                      //console.log(data.creativeWorks[i].works)
+              if( data.creativeWorks[i].copyrightHolder ) {
 
-                      for ( var j = 0; j < data.creativeWorks[i].copyrightHolder.length; j++) {
+                  for ( var j = 0; j < data.creativeWorks[i].copyrightHolder.length; j++) {
 
-                          const renderCopyrightHTML = (
-                              <React.Fragment key={data.creativeWorks[i].copyrightHolder[j].id}>
-                              <p>
-                                  {Artefacts.copyrightHolderId}: {data.creativeWorks[i].copyrightHolder[j].id}<br/>
-                                  {File.copyrightHolderName}: {data.creativeWorks[i].copyrightHolder[j].name}<br/>
-                                  {File.copyrightHolderEMail}: {data.creativeWorks[i].copyrightHolder[j].email}<br/>
-                                  {File.copyrightHolderURL}: {data.creativeWorks[i].copyrightHolder[j].url}<br/>
-                              </p>
-                              </React.Fragment>
-                          )
-                          artefactsInfo.push(renderCopyrightHTML)
-                      }
-                   }
+                      const renderCopyrightHTML = (
+                          <React.Fragment key={data.creativeWorks[i].copyrightHolder[j].id}>
+                          <p>
+                              {Artefacts.copyrightHolderId}: {data.creativeWorks[i].copyrightHolder[j].id}<br/>
+                              {File.copyrightHolderName}: {data.creativeWorks[i].copyrightHolder[j].name}<br/>
+                              {File.copyrightHolderEMail}: {data.creativeWorks[i].copyrightHolder[j].email}<br/>
+                              {File.copyrightHolderURL}: {data.creativeWorks[i].copyrightHolder[j].url}<br/>
+                          </p>
+                          </React.Fragment>
+                      )
+                      artefactsInfo.push(renderCopyrightHTML)
+                  }
                }
 
-               if( data.creativeWorks[i].publisher !== null ) {
-                 if( typeof data.creativeWorks[i].publisher !== 'undefined' ) {
+               if( data.creativeWorks[i].publisher ) {
 
                     for ( var j = 0; j < data.creativeWorks[i].publisher.length; j++) {
 
@@ -96,7 +89,6 @@ export const getArtefactsHTML = (data: CreativeWorksProps): any[] => {
                         )
                         artefactsInfo.push(renderPublisherHTML)
                     }
-                  }
                 }
         }
     }
@@ -108,7 +100,7 @@ export const getArtefactHTML = (data: CreativeWorksProps, artefactId: string): a
 
     let artefactInfo = []
 
-    if( typeof data.creativeWorks !== 'undefined' ) {
+    if( data.creativeWorks ) {
         for ( var i = 0; i < data.creativeWorks.length; i++) {
 
             const thisArtefactId = data.creativeWorks[i].id
@@ -131,50 +123,43 @@ export const getArtefactHTML = (data: CreativeWorksProps, artefactId: string): a
                 )
                 artefactInfo.push(renderArtefactsHTML)
 
-                if( data.creativeWorks[i].author !== null ) {
-                    if( typeof data.creativeWorks[i].author !== 'undefined' ) {
-                        //console.log(data.creativeWorks[i].works)
+                if( data.creativeWorks[i].author ) {
 
-                        for ( var j = 0; j < data.creativeWorks[i].author.length; j++) {
+                    for ( var j = 0; j < data.creativeWorks[i].author.length; j++) {
 
-                            const renderAuthorHTML = (
-                                <React.Fragment key={data.creativeWorks[i].author[j].id}>
-                                <p>
-                                    {Artefacts.authorId}: {data.creativeWorks[i].author[j].id}<br/>
-                                    {File.authorName}: {data.creativeWorks[i].author[j].name}<br/>
-                                    {File.authorEMail}: {data.creativeWorks[i].author[j].email}<br/>
-                                    {File.authorURL}: {data.creativeWorks[i].author[j].url}<br/>
-                                </p>
-                                </React.Fragment>
-                            )
-                            artefactInfo.push(renderAuthorHTML)
-                        }
-                     }
+                        const renderAuthorHTML = (
+                            <React.Fragment key={data.creativeWorks[i].author[j].id}>
+                            <p>
+                                {Artefacts.authorId}: {data.creativeWorks[i].author[j].id}<br/>
+                                {File.authorName}: {data.creativeWorks[i].author[j].name}<br/>
+                                {File.authorEMail}: {data.creativeWorks[i].author[j].email}<br/>
+                                {File.authorURL}: {data.creativeWorks[i].author[j].url}<br/>
+                            </p>
+                            </React.Fragment>
+                        )
+                        artefactInfo.push(renderAuthorHTML)
+                    }
                  }
 
-                  if( data.creativeWorks[i].copyrightHolder !== null ) {
-                      if( typeof data.creativeWorks[i].copyrightHolder !== 'undefined' ) {
-                          //console.log(data.creativeWorks[i].works)
+                  if( data.creativeWorks[i].copyrightHolder ) {
 
-                          for ( var j = 0; j < data.creativeWorks[i].copyrightHolder.length; j++) {
+                      for ( var j = 0; j < data.creativeWorks[i].copyrightHolder.length; j++) {
 
-                              const renderCopyrightHTML = (
-                                  <React.Fragment key={data.creativeWorks[i].copyrightHolder[j].id}>
-                                  <p>
-                                      {Artefacts.copyrightHolderId}: {data.creativeWorks[i].copyrightHolder[j].id}<br/>
-                                      {File.copyrightHolderName}: {data.creativeWorks[i].copyrightHolder[j].name}<br/>
-                                      {File.copyrightHolderEMail}: {data.creativeWorks[i].copyrightHolder[j].email}<br/>
-                                      {File.copyrightHolderURL}: {data.creativeWorks[i].copyrightHolder[j].url}<br/>
-                                  </p>
-                                  </React.Fragment>
-                              )
-                              artefactInfo.push(renderCopyrightHTML)
-                          }
-                       }
+                          const renderCopyrightHTML = (
+                              <React.Fragment key={data.creativeWorks[i].copyrightHolder[j].id}>
+                              <p>
+                                  {Artefacts.copyrightHolderId}: {data.creativeWorks[i].copyrightHolder[j].id}<br/>
+                                  {File.copyrightHolderName}: {data.creativeWorks[i].copyrightHolder[j].name}<br/>
+                                  {File.copyrightHolderEMail}: {data.creativeWorks[i].copyrightHolder[j].email}<br/>
+                                  {File.copyrightHolderURL}: {data.creativeWorks[i].copyrightHolder[j].url}<br/>
+                              </p>
+                              </React.Fragment>
+                          )
+                          artefactInfo.push(renderCopyrightHTML)
+                      }
                    }
 
-                   if( data.creativeWorks[i].publisher !== null ) {
-                     if( typeof data.creativeWorks[i].publisher !== 'undefined' ) {
+                   if( data.creativeWorks[i].publisher ) {
 
                         for ( var j = 0; j < data.creativeWorks[i].publisher.length; j++) {
 
@@ -190,7 +175,6 @@ export const getArtefactHTML = (data: CreativeWorksProps, artefactId: string): a
                             )
                             artefactInfo.push(renderPublisherHTML)
                         }
-                      }
                     }
             }
         }

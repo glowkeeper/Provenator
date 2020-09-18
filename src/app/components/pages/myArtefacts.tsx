@@ -51,7 +51,7 @@ const artefactsReader = (props: Props) => {
             const id = addressToBytes32(props.address)
             props.getData(`${Remote.insecure}${Remote.server}:${Remote.port}${Remote.artefactsEntity}/${id}`)
 
-        } else if (typeof props.artefacts.data !== 'undefined') {
+        } else if ( props.artefacts.data ) {
             if ( props.artefacts.data.length > 0 ) {
 
                 const artefactsInfo = getArtefactsHTML(props.artefacts.data[0] as CreativeWorksProps)
