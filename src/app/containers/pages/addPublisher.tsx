@@ -36,6 +36,7 @@ import {
     PayloadProps,
     GetProps,
     EntityProps,
+    User,
     TxData } from '../../store/types'
 
 import { themeStyles } from '../../styles'
@@ -88,28 +89,24 @@ export const getPublisher = (props: Props) => {
 
             if ( props.data.data.length > 0 ) {
 
-                // default to author is publisher, too
-
-                const publisherData = props.data.data[0] as EntityProps
-                if ( publisherData.entities ) {
-                    if ( publisherData.entities.length > 0 ) {
-                        const publisher: Publisher = publisherData.entities[0] as Publisher
-                        if ( ( publisher.name != publisher.name ) || (publisher.email != publisher.email) || ( publisher.url != publisher.url ) ) {
-                            setPublisher(publisher)
-                        }
-                    }
+                const thisPublisher: User = props.data.data[0] as User
+                if ( ( publisher.name != thisPublisher.name ) || (publisher.email != thisPublisher.email) || ( publisher.url != thisPublisher.url ) ) {
+                    setPublisher(thisPublisher)
                 }
             }
 
-            const txData: TxData = props.info.data as TxData
-            const infoData = getDictEntries(props.info)
-            setInfo( infoData )
+            if ( isSubmitting ) {
 
-            if( txData.summary == Transaction.success || txData.summary == Transaction.failure ) {
-                setSubmit(false)
-                setTimeout(() => {
-                    history.push(`${Local.home}`)
-                }, Misc.delay)
+                const txData: TxData = props.info.data as TxData
+                const infoData = getDictEntries(props.info)
+                setInfo( infoData )
+
+                if( txData.summary == Transaction.success || txData.summary == Transaction.failure ) {
+                    setSubmit(false)
+                    setTimeout(() => {
+                        history.push(`${Local.home}`)
+                    }, Misc.delay)
+                }
             }
         }
 

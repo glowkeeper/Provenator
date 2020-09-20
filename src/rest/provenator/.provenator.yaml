@@ -6,6 +6,7 @@ timeout:
     idle: 120
 
 address:
-    ethereum: "https://rinkeby.infura.io/v3/f4851ba4a9e546e7a1f16bf8e14f0a92"
+    #ethereum: "https://rinkeby.infura.io/v3/f4851ba4a9e546e7a1f16bf8e14f0a92"
+    ethereum: "https://ropsten.infura.io/v3/f4851ba4a9e546e7a1f16bf8e14f0a92"
     entitiesContract: "0x695D0F75d31840c4b70BdbAc482FDf52B82f2100"
     artefactsContract: "0x260C84E597fBA7F4a6d9e7CE63d8432BBDCd7f5F"

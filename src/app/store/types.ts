@@ -69,7 +69,7 @@ export interface InfoData {
 }
 
 // Get stuff
-export type DataProps = EntityProps | CreativeWorksProps
+export type DataProps = Entities | EntityProps | CreativeWorksProps
 
 export interface GetProps extends PayloadProps {
     data: Array<DataProps>
@@ -105,7 +105,7 @@ export type User = Entity & Id
 export type Author = Entity & Id
 export type CopyrightHolder = Entity & Id
 export type Publisher = Entity & Id
-export type Entities = Author | CopyrightHolder | Publisher
+export type Entities = User | Author | CopyrightHolder | Publisher
 
 export interface EntityProps {
     entities: Array<Entities>

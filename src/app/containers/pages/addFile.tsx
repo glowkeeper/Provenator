@@ -37,6 +37,7 @@ import {
     PayloadProps,
     GetProps,
     EntityProps,
+    User,
     TxData } from '../../store/types'
 
 import { themeStyles } from '../../styles'
@@ -144,7 +145,7 @@ const addFileSchema = Yup.object().shape({
 
 interface FileStateProps {
   info: PayloadProps
-  user: GetProps
+  data: GetProps
   address: string
 }
 
@@ -183,34 +184,30 @@ export const getFile = (props: Props) => {
 
         } else {
 
-            if ( props.user.data.length > 0 ) {
+            if ( props.data.data.length > 0 ) {
 
-                const userData = props.user.data[0] as EntityProps
-                //console.log(userData)
-                if ( userData.entities ) {
-                    if ( userData.entities.length > 0 ) {
-                        const author: Author = userData.entities[0] as Author
-                        if ( ( author.name != user.name ) || (author.email != user.email) || ( author.url != user.url ) ) {
-                            
-                            setUser(author)
-                        }
-                    }
+                const thisUser: User = props.data.data[0] as User
+                if ( ( user.name != thisUser.name ) || (user.email != thisUser.email) || ( user.url != thisUser.url ) ) {
+                    setUser(thisUser)
                 }
             }
 
-            const txData: TxData = props.info.data as TxData
-            const infoData = getDictEntries(props.info)
-            setInfo( infoData )
+            if ( isSubmitting )
+            {
+                const txData: TxData = props.info.data as TxData
+                const infoData = getDictEntries(props.info)
+                setInfo( infoData )
 
-            if( txData.summary == Transaction.success || txData.summary == Transaction.failure ) {
-                setSubmit(false)
-                setTimeout(() => {
-                    history.push(`${Local.home}`)
-                }, Misc.delay)
+                if( txData.summary == Transaction.success || txData.summary == Transaction.failure ) {
+                    setSubmit(false)
+                    setTimeout(() => {
+                        history.push(`${Local.home}`)
+                    }, Misc.delay)
+                }
             }
         }
 
-    }, [props.info, props.user])
+    }, [props.info, props.data])
 
     const getFile = (e: any, results: any) => {
 
@@ -379,7 +376,7 @@ const mapStateToProps = (state: ApplicationState): FileStateProps => {
   //console.log(state.orgReader)
   return {
     info: state.tx as PayloadProps,
-    user: state.data as GetProps,
+    data: state.data as GetProps,
     address: state.chainInfo.data.Account
   }
 }

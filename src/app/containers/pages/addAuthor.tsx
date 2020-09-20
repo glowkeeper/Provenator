@@ -78,18 +78,18 @@ export const getAuthor = (props: Props) => {
             isFirstRun.current = false
             props.initialise()
 
-        } else {
+        } else if ( isSubmitting ) {
 
-            const txData: TxData = props.info.data as TxData
-            const infoData = getDictEntries(props.info)
-            setInfo( infoData )
+                const txData: TxData = props.info.data as TxData
+                const infoData = getDictEntries(props.info)
+                setInfo( infoData )
 
-            if( txData.summary == Transaction.success || txData.summary == Transaction.failure ) {
-                setSubmit(false)
-                setTimeout(() => {
-                    history.push(`${Local.home}`)
-                }, Misc.delay)
-            }
+                if( txData.summary == Transaction.success || txData.summary == Transaction.failure ) {
+                    setSubmit(false)
+                    setTimeout(() => {
+                        history.push(`${Local.home}`)
+                    }, Misc.delay)
+                }
         }
 
     }, [props.info])

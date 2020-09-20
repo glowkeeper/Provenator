@@ -80,10 +80,8 @@ func EntityTypes (ref [32]byte) ([]byte) {
 func Entity (ref [32]byte) ([]byte) {
 
 	var result []byte
-	entities := &types.EntitiesAll{}
 
 	//entities := &types.EntitiesAll{}
-	entity := types.Entity{}
 	entityAddress, err := contracts.Contracts.EntitiesContract.GetEntityContract(&bind.CallOpts{}, ref)
 	if err != nil {
 		pkgLog.SLogger.Error(text.ErrorEntitiesAll, zap.Error(err))
@@ -102,16 +100,14 @@ func Entity (ref [32]byte) ([]byte) {
 		return result
 	}
 
-	entity = types.Entity {
+	entity := types.Entity {
 		ID: fmt.Sprintf("%#x", ref),
 		Name: aEntity.Name,
 		EMail: aEntity.Email,
 		URL: aEntity.Url,
 	}
 
-	entities.Entities = append(entities.Entities, entity)
-
-	tResult, err := json.MarshalIndent(&entities, "", "")
+	tResult, err := json.MarshalIndent(&entity, "", "")
 	if err != nil {
 		pkgLog.SLogger.Error(text.ErrorEntitiesAll + " - " + text.ErrorUnMarshall, zap.Error(err))
 		return result

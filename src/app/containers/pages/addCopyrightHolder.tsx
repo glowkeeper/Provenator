@@ -88,28 +88,29 @@ export const getCopyrightHolder = (props: Props) => {
 
             if ( props.data.data.length > 0 ) {
 
-                // default to author is copyrighter, too
-
-                const copyrightHolderData = props.data.data[0] as EntityProps
-                if ( copyrightHolderData.entities ) {
-                    if ( copyrightHolderData.entities.length > 0 ) {
-                        const copyrightHolder: CopyrightHolder = copyrightHolderData.entities[0] as CopyrightHolder
-                        if ( ( copyrightHolder.name != copyrightHolder.name ) || (copyrightHolder.email != copyrightHolder.email) || ( copyrightHolder.url != copyrightHolder.url ) ) {
-                            setCopyrightHolder(copyrightHolder)
-                        }
-                    }
+                const thisCopyrightHolder: CopyrightHolder = props.data.data[0] as CopyrightHolder
+                if (
+                    ( copyrightHolder.name != thisCopyrightHolder.name ) ||
+                    (copyrightHolder.email != thisCopyrightHolder.email) ||
+                    ( copyrightHolder.url != thisCopyrightHolder.url )
+                ) {
+                    setCopyrightHolder(thisCopyrightHolder)
                 }
             }
 
-            const txData: TxData = props.info.data as TxData
-            const infoData = getDictEntries(props.info)
-            setInfo( infoData )
+            if ( isSubmitting ) {
 
-            if( txData.summary == Transaction.success || txData.summary == Transaction.failure ) {
-                setSubmit(false)
-                setTimeout(() => {
-                    history.push(`${Local.home}`)
-                }, Misc.delay)
+                const txData: TxData = props.info.data as TxData
+                const infoData = getDictEntries(props.info)
+                setInfo( infoData )
+
+                if( txData.summary == Transaction.success || txData.summary == Transaction.failure ) {
+                    setSubmit(false)
+                    setTimeout(() => {
+                        history.push(`${Local.home}`)
+                    }, Misc.delay)
+                }
+
             }
         }
 

@@ -52,7 +52,7 @@ const addUserSchema = Yup.object().shape({
 
 interface UserStateProps {
   info: PayloadProps
-  user: GetProps
+  data: GetProps
   address: string
 }
 
@@ -86,32 +86,31 @@ export const getUser = (props: Props) => {
 
         } else {
 
-            if ( props.user.data.length > 0 ) {
+            if ( props.data.data.length > 0 ) {
 
-                const userData = props.user.data[0] as EntityProps
-                if ( userData.entities ) {
-                    if ( userData.entities.length > 0 ) {
-                        const user: User = userData.entities[0] as User
-                        if ( ( user.name != user.name ) || (user.email != user.email) || ( user.url != user.url ) ) {
-                            setUser(user)
-                        }
-                    }
+                const thisUser: User = props.data.data[0] as User
+                if ( ( user.name != thisUser.name ) || (user.email != thisUser.email) || ( user.url != thisUser.url ) ) {
+                    setUser(thisUser)
                 }
             }
 
-            const txData: TxData = props.info.data as TxData
-            const infoData = getDictEntries(props.info)
-            setInfo( infoData )
+            if ( isSubmitting )
+            {
+                const txData: TxData = props.info.data as TxData
+                const infoData = getDictEntries(props.info)
+                setInfo( infoData )
 
-            if( txData.summary == Transaction.success || txData.summary == Transaction.failure ) {
-                setSubmit(false)
-                setTimeout(() => {
-                    history.push(`${Local.home}`)
-                }, Misc.delay)
+                if( txData.summary == Transaction.success || txData.summary == Transaction.failure ) {
+                    setSubmit(false)
+                    setTimeout(() => {
+                        history.push(`${Local.home}`)
+                    }, Misc.delay)
+                }
+
             }
         }
 
-    }, [props.info, props.user])
+    }, [props.info, props.data])
 
     return (
       <>
@@ -180,7 +179,7 @@ export const getUser = (props: Props) => {
 const mapStateToProps = (state: ApplicationState): UserStateProps => {
   return {
     info: state.tx as PayloadProps,
-    user: state.data as GetProps,
+    data: state.data as GetProps,
     address: state.chainInfo.data.Account
   }
 }
