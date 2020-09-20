@@ -25,7 +25,7 @@ import { initialise, getData } from '../../store/app/get/actions'
 import { addCopyrightHolder } from '../../store/app/blockchain'
 import { initialise as txInitialise } from '../../store/app/tx/actions'
 
-import { history, getDictEntries, addressToBytes32, bytes32ToAddress } from '../../utils'
+import { history, getDictEntries, md5ToBytes32, addressToBytes32, bytes32ToAddress } from '../../utils'
 
 import { NumberOptionType, FormHelpers, GeneralError, Transaction, Remote, Local, Misc, CopyrightHolder as CopyrightHolderConfig } from '../../config'
 
@@ -81,15 +81,16 @@ export const getCopyrightHolder = (props: Props) => {
             isFirstRun.current = false
             props.initialise()
 
-            const id = addressToBytes32(props.address)
-            props.getData(`${Remote.insecure}${Remote.server}:${Remote.port}${Remote.entities}/${id}`)
+            const authorId = addressToBytes32(props.address)
+            props.getData(`${Remote.insecure}${Remote.server}:${Remote.port}${Remote.entities}/${authorId}`)
 
         } else {
 
             if ( props.data.data.length > 0 ) {
 
+                // default to author is copyrighter, too
+
                 const copyrightHolderData = props.data.data[0] as EntityProps
-                //console.log(copyrightHolderData)
                 if ( copyrightHolderData.entities ) {
                     if ( copyrightHolderData.entities.length > 0 ) {
                         const copyrightHolder: CopyrightHolder = copyrightHolderData.entities[0] as CopyrightHolder
@@ -127,9 +128,8 @@ export const getCopyrightHolder = (props: Props) => {
             setSubmit(true)
             props.initialise()
 
-            const id = addressToBytes32(props.address)
-            //console.log(id, bytes32ToAddress(id))
-
+            const hash = SparkMD5.hash(values.copyrightHolderName + values.copyrightHolderEMail);
+            const id = md5ToBytes32(hash)
             const copyrightHolderInfo: CopyrightHolder = {
                 id: id,
                 name: values.copyrightHolderName,

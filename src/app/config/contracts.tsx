@@ -15,18 +15,21 @@ class Contracts {
     //static entitiesAddress = "0x96EeEef50A384bB05a27BC5251b8d9DEd252A89a"
     //static artefactsAddress = "0x30030A94e6f1531F7b28108a92d1D2E9D9C6D03a"
 
-    static entitiesAddress = "0x40fDfB8EaA32695E15D5D098FDaDFdA8492217e7"
-    static artefactsAddress = "0xf207eB19bb48082dbf9d3e464371fD723B7F6619"
+    // ropsten
+    static entitiesAddress = "0x695D0F75d31840c4b70BdbAc482FDf52B82f2100"
+    static artefactsAddress = "0x260C84E597fBA7F4a6d9e7CE63d8432BBDCd7f5F"
 
     static entitiesABI = [
-        "function addEntity(tuple(bytes32 id, string name, string email, string url) _entity, uint8 _entityType)",
-        "function amendEntity(tuple(bytes32 id, string name, string email, string url) _entity, uint8 _entityType)",
+        "function addEntity(tuple(bytes32 id, string name, string email, string url) _entity, uint8 _entityType, bytes32 _parentId)",
+        "function amendEntity(tuple(bytes32 id, string name, string email, string url) _entity, uint8 _entityType, bytes32 _parentId)",
         "function getEntity(bytes32 _id) view returns (tuple(bytes32 id, string name, string email, string url))",
+        "function getEntityRelations(bytes32 _id) view returns (bytes32[])",
         "function getEntityTypes(bytes32 _id) view returns (bool[])",
         "function getEntityContract(bytes32 _id) view returns (address)",
         "function getNum() view returns (uint256)",
         "function getReference(uint256 _index) view returns (bytes32)",
         "function getReferences() view returns (bytes32[])",
+        "function isEntityRelation(bytes32 _id, bytes32 _relatedEntityId) view returns (bool)",
         "function isEntityType(bytes32 _id, uint8 _type) view returns (bool)",
     ]
 

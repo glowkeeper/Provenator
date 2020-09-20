@@ -11,6 +11,7 @@ class Paths {
 
   static readonly home = 'Home'
   static readonly addUser = 'Add User'
+  static readonly addAuthor = 'Add Author'
   static readonly addCopyrightHolder = 'Add Copyright Holder'
   static readonly addPublisher = 'Add Publisher'
   static readonly addFile = 'Hash File'
@@ -89,6 +90,21 @@ class User {
 
     static readonly headingUser = "Set Your Author Details"
 
+    static readonly userName = "User Name"
+    static readonly userEMail = "User eMail"
+    static readonly userURL = "User URL"
+
+    static readonly validURL = "Please enter a valid URL"
+
+    static readonly submitTip = "Submit your user details to the Ethereum blockchain"
+
+    static readonly addUserButton = "Submit Info"
+}
+
+class Author {
+
+    static readonly headingAuthor = "Set Additional Author Details"
+
     static readonly authorName = "Author Name"
     static readonly authorEMail = "Author eMail"
     static readonly authorURL = "Author URL"
@@ -97,7 +113,7 @@ class User {
 
     static readonly submitTip = "Submit your author details to the Ethereum blockchain"
 
-    static readonly addUserButton = "Submit Info"
+    static readonly addAuthorButton = "Submit Info"
 }
 
 class CopyrightHolder {
@@ -201,6 +217,7 @@ export { App,
          Help,
          Faq,
          Contact,
+         Author,
          User,
          CopyrightHolder,
          Publisher,

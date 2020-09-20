@@ -101,6 +101,7 @@ export interface Entity {
     url: string
 }
 
+export type User = Entity & Id
 export type Author = Entity & Id
 export type CopyrightHolder = Entity & Id
 export type Publisher = Entity & Id

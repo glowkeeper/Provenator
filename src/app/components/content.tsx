@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom'
 import { InfoTypes } from '../store/types'
 
 import { BlockchainInfo, Info, Home, ListMyArtefacts, AddToArtefacts } from '../components/pages'
-import { AddFile, AddUser, AddCopyrightHolder, AddPublisher } from '../containers/pages/'
+import { AddFile, AddUser, AddAuthor, AddCopyrightHolder, AddPublisher } from '../containers/pages/'
 
 import { Paths, Local } from '../config'
 
@@ -22,6 +22,7 @@ export const Content = () => {
         <Route name={Paths.listMyArtefacts} path={Local.listMyArtefacts} render={() => <ListMyArtefacts />} />
 
         <Route name={Paths.addUser} exact path={Local.addUser} render= {() => <AddUser />} />
+        <Route name={Paths.addAuthor} exact path={Local.addAuthor} render= {() => <AddAuthor />} />
         <Route name={Paths.addCopyrightHolder} exact path={Local.addCopyrightHolder} render= {() => <AddCopyrightHolder />} />
         <Route name={Paths.addPublisher} exact path={Local.addPublisher} render= {() => <AddPublisher />} />
 

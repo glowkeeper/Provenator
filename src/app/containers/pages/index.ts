@@ -1,4 +1,5 @@
 export * from './addFile'
 export * from './addUser'
+export * from './addAuthor'
 export * from './addCopyrightHolder'
 export * from './addPublisher'

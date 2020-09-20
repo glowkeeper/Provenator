@@ -2,6 +2,7 @@ class Local {
 
   static readonly home = '/'
   static readonly addUser = '/add-user'
+  static readonly addAuthor = '/add-author'
   static readonly addCopyrightHolder = '/add-copyright-holder'
   static readonly addPublisher = '/add-publisher'
   static readonly addFile = '/add-file'

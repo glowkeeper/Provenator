@@ -15,24 +15,24 @@ import { FormControl } from '@material-ui/core'
 import { TextField } from "material-ui-formik-components"
 
 import Tooltip from '@material-ui/core/Tooltip'
-import PublisherReaderInput from 'react-file-reader-input'
+import AuthorReaderInput from 'react-file-reader-input'
 
 import Grid from '@material-ui/core/Grid'
 import RightCircleOutlined from '@ant-design/icons/lib/icons/RightCircleOutlined'
 import { Okay, OptionsStyles } from '../../styles'
 
 import { initialise, getData } from '../../store/app/get/actions'
-import { addPublisher } from '../../store/app/blockchain'
+import { addAuthor } from '../../store/app/blockchain'
 import { initialise as txInitialise } from '../../store/app/tx/actions'
 
 import { history, getDictEntries, md5ToBytes32, addressToBytes32, bytes32ToAddress } from '../../utils'
 
-import { NumberOptionType, FormHelpers, GeneralError, Transaction, Remote, Local, Misc, Publisher as PublisherConfig } from '../../config'
+import { NumberOptionType, FormHelpers, GeneralError, Transaction, Remote, Local, Misc, Author as AuthorConfig } from '../../config'
 
 import {
     ApplicationState,
     AppDispatch,
-    Publisher,
+    Author,
     PayloadProps,
     GetProps,
     EntityProps,
@@ -40,36 +40,33 @@ import {
 
 import { themeStyles } from '../../styles'
 
-const addPublisherSchema = Yup.object().shape({
-  publisherName: Yup.string()
+const addAuthorSchema = Yup.object().shape({
+  authorName: Yup.string()
     .required(`${GeneralError.required}`),
-  publisherEMail: Yup.string()
+  authorEMail: Yup.string()
     .email()
     .required(`${GeneralError.required}`),
-  publisherURL: Yup.string()
-    .url(`${PublisherConfig.validURL}`),
+  authorURL: Yup.string()
+    .url(`${AuthorConfig.validURL}`),
 })
 
-interface PublisherStateProps {
+interface AuthorStateProps {
   info: PayloadProps
-  data: GetProps
-  address: string
 }
 
-interface PublisherDispatchProps {
+interface AuthorDispatchProps {
   initialise: () => void
-  getData: (url: string) => void
-  handleSubmit: (values: Publisher) => void
+  handleSubmit: (values: Author) => void
 }
 
-type Props =  PublisherDispatchProps & PublisherStateProps
+type Props =  AuthorDispatchProps & AuthorStateProps
 
-export const getPublisher = (props: Props) => {
+export const getAuthor = (props: Props) => {
 
     let isFirstRun = useRef(true)
     const [isLoading, setIsLoading] = useState(false)
     const [isSubmitting, setSubmit] = useState(false)
-    const [publisher, setPublisher] = useState({name: "", email: "", url: ""})
+    const [author, setAuthor] = useState({name: "", email: "", url: ""})
     const [info, setInfo] = useState("")
 
     const themeClasses = themeStyles()
@@ -81,25 +78,7 @@ export const getPublisher = (props: Props) => {
             isFirstRun.current = false
             props.initialise()
 
-            const authorId = addressToBytes32(props.address)
-            props.getData(`${Remote.insecure}${Remote.server}:${Remote.port}${Remote.entities}/${authorId}`)
-
         } else {
-
-            if ( props.data.data.length > 0 ) {
-
-                // default to author is publisher, too
-
-                const publisherData = props.data.data[0] as EntityProps
-                if ( publisherData.entities ) {
-                    if ( publisherData.entities.length > 0 ) {
-                        const publisher: Publisher = publisherData.entities[0] as Publisher
-                        if ( ( publisher.name != publisher.name ) || (publisher.email != publisher.email) || ( publisher.url != publisher.url ) ) {
-                            setPublisher(publisher)
-                        }
-                    }
-                }
-            }
 
             const txData: TxData = props.info.data as TxData
             const infoData = getDictEntries(props.info)
@@ -113,55 +92,55 @@ export const getPublisher = (props: Props) => {
             }
         }
 
-    }, [props.info, props.data])
+    }, [props.info])
 
     return (
       <>
-        <h2>{PublisherConfig.heading}</h2>
+        <h2>{AuthorConfig.headingAuthor}</h2>
         <hr />
         <Formik
-          initialValues={ {publisherName: publisher.name, publisherEMail: publisher.email, publisherURL: publisher.url} }
+          initialValues={ {authorName: author.name, authorEMail: author.email, authorURL: author.url} }
           enableReinitialize={true}
-          validationSchema={addPublisherSchema}
+          validationSchema={addAuthorSchema}
           onSubmit={(values: any) => {
 
             setSubmit(true)
             props.initialise()
 
-            const hash = SparkMD5.hash(values.publisherName + values.publisherEMail);
+            const hash = SparkMD5.hash(values.authorName + values.authorEMail);
             const id = md5ToBytes32(hash)
-            const publisherInfo: Publisher = {
+            const authorInfo: Author = {
                 id: id,
-                name: values.publisherName,
-                email: values.publisherEMail,
-                url:  values.publisherURL
+                name: values.authorName,
+                email: values.authorEMail,
+                url:  values.authorURL
             }
-            props.handleSubmit(publisherInfo)
+            props.handleSubmit(authorInfo)
           }}
         >
           {(formProps: FormikProps<any>) => (
             <Form>
               <FormControl fullWidth={true}>
                   <Field
-                    name='publisherName'
-                    label={PublisherConfig.publisherName}
+                    name='authorName'
+                    label={AuthorConfig.authorName}
                     component={TextField}
                   />
                   <Field
-                    name='publisherEMail'
-                    label={PublisherConfig.publisherEMail}
+                    name='authorEMail'
+                    label={AuthorConfig.authorEMail}
                     component={TextField}
                   />
                   <Field
-                    name='publisherURL'
-                    label={PublisherConfig.publisherURL}
+                    name='authorURL'
+                    label={AuthorConfig.authorURL}
                     component={TextField}
                   />
                   <Grid container>
                       <Grid item xs={12} sm={3}>
-                        <Tooltip title={PublisherConfig.submitTip}>
+                        <Tooltip title={AuthorConfig.submitTip}>
                           <Okay type='submit' variant="contained" color="primary" disabled={isSubmitting} endIcon={<RightCircleOutlined spin={isSubmitting}/>}>
-                            {PublisherConfig.addPublisherButton}
+                            {AuthorConfig.addAuthorButton}
                           </Okay>
                         </Tooltip>
                       </Grid>
@@ -179,23 +158,20 @@ export const getPublisher = (props: Props) => {
     )
 }
 
-const mapStateToProps = (state: ApplicationState): PublisherStateProps => {
+const mapStateToProps = (state: ApplicationState): AuthorStateProps => {
   return {
-    info: state.tx as PayloadProps,
-    data: state.data as GetProps,
-    address: state.chainInfo.data.Account
+    info: state.tx as PayloadProps
   }
 }
 
-const mapDispatchToProps = (dispatch: AppDispatch): PublisherDispatchProps => {
+const mapDispatchToProps = (dispatch: AppDispatch): AuthorDispatchProps => {
   return {
     initialise: () => dispatch(txInitialise()),
-    getData: (url: string) => dispatch(getData(url)),
-    handleSubmit: (values: Publisher) => dispatch(addPublisher(values))
+    handleSubmit: (values: Author) => dispatch(addAuthor(values))
   }
 }
 
-export const AddPublisher = connect<PublisherStateProps, PublisherDispatchProps, {}, ApplicationState>(
+export const AddAuthor = connect<AuthorStateProps, AuthorDispatchProps, {}, ApplicationState>(
   mapStateToProps,
   mapDispatchToProps
-)(getPublisher)
+)(getAuthor)

@@ -22,7 +22,7 @@ import RightCircleOutlined from '@ant-design/icons/lib/icons/RightCircleOutlined
 import { Okay, OptionsStyles } from '../../styles'
 
 import { initialise, getData } from '../../store/app/get/actions'
-import { addAuthor } from '../../store/app/blockchain'
+import { addUser } from '../../store/app/blockchain'
 import { initialise as txInitialise } from '../../store/app/tx/actions'
 
 import { history, getDictEntries, addressToBytes32, bytes32ToAddress } from '../../utils'
@@ -32,7 +32,7 @@ import { NumberOptionType, FormHelpers, GeneralError, Transaction, Remote, Local
 import {
     ApplicationState,
     AppDispatch,
-    Author,
+    User,
     PayloadProps,
     GetProps,
     EntityProps,
@@ -41,12 +41,12 @@ import {
 import { themeStyles } from '../../styles'
 
 const addUserSchema = Yup.object().shape({
-  authorName: Yup.string()
+  userName: Yup.string()
     .required(`${GeneralError.required}`),
-  authorEMail: Yup.string()
+  userEMail: Yup.string()
     .email()
     .required(`${GeneralError.required}`),
-  authorURL: Yup.string()
+  userURL: Yup.string()
     .url(`${UserConfig.validURL}`),
 })
 
@@ -59,7 +59,7 @@ interface UserStateProps {
 interface UserDispatchProps {
   initialise: () => void
   getData: (url: string) => void
-  handleSubmit: (values: Author) => void
+  handleSubmit: (values: User) => void
 }
 
 type Props =  UserDispatchProps & UserStateProps
@@ -89,12 +89,11 @@ export const getUser = (props: Props) => {
             if ( props.user.data.length > 0 ) {
 
                 const userData = props.user.data[0] as EntityProps
-                //console.log(userData)
                 if ( userData.entities ) {
                     if ( userData.entities.length > 0 ) {
-                        const author: Author = userData.entities[0] as Author
-                        if ( ( author.name != user.name ) || (author.email != user.email) || ( author.url != user.url ) ) {
-                            setUser(author)
+                        const user: User = userData.entities[0] as User
+                        if ( ( user.name != user.name ) || (user.email != user.email) || ( user.url != user.url ) ) {
+                            setUser(user)
                         }
                     }
                 }
@@ -119,7 +118,7 @@ export const getUser = (props: Props) => {
         <h2>{UserConfig.headingUser}</h2>
         <hr />
         <Formik
-          initialValues={ {authorName: user.name, authorEMail: user.email, authorURL: user.url} }
+          initialValues={ {userName: user.name, userEMail: user.email, userURL: user.url} }
           enableReinitialize={true}
           validationSchema={addUserSchema}
           onSubmit={(values: any) => {
@@ -128,13 +127,12 @@ export const getUser = (props: Props) => {
             props.initialise()
 
             const id = addressToBytes32(props.address)
-            //console.log(id, bytes32ToAddress(id))
 
-            const userInfo: Author = {
+            const userInfo: User = {
                 id: id,
-                name: values.authorName,
-                email: values.authorEMail,
-                url:  values.authorURL
+                name: values.userName,
+                email: values.userEMail,
+                url:  values.userURL
             }
             props.handleSubmit(userInfo)
           }}
@@ -143,18 +141,18 @@ export const getUser = (props: Props) => {
             <Form>
               <FormControl fullWidth={true}>
                   <Field
-                    name='authorName'
-                    label={UserConfig.authorName}
+                    name='userName'
+                    label={UserConfig.userName}
                     component={TextField}
                   />
                   <Field
-                    name='authorEMail'
-                    label={UserConfig.authorEMail}
+                    name='userEMail'
+                    label={UserConfig.userEMail}
                     component={TextField}
                   />
                   <Field
-                    name='authorURL'
-                    label={UserConfig.authorURL}
+                    name='userURL'
+                    label={UserConfig.userURL}
                     component={TextField}
                   />
                   <Grid container>
@@ -191,7 +189,7 @@ const mapDispatchToProps = (dispatch: AppDispatch): UserDispatchProps => {
   return {
     initialise: () => dispatch(txInitialise()),
     getData: (url: string) => dispatch(getData(url)),
-    handleSubmit: (values: Author) => dispatch(addAuthor(values))
+    handleSubmit: (values: User) => dispatch(addUser(values))
   }
 }
 

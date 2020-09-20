@@ -8,6 +8,8 @@ import { Contracts, Config } from '../../../config/contracts'
 import { Entities } from '../../../config/typechain/Entities'
 import { Artefacts } from '../../../config/typechain/Artefacts'
 
+import { addressToBytes32 } from '../../../utils'
+
 import { write } from '../../actions'
 import {
     AppDispatch,
@@ -17,6 +19,7 @@ import {
     ChainInfoActionTypes,
     TransactionActionTypes,
     TxData,
+    User,
     Author,
     CopyrightHolder,
     Publisher,
@@ -106,7 +109,7 @@ export const init = () => {
   }
 }
 
-export const addAuthor = (authorProps: Author) => {
+export const addUser = (authorProps: User) => {
   return async (dispatch: AppDispatch, getState: Function) => {
 
      const state = getState()
@@ -114,7 +117,33 @@ export const addAuthor = (authorProps: Author) => {
 
      try {
 
-        const tx = await entitiesContract.addEntity(authorProps, EntityTypes.Author)
+        const tx = await entitiesContract.addEntity(authorProps, EntityTypes.Author, ethers.constants.HashZero)
+        dispatch(txDispatch(tx))
+
+      } catch (error) {
+
+        const d = new Date(Date.now())
+        let txData: TxData  = {
+            key:  "-1",
+            summary: `${Transaction.failure}`,
+            time: d.toString()
+        }
+        dispatch(write({data: txData})(TransactionActionTypes.TRANSACTION_FAILURE))
+    }
+
+  }
+}
+
+export const addAuthor = (authorProps: Author) => {
+  return async (dispatch: AppDispatch, getState: Function) => {
+
+     const state = getState()
+     const entitiesContract = state.chainContracts.data.contracts.entities
+     const id = addressToBytes32(state.chainInfo.data.Account)
+
+     try {
+
+        const tx = await entitiesContract.addEntity(authorProps, EntityTypes.Author, id)
         dispatch(txDispatch(tx))
 
       } catch (error) {
@@ -136,10 +165,11 @@ export const addCopyrightHolder = (copyrightProps: CopyrightHolder) => {
 
      const state = getState()
      const entitiesContract = state.chainContracts.data.contracts.entities
+     const id = addressToBytes32(state.chainInfo.data.Account)
 
      try {
 
-        const tx = await entitiesContract.addEntity(copyrightProps, EntityTypes.CopyrightHolder)
+        const tx = await entitiesContract.addEntity(copyrightProps, EntityTypes.CopyrightHolder, id)
         dispatch(txDispatch(tx))
 
       } catch (error) {
@@ -161,10 +191,11 @@ export const addPublisher = (publisherProps: Publisher) => {
 
      const state = getState()
      const entitiesContract = state.chainContracts.data.contracts.entities
+     const id = addressToBytes32(state.chainInfo.data.Account)
 
      try {
 
-        const tx = await entitiesContract.addEntity(publisherProps, EntityTypes.Publisher)
+        const tx = await entitiesContract.addEntity(publisherProps, EntityTypes.Publisher, id)
         dispatch(txDispatch(tx))
 
       } catch (error) {

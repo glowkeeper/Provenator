@@ -191,8 +191,7 @@ export const getFile = (props: Props) => {
                     if ( userData.entities.length > 0 ) {
                         const author: Author = userData.entities[0] as Author
                         if ( ( author.name != user.name ) || (author.email != user.email) || ( author.url != user.url ) ) {
-
-                            //console.log("now here: ", props.user)
+                            
                             setUser(author)
                         }
                     }
