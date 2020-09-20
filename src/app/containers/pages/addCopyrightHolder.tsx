@@ -88,6 +88,8 @@ export const getCopyrightHolder = (props: Props) => {
 
             if ( props.data.data.length > 0 ) {
 
+                // default to user
+
                 const thisCopyrightHolder: CopyrightHolder = props.data.data[0] as CopyrightHolder
                 if (
                     ( copyrightHolder.name != thisCopyrightHolder.name ) ||
@@ -130,7 +132,13 @@ export const getCopyrightHolder = (props: Props) => {
             props.initialise()
 
             const hash = SparkMD5.hash(values.copyrightHolderName + values.copyrightHolderEMail);
-            const id = md5ToBytes32(hash)
+            let id = addressToBytes32(props.address)
+            if ( ( copyrightHolder.name != values.copyrightHolderName ) || (copyrightHolder.email != values.email) ) {
+
+                const hash = SparkMD5.hash(values.copyrightHolderName + values.copyrightHolderEMail);
+                id = md5ToBytes32(hash)
+            }
+
             const copyrightHolderInfo: CopyrightHolder = {
                 id: id,
                 name: values.copyrightHolderName,

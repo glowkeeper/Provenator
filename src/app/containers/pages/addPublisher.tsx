@@ -89,6 +89,8 @@ export const getPublisher = (props: Props) => {
 
             if ( props.data.data.length > 0 ) {
 
+                // default to user
+
                 const thisPublisher: User = props.data.data[0] as User
                 if ( ( publisher.name != thisPublisher.name ) || (publisher.email != thisPublisher.email) || ( publisher.url != thisPublisher.url ) ) {
                     setPublisher(thisPublisher)
@@ -125,8 +127,14 @@ export const getPublisher = (props: Props) => {
             setSubmit(true)
             props.initialise()
 
-            const hash = SparkMD5.hash(values.publisherName + values.publisherEMail);
-            const id = md5ToBytes32(hash)
+            const hash = SparkMD5.hash(values.copyrightHolderName + values.copyrightHolderEMail);
+            let id = addressToBytes32(props.address)
+            if ( ( publisher.name != values.publisherName ) || ( publisher.email != values.publisherEMail ) ) {
+
+                const hash = SparkMD5.hash(values.publisherName + values.publisherEMail);
+                id = md5ToBytes32(hash)
+            }
+
             const publisherInfo: Publisher = {
                 id: id,
                 name: values.publisherName,
